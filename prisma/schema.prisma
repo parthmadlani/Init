@@ -1,0 +1,214 @@
+// INIT — data model. See the "Build Spec v2" reference doc, §05, for the
+// rationale behind each entity. Scope: everything needed for the fixed
+// wizard → roadmap → progress loop. AI-derived fields are deferred to v1.1.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum GoalType {
+  PLACEMENT
+  SEMESTER
+  PROJECT
+  SKILL
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETE
+}
+
+enum BookmarkTargetType {
+  RESOURCE
+  PATH
+  TOPIC
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         Role     @default(STUDENT)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  goals        Goal[]
+  paths        Path[]
+  progress     Progress[]
+  bookmarks    Bookmark[]
+  activityLogs ActivityLog[]
+
+  @@map("users")
+}
+
+model Subject {
+  id   String @id @default(cuid())
+  slug String @unique
+  name String
+
+  topics Topic[]
+  goals  Goal[]
+
+  @@map("subjects")
+}
+
+model Topic {
+  id        String  @id @default(cuid())
+  subjectId String
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  slug      String
+  name      String
+  order     Int
+
+  // Hand-authored dependency graph (§05 of the spec). Topic IDs, not a join
+  // table — the graph is small and curated by hand for v2, not queried
+  // relationally. Revisit if the graph outgrows a handful of subjects.
+  prerequisiteTopicIds String[] @default([])
+
+  resources Resource[]
+  progress  Progress[]
+  bookmarks Bookmark[]
+
+  @@unique([subjectId, slug])
+  @@index([subjectId, order])
+  @@map("topics")
+}
+
+model Resource {
+  id              String   @id @default(cuid())
+  topicId         String
+  topic           Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  youtubeVideoId  String
+  title           String
+  channelName     String
+  durationSeconds Int
+  level           Level
+
+  // Not permanent — YouTube's data-retention rules require refreshing
+  // API-derived fields, not treating them as owned data. See spec §05/§65.
+  cachedAt DateTime @default(now())
+
+  bookmarks Bookmark[]
+
+  @@index([topicId])
+  @@map("resources")
+}
+
+model Goal {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subjectId    String
+  subject      Subject  @relation(fields: [subjectId], references: [id])
+  type         GoalType
+  level        Level
+  dailyMinutes Int
+  notes        String?
+  createdAt    DateTime @default(now())
+
+  path Path?
+
+  @@index([userId])
+  @@index([subjectId])
+  @@map("goals")
+}
+
+model Path {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  goalId          String   @unique
+  goal            Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  orderedTopicIds String[]
+  createdAt       DateTime @default(now())
+
+  bookmarks Bookmark[]
+
+  @@index([userId])
+  @@map("paths")
+}
+
+model Progress {
+  id             String         @id @default(cuid())
+  userId         String
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topicId        String
+  topic          Topic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  status         ProgressStatus @default(NOT_STARTED)
+  pct            Int            @default(0)
+  lastAccessedAt DateTime?
+
+  // The per-path checklist — distinct from ActivityLog, which is the
+  // GitHub-style daily calendar. See spec §05.
+  @@unique([userId, topicId])
+  @@map("progress")
+}
+
+model Bookmark {
+  id         String             @id @default(cuid())
+  userId     String
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetType BookmarkTargetType
+
+  // Exactly one of these is set, matching targetType. Modeled as separate
+  // nullable relations (not a single polymorphic targetId) so the FK stays
+  // enforced at the database level.
+  resourceId String?
+  resource   Resource? @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  pathId     String?
+  path       Path?     @relation(fields: [pathId], references: [id], onDelete: Cascade)
+  topicId    String?
+  topic      Topic?    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("bookmarks")
+}
+
+model SearchCache {
+  id       String @id @default(cuid())
+
+  // Normalized (subject, goal, level) — the quota guard. See spec §05/§35.
+  // No YouTube call happens without a lookup here first.
+  queryKey String @unique
+
+  rawResults Json
+  fetchedAt  DateTime @default(now())
+  expiresAt  DateTime
+
+  @@index([expiresAt])
+  @@map("search_cache")
+}
+
+model ActivityLog {
+  id     String   @id @default(cuid())
+  userId String
+  user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date   DateTime @db.Date
+
+  // Incremented once per topic touched that day, across every subject —
+  // the source for the dashboard's contribution calendar.
+  activityCount Int @default(0)
+
+  @@unique([userId, date])
+  @@map("activity_log")
+}
