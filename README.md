@@ -1,6 +1,6 @@
 # INIT
 
-A learning discovery platform — turns a goal, a skill level, and a time budget into a structured, YouTube-backed roadmap.
+A personalized learning platform that helps college students discover, structure, and track the best learning resources based on their goals, skill level, and time — turns a goal, a level, and a time budget into a structured, YouTube-backed roadmap.
 
 Full product context, data model, and phase plan: see the **Build Spec v2** reference doc (kept outside this repo — ask if you need the link).
 
