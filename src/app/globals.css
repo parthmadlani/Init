@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111827;
 }
 
 @theme inline {
@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
+
+  /* Brand tokens — match the marketing site (Init Landing Wireframes) */
+  --color-brand-pink: #ff3d8a;
+  --color-brand-cyan: #00c2d1;
+  --color-brand-dark: #111827;
+  --color-brand-cyan-light: #cff3f7;
+  --color-brand-pink-light: #ffd6ea;
 }
 
 @media (prefers-color-scheme: dark) {

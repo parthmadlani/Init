@@ -2,13 +2,13 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import { verifyPassword } from "@/lib/password";
+import { authConfig } from "@/lib/auth.config";
 
-// Credentials-only for v2 — no OAuth providers, so no adapter is needed
-// (see Build Spec v2 §06). JWT sessions are required here: Auth.js doesn't
-// support database sessions for the Credentials provider.
+// Node-runtime auth instance — this is the one API routes and server
+// components use. Adds the Credentials provider (needs Prisma + bcrypt) on
+// top of the edge-safe authConfig. Middleware uses authConfig directly.
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  session: { strategy: "jwt" },
-  pages: { signIn: "/login" },
+  ...authConfig,
   providers: [
     Credentials({
       credentials: {
@@ -30,18 +30,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    jwt: ({ token, user }) => {
-      if (user) {
-        token.id = user.id;
-        token.role = user.role;
-      }
-      return token;
-    },
-    session: ({ session, token }) => {
-      session.user.id = token.id as string;
-      session.user.role = token.role as "STUDENT" | "ADMIN";
-      return session;
-    },
-  },
 });

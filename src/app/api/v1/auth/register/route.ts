@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { hashPassword } from "@/lib/password";
 import { registerSchema } from "@/lib/validation/auth";
+import { registerUser, EmailInUseError } from "@/lib/services/auth-service";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -9,18 +8,14 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
   }
-  const { email, password, name } = parsed.data;
 
-  const existing = await prisma.user.findUnique({ where: { email } });
-  if (existing) {
-    return NextResponse.json({ error: "An account with that email already exists" }, { status: 409 });
+  try {
+    const user = await registerUser(parsed.data);
+    return NextResponse.json({ user }, { status: 201 });
+  } catch (error) {
+    if (error instanceof EmailInUseError) {
+      return NextResponse.json({ error: error.message }, { status: 409 });
+    }
+    throw error;
   }
-
-  const passwordHash = await hashPassword(password);
-  const user = await prisma.user.create({
-    data: { email, passwordHash, name },
-    select: { id: true, email: true, name: true, role: true, createdAt: true },
-  });
-
-  return NextResponse.json({ user }, { status: 201 });
 }
