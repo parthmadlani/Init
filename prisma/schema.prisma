@@ -41,6 +41,11 @@ enum BookmarkTargetType {
   TOPIC
 }
 
+enum ReactionType {
+  HELPFUL
+  NOT_HELPFUL
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -50,11 +55,12 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  goals        Goal[]
-  paths        Path[]
-  progress     Progress[]
-  bookmarks    Bookmark[]
-  activityLogs ActivityLog[]
+  goals            Goal[]
+  paths            Path[]
+  progress         Progress[]
+  bookmarks        Bookmark[]
+  activityLogs     ActivityLog[]
+  resourceFeedback ResourceFeedback[]
 
   @@map("users")
 }
@@ -93,9 +99,9 @@ model Topic {
 }
 
 model Resource {
-  id              String   @id @default(cuid())
+  id              String @id @default(cuid())
   topicId         String
-  topic           Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  topic           Topic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
   youtubeVideoId  String
   title           String
   channelName     String
@@ -107,6 +113,7 @@ model Resource {
   cachedAt DateTime @default(now())
 
   bookmarks Bookmark[]
+  feedback  ResourceFeedback[]
 
   // One matched video per (topic, level) — re-fetching re-ranks in place
   // rather than piling up rows. See lib/services/resource-service.ts.
@@ -187,7 +194,7 @@ model Bookmark {
 }
 
 model SearchCache {
-  id       String @id @default(cuid())
+  id String @id @default(cuid())
 
   // Normalized (subject, goal, level) — the quota guard. See spec §05/§35.
   // No YouTube call happens without a lookup here first.
@@ -199,6 +206,21 @@ model SearchCache {
 
   @@index([expiresAt])
   @@map("search_cache")
+}
+
+model ResourceFeedback {
+  id         String       @id @default(cuid())
+  userId     String
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resourceId String
+  resource   Resource     @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  reaction   ReactionType
+  createdAt  DateTime     @default(now())
+
+  // One reaction per user per resource — resubmitting just changes it.
+  // Collected now, not yet fed back into ranking (Build Spec v2 v1.1).
+  @@unique([userId, resourceId])
+  @@map("resource_feedback")
 }
 
 model ActivityLog {

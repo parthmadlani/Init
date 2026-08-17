@@ -36,9 +36,11 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
             resource={
               topic.resource
                 ? {
+                    id: topic.resource.id,
                     title: topic.resource.title,
                     youtubeVideoId: topic.resource.youtubeVideoId,
                     durationSeconds: topic.resource.durationSeconds,
+                    userReaction: topic.resource.userReaction,
                   }
                 : null
             }

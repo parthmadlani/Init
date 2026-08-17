@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 type Status = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE";
+type Reaction = "HELPFUL" | "NOT_HELPFUL";
 
 const NEXT_STATUS: Record<Status, Status> = {
   NOT_STARTED: "IN_PROGRESS",
@@ -17,7 +18,13 @@ const STATUS_STYLE: Record<Status, string> = {
   COMPLETE: "border-brand-dark bg-brand-dark text-white",
 };
 
-type Resource = { title: string; youtubeVideoId: string; durationSeconds: number } | null;
+type Resource = {
+  id: string;
+  title: string;
+  youtubeVideoId: string;
+  durationSeconds: number;
+  userReaction: Reaction | null;
+} | null;
 
 function formatDuration(seconds: number): string {
   const minutes = Math.round(seconds / 60);
@@ -25,6 +32,65 @@ function formatDuration(seconds: number): string {
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
   return rest === 0 ? `${hours} hr` : `${hours} hr ${rest} min`;
+}
+
+function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      width="14"
+      height="14"
+      fill={filled ? "currentColor" : "none"}
+      stroke="currentColor"
+      strokeWidth="1.6"
+      className={direction === "down" ? "rotate-180" : ""}
+    >
+      <path
+        d="M7 8.5V16h7.2c.6 0 1.1-.4 1.2-1l1.1-5c.15-.7-.4-1.4-1.2-1.4H11l.6-3.2c.1-.6-.35-1.15-.95-1.15-.35 0-.68.2-.83.5L7 8.5Z"
+        strokeLinejoin="round"
+      />
+      <path d="M7 8.5H4.5v7.5H7" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string; initialReaction: Reaction | null }) {
+  const [reaction, setReaction] = useState(initialReaction);
+  const [isPending, startTransition] = useTransition();
+
+  function react(next: Reaction) {
+    setReaction(next);
+    startTransition(async () => {
+      await fetch("/api/v1/resource-feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resourceId, reaction: next }),
+      });
+    });
+  }
+
+  return (
+    <div className="flex shrink-0 items-center gap-1" onClick={(e) => e.stopPropagation()}>
+      <button
+        type="button"
+        onClick={() => react("HELPFUL")}
+        disabled={isPending}
+        title="This video was helpful"
+        className={`rounded p-1 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/25 hover:text-black/50"}`}
+      >
+        <ThumbIcon direction="up" filled={reaction === "HELPFUL"} />
+      </button>
+      <button
+        type="button"
+        onClick={() => react("NOT_HELPFUL")}
+        disabled={isPending}
+        title="This video wasn't helpful"
+        className={`rounded p-1 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/25 hover:text-black/50"}`}
+      >
+        <ThumbIcon direction="down" filled={reaction === "NOT_HELPFUL"} />
+      </button>
+    </div>
+  );
 }
 
 export function TopicRow({
@@ -83,6 +149,7 @@ export function TopicRow({
           <div className="truncate text-xs text-black/45">No matching video found yet</div>
         )}
       </div>
+      {resource && <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />}
       <span className="shrink-0 text-xs font-semibold text-black/40">{status.replace("_", " ").toLowerCase()}</span>
     </div>
   );

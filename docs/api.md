@@ -97,7 +97,10 @@ Response `200`:
     goal: Goal;
     topics: {
       id: string; slug: string; name: string; order: number;
-      resource: { youtubeVideoId: string; title: string; channelName: string; durationSeconds: number } | null;
+      resource: {
+        id: string; youtubeVideoId: string; title: string; channelName: string; durationSeconds: number;
+        userReaction: "HELPFUL" | "NOT_HELPFUL" | null; // caller's own feedback, if any
+      } | null;
       progress: { status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE"; pct: number } | null;
     }[];
     completedCount: number;
@@ -133,6 +136,19 @@ Response `200`:
 
 ---
 
+## Resource feedback
+
+### `POST /api/v1/resource-feedback`
+Records the caller's reaction to a matched video. Upserts — resubmitting for the same resource just changes the reaction, doesn't create a second row. Collected as a data signal for future ranking improvements; **not yet fed back into the matching algorithm** (see `resource-service.ts` — the quality filter and ranking today are static, not personalized).
+
+Request:
+```ts
+{ resourceId: string; reaction: "HELPFUL" | "NOT_HELPFUL" }
+```
+Response `200`: `{ feedback: ResourceFeedback }`
+
+---
+
 ## Bookmarks
 
 ### `GET /api/v1/bookmarks`
@@ -157,3 +173,4 @@ Response `204` (no body). `404` if the bookmark doesn't exist or isn't owned by 
 
 - **No rate limiting** on `/auth/register` or the Auth.js login route. A real fix needs shared state across serverless invocations (Upstash/Vercel KV), which means signing up for another external service — deferred until there's a reason to prioritize it over product work. Don't treat this as "forgotten"; it's a scoped-out tradeoff for a solo/demo build.
 - **Admin routes** (content management) don't exist yet — content is seeded via `prisma/seed.ts` scripts, per the Build Spec v2 phase plan (admin UI is explicitly deferred past v2).
+- **Resource quality filter is a static floor** (≥1M views, ≥500K subscribers — see `resource-service.ts`), not personalized. `ResourceFeedback` collects real reactions now so a future pass can rank on actual usage instead of these thresholds. A niche topic can legitimately have zero qualifying videos — `resource: null` is the honest result, not a bug.

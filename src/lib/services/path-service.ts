@@ -94,17 +94,26 @@ export async function getPathDetail(pathId: string, userId: string) {
   const topicsById = new Map(topics.map((t) => [t.id, t]));
   const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p]));
 
+  const resourceIds = topics.flatMap((t) => t.resources.map((r) => r.id));
+  const feedbackRows = resourceIds.length
+    ? await prisma.resourceFeedback.findMany({ where: { userId, resourceId: { in: resourceIds } } })
+    : [];
+  const feedbackByResourceId = new Map(feedbackRows.map((f) => [f.resourceId, f.reaction]));
+
   const orderedTopics = path.orderedTopicIds
     .map((id) => topicsById.get(id))
     .filter((t): t is NonNullable<typeof t> => Boolean(t))
-    .map((topic) => ({
-      id: topic.id,
-      slug: topic.slug,
-      name: topic.name,
-      order: topic.order,
-      resource: topic.resources[0] ?? null,
-      progress: progressByTopicId.get(topic.id) ?? null,
-    }));
+    .map((topic) => {
+      const resource = topic.resources[0] ?? null;
+      return {
+        id: topic.id,
+        slug: topic.slug,
+        name: topic.name,
+        order: topic.order,
+        resource: resource ? { ...resource, userReaction: feedbackByResourceId.get(resource.id) ?? null } : null,
+        progress: progressByTopicId.get(topic.id) ?? null,
+      };
+    });
 
   const completedCount = orderedTopics.filter((t) => t.progress?.status === "COMPLETE").length;
 
