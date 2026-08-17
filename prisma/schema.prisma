@@ -108,7 +108,9 @@ model Resource {
 
   bookmarks Bookmark[]
 
-  @@index([topicId])
+  // One matched video per (topic, level) — re-fetching re-ranks in place
+  // rather than piling up rows. See lib/services/resource-service.ts.
+  @@unique([topicId, level])
   @@map("resources")
 }
 

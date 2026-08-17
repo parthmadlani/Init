@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import type { GoalType, Level } from "@/generated/prisma/client";
+import { ensureResourcesForPath } from "@/lib/services/resource-service";
 
 type CreateGoalInput = {
   userId: string;
@@ -13,23 +14,28 @@ type CreateGoalInput = {
 /**
  * Deterministic ranking (Build Spec v2 §04) — no ML. The topic graph is
  * hand-curated with `order` already respecting prerequisites (see
- * prisma/seed.ts), so generating a path is just "every topic for this
- * subject, in that order." Level/time budget don't filter topics yet —
- * that needs real resource durations, which arrive with the YouTube
- * integration in Phase 03.
+ * prisma/seed.ts), so the topic sequence itself is just "every topic for
+ * this subject, in that order." Level and dailyMinutes instead drive which
+ * video gets matched to each topic — see resource-service.ts.
  */
 export async function createGoalWithPath(input: CreateGoalInput) {
-  const topics = await prisma.topic.findMany({
-    where: { subjectId: input.subjectId },
-    orderBy: { order: "asc" },
-    select: { id: true },
-  });
+  const [topics, subject] = await Promise.all([
+    prisma.topic.findMany({
+      where: { subjectId: input.subjectId },
+      orderBy: { order: "asc" },
+      select: { id: true, slug: true, name: true },
+    }),
+    prisma.subject.findUniqueOrThrow({
+      where: { id: input.subjectId },
+      select: { slug: true, name: true },
+    }),
+  ]);
 
   if (topics.length === 0) {
     throw new Error("Subject has no topics yet");
   }
 
-  return prisma.$transaction(async (tx) => {
+  const { goal, path } = await prisma.$transaction(async (tx) => {
     const goal = await tx.goal.create({
       data: {
         userId: input.userId,
@@ -51,6 +57,17 @@ export async function createGoalWithPath(input: CreateGoalInput) {
 
     return { goal, path };
   });
+
+  // Resource matching hits the YouTube API (quota-guarded by SearchCache)
+  // and must never block goal/path creation from succeeding — a topic
+  // without a matched video yet is an honest, visible state, not an error.
+  try {
+    await ensureResourcesForPath(topics, subject.slug, subject.name, input.level, input.dailyMinutes);
+  } catch (error) {
+    console.error(`Resource matching failed for path ${path.id}:`, error);
+  }
+
+  return { goal, path };
 }
 
 export async function getPathDetail(pathId: string, userId: string) {
@@ -63,7 +80,11 @@ export async function getPathDetail(pathId: string, userId: string) {
   const [topics, progressRows] = await Promise.all([
     prisma.topic.findMany({
       where: { id: { in: path.orderedTopicIds } },
-      include: { resources: { orderBy: { cachedAt: "desc" }, take: 1 } },
+      include: {
+        // A topic can have a matched Resource per level (see Resource's
+        // topicId+level unique constraint) — only this goal's level applies.
+        resources: { where: { level: path.goal.level }, orderBy: { cachedAt: "desc" }, take: 1 },
+      },
     }),
     prisma.progress.findMany({
       where: { userId, topicId: { in: path.orderedTopicIds } },

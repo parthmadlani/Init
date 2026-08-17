@@ -17,18 +17,28 @@ const STATUS_STYLE: Record<Status, string> = {
   COMPLETE: "border-brand-dark bg-brand-dark text-white",
 };
 
+type Resource = { title: string; youtubeVideoId: string; durationSeconds: number } | null;
+
+function formatDuration(seconds: number): string {
+  const minutes = Math.round(seconds / 60);
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  return rest === 0 ? `${hours} hr` : `${hours} hr ${rest} min`;
+}
+
 export function TopicRow({
   order,
   name,
   topicId,
   initialStatus,
-  resourceTitle,
+  resource,
 }: {
   order: number;
   name: string;
   topicId: string;
   initialStatus: Status;
-  resourceTitle: string | null;
+  resource: Resource;
 }) {
   const [status, setStatus] = useState(initialStatus);
   const [isPending, startTransition] = useTransition();
@@ -59,9 +69,19 @@ export function TopicRow({
       </button>
       <div className="min-w-0 flex-1">
         <div className="font-semibold text-brand-dark">{name}</div>
-        <div className="truncate text-xs text-black/45">
-          {resourceTitle ?? "Resource not cached yet — coming with the YouTube integration"}
-        </div>
+        {resource ? (
+          <a
+            href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 truncate text-xs text-black/50 hover:text-brand-pink hover:underline"
+          >
+            <span className="truncate">{resource.title}</span>
+            <span className="shrink-0 text-black/35">· {formatDuration(resource.durationSeconds)}</span>
+          </a>
+        ) : (
+          <div className="truncate text-xs text-black/45">No matching video found yet</div>
+        )}
       </div>
       <span className="shrink-0 text-xs font-semibold text-black/40">{status.replace("_", " ").toLowerCase()}</span>
     </div>

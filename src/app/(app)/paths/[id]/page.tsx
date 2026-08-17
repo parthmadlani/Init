@@ -33,7 +33,15 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
             name={topic.name}
             topicId={topic.id}
             initialStatus={topic.progress?.status ?? "NOT_STARTED"}
-            resourceTitle={topic.resource?.title ?? null}
+            resource={
+              topic.resource
+                ? {
+                    title: topic.resource.title,
+                    youtubeVideoId: topic.resource.youtubeVideoId,
+                    durationSeconds: topic.resource.durationSeconds,
+                  }
+                : null
+            }
           />
         ))}
       </div>
