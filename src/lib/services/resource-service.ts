@@ -15,11 +15,41 @@ const LEVEL_TITLE_KEYWORDS: Record<Level, string[]> = {
   ADVANCED: ["advanced", "deep dive", "in depth", "in-depth"],
 };
 
+// Titles that signal "this covers everything," not the one topic we asked
+// for — the exact failure mode where a "Full Python Crash Course" video
+// wins every topic in a subject. Reused across all subjects/topics.
+const BROAD_COURSE_KEYWORDS = [
+  "full course",
+  "complete course",
+  "crash course",
+  "zero to hero",
+  "everything you need",
+  "full tutorial",
+  "in one video",
+  "one shot",
+  "masterclass",
+  "bootcamp",
+  "roadmap",
+  "full playlist",
+];
+
+// Quality floor until real user feedback (see ResourceFeedback) exists to
+// rank on instead — see Build Spec v2 discussion on resource trust signals.
+// Subscriber count is the "reach" signal; there's no public rating/dislike
+// ratio to check anymore, so we don't invent one.
+const MIN_VIEW_COUNT = 1_000_000;
+const MIN_SUBSCRIBER_COUNT = 500_000;
+
+function passesQualityFilter(candidate: YoutubeCandidate): boolean {
+  return candidate.viewCount >= MIN_VIEW_COUNT && (candidate.subscriberCount ?? 0) >= MIN_SUBSCRIBER_COUNT;
+}
+
 /**
  * Deterministic ranking (Build Spec v2 §04) — no ML. Score from topic-name
  * match, level-keyword match in the title, and how well duration fits the
  * daily time budget. `searchRank` preserves YouTube's own relevance order
- * as a tiebreaker.
+ * as a tiebreaker. Penalizes titles that read as a full/broad course rather
+ * than a single-topic lesson — see BROAD_COURSE_KEYWORDS.
  */
 function scoreCandidate(
   candidate: YoutubeCandidate,
@@ -31,7 +61,16 @@ function scoreCandidate(
   const title = candidate.title.toLowerCase();
   let score = Math.max(0, 10 - searchRank);
 
-  score += topicKeywords.filter((keyword) => title.includes(keyword)).length * 5;
+  const topicHits = topicKeywords.filter((keyword) => title.includes(keyword)).length;
+  if (topicHits > 0) {
+    score += topicHits * 5;
+  } else {
+    score -= 10; // title doesn't even mention the topic — likely off-target
+  }
+
+  if (BROAD_COURSE_KEYWORDS.some((keyword) => title.includes(keyword))) {
+    score -= 25;
+  }
 
   if (LEVEL_TITLE_KEYWORDS[level].some((keyword) => title.includes(keyword))) {
     score += 8;
@@ -55,13 +94,14 @@ function pickBestCandidate(
   level: Level,
   dailyMinutes: number,
 ): YoutubeCandidate | null {
-  if (candidates.length === 0) return null;
+  const qualified = candidates.filter(passesQualityFilter);
+  if (qualified.length === 0) return null;
 
   const topicKeywords = topicName.toLowerCase().split(/\s+/).filter((word) => word.length > 2);
 
-  let best = candidates[0];
+  let best = qualified[0];
   let bestScore = -Infinity;
-  candidates.forEach((candidate, index) => {
+  qualified.forEach((candidate, index) => {
     const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes);
     if (score > bestScore) {
       bestScore = score;

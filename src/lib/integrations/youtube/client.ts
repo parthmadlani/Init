@@ -4,17 +4,26 @@ export type YoutubeCandidate = {
   videoId: string;
   title: string;
   channelName: string;
+  channelId: string;
   durationSeconds: number;
+  viewCount: number;
+  subscriberCount: number | null; // null when the channel hides its subscriber count
 };
 
 type SearchListItem = {
   id: { videoId: string };
-  snippet: { title: string; channelTitle: string };
+  snippet: { title: string; channelTitle: string; channelId: string };
 };
 
 type VideosListItem = {
   id: string;
   contentDetails: { duration: string };
+  statistics?: { viewCount?: string };
+};
+
+type ChannelsListItem = {
+  id: string;
+  statistics?: { subscriberCount?: string; hiddenSubscriberCount?: boolean };
 };
 
 // "PT1H2M10S" -> seconds. YouTube always returns this format for contentDetails.duration.
@@ -48,10 +57,11 @@ function decodeHtmlEntities(text: string): string {
 /**
  * search.list costs 100 quota units per call — callers must go through
  * SearchCache (lib/services/search-cache-service.ts), never call this
- * directly. videos.list (1 unit) is required alongside it because
- * search.list doesn't return duration.
+ * directly. videos.list and channels.list (1 unit each, batched by id) are
+ * required alongside it: search.list returns neither duration nor view/
+ * subscriber counts, and the quality filter (resource-service.ts) needs both.
  */
-export async function searchYoutubeVideos(query: string, maxResults = 10): Promise<YoutubeCandidate[]> {
+export async function searchYoutubeVideos(query: string, maxResults = 15): Promise<YoutubeCandidate[]> {
   const apiKey = process.env.YOUTUBE_API_KEY;
   if (!apiKey) {
     throw new Error("YOUTUBE_API_KEY is not set");
@@ -76,7 +86,7 @@ export async function searchYoutubeVideos(query: string, maxResults = 10): Promi
   if (items.length === 0) return [];
 
   const videosUrl = new URL(`${YOUTUBE_API_BASE}/videos`);
-  videosUrl.searchParams.set("part", "contentDetails");
+  videosUrl.searchParams.set("part", "contentDetails,statistics");
   videosUrl.searchParams.set("id", items.map((item) => item.id.videoId).join(","));
   videosUrl.searchParams.set("key", apiKey);
 
@@ -85,16 +95,43 @@ export async function searchYoutubeVideos(query: string, maxResults = 10): Promi
     throw new Error(`YouTube videos.list failed: ${videosRes.status} ${await videosRes.text()}`);
   }
   const videosBody = (await videosRes.json()) as { items?: VideosListItem[] };
-  const durationById = new Map(
-    (videosBody.items ?? []).map((v) => [v.id, parseIsoDuration(v.contentDetails.duration)]),
+  const videoDataById = new Map(
+    (videosBody.items ?? []).map((v) => [
+      v.id,
+      { durationSeconds: parseIsoDuration(v.contentDetails.duration), viewCount: Number(v.statistics?.viewCount ?? 0) },
+    ]),
+  );
+
+  const channelIds = [...new Set(items.map((item) => item.snippet.channelId).filter(Boolean))];
+  const channelsUrl = new URL(`${YOUTUBE_API_BASE}/channels`);
+  channelsUrl.searchParams.set("part", "statistics");
+  channelsUrl.searchParams.set("id", channelIds.join(","));
+  channelsUrl.searchParams.set("key", apiKey);
+
+  const channelsRes = await fetch(channelsUrl);
+  if (!channelsRes.ok) {
+    throw new Error(`YouTube channels.list failed: ${channelsRes.status} ${await channelsRes.text()}`);
+  }
+  const channelsBody = (await channelsRes.json()) as { items?: ChannelsListItem[] };
+  const subscribersByChannelId = new Map(
+    (channelsBody.items ?? []).map((c) => [
+      c.id,
+      c.statistics?.hiddenSubscriberCount ? null : Number(c.statistics?.subscriberCount ?? 0),
+    ]),
   );
 
   return items
-    .filter((item) => durationById.has(item.id.videoId))
-    .map((item) => ({
-      videoId: item.id.videoId,
-      title: decodeHtmlEntities(item.snippet.title),
-      channelName: decodeHtmlEntities(item.snippet.channelTitle),
-      durationSeconds: durationById.get(item.id.videoId)!,
-    }));
+    .filter((item) => videoDataById.has(item.id.videoId))
+    .map((item) => {
+      const videoData = videoDataById.get(item.id.videoId)!;
+      return {
+        videoId: item.id.videoId,
+        title: decodeHtmlEntities(item.snippet.title),
+        channelName: decodeHtmlEntities(item.snippet.channelTitle),
+        channelId: item.snippet.channelId,
+        durationSeconds: videoData.durationSeconds,
+        viewCount: videoData.viewCount,
+        subscriberCount: subscribersByChannelId.get(item.snippet.channelId) ?? null,
+      };
+    });
 }
