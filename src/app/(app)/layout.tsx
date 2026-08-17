@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
+import { ProfileMenu } from "@/components/profile-menu";
 import { logout } from "./actions";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -11,14 +12,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         <Link href="/dashboard" className="font-serif text-xl font-bold tracking-tight text-brand-dark">
           init
         </Link>
-        <div className="flex items-center gap-5 text-sm">
-          <span className="text-black/50">{session?.user?.name}</span>
-          <form action={logout}>
-            <button type="submit" className="font-semibold text-black/60 hover:text-brand-dark">
-              Sign out
-            </button>
-          </form>
-        </div>
+        {session?.user && <ProfileMenu user={session.user} onSignOut={logout} />}
       </header>
       {children}
     </div>
