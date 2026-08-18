@@ -70,6 +70,20 @@ export async function createGoalWithPath(input: CreateGoalInput) {
   return { goal, path };
 }
 
+/**
+ * Deletes the owning Goal, not the Path row directly — Path.goalId is a
+ * required FK with onDelete: Cascade, so this takes the Path and its
+ * Bookmarks with it in one statement. Progress rows are untouched: they're
+ * keyed by (userId, topicId), not by path, since topic progress is shared
+ * across any path that includes that topic.
+ */
+export async function deletePath(pathId: string, userId: string) {
+  const path = await prisma.path.findFirst({ where: { id: pathId, userId }, select: { goalId: true } });
+  if (!path) return false;
+  await prisma.goal.delete({ where: { id: path.goalId } });
+  return true;
+}
+
 export async function getPathDetail(pathId: string, userId: string) {
   const path = await prisma.path.findFirst({
     where: { id: pathId, userId },

@@ -36,7 +36,7 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
 
   return (
     <div
-      className="rounded-card border border-black/10 bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90"
+      className="rounded-card border-2 border-brand-pink bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90 shadow-[3px_3px_0_#ff3d8a]"
       role="status"
       aria-live="polite"
     >

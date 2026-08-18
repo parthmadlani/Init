@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getActivityCalendar } from "@/lib/services/progress-service";
 import { ActivityCalendar } from "@/components/activity-calendar";
+import { PathRow } from "./path-row";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 
 export default async function DashboardPage() {
@@ -62,16 +63,7 @@ export default async function DashboardPage() {
           {pathSummaries.length > 0 ? (
             <div className="flex flex-col gap-3">
               {pathSummaries.map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/paths/${p.id}`}
-                  className="flex items-center justify-between rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-md"
-                >
-                  <span className="font-semibold text-brand-dark">{p.subjectName}</span>
-                  <span className="text-sm text-black/65">
-                    {p.completed}/{p.total} topics
-                  </span>
-                </Link>
+                <PathRow key={p.id} pathId={p.id} subjectName={p.subjectName} completed={p.completed} total={p.total} />
               ))}
             </div>
           ) : (

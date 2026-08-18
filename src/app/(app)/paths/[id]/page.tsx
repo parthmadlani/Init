@@ -21,7 +21,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
       <h1 className="mt-1 font-serif text-display font-bold text-brand-dark">{path.subject.name}</h1>
 
       {isComplete ? (
-        <div className="mt-4 rounded-card border border-black/10 bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90">
+        <div className="mt-4 rounded-card border-2 border-brand-pink bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90 shadow-[3px_3px_0_#ff3d8a]">
           <div className="text-white/55">$ init status --path={slug}</div>
           <div className="text-brand-cyan">
             ✓ {path.completedCount}/{path.totalCount} topics complete
