@@ -2,6 +2,8 @@
 
 A learning-discovery platform for college students — turns a goal, a skill level, and a time budget into a structured, YouTube-backed roadmap. Not another search-results page: one ranked video per topic, in dependency order, sized to how much time you actually have.
 
+**Live: [useinit.vercel.app](https://useinit.vercel.app)**
+
 Full product context, data model, and phase plan: the **Build Spec v2** reference doc (kept outside this repo — ask if you need the link).
 
 ## Stack
@@ -48,10 +50,16 @@ docs/api.md                    typed API contracts, endpoint by endpoint
 
 ## Status
 
-Phases 00–04 shipped: schema, auth (STUDENT/ADMIN RBAC), the Python subject seed, YouTube integration with a quota-guarded `SearchCache`, and the full dashboard → wizard → roadmap → progress loop, verified end to end in a real browser.
+**Shipped and deployed** at [useinit.vercel.app](https://useinit.vercel.app) (Vercel + Neon Postgres):
 
-Phase 05 (this one): typed API contracts documented (`docs/api.md`), README, baseline deploy hardening (security headers, `postinstall` generate step for Vercel, `prisma migrate deploy` for production). Not yet deployed to Vercel.
+- **Phase 00–02** — data model, auth (STUDENT/ADMIN RBAC via Auth.js Credentials + JWT), the hand-curated Python subject/topic graph.
+- **Phase 04** — dashboard, 5-step wizard, and roadmap pages; the full goal → path → resource → progress loop, working end to end.
+- **Phase 03** — YouTube Data API integration: deterministic (non-ML) resource ranking per topic/level, a quota-guarded `SearchCache` (30-day TTL, no API call without a cache check first), and a quality floor (view/subscriber minimums, duration capped to the user's stated daily time budget).
+- **Phase 05** — typed API contracts (`docs/api.md`), deploy hardening (security headers, `postinstall` Prisma generate, `prisma migrate deploy`), and production infra on Neon + Vercel.
+- **Design pass** — full UI/UX audit and three-tier implementation: accessibility fixes (mobile layout, touch targets, contrast), a named type scale and consolidated design tokens, and a signature terminal/boot-sequence moment during path creation and completion.
 
-Not started: Phase 06 (AI enrichment — resource classification, adaptive wizard follow-ups; must always degrade gracefully to the fixed deterministic wizard if AI is unavailable).
+Not started: **Phase 06** — AI enrichment layer (resource classification, adaptive wizard follow-ups). Must always degrade gracefully to the fixed deterministic wizard/path if AI is unavailable.
+
+Progress tracking today is self-reported (click a topic to advance Not Started → In Progress → Complete) rather than auto-detected from actual video watch time — a deliberate scope cut for now, not an oversight.
 
 Known, deliberately deferred gap: no rate limiting on auth endpoints — see `docs/api.md`.
