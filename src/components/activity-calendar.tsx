@@ -40,7 +40,7 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
           </div>
         ))}
       </div>
-      <p className="mt-2 text-xs text-black/45">{totalActive} active days in the last {days.length}</p>
+      <p className="mt-2 text-xs text-black/65">{totalActive} active days in the last {days.length}</p>
     </div>
   );
 }

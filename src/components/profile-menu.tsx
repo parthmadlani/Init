@@ -38,8 +38,8 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
         <div className="absolute right-0 top-11 z-10 w-56 rounded-xl border border-black/10 bg-white p-1.5 shadow-lg">
           <div className="border-b border-black/10 px-3 py-2.5">
             <div className="truncate text-sm font-semibold text-brand-dark">{user.name}</div>
-            <div className="truncate text-xs text-black/50">{user.email}</div>
-            <div className="mt-1 inline-block rounded-full bg-black/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black/50">
+            <div className="truncate text-xs text-black/65">{user.email}</div>
+            <div className="mt-1 inline-block rounded-full bg-black/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black/65">
               {user.role.toLowerCase()}
             </div>
           </div>

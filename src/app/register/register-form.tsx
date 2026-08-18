@@ -44,7 +44,7 @@ export function RegisterForm() {
           minLength={8}
           className="rounded-lg border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
-        <p className="text-xs text-black/45">At least 8 characters.</p>
+        <p className="text-xs text-black/65">At least 8 characters.</p>
       </div>
 
       {error && <p className="text-sm font-medium text-red-600">{error}</p>}

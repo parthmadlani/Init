@@ -52,7 +52,7 @@ export default async function DashboardPage() {
 
       <section className="mb-8 rounded-2xl border border-black/10 bg-white p-6">
         <h2 className="font-serif text-xl font-bold text-brand-dark">Your activity</h2>
-        <p className="text-sm text-black/50">Every topic you touch counts.</p>
+        <p className="text-sm text-black/65">Every topic you touch counts.</p>
         <div className="mt-5">
           <ActivityCalendar days={calendar} />
         </div>
@@ -70,14 +70,14 @@ export default async function DashboardPage() {
                   className="flex items-center justify-between rounded-xl border border-black/10 bg-white p-4 transition hover:border-brand-cyan"
                 >
                   <span className="font-semibold text-brand-dark">{p.subjectName}</span>
-                  <span className="text-sm text-black/50">
+                  <span className="text-sm text-black/65">
                     {p.completed}/{p.total} topics
                   </span>
                 </Link>
               ))}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed border-black/15 p-4 text-sm text-black/45">
+            <div className="rounded-xl border border-dashed border-black/15 p-4 text-sm text-black/65">
               No paths yet — start one from the wizard.
             </div>
           )}
@@ -85,14 +85,14 @@ export default async function DashboardPage() {
 
         <section>
           <h2 className="mb-1 font-serif text-xl font-bold text-brand-dark">Featured subjects</h2>
-          <p className="mb-3 text-sm text-black/50">
+          <p className="mb-3 text-sm text-black/65">
             Hand-curated for now — ranked by real demand once there&apos;s usage to rank from.
           </p>
           <div className="flex flex-col gap-3">
             {subjects.map((s) => (
               <div key={s.id} className="flex items-center justify-between rounded-xl border border-black/10 bg-white p-4">
                 <span className="font-semibold text-brand-dark">{s.name}</span>
-                <span className="text-sm text-black/50">{s._count.topics} topics</span>
+                <span className="text-sm text-black/65">{s._count.topics} topics</span>
               </div>
             ))}
           </div>

@@ -38,8 +38,8 @@ function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: bo
   return (
     <svg
       viewBox="0 0 20 20"
-      width="14"
-      height="14"
+      width="16"
+      height="16"
       fill={filled ? "currentColor" : "none"}
       stroke="currentColor"
       strokeWidth="1.6"
@@ -54,6 +54,9 @@ function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: bo
   );
 }
 
+// p-3.5 + a 16px icon clears the 44px minimum touch target (WCAG 2.5.5);
+// idle/hover colors are picked to clear 3:1 (UI component) and 4.5:1 (hover,
+// which also carries text-like affordance) contrast against the card bg.
 function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string; initialReaction: Reaction | null }) {
   const [reaction, setReaction] = useState(initialReaction);
   const [isPending, startTransition] = useTransition();
@@ -70,13 +73,13 @@ function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string;
   }
 
   return (
-    <div className="flex shrink-0 items-center gap-1" onClick={(e) => e.stopPropagation()}>
+    <div className="flex shrink-0 items-center gap-2" onClick={(e) => e.stopPropagation()}>
       <button
         type="button"
         onClick={() => react("HELPFUL")}
         disabled={isPending}
         title="This video was helpful"
-        className={`rounded p-1 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/25 hover:text-black/50"}`}
+        className={`rounded-lg p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
       >
         <ThumbIcon direction="up" filled={reaction === "HELPFUL"} />
       </button>
@@ -85,7 +88,7 @@ function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string;
         onClick={() => react("NOT_HELPFUL")}
         disabled={isPending}
         title="This video wasn't helpful"
-        className={`rounded p-1 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/25 hover:text-black/50"}`}
+        className={`rounded-lg p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
       >
         <ThumbIcon direction="down" filled={reaction === "NOT_HELPFUL"} />
       </button>
@@ -124,33 +127,42 @@ export function TopicRow({
   }
 
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-black/10 bg-white p-4">
-      <button
-        onClick={toggle}
-        disabled={isPending}
-        title="Click to advance status"
-        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
-      >
-        {status === "COMPLETE" ? "✓" : order}
-      </button>
-      <div className="min-w-0 flex-1">
-        <div className="font-semibold text-brand-dark">{name}</div>
-        {resource ? (
-          <a
-            href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 truncate text-xs text-black/50 hover:text-brand-pink hover:underline"
-          >
-            <span className="truncate">{resource.title}</span>
-            <span className="shrink-0 text-black/35">· {formatDuration(resource.durationSeconds)}</span>
-          </a>
-        ) : (
-          <div className="truncate text-xs text-black/45">No matching video found yet</div>
-        )}
+    <div className="flex flex-col gap-3 rounded-xl border border-black/10 bg-white p-4 sm:flex-row sm:items-center">
+      <div className="flex min-w-0 flex-1 items-center gap-4">
+        <button
+          onClick={toggle}
+          disabled={isPending}
+          title="Click to advance status"
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
+        >
+          {status === "COMPLETE" ? "✓" : order}
+        </button>
+        <div className="min-w-0 flex-1">
+          <div className="font-semibold text-brand-dark">{name}</div>
+          {resource ? (
+            <a
+              href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-0.5 block text-xs"
+            >
+              <span className="line-clamp-2 text-black/70 group-hover:text-brand-pink group-hover:underline">
+                {resource.title}
+              </span>
+              <span className="text-black/55">{formatDuration(resource.durationSeconds)}</span>
+            </a>
+          ) : (
+            <div className="mt-0.5 text-xs text-black/65">No matching video found yet</div>
+          )}
+        </div>
       </div>
-      {resource && <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />}
-      <span className="shrink-0 text-xs font-semibold text-black/40">{status.replace("_", " ").toLowerCase()}</span>
+      {/* Thumbs + status get their own row under 48px of left padding (matching the
+          circle + gap above) on mobile, where they'd otherwise squeeze the title
+          column down to a couple of words per line — see design review §02. */}
+      <div className="flex shrink-0 items-center justify-between gap-3 pl-12 sm:justify-end sm:pl-0">
+        {resource && <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />}
+        <span className="text-xs font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
+      </div>
     </div>
   );
 }

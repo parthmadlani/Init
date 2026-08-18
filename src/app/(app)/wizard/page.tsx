@@ -8,7 +8,7 @@ export default async function WizardPage() {
   });
 
   return (
-    <main className="mx-auto max-w-lg px-6 py-12">
+    <main className="mx-auto flex min-h-[calc(100dvh-65px)] max-w-lg flex-col justify-center px-6 py-12">
       <WizardForm subjects={subjects.map((s) => ({ id: s.id, name: s.name, topicCount: s._count.topics }))} />
     </main>
   );

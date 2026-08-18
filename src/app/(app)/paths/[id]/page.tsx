@@ -21,7 +21,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
       <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-black/10">
         <div className="h-full rounded-full bg-brand-pink transition-all" style={{ width: `${pct}%` }} />
       </div>
-      <p className="mt-1.5 text-sm text-black/50">
+      <p className="mt-1.5 text-sm text-black/65">
         {path.completedCount} of {path.totalCount} topics complete
       </p>
 

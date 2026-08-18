@@ -44,6 +44,15 @@ function passesQualityFilter(candidate: YoutubeCandidate): boolean {
   return candidate.viewCount >= MIN_VIEW_COUNT && (candidate.subscriberCount ?? 0) >= MIN_SUBSCRIBER_COUNT;
 }
 
+// Hard cap, not just a scoring penalty — a video several multiples of the
+// daily budget is never the right single-topic lesson, no matter how well
+// it otherwise scores (caught an 11h42m match against a 60-minute budget).
+const MAX_DURATION_MULTIPLE = 3;
+
+function passesDurationCap(candidate: YoutubeCandidate, dailyMinutes: number): boolean {
+  return candidate.durationSeconds <= dailyMinutes * 60 * MAX_DURATION_MULTIPLE;
+}
+
 /**
  * Deterministic ranking (Build Spec v2 §04) — no ML. Score from topic-name
  * match, level-keyword match in the title, and how well duration fits the
@@ -94,7 +103,9 @@ function pickBestCandidate(
   level: Level,
   dailyMinutes: number,
 ): YoutubeCandidate | null {
-  const qualified = candidates.filter(passesQualityFilter);
+  const qualified = candidates.filter(
+    (candidate) => passesQualityFilter(candidate) && passesDurationCap(candidate, dailyMinutes),
+  );
   if (qualified.length === 0) return null;
 
   const topicKeywords = topicName.toLowerCase().split(/\s+/).filter((word) => word.length > 2);
@@ -132,7 +143,13 @@ async function ensureResourceForTopic(
   }
 
   const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes);
-  if (!best) return;
+  if (!best) {
+    // No candidate clears the bar under this (possibly stricter, e.g. a
+    // shorter dailyMinutes) computation — clear any stale Resource left
+    // over from an earlier, looser one rather than silently keeping it.
+    await prisma.resource.deleteMany({ where: { topicId: topic.id, level } });
+    return;
+  }
 
   await prisma.resource.upsert({
     where: { topicId_level: { topicId: topic.id, level } },

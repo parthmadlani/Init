@@ -142,7 +142,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
         <button
           onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
           disabled={stepIndex === 0}
-          className="rounded-lg px-4 py-2.5 text-sm font-semibold text-black/50 disabled:opacity-0"
+          className="rounded-lg px-4 py-2.5 text-sm font-semibold text-black/65 disabled:opacity-0"
         >
           Back
         </button>
@@ -172,7 +172,7 @@ function StepShell({ title, subtitle, children }: { title: string; subtitle?: st
   return (
     <div>
       <h1 className="font-serif text-2xl font-bold text-brand-dark">{title}</h1>
-      {subtitle && <p className="mt-1 text-sm text-black/50">{subtitle}</p>}
+      {subtitle && <p className="mt-1 text-sm text-black/65">{subtitle}</p>}
       <div className="mt-5">{children}</div>
     </div>
   );
@@ -198,7 +198,7 @@ function OptionCard({
       }`}
     >
       <div className="font-semibold text-brand-dark">{label}</div>
-      {hint && <div className="text-xs text-black/50">{hint}</div>}
+      {hint && <div className="text-xs text-black/65">{hint}</div>}
     </button>
   );
 }
