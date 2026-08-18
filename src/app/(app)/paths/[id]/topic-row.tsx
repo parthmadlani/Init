@@ -127,7 +127,10 @@ export function TopicRow({
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-black/20 hover:shadow-md sm:flex-row sm:items-center">
+    <div
+      className="animate-row-in flex flex-col gap-3 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-black/20 hover:shadow-md motion-reduce:animate-none sm:flex-row sm:items-center"
+      style={{ animationDelay: `${Math.min(order - 1, 10) * 40}ms` }}
+    >
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <button
           onClick={toggle}

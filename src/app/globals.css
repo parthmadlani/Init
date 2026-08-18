@@ -43,6 +43,11 @@
   --radius-control: 0.5rem; /* buttons, inputs, small chips — rounded-control */
   --radius-card: 1rem; /* cards, panels, the roadmap's topic rows — rounded-card */
 
+  /* Wizard step transition — see design review §06/§13 (award tier). */
+  --animate-step-in: step-in 0.22s ease-out;
+  /* Roadmap topic rows settle in staggered by order (per-row delay set inline). */
+  --animate-row-in: row-in 0.35s ease-out backwards;
+
   /*
    * Border weight — Tailwind's border-{width} utilities aren't
    * theme-namespaced in v4, so this is convention, not a generated class:
@@ -63,4 +68,26 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

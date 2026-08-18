@@ -10,6 +10,8 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
   if (!path) notFound();
 
   const pct = path.totalCount === 0 ? 0 : Math.round((path.completedCount / path.totalCount) * 100);
+  const isComplete = path.totalCount > 0 && path.completedCount === path.totalCount;
+  const slug = path.subject.name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
@@ -18,12 +20,24 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
       </p>
       <h1 className="mt-1 font-serif text-display font-bold text-brand-dark">{path.subject.name}</h1>
 
-      <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-black/10">
-        <div className="h-full rounded-full bg-brand-pink transition-all" style={{ width: `${pct}%` }} />
-      </div>
-      <p className="mt-1.5 text-sm text-black/65">
-        {path.completedCount} of {path.totalCount} topics complete
-      </p>
+      {isComplete ? (
+        <div className="mt-4 rounded-card border border-black/10 bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90">
+          <div className="text-white/55">$ init status --path={slug}</div>
+          <div className="text-brand-cyan">
+            ✓ {path.completedCount}/{path.totalCount} topics complete
+          </div>
+          <div>all clear. nice work.</div>
+        </div>
+      ) : (
+        <>
+          <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-black/10">
+            <div className="h-full rounded-full bg-brand-pink transition-all" style={{ width: `${pct}%` }} />
+          </div>
+          <p className="mt-1.5 text-sm text-black/65">
+            {path.completedCount} of {path.totalCount} topics complete
+          </p>
+        </>
+      )}
 
       <div className="mt-8 flex flex-col gap-3">
         {path.topics.map((topic) => (

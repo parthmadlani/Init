@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
+import { BootSequence } from "@/components/boot-sequence";
 
 type Subject = { id: string; name: string; topicCount: number };
 
@@ -33,6 +34,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
   const [dailyMinutes, setDailyMinutes] = useState<number | null>(null);
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [resolved, setResolved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const step: Step = STEPS[stepIndex];
@@ -42,9 +44,11 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
     (step === "level" && level) ||
     (step === "time" && dailyMinutes) ||
     step === "notes";
+  const selectedSubject = subjects.find((s) => s.id === subjectId);
 
   async function submit() {
     setSubmitting(true);
+    setResolved(false);
     setError(null);
     const res = await fetch("/api/v1/goals", {
       method: "POST",
@@ -57,17 +61,30 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
       setSubmitting(false);
       return;
     }
+    setResolved(true);
+    // Let "path ready." land on screen for a beat before navigating away.
+    await new Promise((resolve) => setTimeout(resolve, 650));
     router.push(`/paths/${body.path.id}`);
+  }
+
+  if (submitting && selectedSubject && level && dailyMinutes) {
+    return (
+      <BootSequence subjectName={selectedSubject.name} level={level} dailyMinutes={dailyMinutes} resolved={resolved} />
+    );
   }
 
   return (
     <div>
-      <div className="mb-6 flex gap-1.5">
+      <div className="mb-1.5 flex gap-1.5">
         {STEPS.map((s, i) => (
           <div key={s} className={`h-1.5 flex-1 rounded-full ${i <= stepIndex ? "bg-brand-pink" : "bg-black/10"}`} />
         ))}
       </div>
+      <p className="mb-6 font-mono text-[11px] text-black/65">
+        [step {stepIndex + 1}/{STEPS.length}]
+      </p>
 
+      <div key={step} className="animate-step-in motion-reduce:animate-none">
       {step === "subject" && (
         <StepShell title="What do you want to learn?">
           <div className="flex flex-col gap-2">
@@ -136,6 +153,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
           />
         </StepShell>
       )}
+      </div>
 
       {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
 
