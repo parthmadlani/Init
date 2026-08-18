@@ -79,7 +79,7 @@ function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string;
         onClick={() => react("HELPFUL")}
         disabled={isPending}
         title="This video was helpful"
-        className={`rounded-lg p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
+        className={`rounded-control p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
       >
         <ThumbIcon direction="up" filled={reaction === "HELPFUL"} />
       </button>
@@ -88,7 +88,7 @@ function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string;
         onClick={() => react("NOT_HELPFUL")}
         disabled={isPending}
         title="This video wasn't helpful"
-        className={`rounded-lg p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
+        className={`rounded-control p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
       >
         <ThumbIcon direction="down" filled={reaction === "NOT_HELPFUL"} />
       </button>
@@ -127,7 +127,7 @@ export function TopicRow({
   }
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-black/10 bg-white p-4 sm:flex-row sm:items-center">
+    <div className="flex flex-col gap-3 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-black/20 hover:shadow-md sm:flex-row sm:items-center">
       <div className="flex min-w-0 flex-1 items-center gap-4">
         <button
           onClick={toggle}
@@ -161,7 +161,7 @@ export function TopicRow({
           column down to a couple of words per line — see design review §02. */}
       <div className="flex shrink-0 items-center justify-between gap-3 pl-12 sm:justify-end sm:pl-0">
         {resource && <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />}
-        <span className="text-xs font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
+        <span className="text-label font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
       </div>
     </div>
   );

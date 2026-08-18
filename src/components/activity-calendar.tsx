@@ -20,10 +20,11 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
   }
 
   const totalActive = days.filter((d) => d.count > 0).length;
+  const isEmpty = totalActive === 0;
 
   return (
     <div>
-      <div className="flex gap-[3px] overflow-x-auto pb-1">
+      <div className={`flex gap-[3px] overflow-x-auto pb-1 ${isEmpty ? "motion-safe:animate-pulse" : ""}`}>
         {weeks.map((week, wi) => (
           <div key={wi} className="flex flex-col gap-[3px]">
             {week.map((day, di) =>
@@ -40,7 +41,11 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
           </div>
         ))}
       </div>
-      <p className="mt-2 text-xs text-black/65">{totalActive} active days in the last {days.length}</p>
+      <p className="mt-2 text-xs text-black/65">
+        {isEmpty
+          ? "No activity yet — touch a topic and this starts filling in."
+          : `${totalActive} active days in the last ${days.length}`}
+      </p>
     </div>
   );
 }

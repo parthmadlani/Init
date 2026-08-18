@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { authenticate } from "./actions";
+import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 
 export function LoginForm() {
   const [error, formAction, pending] = useActionState(authenticate, undefined);
@@ -17,7 +18,7 @@ export function LoginForm() {
           name="email"
           type="email"
           required
-          className="rounded-lg border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
+          className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
       </div>
       <div className="flex flex-col gap-1.5">
@@ -29,7 +30,7 @@ export function LoginForm() {
           name="password"
           type="password"
           required
-          className="rounded-lg border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
+          className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
       </div>
 
@@ -38,7 +39,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 rounded-lg border-2 border-brand-dark bg-brand-pink px-4 py-2.5 text-sm font-extrabold text-white shadow-[3px_3px_0_#111827] transition active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#111827] disabled:opacity-60"
+        className={`mt-2 px-4 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}
       >
         {pending ? "Signing in…" : "Sign in"}
       </button>

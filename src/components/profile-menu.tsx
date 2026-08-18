@@ -35,7 +35,7 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
       </button>
 
       {open && (
-        <div className="absolute right-0 top-11 z-10 w-56 rounded-xl border border-black/10 bg-white p-1.5 shadow-lg">
+        <div className="absolute right-0 top-11 z-10 w-56 rounded-card border border-black/10 bg-white p-1.5 shadow-lg">
           <div className="border-b border-black/10 px-3 py-2.5">
             <div className="truncate text-sm font-semibold text-brand-dark">{user.name}</div>
             <div className="truncate text-xs text-black/65">{user.email}</div>
@@ -46,7 +46,7 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
           <button
             type="button"
             onClick={onSignOut}
-            className="mt-1 w-full rounded-lg px-3 py-2 text-left text-sm font-semibold text-black/70 transition hover:bg-black/5"
+            className="mt-1 w-full rounded-control px-3 py-2 text-left text-sm font-semibold text-black/70 transition hover:bg-black/5"
           >
             Sign out
           </button>

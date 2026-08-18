@@ -18,6 +18,38 @@
   --color-brand-dark: #111827;
   --color-brand-cyan-light: #cff3f7;
   --color-brand-pink-light: #ffd6ea;
+
+  /*
+   * Type scale — five sizes, each with one job. Named by role, not size,
+   * so "what's this text for" stays legible in markup (text-heading, not
+   * text-xl). See design review §03: the old pattern used two raw sizes
+   * plus four different text-black/NN opacities to fake a hierarchy that
+   * should have been sizes and weights.
+   */
+  --text-display: 1.875rem; /* page-level h1 — login, register, roadmap subject, wizard step */
+  --text-display--line-height: 1.15;
+  --text-heading: 1.25rem; /* section h2 — dashboard cards */
+  --text-heading--line-height: 1.3;
+  --text-label: 0.75rem; /* semibold, active meaning — status pills, eyebrows */
+  --text-label--line-height: 1.4;
+  --text-caption: 0.75rem; /* regular weight, passive meta — hints, counts, timestamps */
+  --text-caption--line-height: 1.45;
+
+  /*
+   * Radius tiers — see design review §04. `rounded-xl`/`rounded-2xl` were
+   * used near-interchangeably before; now there are exactly two, one per
+   * component tier, and nothing reaches for a raw Tailwind radius value.
+   */
+  --radius-control: 0.5rem; /* buttons, inputs, small chips — rounded-control */
+  --radius-card: 1rem; /* cards, panels, the roadmap's topic rows — rounded-card */
+
+  /*
+   * Border weight — Tailwind's border-{width} utilities aren't
+   * theme-namespaced in v4, so this is convention, not a generated class:
+   * `border` (1px) for structural/regular surfaces, `border-2` for
+   * emphasis (primary CTAs, the dashboard hero, the active roadmap status
+   * ring). Don't reach for border-4+ or mix the two within one component.
+   */
 }
 
 @media (prefers-color-scheme: dark) {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 
 type Subject = { id: string; name: string; topicCount: number };
 
@@ -131,7 +132,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
             onChange={(e) => setNotes(e.target.value)}
             rows={4}
             placeholder="e.g. I already know basic loops and functions"
-            className="w-full rounded-lg border border-black/15 p-3.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
+            className="w-full rounded-control border border-black/15 p-3.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
           />
         </StepShell>
       )}
@@ -142,7 +143,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
         <button
           onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
           disabled={stepIndex === 0}
-          className="rounded-lg px-4 py-2.5 text-sm font-semibold text-black/65 disabled:opacity-0"
+          className="rounded-control px-4 py-2.5 text-sm font-semibold text-black/65 disabled:opacity-0"
         >
           Back
         </button>
@@ -150,7 +151,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
           <button
             onClick={submit}
             disabled={submitting}
-            className="rounded-lg border-2 border-brand-dark bg-brand-pink px-5 py-2.5 text-sm font-extrabold text-white shadow-[3px_3px_0_#111827] disabled:opacity-60"
+            className={`px-5 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}
           >
             {submitting ? "Building your path…" : "Build my path →"}
           </button>
@@ -158,7 +159,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
           <button
             onClick={() => setStepIndex((i) => Math.min(STEPS.length - 1, i + 1))}
             disabled={!canAdvance}
-            className="rounded-lg border-2 border-brand-dark bg-brand-pink px-5 py-2.5 text-sm font-extrabold text-white shadow-[3px_3px_0_#111827] disabled:opacity-40"
+            className={`px-5 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}
           >
             Next
           </button>
@@ -171,7 +172,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
 function StepShell({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
   return (
     <div>
-      <h1 className="font-serif text-2xl font-bold text-brand-dark">{title}</h1>
+      <h1 className="font-serif text-display font-bold text-brand-dark">{title}</h1>
       {subtitle && <p className="mt-1 text-sm text-black/65">{subtitle}</p>}
       <div className="mt-5">{children}</div>
     </div>
@@ -193,8 +194,10 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-xl border-2 p-4 text-left transition ${
-        selected ? "border-brand-pink bg-brand-pink-light/40" : "border-black/10 hover:border-black/25"
+      className={`rounded-card border-2 p-4 text-left transition duration-150 ${
+        selected
+          ? "border-brand-pink bg-brand-pink-light/40"
+          : "border-black/10 hover:-translate-y-0.5 hover:border-black/25 hover:shadow-md"
       }`}
     >
       <div className="font-semibold text-brand-dark">{label}</div>

@@ -13,10 +13,10 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
-      <p className="text-xs font-bold uppercase tracking-wide text-brand-pink">
+      <p className="text-label font-bold uppercase tracking-wide text-brand-pink">
         {path.goal.type.toLowerCase()} · {path.goal.level.toLowerCase()}
       </p>
-      <h1 className="mt-1 font-serif text-3xl font-bold text-brand-dark">{path.subject.name}</h1>
+      <h1 className="mt-1 font-serif text-display font-bold text-brand-dark">{path.subject.name}</h1>
 
       <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-black/10">
         <div className="h-full rounded-full bg-brand-pink transition-all" style={{ width: `${pct}%` }} />
