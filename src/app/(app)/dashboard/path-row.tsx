@@ -46,7 +46,7 @@ export function PathRow({
   function handleDelete() {
     startTransition(async () => {
       await fetch(`/api/v1/paths/${pathId}`, { method: "DELETE" });
-      toast(`$ rm path --subject=${subjectName.toLowerCase()}`, { description: "removed. topic progress stays if you start it again." });
+      toast(`${subjectName} path removed`, { description: "Your topic progress is saved — start it again anytime." });
       router.refresh();
     });
   }

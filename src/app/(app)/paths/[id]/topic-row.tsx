@@ -140,7 +140,7 @@ export function TopicRow({
       });
       if (justCompletedPath) {
         fireCompletionConfetti();
-        toast("$ init status — all clear.", { description: `${totalCount}/${totalCount} topics complete. nice work.` });
+        toast("Path complete!", { description: `You finished all ${totalCount} topics. Nice work.` });
       }
       router.refresh();
     });

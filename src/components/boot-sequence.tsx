@@ -15,15 +15,15 @@ const STEP_DELAY_MS = 420;
 /**
  * Each line names a real step createGoalWithPath performs (topic graph
  * read, ensureResourcesForPath's SearchCache-backed matching, the path
- * write) — this isn't decorative copy. Reveal timing is staged/simulated
- * rather than server-pushed (the API is one request, not a stream), so
- * lines 1-3 advance on a fixed clock and then hold on "matching resources"
- * — the genuinely slow step, gated on YouTube — until `resolved` flips.
+ * write), just in plain language rather than the CLI-flag syntax this
+ * used to show — that read as raw backend output to anyone outside the
+ * target dev-portfolio audience. Reveal timing is staged/simulated rather
+ * than server-pushed (the API is one request, not a stream), so lines 1-3
+ * advance on a fixed clock and then hold on "finding videos" — the
+ * genuinely slow step, gated on YouTube — until `resolved` flips.
  *
  * Styled as a white card with the same hard-shadow border as every other
- * elevated surface (hero card, alert-dialog, toast) — a dark terminal-black
- * block here read as an unrelated, alarming "something broke" moment to
- * some users mid-wizard, not a branded loading state.
+ * elevated surface (hero card, alert-dialog, toast).
  */
 export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Props) {
   const [timedStep, setTimedStep] = useState(0);
@@ -37,7 +37,6 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
   // Lines 1-2 advance on a fixed clock; the request resolving jumps
   // straight to the end regardless of where the clock had gotten to.
   const step = resolved ? 4 : timedStep;
-  const slug = subjectName.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div
@@ -46,20 +45,20 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
       aria-live="polite"
     >
       <Line show={step >= 0}>
-        <span className="text-brand-pink">$</span> init --subject={slug} --level={level.toLowerCase()} --daily=
-        {dailyMinutes}m
+        Personalizing your <span className="font-semibold text-brand-pink">{subjectName}</span> path for your{" "}
+        {level.toLowerCase()} level…
       </Line>
       <Line show={step >= 1} dim>
-        &gt; resolving topic graph<Done show={step >= 1} />
+        &gt; mapping out your topics<Done show={step >= 1} />
       </Line>
       <Line show={step >= 2} dim>
-        &gt; matching resources<Done show={step >= 4} pending={step >= 2 && step < 4} />
+        &gt; finding videos that fit your {dailyMinutes}-minute days<Done show={step >= 4} pending={step >= 2 && step < 4} />
       </Line>
       <Line show={step >= 4} dim>
-        &gt; writing path<Done show={step >= 4} />
+        &gt; saving your path<Done show={step >= 4} />
       </Line>
       <Line show={step >= 4}>
-        path ready.<Cursor />
+        Your path is ready!<Cursor />
       </Line>
     </div>
   );
@@ -71,8 +70,8 @@ function Line({ show, dim, children }: { show: boolean; dim?: boolean; children:
 }
 
 function Done({ show, pending }: { show: boolean; pending?: boolean }) {
-  if (show) return <span className="font-semibold text-brand-pink">... done</span>;
-  if (pending) return <span className="text-black/65">...</span>;
+  if (show) return <span className="font-semibold text-brand-pink">… done</span>;
+  if (pending) return <span className="text-black/65">…</span>;
   return null;
 }
 

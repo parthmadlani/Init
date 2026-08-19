@@ -36,9 +36,9 @@ export default async function DashboardPage() {
       <section className="mb-6 flex flex-col gap-4 rounded-card border-2 border-brand-dark bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-sm leading-relaxed text-black/65">
-            <strong className="text-brand-dark">Init</strong> turns a goal, a skill level, and a
-            time budget into a structured path through free resources that already exist — not
-            another search results page.
+            Tell <strong className="text-brand-dark">Init</strong> your goal, skill level, and how much time you
+            have each day — we&apos;ll turn it into a step-by-step path using the best free videos
+            already out there, so you don&apos;t have to keep searching.
           </p>
         </div>
         <Link href="/wizard" className={`shrink-0 px-5 py-3 text-center text-sm ${PRIMARY_CTA_CLASS}`}>

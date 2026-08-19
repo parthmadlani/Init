@@ -11,7 +11,6 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
 
   const pct = path.totalCount === 0 ? 0 : Math.round((path.completedCount / path.totalCount) * 100);
   const isComplete = path.totalCount > 0 && path.completedCount === path.totalCount;
-  const slug = path.subject.name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-10">
@@ -22,13 +21,8 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
 
       {isComplete ? (
         <div className="mt-4 rounded-card border-2 border-brand-dark bg-white p-5 font-mono text-[13px] leading-[1.7] text-brand-dark/80 shadow-[3px_3px_0_#111827]">
-          <div className="text-black/65">
-            <span className="text-brand-pink">$</span> init status --path={slug}
-          </div>
-          <div className="font-semibold text-brand-pink">
-            ✓ {path.completedCount}/{path.totalCount} topics complete
-          </div>
-          <div className="text-brand-dark">all clear. nice work.</div>
+          <div className="font-semibold text-brand-pink">✓ All {path.totalCount} topics complete</div>
+          <div className="text-brand-dark">Nice work — you finished your {path.subject.name} path.</div>
         </div>
       ) : (
         <>
