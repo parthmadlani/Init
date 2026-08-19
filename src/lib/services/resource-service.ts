@@ -1,7 +1,10 @@
+import { z } from "zod";
+import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
 import type { Level } from "@/generated/prisma/client";
 import { searchYoutubeVideos, type YoutubeCandidate } from "@/lib/integrations/youtube/client";
 import { getCachedOrFetch } from "@/lib/services/search-cache-service";
+import { generateStructured } from "@/lib/integrations/ai/client";
 
 const LEVEL_QUERY_HINT: Record<Level, string> = {
   BEGINNER: "for beginners",
@@ -137,13 +140,18 @@ function pickBestCandidate(
 
 type TopicInput = { id: string; slug: string; name: string };
 
+// A resource is shared across every user matched to the same topic+level —
+// only worth an AI call the first time a given video lands there, not once
+// per user/path. Returned to the caller so tagging can happen in `after()`.
+type TagCandidate = { resourceId: string; topicName: string; videoTitle: string; channelName: string };
+
 async function ensureResourceForTopic(
   topic: TopicInput,
   subjectSlug: string,
   subjectName: string,
   level: Level,
   dailyMinutes: number,
-): Promise<void> {
+): Promise<TagCandidate | null> {
   const queryKey = `${subjectSlug}:${topic.slug}:${level.toLowerCase()}`;
   const query = `${subjectName} ${topic.name} tutorial ${LEVEL_QUERY_HINT[level]}`;
 
@@ -152,7 +160,7 @@ async function ensureResourceForTopic(
     candidates = await getCachedOrFetch(queryKey, () => searchYoutubeVideos(query));
   } catch (error) {
     console.error(`YouTube fetch failed for "${queryKey}":`, error);
-    return;
+    return null;
   }
 
   const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes);
@@ -161,10 +169,15 @@ async function ensureResourceForTopic(
     // Resource left over from an earlier, looser computation rather than
     // silently keeping it. getPathDetail hides topics with no Resource.
     await prisma.resource.deleteMany({ where: { topicId: topic.id, level } });
-    return;
+    return null;
   }
 
-  await prisma.resource.upsert({
+  const existing = await prisma.resource.findUnique({
+    where: { topicId_level: { topicId: topic.id, level } },
+    select: { youtubeVideoId: true, aiTag: true },
+  });
+
+  const resource = await prisma.resource.upsert({
     where: { topicId_level: { topicId: topic.id, level } },
     update: {
       youtubeVideoId: best.videoId,
@@ -182,6 +195,45 @@ async function ensureResourceForTopic(
       durationSeconds: best.durationSeconds,
     },
   });
+
+  const needsTag = existing?.youtubeVideoId !== best.videoId || !existing?.aiTag;
+  if (!needsTag) return null;
+
+  return { resourceId: resource.id, topicName: topic.name, videoTitle: best.title, channelName: best.channelName };
+}
+
+const resourceTagSchema = z.object({
+  tag: z
+    .string()
+    .max(80)
+    .describe("A short one-line caption describing what makes this specific video useful for this topic."),
+});
+
+async function generateResourceTag(topicName: string, videoTitle: string, channelName: string): Promise<string | null> {
+  const result = await generateStructured(
+    "resource_tag",
+    resourceTagSchema,
+    "You write short, honest one-line captions (under 80 characters) for YouTube programming tutorials, " +
+      "based only on the title and channel given. No hype, no emoji, no restating the topic name verbatim.",
+    `Topic: ${topicName}\nVideo title: ${videoTitle}\nChannel: ${channelName}`,
+  );
+  return result?.tag ?? null;
+}
+
+// Runs after the response is sent (see ensureResourcesForPath) — path
+// creation never waits on this. One call at a time: the free-tier rate
+// limit is tight, and nothing here is urgent enough to risk tripping it
+// by firing a whole path's worth of calls at once.
+async function tagResourcesInBackground(candidates: TagCandidate[]): Promise<void> {
+  for (const candidate of candidates) {
+    const aiTag = await generateResourceTag(candidate.topicName, candidate.videoTitle, candidate.channelName);
+    if (!aiTag) continue;
+    try {
+      await prisma.resource.update({ where: { id: candidate.resourceId }, data: { aiTag } });
+    } catch (error) {
+      console.error(`Failed to save aiTag for resource ${candidate.resourceId}:`, error);
+    }
+  }
 }
 
 export async function ensureResourcesForPath(
@@ -191,7 +243,12 @@ export async function ensureResourcesForPath(
   level: Level,
   dailyMinutes: number,
 ): Promise<void> {
-  await Promise.all(
+  const results = await Promise.all(
     topics.map((topic) => ensureResourceForTopic(topic, subjectSlug, subjectName, level, dailyMinutes)),
   );
+
+  const tagCandidates = results.filter((r): r is TagCandidate => r !== null);
+  if (tagCandidates.length > 0) {
+    after(() => tagResourcesInBackground(tagCandidates));
+  }
 }

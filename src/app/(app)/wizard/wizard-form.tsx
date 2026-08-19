@@ -25,6 +25,8 @@ const TIME_OPTIONS = [30, 60, 120, 180];
 const STEPS = ["subject", "purpose", "level", "time", "notes"] as const;
 type Step = (typeof STEPS)[number];
 
+type SkipSuggestion = { topicId: string; name: string };
+
 export function WizardForm({ subjects }: { subjects: Subject[] }) {
   const router = useRouter();
   const [stepIndex, setStepIndex] = useState(0);
@@ -36,6 +38,9 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
   const [submitting, setSubmitting] = useState(false);
   const [resolved, setResolved] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [checkingNotes, setCheckingNotes] = useState(false);
+  const [skipSuggestions, setSkipSuggestions] = useState<SkipSuggestion[] | null>(null);
+  const [checkedSkipIds, setCheckedSkipIds] = useState<Set<string>>(new Set());
 
   const step: Step = STEPS[stepIndex];
   const canAdvance =
@@ -46,14 +51,14 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
     step === "notes";
   const selectedSubject = subjects.find((s) => s.id === subjectId);
 
-  async function submit() {
+  async function submit(skipTopicIds?: string[]) {
     setSubmitting(true);
     setResolved(false);
     setError(null);
     const res = await fetch("/api/v1/goals", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ subjectId, type, level, dailyMinutes, notes: notes || undefined }),
+      body: JSON.stringify({ subjectId, type, level, dailyMinutes, notes: notes || undefined, skipTopicIds }),
     });
     const body = await res.json();
     if (!res.ok) {
@@ -67,9 +72,88 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
     router.push(`/paths/${body.path.id}`);
   }
 
+  // Optional enrichment (Build Spec v2 Phase 06) — only runs when the learner
+  // wrote something. Any failure (no AI key, network, empty result) just
+  // falls straight through to the unchanged fixed submit path.
+  async function handleNotesContinue() {
+    if (!notes.trim()) {
+      submit();
+      return;
+    }
+    setCheckingNotes(true);
+    const suggestions = await fetch("/api/v1/wizard/notes-suggestions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ subjectId, notes }),
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((body) => (body?.suggestions as SkipSuggestion[]) ?? [])
+      .catch(() => []);
+    setCheckingNotes(false);
+
+    if (suggestions.length > 0) {
+      setSkipSuggestions(suggestions);
+      setCheckedSkipIds(new Set());
+    } else {
+      submit();
+    }
+  }
+
+  function toggleSkipId(topicId: string) {
+    setCheckedSkipIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(topicId)) next.delete(topicId);
+      else next.add(topicId);
+      return next;
+    });
+  }
+
   if (submitting && selectedSubject && level && dailyMinutes) {
     return (
       <BootSequence subjectName={selectedSubject.name} level={level} dailyMinutes={dailyMinutes} resolved={resolved} />
+    );
+  }
+
+  if (skipSuggestions) {
+    return (
+      <div className="animate-step-in motion-reduce:animate-none">
+        <StepShell
+          title="Already know some of this?"
+          subtitle="Based on your notes, you might already know these — check any you'd like to skip. Nothing's selected by default."
+        >
+          <div className="flex flex-col gap-2">
+            {skipSuggestions.map((s) => (
+              <label
+                key={s.topicId}
+                className={`flex cursor-pointer items-center gap-3 rounded-card border-2 p-4 transition duration-150 ${
+                  checkedSkipIds.has(s.topicId)
+                    ? "border-brand-pink bg-brand-pink-light/40"
+                    : "border-black/10 hover:border-black/25"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checkedSkipIds.has(s.topicId)}
+                  onChange={() => toggleSkipId(s.topicId)}
+                  className="h-4 w-4 shrink-0 accent-brand-pink"
+                />
+                <span className="font-semibold text-brand-dark">{s.name}</span>
+              </label>
+            ))}
+          </div>
+        </StepShell>
+        <div className="mt-8 flex justify-between">
+          <button
+            onClick={() => setSkipSuggestions(null)}
+            className="rounded-control px-4 py-2.5 text-sm font-semibold text-black/65"
+          >
+            Back
+          </button>
+          <button onClick={() => submit([...checkedSkipIds])} className={`px-5 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}>
+            Build my path →
+          </button>
+        </div>
+      </div>
     );
   }
 
@@ -167,11 +251,11 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
         </button>
         {step === "notes" ? (
           <button
-            onClick={submit}
-            disabled={submitting}
+            onClick={handleNotesContinue}
+            disabled={submitting || checkingNotes}
             className={`px-5 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}
           >
-            {submitting ? "Building your path…" : "Build my path →"}
+            {checkingNotes ? "Checking your notes…" : submitting ? "Building your path…" : "Build my path →"}
           </button>
         ) : (
           <button

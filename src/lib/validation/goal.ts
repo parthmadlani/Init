@@ -6,6 +6,7 @@ export const createGoalSchema = z.object({
   level: z.enum(["BEGINNER", "INTERMEDIATE", "ADVANCED"]),
   dailyMinutes: z.number().int().min(10).max(720),
   notes: z.string().max(1000).optional(),
+  skipTopicIds: z.array(z.string()).max(200).optional(),
 });
 
 export type CreateGoalInput = z.infer<typeof createGoalSchema>;

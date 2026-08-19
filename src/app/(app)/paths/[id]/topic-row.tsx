@@ -27,6 +27,7 @@ type Resource = {
   youtubeVideoId: string;
   durationSeconds: number;
   userReaction: Reaction | null;
+  aiTag: string | null;
 } | null;
 
 function formatDuration(seconds: number): string {
@@ -177,6 +178,7 @@ export function TopicRow({
                 {resource.title}
               </span>
               <span className="text-black/55">{formatDuration(resource.durationSeconds)}</span>
+              {resource.aiTag && <span className="block text-black/55 italic">{resource.aiTag}</span>}
             </a>
           ) : (
             <div className="mt-0.5 text-xs text-black/65">No matching video found yet</div>

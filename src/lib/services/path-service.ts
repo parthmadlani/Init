@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import type { GoalType, Level } from "@/generated/prisma/client";
 import { ensureResourcesForPath } from "@/lib/services/resource-service";
+import { markTopicsComplete } from "@/lib/services/progress-service";
 
 type CreateGoalInput = {
   userId: string;
@@ -9,6 +10,7 @@ type CreateGoalInput = {
   level: Level;
   dailyMinutes: number;
   notes?: string;
+  skipTopicIds?: string[];
 };
 
 /**
@@ -57,6 +59,22 @@ export async function createGoalWithPath(input: CreateGoalInput) {
 
     return { goal, path };
   });
+
+  // Wizard note-tuning (Build Spec v2 Phase 06) — the learner opted in to
+  // skipping these topics. Re-validate against this subject's actual topic
+  // IDs rather than trusting the client, and never let a bad ID here fail
+  // path creation.
+  if (input.skipTopicIds && input.skipTopicIds.length > 0) {
+    const topicIds = new Set(topics.map((t) => t.id));
+    const validSkipIds = input.skipTopicIds.filter((id) => topicIds.has(id));
+    if (validSkipIds.length > 0) {
+      try {
+        await markTopicsComplete(input.userId, validSkipIds);
+      } catch (error) {
+        console.error(`Marking skipped topics complete failed for path ${path.id}:`, error);
+      }
+    }
+  }
 
   // Resource matching hits the YouTube API (quota-guarded by SearchCache)
   // and must never block goal/path creation from succeeding — a topic

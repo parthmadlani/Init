@@ -112,6 +112,11 @@ model Resource {
   // API-derived fields, not treating them as owned data. See spec §05/§65.
   cachedAt DateTime @default(now())
 
+  // Best-effort AI blurb (Phase 06) — generated after matching, never
+  // influences which video gets picked. Null if AI is absent/unavailable
+  // or the call failed; TopicRow renders nothing in that case.
+  aiTag String?
+
   bookmarks Bookmark[]
   feedback  ResourceFeedback[]
 

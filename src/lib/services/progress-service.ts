@@ -42,6 +42,26 @@ export async function updateProgress(input: UpdateProgressInput) {
   return progress;
 }
 
+/**
+ * Bulk pre-mark topics COMPLETE (Build Spec v2 Phase 06 — wizard note-tuning:
+ * the learner opted in to skipping topics they said they already know).
+ * Deliberately bypasses updateProgress's ActivityLog bump — marking a batch
+ * of "already known" topics during onboarding isn't a day of real activity,
+ * and crediting it would inflate the streak calendar.
+ */
+export async function markTopicsComplete(userId: string, topicIds: string[]) {
+  if (topicIds.length === 0) return;
+  await prisma.$transaction(
+    topicIds.map((topicId) =>
+      prisma.progress.upsert({
+        where: { userId_topicId: { userId, topicId } },
+        update: { status: "COMPLETE", pct: 100, lastAccessedAt: new Date() },
+        create: { userId, topicId, status: "COMPLETE", pct: 100, lastAccessedAt: new Date() },
+      }),
+    ),
+  );
+}
+
 /** Last `days` days of activity, oldest first, gaps filled with 0 — ready for a GitHub-style calendar. */
 export async function getActivityCalendar(userId: string, days = 84) {
   const since = startOfDay(new Date());
