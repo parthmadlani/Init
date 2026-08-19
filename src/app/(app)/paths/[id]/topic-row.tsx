@@ -2,6 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { fireCompletionConfetti } from "@/lib/confetti";
 
 type Status = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE";
 type Reaction = "HELPFUL" | "NOT_HELPFUL";
@@ -74,24 +77,32 @@ function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string;
 
   return (
     <div className="flex shrink-0 items-center gap-2" onClick={(e) => e.stopPropagation()}>
-      <button
-        type="button"
-        onClick={() => react("HELPFUL")}
-        disabled={isPending}
-        title="This video was helpful"
-        className={`rounded-control p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
-      >
-        <ThumbIcon direction="up" filled={reaction === "HELPFUL"} />
-      </button>
-      <button
-        type="button"
-        onClick={() => react("NOT_HELPFUL")}
-        disabled={isPending}
-        title="This video wasn't helpful"
-        className={`rounded-control p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
-      >
-        <ThumbIcon direction="down" filled={reaction === "NOT_HELPFUL"} />
-      </button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            type="button"
+            onClick={() => react("HELPFUL")}
+            disabled={isPending}
+            className={`rounded-control p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
+          >
+            <ThumbIcon direction="up" filled={reaction === "HELPFUL"} />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>This video was helpful</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            type="button"
+            onClick={() => react("NOT_HELPFUL")}
+            disabled={isPending}
+            className={`rounded-control p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
+          >
+            <ThumbIcon direction="down" filled={reaction === "NOT_HELPFUL"} />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent>This video wasn&apos;t helpful</TooltipContent>
+      </Tooltip>
     </div>
   );
 }
@@ -102,12 +113,16 @@ export function TopicRow({
   topicId,
   initialStatus,
   resource,
+  completedCount,
+  totalCount,
 }: {
   order: number;
   name: string;
   topicId: string;
   initialStatus: Status;
   resource: Resource;
+  completedCount: number;
+  totalCount: number;
 }) {
   const [status, setStatus] = useState(initialStatus);
   const [isPending, startTransition] = useTransition();
@@ -115,6 +130,7 @@ export function TopicRow({
 
   function toggle() {
     const next = NEXT_STATUS[status];
+    const justCompletedPath = next === "COMPLETE" && status !== "COMPLETE" && completedCount + 1 === totalCount;
     setStatus(next);
     startTransition(async () => {
       await fetch("/api/v1/progress", {
@@ -122,6 +138,10 @@ export function TopicRow({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topicId, status: next, pct: next === "COMPLETE" ? 100 : next === "IN_PROGRESS" ? 50 : 0 }),
       });
+      if (justCompletedPath) {
+        fireCompletionConfetti();
+        toast("$ init status — all clear.", { description: `${totalCount}/${totalCount} topics complete. nice work.` });
+      }
       router.refresh();
     });
   }
@@ -132,14 +152,18 @@ export function TopicRow({
       style={{ animationDelay: `${Math.min(order - 1, 10) * 40}ms` }}
     >
       <div className="flex min-w-0 flex-1 items-center gap-4">
-        <button
-          onClick={toggle}
-          disabled={isPending}
-          title="Click to advance status"
-          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
-        >
-          {status === "COMPLETE" ? "✓" : order}
-        </button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={toggle}
+              disabled={isPending}
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
+            >
+              {status === "COMPLETE" ? "✓" : order}
+            </button>
+          </TooltipTrigger>
+          <TooltipContent>Click to advance status</TooltipContent>
+        </Tooltip>
         <div className="min-w-0 flex-1">
           <div className="font-semibold text-brand-dark">{name}</div>
           {resource ? (

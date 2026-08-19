@@ -47,6 +47,8 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
             name={topic.name}
             topicId={topic.id}
             initialStatus={topic.progress?.status ?? "NOT_STARTED"}
+            completedCount={path.completedCount}
+            totalCount={path.totalCount}
             resource={
               topic.resource
                 ? {

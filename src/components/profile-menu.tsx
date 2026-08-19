@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type User = { name?: string | null; email?: string | null; role: "STUDENT" | "ADMIN" };
 
@@ -12,46 +18,33 @@ function initialsFor(name?: string | null, email?: string | null): string {
 }
 
 export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => void | Promise<void> }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false);
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
-    <div className="relative" ref={ref}>
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand-dark bg-brand-pink text-xs font-extrabold text-white transition hover:brightness-105"
-        title={user.name ?? user.email ?? "Account"}
-      >
-        {initialsFor(user.name, user.email)}
-      </button>
-
-      {open && (
-        <div className="absolute right-0 top-11 z-10 w-56 rounded-card border border-black/10 bg-white p-1.5 shadow-lg">
-          <div className="border-b border-black/10 px-3 py-2.5">
-            <div className="truncate text-sm font-semibold text-brand-dark">{user.name}</div>
-            <div className="truncate text-xs text-black/65">{user.email}</div>
-            <div className="mt-1 inline-block rounded-full bg-black/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black/65">
-              {user.role.toLowerCase()}
-            </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand-dark bg-brand-pink text-xs font-extrabold text-white transition hover:brightness-105"
+          title={user.name ?? user.email ?? "Account"}
+        >
+          {initialsFor(user.name, user.email)}
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" sideOffset={8} className="w-56 rounded-card border border-black/10 bg-white p-1.5 shadow-lg">
+        <div className="px-3 py-2.5">
+          <div className="truncate text-sm font-semibold text-brand-dark">{user.name}</div>
+          <div className="truncate text-xs text-black/65">{user.email}</div>
+          <div className="mt-1 inline-block rounded-full bg-black/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black/65">
+            {user.role.toLowerCase()}
           </div>
-          <button
-            type="button"
-            onClick={onSignOut}
-            className="mt-1 w-full rounded-control px-3 py-2 text-left text-sm font-semibold text-black/70 transition hover:bg-black/5"
-          >
-            Sign out
-          </button>
         </div>
-      )}
-    </div>
+        <DropdownMenuSeparator className="bg-black/10" />
+        <DropdownMenuItem
+          onClick={() => onSignOut()}
+          className="mt-1 w-full cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70"
+        >
+          Sign out
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
