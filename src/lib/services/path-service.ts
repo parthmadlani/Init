@@ -129,14 +129,42 @@ export async function getPathDetail(pathId: string, userId: string) {
       };
     });
 
-  const completedCount = orderedTopics.filter((t) => t.progress?.status === "COMPLETE").length;
+  // A topic with no matched video is a dead end, not a lesson — hide it
+  // rather than show "no matching video found." Topics the user already
+  // has progress on stay visible even if the resource later disappears
+  // (video pulled, re-match came up empty), so earned progress is never
+  // silently hidden. Renumbered 1..N so the visible list has no gaps.
+  const learnableTopics = orderedTopics
+    .filter((t) => t.resource !== null || t.progress !== null)
+    .map((t, index) => ({ ...t, order: index + 1 }));
+
+  const completedCount = learnableTopics.filter((t) => t.progress?.status === "COMPLETE").length;
 
   return {
     id: path.id,
     subject: path.goal.subject,
     goal: path.goal,
-    topics: orderedTopics,
+    topics: learnableTopics,
     completedCount,
-    totalCount: orderedTopics.length,
+    totalCount: learnableTopics.length,
   };
+}
+
+/**
+ * Lightweight counterpart to getPathDetail's learnable-topic filter, for
+ * dashboard summary rows that only need counts, not full topic/resource
+ * objects — keeps the "X/Y topics" number consistent between the two.
+ */
+export async function getPathSummary(orderedTopicIds: string[], level: Level, userId: string) {
+  const [resourcedTopics, progressRows] = await Promise.all([
+    prisma.resource.findMany({ where: { topicId: { in: orderedTopicIds }, level }, select: { topicId: true } }),
+    prisma.progress.findMany({ where: { userId, topicId: { in: orderedTopicIds } }, select: { topicId: true, status: true } }),
+  ]);
+
+  const resourcedIds = new Set(resourcedTopics.map((r) => r.topicId));
+  const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p.status]));
+  const learnableIds = orderedTopicIds.filter((id) => resourcedIds.has(id) || progressByTopicId.has(id));
+  const completed = learnableIds.filter((id) => progressByTopicId.get(id) === "COMPLETE").length;
+
+  return { total: learnableIds.length, completed };
 }

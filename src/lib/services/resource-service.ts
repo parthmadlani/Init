@@ -97,29 +97,42 @@ function scoreCandidate(
   return score;
 }
 
+// Applied in order until one yields candidates — a real, on-topic video
+// from a smaller channel (tier 2) or a bit outside the daily budget (tier
+// 3) beats leaving the topic with nothing. A topic only ends up with no
+// resource at all if it fails every tier; the caller then hides it rather
+// than showing a dead "no video" row (see getPathDetail).
+const FILTER_TIERS: Array<(candidate: YoutubeCandidate, dailyMinutes: number) => boolean> = [
+  (c, dailyMinutes) => passesQualityFilter(c) && passesDurationCap(c, dailyMinutes),
+  (c, dailyMinutes) => passesDurationCap(c, dailyMinutes),
+  (c, dailyMinutes) => c.durationSeconds <= dailyMinutes * 60 * MAX_DURATION_MULTIPLE * 2,
+];
+
 function pickBestCandidate(
   candidates: YoutubeCandidate[],
   topicName: string,
   level: Level,
   dailyMinutes: number,
 ): YoutubeCandidate | null {
-  const qualified = candidates.filter(
-    (candidate) => passesQualityFilter(candidate) && passesDurationCap(candidate, dailyMinutes),
-  );
-  if (qualified.length === 0) return null;
-
   const topicKeywords = topicName.toLowerCase().split(/\s+/).filter((word) => word.length > 2);
 
-  let best = qualified[0];
-  let bestScore = -Infinity;
-  qualified.forEach((candidate, index) => {
-    const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes);
-    if (score > bestScore) {
-      bestScore = score;
-      best = candidate;
-    }
-  });
-  return best;
+  for (const passesTier of FILTER_TIERS) {
+    const qualified = candidates.filter((candidate) => passesTier(candidate, dailyMinutes));
+    if (qualified.length === 0) continue;
+
+    let best = qualified[0];
+    let bestScore = -Infinity;
+    qualified.forEach((candidate, index) => {
+      const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes);
+      if (score > bestScore) {
+        bestScore = score;
+        best = candidate;
+      }
+    });
+    return best;
+  }
+
+  return null;
 }
 
 type TopicInput = { id: string; slug: string; name: string };
@@ -144,9 +157,9 @@ async function ensureResourceForTopic(
 
   const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes);
   if (!best) {
-    // No candidate clears the bar under this (possibly stricter, e.g. a
-    // shorter dailyMinutes) computation — clear any stale Resource left
-    // over from an earlier, looser one rather than silently keeping it.
+    // Nothing cleared even the loosest fallback tier — clear any stale
+    // Resource left over from an earlier, looser computation rather than
+    // silently keeping it. getPathDetail hides topics with no Resource.
     await prisma.resource.deleteMany({ where: { topicId: topic.id, level } });
     return;
   }

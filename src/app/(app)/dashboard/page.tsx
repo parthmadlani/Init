@@ -2,6 +2,7 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getActivityCalendar } from "@/lib/services/progress-service";
+import { getPathSummary } from "@/lib/services/path-service";
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { PathRow } from "./path-row";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
@@ -24,14 +25,10 @@ export default async function DashboardPage() {
   ]);
 
   const pathSummaries = await Promise.all(
-    paths.map(async (path) => ({
-      id: path.id,
-      subjectName: path.goal.subject.name,
-      total: path.orderedTopicIds.length,
-      completed: await prisma.progress.count({
-        where: { userId, topicId: { in: path.orderedTopicIds }, status: "COMPLETE" },
-      }),
-    })),
+    paths.map(async (path) => {
+      const { total, completed } = await getPathSummary(path.orderedTopicIds, path.goal.level, userId);
+      return { id: path.id, subjectName: path.goal.subject.name, total, completed };
+    }),
   );
 
   return (
