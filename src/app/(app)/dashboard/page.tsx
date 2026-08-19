@@ -48,7 +48,7 @@ export default async function DashboardPage() {
 
       <section className="mb-8 rounded-card border border-black/10 bg-white p-6">
         <h2 className="font-serif text-heading font-bold text-brand-dark">Your activity</h2>
-        <p className="text-sm text-black/65">Every topic you touch counts.</p>
+        <p className="text-sm text-black/65">Every topic you start or finish counts.</p>
         <div className="mt-5">
           <ActivityCalendar days={calendar} />
         </div>
@@ -65,7 +65,11 @@ export default async function DashboardPage() {
             </div>
           ) : (
             <div className="rounded-card border border-dashed border-black/15 p-4 text-sm text-black/65">
-              No paths yet — start one from the wizard.
+              You haven&apos;t started a learning path yet.{" "}
+              <Link href="/wizard" className="font-semibold text-brand-pink hover:underline">
+                Build your first one
+              </Link>{" "}
+              — pick a subject, your level, and how much time you have each day.
             </div>
           )}
         </section>

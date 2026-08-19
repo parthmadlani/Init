@@ -21,12 +21,14 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
       <h1 className="mt-1 font-serif text-display font-bold text-brand-dark">{path.subject.name}</h1>
 
       {isComplete ? (
-        <div className="mt-4 rounded-card border-2 border-brand-pink bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90 shadow-[3px_3px_0_#ff3d8a]">
-          <div className="text-white/55">$ init status --path={slug}</div>
-          <div className="text-brand-cyan">
+        <div className="mt-4 rounded-card border-2 border-brand-dark bg-white p-5 font-mono text-[13px] leading-[1.7] text-brand-dark/80 shadow-[3px_3px_0_#111827]">
+          <div className="text-black/65">
+            <span className="text-brand-pink">$</span> init status --path={slug}
+          </div>
+          <div className="font-semibold text-brand-pink">
             ✓ {path.completedCount}/{path.totalCount} topics complete
           </div>
-          <div>all clear. nice work.</div>
+          <div className="text-brand-dark">all clear. nice work.</div>
         </div>
       ) : (
         <>

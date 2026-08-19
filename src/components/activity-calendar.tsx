@@ -43,7 +43,7 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
       </div>
       <p className="mt-2 text-xs text-black/65">
         {isEmpty
-          ? "No activity yet — touch a topic and this starts filling in."
+          ? "No activity yet — mark a topic as started and this fills in."
           : `${totalActive} active days in the last ${days.length}`}
       </p>
     </div>

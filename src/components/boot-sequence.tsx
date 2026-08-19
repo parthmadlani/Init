@@ -19,6 +19,11 @@ const STEP_DELAY_MS = 420;
  * rather than server-pushed (the API is one request, not a stream), so
  * lines 1-3 advance on a fixed clock and then hold on "matching resources"
  * — the genuinely slow step, gated on YouTube — until `resolved` flips.
+ *
+ * Styled as a white card with the same hard-shadow border as every other
+ * elevated surface (hero card, alert-dialog, toast) — a dark terminal-black
+ * block here read as an unrelated, alarming "something broke" moment to
+ * some users mid-wizard, not a branded loading state.
  */
 export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Props) {
   const [timedStep, setTimedStep] = useState(0);
@@ -36,7 +41,7 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
 
   return (
     <div
-      className="rounded-card border-2 border-brand-pink bg-brand-dark p-5 font-mono text-[13px] leading-[1.7] text-white/90 shadow-[3px_3px_0_#ff3d8a]"
+      className="rounded-card border-2 border-brand-dark bg-white p-5 font-mono text-[13px] leading-[1.7] text-brand-dark/80 shadow-[3px_3px_0_#111827]"
       role="status"
       aria-live="polite"
     >
@@ -62,12 +67,12 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
 
 function Line({ show, dim, children }: { show: boolean; dim?: boolean; children: React.ReactNode }) {
   if (!show) return null;
-  return <div className={dim ? "text-white/55" : ""}>{children}</div>;
+  return <div className={dim ? "text-black/65" : "text-brand-dark"}>{children}</div>;
 }
 
 function Done({ show, pending }: { show: boolean; pending?: boolean }) {
-  if (show) return <span className="text-brand-cyan">... done</span>;
-  if (pending) return <span className="text-white/40">...</span>;
+  if (show) return <span className="font-semibold text-brand-pink">... done</span>;
+  if (pending) return <span className="text-black/65">...</span>;
   return null;
 }
 
