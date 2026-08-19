@@ -28,7 +28,7 @@ npm run dev
 | `AUTH_SECRET` | auth | `openssl rand -base64 32`. Without this, login/register will fail. |
 | `NEXTAUTH_URL` | auth | `http://localhost:3000` locally; your deployed origin in production. |
 | `YOUTUBE_API_KEY` | resource matching | Without it, paths still generate — topics just show "No matching video found yet" instead of a match. See `docs/api.md` and `src/lib/services/resource-service.ts`. `search.list` costs 100 quota units against a 10,000/day default quota; `SearchCache` guards against re-fetching, not optional. |
-| `AI_API_KEY` | Phase 06 (not built yet) | Leave empty. |
+| `AI_API_KEY` | Phase 06 | Mistral API key. Optional — enrichment only. Missing/failing key degrades gracefully (see `src/lib/integrations/ai/client.ts`): wizard note-tuning and resource tagging both just no-op. |
 
 Production migrations use `npm run db:migrate:deploy` (`prisma migrate deploy`) instead of `db:migrate` (`prisma migrate dev`, which is interactive and dev-only).
 
@@ -58,7 +58,7 @@ docs/api.md                    typed API contracts, endpoint by endpoint
 - **Phase 05** — typed API contracts (`docs/api.md`), deploy hardening (security headers, `postinstall` Prisma generate, `prisma migrate deploy`), and production infra on Neon + Vercel.
 - **Design pass** — full UI/UX audit and three-tier implementation: accessibility fixes (mobile layout, touch targets, contrast), a named type scale and consolidated design tokens, and a signature terminal/boot-sequence moment during path creation and completion.
 
-Not started: **Phase 06** — AI enrichment layer (resource classification, adaptive wizard follow-ups). Must always degrade gracefully to the fixed deterministic wizard/path if AI is unavailable.
+Built and verified locally, not yet deployed: **Phase 06** — AI enrichment layer on Mistral (`mistral-small-latest`). Wizard note-tuning suggests topics a learner's free-text notes indicate they already know, opt-in only, pre-marking them complete; resource tagging adds a short one-line caption per matched video, deduped per topic/level and generated in the background so it never adds latency to path creation. Both degrade to the fixed deterministic wizard/path if AI is absent or fails — never a hard dependency. Needs `prisma migrate deploy` against prod (adds `Resource.aiTag`) and a push before it's live.
 
 Progress tracking today is self-reported (click a topic to advance Not Started → In Progress → Complete) rather than auto-detected from actual video watch time — a deliberate scope cut for now, not an oversight.
 
