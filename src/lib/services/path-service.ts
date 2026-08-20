@@ -234,3 +234,25 @@ export async function getPathSummary(orderedTopicIds: string[], level: Level, us
 
   return { total: learnableIds.length, completed };
 }
+
+/**
+ * "All paths, with % complete each" for a user — the dashboard and the
+ * profile page both need this same list, so it lives here once rather than
+ * each page re-deriving it via its own Promise.all over getPathSummary.
+ */
+export async function getAllPathSummaries(userId: string) {
+  const paths = await prisma.path.findMany({
+    where: { userId },
+    include: { goal: { include: { subject: true } } },
+    orderBy: { createdAt: "desc" },
+  });
+
+  const summaries = await Promise.all(
+    paths.map(async (path) => {
+      const { total, completed } = await getPathSummary(path.orderedTopicIds, path.goal.level, userId);
+      return { id: path.id, subjectName: path.goal.subject.name, total, completed };
+    })
+  );
+
+  return summaries;
+}

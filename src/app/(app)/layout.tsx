@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 import { ProfileMenu } from "@/components/profile-menu";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,6 +9,9 @@ import { logout } from "./actions";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
+  const imageUrl = session?.user
+    ? (await prisma.user.findUnique({ where: { id: session.user.id }, select: { imageUrl: true } }))?.imageUrl
+    : null;
 
   return (
     <TooltipProvider delayDuration={200}>
@@ -16,7 +20,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <Link href="/dashboard" aria-label="Init home">
             <Image src="/brand/logo.png" alt="Init" width={90} height={43} className="h-7 w-auto" priority />
           </Link>
-          {session?.user && <ProfileMenu user={session.user} onSignOut={logout} />}
+          {session?.user && <ProfileMenu user={{ ...session.user, imageUrl }} onSignOut={logout} />}
         </header>
         {children}
       </div>

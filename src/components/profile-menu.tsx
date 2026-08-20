@@ -8,15 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { initialsFor } from "@/lib/initials";
 
-type User = { name?: string | null; email?: string | null; role: "STUDENT" | "ADMIN" };
-
-function initialsFor(name?: string | null, email?: string | null): string {
-  const source = name?.trim() || email?.trim() || "?";
-  const parts = source.split(/\s+/).filter(Boolean);
-  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
-  return source.slice(0, 2).toUpperCase();
-}
+type User = { name?: string | null; email?: string | null; role: "STUDENT" | "ADMIN"; imageUrl?: string | null };
 
 export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => void | Promise<void> }) {
   return (
@@ -24,10 +18,14 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-brand-dark bg-brand-pink text-xs font-extrabold text-white transition hover:brightness-105"
+          className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border-2 border-brand-dark bg-brand-pink text-xs font-extrabold text-white transition hover:brightness-105"
           title={user.name ?? user.email ?? "Account"}
         >
-          {initialsFor(user.name, user.email)}
+          {user.imageUrl ? (
+            <img src={user.imageUrl} alt="" className="h-full w-full object-cover" />
+          ) : (
+            initialsFor(user.name, user.email)
+          )}
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" sideOffset={8} className="w-56 rounded-card border border-black/10 bg-white p-1.5 shadow-lg">
@@ -39,6 +37,9 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
           </div>
         </div>
         <DropdownMenuSeparator className="bg-black/10" />
+        <DropdownMenuItem asChild className="cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70">
+          <Link href="/profile">Profile</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70">
           <Link href="/bookmarks">Bookmarks</Link>
         </DropdownMenuItem>

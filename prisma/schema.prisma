@@ -51,6 +51,7 @@ model User {
   email        String   @unique
   passwordHash String
   name         String
+  imageUrl     String?
   role         Role     @default(STUDENT)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
