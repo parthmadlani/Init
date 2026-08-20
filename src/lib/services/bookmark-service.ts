@@ -1,5 +1,9 @@
 import { prisma } from "@/lib/prisma";
 
+export function countUserBookmarks(userId: string) {
+  return prisma.bookmark.count({ where: { userId, targetType: "RESOURCE" } });
+}
+
 /** Resource bookmarks only for now — the only targetType with a UI to create one. */
 export async function getUserResourceBookmarks(userId: string) {
   const bookmarks = await prisma.bookmark.findMany({

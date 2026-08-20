@@ -14,3 +14,7 @@ export const changePasswordSchema = z.object({
 });
 
 export type ChangePasswordInput = z.infer<typeof changePasswordSchema>;
+
+export const updateNameSchema = z.object({
+  name: z.string().min(1, "Name can't be empty").max(120),
+});

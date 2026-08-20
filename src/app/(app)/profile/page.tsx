@@ -3,10 +3,13 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getActivityCalendar } from "@/lib/services/progress-service";
 import { getAllPathSummaries } from "@/lib/services/path-service";
+import { countUserBookmarks } from "@/lib/services/bookmark-service";
+import { computeCurrentStreak } from "@/lib/streak";
 import { ActivityCalendar } from "@/components/activity-calendar";
 import { BackToHomeLink } from "@/components/back-to-home-link";
 import { AvatarUploader } from "./avatar-uploader";
 import { ChangePasswordForm } from "./change-password-form";
+import { EditNameForm } from "./edit-name-form";
 import { logout } from "../actions";
 
 function SubjectProgressRow({
@@ -43,19 +46,21 @@ export default async function ProfilePage() {
   const session = await auth();
   const userId = session!.user.id;
 
-  const [user, pathSummaries, calendar] = await Promise.all([
+  const [user, pathSummaries, calendar, bookmarkCount] = await Promise.all([
     prisma.user.findUniqueOrThrow({
       where: { id: userId },
       select: { name: true, email: true, role: true, imageUrl: true, createdAt: true },
     }),
     getAllPathSummaries(userId),
     getActivityCalendar(userId),
+    countUserBookmarks(userId),
   ]);
 
   const totalCompleted = pathSummaries.reduce((sum, p) => sum + p.completed, 0);
   const totalLearnable = pathSummaries.reduce((sum, p) => sum + p.total, 0);
   const overallPct = totalLearnable === 0 ? 0 : Math.round((totalCompleted / totalLearnable) * 100);
   const memberSince = user.createdAt.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  const streak = computeCurrentStreak(calendar);
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-10">
@@ -72,8 +77,19 @@ export default async function ProfilePage() {
             <div className="mt-2 inline-block rounded-full bg-black/5 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-black/65">
               {user.role.toLowerCase()}
             </div>
+            <div className="mt-3">
+              <EditNameForm name={user.name} />
+            </div>
             <div className="mt-4 border-t border-black/5 pt-4 text-xs text-black/55">Member since {memberSince}</div>
           </section>
+
+          <Link
+            href="/bookmarks"
+            className="flex items-center justify-between rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]"
+          >
+            <span className="text-sm font-semibold text-brand-dark">Bookmarked videos</span>
+            <span className="text-lg font-extrabold text-brand-pink">{bookmarkCount}</span>
+          </Link>
 
           <section className="rounded-card border border-black/10 bg-white p-6">
             <h2 className="font-serif text-heading font-bold text-brand-dark">Account</h2>
@@ -121,7 +137,14 @@ export default async function ProfilePage() {
           </section>
 
           <section className="rounded-card border border-black/10 bg-white p-6">
-            <h2 className="font-serif text-heading font-bold text-brand-dark">Your activity</h2>
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="font-serif text-heading font-bold text-brand-dark">Your activity</h2>
+              {streak > 0 && (
+                <span className="shrink-0 rounded-full bg-brand-pink-light px-2.5 py-1 text-xs font-bold text-brand-pink">
+                  {streak} day{streak === 1 ? "" : "s"} streak
+                </span>
+              )}
+            </div>
             <p className="text-sm text-black/65">Every topic you start or finish counts.</p>
             <div className="mt-5">
               <ActivityCalendar days={calendar} />

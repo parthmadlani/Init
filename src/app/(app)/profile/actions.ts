@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { changePasswordSchema } from "@/lib/validation/auth";
+import { changePasswordSchema, updateNameSchema } from "@/lib/validation/auth";
 import { changeUserPassword, IncorrectPasswordError } from "@/lib/services/auth-service";
 
 const MAX_AVATAR_BYTES = 1_500_000;
@@ -24,6 +24,20 @@ export async function updateAvatar(formData: FormData): Promise<{ error?: string
   revalidatePath("/profile");
   revalidatePath("/dashboard");
   return {};
+}
+
+type UpdateNameState = { error?: string; ok?: boolean };
+
+export async function updateName(_prevState: UpdateNameState, formData: FormData): Promise<UpdateNameState> {
+  const session = await auth();
+  if (!session?.user) return { error: "Not signed in" };
+
+  const parsed = updateNameSchema.safeParse(Object.fromEntries(formData));
+  if (!parsed.success) return { error: parsed.error.issues[0].message };
+
+  await prisma.user.update({ where: { id: session.user.id }, data: { name: parsed.data.name } });
+  revalidatePath("/profile");
+  return { ok: true };
 }
 
 type ChangePasswordState = { error?: string; ok?: boolean };

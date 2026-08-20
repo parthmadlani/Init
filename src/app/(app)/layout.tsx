@@ -9,8 +9,11 @@ import { logout } from "./actions";
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
-  const imageUrl = session?.user
-    ? (await prisma.user.findUnique({ where: { id: session.user.id }, select: { imageUrl: true } }))?.imageUrl
+  // Name/photo edits on /profile don't touch the JWT session, so the header
+  // re-reads both fresh from the DB rather than showing stale sign-in-time
+  // values until the next login.
+  const freshUser = session?.user
+    ? await prisma.user.findUnique({ where: { id: session.user.id }, select: { name: true, imageUrl: true } })
     : null;
 
   return (
@@ -20,7 +23,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <Link href="/dashboard" aria-label="Init home">
             <Image src="/brand/logo.png" alt="Init" width={90} height={43} className="h-7 w-auto" priority />
           </Link>
-          {session?.user && <ProfileMenu user={{ ...session.user, imageUrl }} onSignOut={logout} />}
+          {session?.user && (
+            <ProfileMenu
+              user={{ ...session.user, name: freshUser?.name ?? session.user.name, imageUrl: freshUser?.imageUrl }}
+              onSignOut={logout}
+            />
+          )}
         </header>
         {children}
       </div>
