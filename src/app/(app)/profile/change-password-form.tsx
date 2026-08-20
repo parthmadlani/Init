@@ -1,21 +1,44 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 import { changePassword } from "./actions";
 
-const initialState: { error?: string; ok?: boolean } = {};
-
 export function ChangePasswordForm() {
-  const [state, formAction, pending] = useActionState(changePassword, initialState);
-  const formRef = useRef<HTMLFormElement>(null);
+  const [editing, setEditing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
 
-  useEffect(() => {
-    if (state.ok) formRef.current?.reset();
-  }, [state.ok]);
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    setError(null);
+    startTransition(async () => {
+      const result = await changePassword({}, formData);
+      if (result.error) {
+        setError(result.error);
+      } else {
+        setEditing(false);
+        toast("Password updated");
+      }
+    });
+  }
+
+  if (!editing) {
+    return (
+      <button
+        type="button"
+        onClick={() => setEditing(true)}
+        className="rounded-control border border-black/15 px-4 py-2.5 text-sm font-semibold text-brand-dark transition hover:bg-black/5"
+      >
+        Update password
+      </button>
+    );
+  }
 
   return (
-    <form ref={formRef} action={formAction} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <div className="flex flex-col gap-1.5">
         <label htmlFor="currentPassword" className="text-sm font-semibold text-brand-dark">
           Current password
@@ -25,6 +48,7 @@ export function ChangePasswordForm() {
           name="currentPassword"
           type="password"
           required
+          autoFocus
           className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
       </div>
@@ -43,12 +67,20 @@ export function ChangePasswordForm() {
         <p className="text-xs text-black/65">At least 8 characters.</p>
       </div>
 
-      {state.error && <p className="text-sm font-medium text-red-600">{state.error}</p>}
-      {state.ok && <p className="text-sm font-medium text-brand-cyan">Password updated.</p>}
+      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
 
-      <button type="submit" disabled={pending} className={`self-start px-4 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}>
-        {pending ? "Updating…" : "Update password"}
-      </button>
+      <div className="flex items-center gap-3">
+        <button type="submit" disabled={isPending} className={`px-4 py-2.5 text-sm ${PRIMARY_CTA_CLASS}`}>
+          {isPending ? "Updating…" : "Save password"}
+        </button>
+        <button
+          type="button"
+          onClick={() => setEditing(false)}
+          className="text-sm font-semibold text-black/55 hover:text-black/80"
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }
