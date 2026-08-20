@@ -201,7 +201,7 @@ export function TopicRow({
 
   return (
     <Card
-      className="animate-row-in h-full rounded-card border border-black/10 bg-white shadow-none ring-0 transition duration-150 hover:border-black/20 hover:shadow-md motion-reduce:animate-none"
+      className="animate-row-in h-full rounded-card border border-black/10 bg-white shadow-none ring-0 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)] motion-reduce:animate-none"
       style={{ animationDelay: `${Math.min(order - 1, 10) * 40}ms` }}
     >
       <CardContent className="flex h-full flex-col gap-3">

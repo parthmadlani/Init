@@ -299,7 +299,7 @@ function OptionCard({
       className={`rounded-card border-2 p-4 text-left transition duration-150 ${
         selected
           ? "border-brand-pink bg-brand-pink-light/40"
-          : "border-black/10 hover:-translate-y-0.5 hover:border-black/25 hover:shadow-md"
+          : "border-black/10 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]"
       }`}
     >
       <div className="font-semibold text-brand-dark">{label}</div>

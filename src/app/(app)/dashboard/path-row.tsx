@@ -52,7 +52,7 @@ export function PathRow({
   }
 
   return (
-    <div className="flex items-center gap-2 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-md">
+    <div className="flex items-center gap-2 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]">
       <Link href={`/paths/${pathId}`} className="flex min-w-0 flex-1 items-center justify-between">
         <span className="font-semibold text-brand-dark">{subjectName}</span>
         <span className="text-sm text-black/65">

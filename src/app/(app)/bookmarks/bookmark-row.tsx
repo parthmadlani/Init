@@ -42,7 +42,7 @@ export function BookmarkRow({
   if (removed) return null;
 
   return (
-    <div className="flex items-start gap-4 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-black/20 hover:shadow-md">
+    <div className="flex items-start gap-4 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]">
       <div className="min-w-0 flex-1">
         <div className="text-label font-semibold uppercase tracking-wide text-black/45">
           {subjectName} · {topicName}

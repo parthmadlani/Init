@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { BackToHomeLink } from "@/components/back-to-home-link";
 import { WizardForm } from "./wizard-form";
 
 export default async function WizardPage() {
@@ -9,6 +10,7 @@ export default async function WizardPage() {
 
   return (
     <main className="mx-auto flex min-h-[calc(100dvh-65px)] max-w-lg flex-col justify-center px-6 py-12">
+      <BackToHomeLink />
       <WizardForm subjects={subjects.map((s) => ({ id: s.id, name: s.name, topicCount: s._count.topics }))} />
     </main>
   );

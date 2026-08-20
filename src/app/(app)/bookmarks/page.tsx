@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { getUserResourceBookmarks } from "@/lib/services/bookmark-service";
+import { BackToHomeLink } from "@/components/back-to-home-link";
 import { BookmarkRow } from "./bookmark-row";
 
 export default async function BookmarksPage() {
@@ -11,6 +12,7 @@ export default async function BookmarksPage() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-10">
+      <BackToHomeLink />
       <h1 className="font-serif text-display font-bold text-brand-dark">Bookmarks</h1>
       <p className="mt-1 text-sm text-black/65">Videos you saved to come back to later.</p>
 
