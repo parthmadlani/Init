@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { getPathDetail } from "@/lib/services/path-service";
 import { TopicRow } from "./topic-row";
@@ -13,7 +14,16 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
   const isComplete = path.totalCount > 0 && path.completedCount === path.totalCount;
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-10">
+    <main className="mx-auto max-w-4xl px-6 py-10">
+      <Link
+        href="/dashboard"
+        className="mb-4 inline-flex items-center gap-1.5 text-sm font-semibold text-black/55 transition hover:text-brand-dark"
+      >
+        <svg viewBox="0 0 20 20" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M12.5 4.5 7 10l5.5 5.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Back to home
+      </Link>
       <p className="text-label font-bold uppercase tracking-wide text-brand-pink">
         {path.goal.type.toLowerCase()} · {path.goal.level.toLowerCase()}
       </p>
@@ -35,7 +45,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
         </>
       )}
 
-      <div className="mt-8 flex flex-col gap-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {path.topics.map((topic) => (
           <TopicRow
             key={topic.id}

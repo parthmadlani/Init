@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Card, CardContent } from "@/components/ui/card";
 import { fireCompletionConfetti } from "@/lib/confetti";
 
 type Status = "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE";
@@ -18,7 +19,7 @@ const NEXT_STATUS: Record<Status, Status> = {
 const STATUS_STYLE: Record<Status, string> = {
   NOT_STARTED: "border-black/20 bg-white",
   IN_PROGRESS: "border-brand-cyan bg-brand-cyan-light",
-  COMPLETE: "border-brand-dark bg-brand-dark text-white",
+  COMPLETE: "border-brand-cyan bg-brand-cyan text-white",
 };
 
 type Resource = {
@@ -199,55 +200,54 @@ export function TopicRow({
   }
 
   return (
-    <div
-      className="animate-row-in flex flex-col gap-3 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-black/20 hover:shadow-md motion-reduce:animate-none sm:flex-row sm:items-center"
+    <Card
+      className="animate-row-in h-full rounded-card border border-black/10 bg-white shadow-none ring-0 transition duration-150 hover:border-black/20 hover:shadow-md motion-reduce:animate-none"
       style={{ animationDelay: `${Math.min(order - 1, 10) * 40}ms` }}
     >
-      <div className="flex min-w-0 flex-1 items-center gap-4">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              onClick={toggle}
-              disabled={isPending}
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
-            >
-              {status === "COMPLETE" ? "✓" : order}
-            </button>
-          </TooltipTrigger>
-          <TooltipContent>Click to advance status</TooltipContent>
-        </Tooltip>
+      <CardContent className="flex h-full flex-col gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={toggle}
+                disabled={isPending}
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
+              >
+                {status === "COMPLETE" ? "✓" : order}
+              </button>
+            </TooltipTrigger>
+            <TooltipContent>Click to advance status</TooltipContent>
+          </Tooltip>
+          <span className="mt-1.5 text-label font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
+        </div>
+
         <div className="min-w-0 flex-1">
-          <div className="font-semibold text-brand-dark">{name}</div>
+          <div className="line-clamp-2 font-semibold text-brand-dark">{name}</div>
           {resource ? (
             <a
               href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-0.5 block text-xs"
+              className="group mt-1 block text-xs"
             >
               <span className="line-clamp-2 text-black/70 group-hover:text-brand-pink group-hover:underline">
                 {resource.title}
               </span>
-              <span className="text-black/55">{formatDuration(resource.durationSeconds)}</span>
-              {resource.aiTag && <span className="block text-black/55 italic">{resource.aiTag}</span>}
+              <span className="mt-0.5 block text-black/55">{formatDuration(resource.durationSeconds)}</span>
+              {resource.aiTag && <span className="mt-0.5 line-clamp-2 block text-black/55 italic">{resource.aiTag}</span>}
             </a>
           ) : (
-            <div className="mt-0.5 text-xs text-black/65">No matching video found yet</div>
+            <div className="mt-1 text-xs text-black/65">No matching video found yet</div>
           )}
         </div>
-      </div>
-      {/* Thumbs + status get their own row under 48px of left padding (matching the
-          circle + gap above) on mobile, where they'd otherwise squeeze the title
-          column down to a couple of words per line — see design review §02. */}
-      <div className="flex shrink-0 items-center justify-between gap-3 pl-12 sm:justify-end sm:pl-0">
+
         {resource && (
-          <>
+          <div className="mt-auto flex items-center justify-end gap-1 border-t border-black/5 pt-2">
             <BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} />
             <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />
-          </>
+          </div>
         )}
-        <span className="text-label font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
