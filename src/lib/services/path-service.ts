@@ -195,6 +195,28 @@ export async function getPathDetail(pathId: string, userId: string) {
 }
 
 /**
+ * Single-topic view for the embedded player page — reuses getPathDetail
+ * rather than re-deriving the resource/feedback/bookmark joins, and hands
+ * back the neighboring topics so the player page can offer "next lesson"
+ * navigation without a second query.
+ */
+export async function getTopicDetail(pathId: string, topicId: string, userId: string) {
+  const path = await getPathDetail(pathId, userId);
+  if (!path) return null;
+
+  const index = path.topics.findIndex((t) => t.id === topicId);
+  if (index === -1) return null;
+
+  return {
+    pathId: path.id,
+    subjectName: path.subject.name,
+    topic: path.topics[index],
+    prevTopic: index > 0 ? path.topics[index - 1] : null,
+    nextTopic: index < path.topics.length - 1 ? path.topics[index + 1] : null,
+  };
+}
+
+/**
  * Lightweight counterpart to getPathDetail's learnable-topic filter, for
  * dashboard summary rows that only need counts, not full topic/resource
  * objects — keeps the "X/Y topics" number consistent between the two.

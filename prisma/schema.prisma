@@ -173,6 +173,12 @@ model Progress {
   pct            Int            @default(0)
   lastAccessedAt DateTime?
 
+  // Furthest playback position the YouTube IFrame player has reached, in
+  // seconds — monotonic (never decreases), so scrubbing back doesn't lose
+  // credit and scrubbing forward can't be used to skip ahead of what's
+  // actually been watched. Drives both resume-on-return and pct/status.
+  watchedSeconds Int @default(0)
+
   // The per-path checklist — distinct from ActivityLog, which is the
   // GitHub-style daily calendar. See spec §05.
   @@unique([userId, topicId])

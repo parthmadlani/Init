@@ -20,15 +20,21 @@ function startOfDay(date: Date) {
  * Spec v2 §05 for why they're separate tables.
  */
 export async function updateProgress(input: UpdateProgressInput) {
+  // A manual reset to NOT_STARTED should also drop the player's resume
+  // position — otherwise the pill says "not started" but reopening the
+  // video jumps back in near the end from a prior watch session.
+  const watchedSeconds = input.status === "NOT_STARTED" ? 0 : undefined;
+
   const [progress] = await prisma.$transaction([
     prisma.progress.upsert({
       where: { userId_topicId: { userId: input.userId, topicId: input.topicId } },
-      update: { status: input.status, pct: input.pct, lastAccessedAt: new Date() },
+      update: { status: input.status, pct: input.pct, watchedSeconds, lastAccessedAt: new Date() },
       create: {
         userId: input.userId,
         topicId: input.topicId,
         status: input.status,
         pct: input.pct,
+        watchedSeconds: watchedSeconds ?? 0,
         lastAccessedAt: new Date(),
       },
     }),
@@ -37,6 +43,57 @@ export async function updateProgress(input: UpdateProgressInput) {
       update: { activityCount: { increment: 1 } },
       create: { userId: input.userId, date: startOfDay(new Date()), activityCount: 1 },
     }),
+  ]);
+
+  return progress;
+}
+
+const COMPLETE_THRESHOLD_PCT = 90;
+
+/**
+ * Records real playback progress from the embedded YouTube player (furthest
+ * timestamp reached, sampled every ~15s — see topic-player.tsx). This is a
+ * heartbeat, not a discrete user action like a manual status click, so unlike
+ * updateProgress it only bumps ActivityLog when the derived status actually
+ * transitions (NOT_STARTED → IN_PROGRESS → COMPLETE) — otherwise a single
+ * 20-minute video would log dozens of "updates" for one day and blow out the
+ * activity calendar's buckets.
+ *
+ * watchedSeconds is monotonic: a rewind can't lower it, so scrubbing back to
+ * rewatch a section never costs progress, and scrubbing forward can't be
+ * used to fake having watched further than the player has actually reached.
+ */
+export async function recordWatchProgress(input: {
+  userId: string;
+  topicId: string;
+  watchedSeconds: number;
+  durationSeconds: number;
+}) {
+  const existing = await prisma.progress.findUnique({
+    where: { userId_topicId: { userId: input.userId, topicId: input.topicId } },
+  });
+
+  const watchedSeconds = Math.max(existing?.watchedSeconds ?? 0, input.watchedSeconds);
+  const pct =
+    input.durationSeconds > 0 ? Math.min(100, Math.round((watchedSeconds / input.durationSeconds) * 100)) : 0;
+  const status: ProgressStatus = pct >= COMPLETE_THRESHOLD_PCT ? "COMPLETE" : pct > 0 ? "IN_PROGRESS" : "NOT_STARTED";
+  const statusChanged = (existing?.status ?? "NOT_STARTED") !== status;
+
+  const [progress] = await prisma.$transaction([
+    prisma.progress.upsert({
+      where: { userId_topicId: { userId: input.userId, topicId: input.topicId } },
+      update: { status, pct, watchedSeconds, lastAccessedAt: new Date() },
+      create: { userId: input.userId, topicId: input.topicId, status, pct, watchedSeconds, lastAccessedAt: new Date() },
+    }),
+    ...(statusChanged
+      ? [
+          prisma.activityLog.upsert({
+            where: { userId_date: { userId: input.userId, date: startOfDay(new Date()) } },
+            update: { activityCount: { increment: 1 } },
+            create: { userId: input.userId, date: startOfDay(new Date()), activityCount: 1 },
+          }),
+        ]
+      : []),
   ]);
 
   return progress;

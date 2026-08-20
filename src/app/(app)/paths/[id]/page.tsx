@@ -41,10 +41,12 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
         {path.topics.map((topic) => (
           <TopicRow
             key={topic.id}
+            pathId={path.id}
             order={topic.order}
             name={topic.name}
             topicId={topic.id}
             initialStatus={topic.progress?.status ?? "NOT_STARTED"}
+            initialPct={topic.progress?.pct ?? 0}
             completedCount={path.completedCount}
             totalCount={path.totalCount}
             resource={
