@@ -14,7 +14,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
   const isComplete = path.totalCount > 0 && path.completedCount === path.totalCount;
 
   return (
-    <main className="mx-auto max-w-4xl px-6 py-10">
+    <main className="mx-auto max-w-6xl px-6 py-10">
       <BackToHomeLink />
       <p className="text-label font-bold uppercase tracking-wide text-brand-pink">
         {path.goal.type.toLowerCase()} · {path.goal.level.toLowerCase()}
@@ -37,7 +37,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
         </>
       )}
 
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {path.topics.map((topic) => (
           <TopicRow
             key={topic.id}

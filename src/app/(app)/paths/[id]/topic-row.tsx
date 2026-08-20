@@ -22,6 +22,24 @@ const STATUS_STYLE: Record<Status, string> = {
   COMPLETE: "border-brand-cyan bg-brand-cyan text-white",
 };
 
+const STATUS_LABEL: Record<Status, string> = {
+  NOT_STARTED: "not started",
+  IN_PROGRESS: "in progress",
+  COMPLETE: "complete",
+};
+
+const STATUS_PILL: Record<Status, string> = {
+  NOT_STARTED: "bg-black/5 text-black/60",
+  IN_PROGRESS: "bg-brand-cyan-light text-brand-cyan",
+  COMPLETE: "bg-brand-pink-light text-brand-pink",
+};
+
+const STATUS_PCT: Record<Status, number> = {
+  NOT_STARTED: 0,
+  IN_PROGRESS: 50,
+  COMPLETE: 100,
+};
+
 type Resource = {
   id: string;
   title: string;
@@ -56,6 +74,15 @@ function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: bo
         strokeLinejoin="round"
       />
       <path d="M7 8.5H4.5v7.5H7" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ClockIcon() {
+  return (
+    <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.6">
+      <circle cx="10" cy="10" r="7.25" />
+      <path d="M10 6v4.2l2.8 1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -199,62 +226,86 @@ export function TopicRow({
     });
   }
 
+  const pct = STATUS_PCT[status];
+
   return (
     <Card
-      className="animate-row-in h-full rounded-card border border-black/10 bg-white shadow-none ring-0 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)] motion-reduce:animate-none"
+      className="animate-row-in h-full gap-0 overflow-hidden rounded-card border border-black/10 bg-white py-0 shadow-none ring-0 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)] motion-reduce:animate-none"
       style={{ animationDelay: `${Math.min(order - 1, 10) * 40}ms` }}
     >
-      <CardContent className="flex h-full flex-col gap-3">
+      {resource ? (
+        <a href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`} target="_blank" rel="noopener noreferrer">
+          <img
+            src={`https://i.ytimg.com/vi/${resource.youtubeVideoId}/hqdefault.jpg`}
+            alt=""
+            className="h-40 w-full object-cover"
+            loading="lazy"
+          />
+        </a>
+      ) : (
+        <div className="flex h-40 w-full items-center justify-center bg-black/5 text-xs text-black/45">No video yet</div>
+      )}
+
+      <CardContent className="flex h-full flex-col gap-3 px-4 pt-4">
         <div className="flex items-start justify-between gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                onClick={toggle}
-                disabled={isPending}
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
-              >
-                {status === "COMPLETE" ? "✓" : order}
-              </button>
-            </TooltipTrigger>
-            <TooltipContent>Click to advance status</TooltipContent>
-          </Tooltip>
-          <span className="mt-1.5 text-label font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
+          <div className="flex min-w-0 items-center gap-2">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={toggle}
+                  disabled={isPending}
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition ${STATUS_STYLE[status]}`}
+                >
+                  {status === "COMPLETE" ? "✓" : order}
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>Click to advance status</TooltipContent>
+            </Tooltip>
+            <div className="line-clamp-1 font-semibold text-brand-dark">{name}</div>
+          </div>
+          <span className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold ${STATUS_PILL[status]}`}>
+            {STATUS_LABEL[status]}
+          </span>
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="line-clamp-2 font-semibold text-brand-dark">{name}</div>
-          {resource ? (
-            <a
-              href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-1 block text-xs"
-            >
-              <span className="line-clamp-2 text-black/70 group-hover:text-brand-pink group-hover:underline">
-                {resource.title}
-              </span>
-              <span className="mt-1 block text-black/55">
-                <span className="font-semibold text-black/70">Time: </span>
-                {formatDuration(resource.durationSeconds)}
-              </span>
-              {resource.aiTag && (
-                <span className="mt-0.5 line-clamp-2 block text-black/55">
-                  <span className="font-semibold text-black/70">Description: </span>
-                  <span className="italic">{resource.aiTag}</span>
-                </span>
-              )}
-            </a>
-          ) : (
-            <div className="mt-1 text-xs text-black/65">No matching video found yet</div>
+        {resource ? (
+          <a
+            href={`https://www.youtube.com/watch?v=${resource.youtubeVideoId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group -mt-1 block text-xs"
+          >
+            <span className="line-clamp-2 text-black/70 group-hover:text-brand-pink group-hover:underline">
+              {resource.title}
+            </span>
+            {resource.aiTag && <span className="mt-0.5 line-clamp-2 block text-black/55 italic">{resource.aiTag}</span>}
+          </a>
+        ) : (
+          <div className="-mt-1 text-xs text-black/65">No matching video found yet</div>
+        )}
+
+        <div className="mt-auto">
+          <div className="flex items-center justify-between text-xs text-black/55">
+            <span>{pct}% Progress</span>
+            <span className="capitalize">{STATUS_LABEL[status]}</span>
+          </div>
+          <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-black/10">
+            <div className="h-full rounded-full bg-brand-pink transition-all" style={{ width: `${pct}%` }} />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-black/5 pt-2">
+          <span className="flex items-center gap-1 text-xs text-black/55">
+            <ClockIcon />
+            {resource ? formatDuration(resource.durationSeconds) : "—"}
+          </span>
+          {resource && (
+            <div className="flex items-center gap-1">
+              <BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} />
+              <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />
+            </div>
           )}
         </div>
-
-        {resource && (
-          <div className="mt-auto flex items-center justify-end gap-1 border-t border-black/5 pt-2">
-            <BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} />
-            <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />
-          </div>
-        )}
       </CardContent>
     </Card>
   );
