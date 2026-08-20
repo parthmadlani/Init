@@ -233,8 +233,16 @@ export function TopicRow({
               <span className="line-clamp-2 text-black/70 group-hover:text-brand-pink group-hover:underline">
                 {resource.title}
               </span>
-              <span className="mt-0.5 block text-black/55">{formatDuration(resource.durationSeconds)}</span>
-              {resource.aiTag && <span className="mt-0.5 line-clamp-2 block text-black/55 italic">{resource.aiTag}</span>}
+              <span className="mt-1 block text-black/55">
+                <span className="font-semibold text-black/70">Time: </span>
+                {formatDuration(resource.durationSeconds)}
+              </span>
+              {resource.aiTag && (
+                <span className="mt-0.5 line-clamp-2 block text-black/55">
+                  <span className="font-semibold text-black/70">Description: </span>
+                  <span className="italic">{resource.aiTag}</span>
+                </span>
+              )}
             </a>
           ) : (
             <div className="mt-1 text-xs text-black/65">No matching video found yet</div>
