@@ -37,9 +37,21 @@ export async function createGoalWithPath(input: CreateGoalInput) {
     throw new Error("Subject has no topics yet");
   }
 
+  // One goal per (user, subject) — see the schema's @@unique. Re-running the
+  // wizard for a subject you already have a path for updates it in place
+  // (new type/level/dailyMinutes, re-ranked resources) instead of leaving a
+  // duplicate "Python" row on the dashboard. Progress stays intact either
+  // way since it's keyed by topic, not by path.
   const { goal, path } = await prisma.$transaction(async (tx) => {
-    const goal = await tx.goal.create({
-      data: {
+    const goal = await tx.goal.upsert({
+      where: { userId_subjectId: { userId: input.userId, subjectId: input.subjectId } },
+      update: {
+        type: input.type,
+        level: input.level,
+        dailyMinutes: input.dailyMinutes,
+        notes: input.notes,
+      },
+      create: {
         userId: input.userId,
         subjectId: input.subjectId,
         type: input.type,
@@ -49,8 +61,10 @@ export async function createGoalWithPath(input: CreateGoalInput) {
       },
     });
 
-    const path = await tx.path.create({
-      data: {
+    const path = await tx.path.upsert({
+      where: { goalId: goal.id },
+      update: { orderedTopicIds: topics.map((t) => t.id) },
+      create: {
         userId: input.userId,
         goalId: goal.id,
         orderedTopicIds: topics.map((t) => t.id),
@@ -127,10 +141,16 @@ export async function getPathDetail(pathId: string, userId: string) {
   const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p]));
 
   const resourceIds = topics.flatMap((t) => t.resources.map((r) => r.id));
-  const feedbackRows = resourceIds.length
-    ? await prisma.resourceFeedback.findMany({ where: { userId, resourceId: { in: resourceIds } } })
-    : [];
+  const [feedbackRows, bookmarkRows] = await Promise.all([
+    resourceIds.length
+      ? prisma.resourceFeedback.findMany({ where: { userId, resourceId: { in: resourceIds } } })
+      : Promise.resolve([]),
+    resourceIds.length
+      ? prisma.bookmark.findMany({ where: { userId, targetType: "RESOURCE", resourceId: { in: resourceIds } } })
+      : Promise.resolve([]),
+  ]);
   const feedbackByResourceId = new Map(feedbackRows.map((f) => [f.resourceId, f.reaction]));
+  const bookmarkIdByResourceId = new Map(bookmarkRows.map((b) => [b.resourceId!, b.id]));
 
   const orderedTopics = path.orderedTopicIds
     .map((id) => topicsById.get(id))
@@ -142,7 +162,13 @@ export async function getPathDetail(pathId: string, userId: string) {
         slug: topic.slug,
         name: topic.name,
         order: topic.order,
-        resource: resource ? { ...resource, userReaction: feedbackByResourceId.get(resource.id) ?? null } : null,
+        resource: resource
+          ? {
+              ...resource,
+              userReaction: feedbackByResourceId.get(resource.id) ?? null,
+              bookmarkId: bookmarkIdByResourceId.get(resource.id) ?? null,
+            }
+          : null,
         progress: progressByTopicId.get(topic.id) ?? null,
       };
     });

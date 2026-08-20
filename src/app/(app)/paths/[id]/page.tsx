@@ -54,6 +54,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
                     durationSeconds: topic.resource.durationSeconds,
                     userReaction: topic.resource.userReaction,
                     aiTag: topic.resource.aiTag,
+                    bookmarkId: topic.resource.bookmarkId,
                   }
                 : null
             }

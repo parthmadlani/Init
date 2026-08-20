@@ -140,6 +140,9 @@ model Goal {
 
   path Path?
 
+  // One goal per subject per user — createGoalWithPath updates the existing
+  // goal+path in place instead of creating a duplicate (see path-service.ts).
+  @@unique([userId, subjectId])
   @@index([userId])
   @@index([subjectId])
   @@map("goals")

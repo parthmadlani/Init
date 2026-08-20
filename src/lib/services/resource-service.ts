@@ -69,9 +69,14 @@ function scoreCandidate(
   topicKeywords: string[],
   level: Level,
   dailyMinutes: number,
+  feedback: ResourceFeedbackSignal | null,
 ): number {
   const title = candidate.title.toLowerCase();
   let score = Math.max(0, 10 - searchRank);
+
+  if (feedback && candidate.videoId === feedback.videoId) {
+    score += feedback.adjustment;
+  }
 
   const topicHits = topicKeywords.filter((keyword) => title.includes(keyword)).length;
   if (topicHits > 0) {
@@ -111,22 +116,34 @@ const FILTER_TIERS: Array<(candidate: YoutubeCandidate, dailyMinutes: number) =>
   (c, dailyMinutes) => c.durationSeconds <= dailyMinutes * 60 * MAX_DURATION_MULTIPLE * 2,
 ];
 
+// Deterministic ranking on real usage (Build Spec v2 §04 update, closing the
+// gap docs/api.md flags under "Known gaps") — not ML, just a bounded scoring
+// adjustment plus one hard rule, both driven by ResourceFeedback counts on
+// the video currently matched to this topic+level.
+type ResourceFeedbackSignal = { videoId: string; adjustment: number };
+const FEEDBACK_SCORE_WEIGHT = 6;
+const FEEDBACK_SCORE_CAP = 18;
+const HARD_EXCLUDE_MIN_NOT_HELPFUL = 3;
+
 function pickBestCandidate(
   candidates: YoutubeCandidate[],
   topicName: string,
   level: Level,
   dailyMinutes: number,
+  feedback: ResourceFeedbackSignal | null,
+  excludeVideoId: string | null,
 ): YoutubeCandidate | null {
   const topicKeywords = topicName.toLowerCase().split(/\s+/).filter((word) => word.length > 2);
+  const pool = excludeVideoId ? candidates.filter((c) => c.videoId !== excludeVideoId) : candidates;
 
   for (const passesTier of FILTER_TIERS) {
-    const qualified = candidates.filter((candidate) => passesTier(candidate, dailyMinutes));
+    const qualified = pool.filter((candidate) => passesTier(candidate, dailyMinutes));
     if (qualified.length === 0) continue;
 
     let best = qualified[0];
     let bestScore = -Infinity;
     qualified.forEach((candidate, index) => {
-      const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes);
+      const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes, feedback);
       if (score > bestScore) {
         bestScore = score;
         best = candidate;
@@ -163,7 +180,31 @@ async function ensureResourceForTopic(
     return null;
   }
 
-  const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes);
+  const existing = await prisma.resource.findUnique({
+    where: { topicId_level: { topicId: topic.id, level } },
+    select: { id: true, youtubeVideoId: true, aiTag: true },
+  });
+
+  let feedback: ResourceFeedbackSignal | null = null;
+  let excludeVideoId: string | null = null;
+  if (existing) {
+    const [helpfulCount, notHelpfulCount] = await Promise.all([
+      prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "HELPFUL" } }),
+      prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "NOT_HELPFUL" } }),
+    ]);
+    if (notHelpfulCount >= HARD_EXCLUDE_MIN_NOT_HELPFUL && notHelpfulCount > helpfulCount) {
+      // Clearly disliked, not just mixed — stop re-matching it and let a
+      // different candidate win, rather than nudge a score that a strong
+      // topic-keyword match could still overpower.
+      excludeVideoId = existing.youtubeVideoId;
+    } else {
+      const net = helpfulCount - notHelpfulCount;
+      const adjustment = Math.max(-FEEDBACK_SCORE_CAP, Math.min(FEEDBACK_SCORE_CAP, net * FEEDBACK_SCORE_WEIGHT));
+      if (adjustment !== 0) feedback = { videoId: existing.youtubeVideoId, adjustment };
+    }
+  }
+
+  const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes, feedback, excludeVideoId);
   if (!best) {
     // Nothing cleared even the loosest fallback tier — clear any stale
     // Resource left over from an earlier, looser computation rather than
@@ -171,11 +212,6 @@ async function ensureResourceForTopic(
     await prisma.resource.deleteMany({ where: { topicId: topic.id, level } });
     return null;
   }
-
-  const existing = await prisma.resource.findUnique({
-    where: { topicId_level: { topicId: topic.id, level } },
-    select: { youtubeVideoId: true, aiTag: true },
-  });
 
   const resource = await prisma.resource.upsert({
     where: { topicId_level: { topicId: topic.id, level } },

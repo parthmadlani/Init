@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,6 +39,9 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
           </div>
         </div>
         <DropdownMenuSeparator className="bg-black/10" />
+        <DropdownMenuItem asChild className="cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70">
+          <Link href="/bookmarks">Bookmarks</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => onSignOut()}
           className="mt-1 w-full cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70"

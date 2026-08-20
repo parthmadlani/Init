@@ -28,6 +28,7 @@ type Resource = {
   durationSeconds: number;
   userReaction: Reaction | null;
   aiTag: string | null;
+  bookmarkId: string | null;
 } | null;
 
 function formatDuration(seconds: number): string {
@@ -55,6 +56,56 @@ function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: bo
       />
       <path d="M7 8.5H4.5v7.5H7" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+function BookmarkIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg viewBox="0 0 20 20" width="16" height="16" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6">
+      <path d="M5 3.5h10a.5.5 0 0 1 .5.5v12.3a.5.5 0 0 1-.77.42L10 13.5l-4.73 3.22a.5.5 0 0 1-.77-.42V4a.5.5 0 0 1 .5-.5Z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function BookmarkToggle({ resourceId, initialBookmarkId }: { resourceId: string; initialBookmarkId: string | null }) {
+  const [bookmarkId, setBookmarkId] = useState(initialBookmarkId);
+  const [isPending, startTransition] = useTransition();
+
+  function toggle() {
+    const wasBookmarked = bookmarkId !== null;
+    startTransition(async () => {
+      if (wasBookmarked) {
+        setBookmarkId(null);
+        await fetch(`/api/v1/bookmarks/${bookmarkId}`, { method: "DELETE" });
+      } else {
+        const res = await fetch("/api/v1/bookmarks", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ targetType: "RESOURCE", resourceId }),
+        });
+        const body = await res.json().catch(() => null);
+        if (res.ok && body?.bookmark?.id) setBookmarkId(body.bookmark.id);
+      }
+    });
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggle();
+          }}
+          disabled={isPending}
+          className={`rounded-control p-3.5 transition ${bookmarkId ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
+        >
+          <BookmarkIcon filled={bookmarkId !== null} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent>{bookmarkId ? "Remove bookmark" : "Bookmark this video"}</TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -189,7 +240,12 @@ export function TopicRow({
           circle + gap above) on mobile, where they'd otherwise squeeze the title
           column down to a couple of words per line — see design review §02. */}
       <div className="flex shrink-0 items-center justify-between gap-3 pl-12 sm:justify-end sm:pl-0">
-        {resource && <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />}
+        {resource && (
+          <>
+            <BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} />
+            <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />
+          </>
+        )}
         <span className="text-label font-semibold text-black/65">{status.replace("_", " ").toLowerCase()}</span>
       </div>
     </div>
