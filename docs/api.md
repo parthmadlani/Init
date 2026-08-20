@@ -101,7 +101,7 @@ Response `200`:
         id: string; youtubeVideoId: string; title: string; channelName: string; durationSeconds: number;
         userReaction: "HELPFUL" | "NOT_HELPFUL" | null; // caller's own feedback, if any
       } | null;
-      progress: { status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE"; pct: number } | null;
+      progress: { status: "NOT_STARTED" | "IN_PROGRESS" | "COMPLETE"; pct: number; watchedSeconds: number } | null;
     }[];
     completedCount: number;
     totalCount: number;
@@ -115,7 +115,7 @@ Response `200`:
 ## Progress & activity
 
 ### `POST /api/v1/progress`
-Upserts a topic's checklist status and bumps today's `ActivityLog` row in the same transaction (see `progress-service.ts` — the two progress signals, checklist and calendar, stay in sync from one call site).
+Manual override — upserts a topic's checklist status and bumps today's `ActivityLog` row in the same transaction (see `progress-service.ts` — the two progress signals, checklist and calendar, stay in sync from one call site). Used by the numbered-circle click on both the topic grid and the topic detail page. Setting `status: "NOT_STARTED"` also resets `watchedSeconds` to 0, so a manual reset doesn't leave a stale resume position for a video that then reports "not started."
 
 Request:
 ```ts
@@ -123,8 +123,19 @@ Request:
 ```
 Response `200`:
 ```ts
-{ progress: { id: string; userId: string; topicId: string; status: string; pct: number; lastAccessedAt: string } }
+{ progress: { id: string; userId: string; topicId: string; status: string; pct: number; watchedSeconds: number; lastAccessedAt: string } }
 ```
+
+### `POST /api/v1/progress/watch`
+Heartbeat from the embedded YouTube player on `/paths/:id/topics/:topicId` (see `topic-player.tsx`), sent every ~15s while playing plus on pause/tab-hide/unload. Reports the furthest playback position reached, not a raw timestamp — `recordWatchProgress` takes `max(existing.watchedSeconds, watchedSeconds)`, so rewinding to rewatch a section never costs progress and scrubbing forward can't fake having watched further than the player actually reached. Crossing 90% watched auto-transitions the topic to `COMPLETE`.
+
+Unlike `POST /api/v1/progress`, this does **not** bump `ActivityLog` on every call — only when the derived status actually transitions (NOT_STARTED → IN_PROGRESS → COMPLETE). A single video session heartbeats dozens of times; treating each one as a discrete "activity" would blow out the activity calendar's day buckets.
+
+Request:
+```ts
+{ topicId: string; watchedSeconds: number; durationSeconds: number }
+```
+Response `200`: same shape as `POST /api/v1/progress`.
 
 ### `GET /api/v1/activity`
 Last 84 days of activity, oldest first, gaps filled with 0 — feeds the GitHub-style calendar.
