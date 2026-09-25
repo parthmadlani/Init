@@ -109,6 +109,14 @@ model Resource {
   durationSeconds Int
   level           Level
 
+  // The daily time budget this specific match was scored against (duration
+  // cap + scoring bonus in resource-service.ts both depend on it). Part of
+  // the unique key so a goal created with a smaller/larger budget can't
+  // silently overwrite the pick another student's goal already matched at
+  // the same (topic, level) — see getPathDetail, which now reads this back
+  // by goal.dailyMinutes instead of "whichever row was cached most recently."
+  dailyMinutes Int @default(60)
+
   // Not permanent — YouTube's data-retention rules require refreshing
   // API-derived fields, not treating them as owned data. See spec §05/§65.
   cachedAt DateTime @default(now())
@@ -121,9 +129,9 @@ model Resource {
   bookmarks Bookmark[]
   feedback  ResourceFeedback[]
 
-  // One matched video per (topic, level) — re-fetching re-ranks in place
-  // rather than piling up rows. See lib/services/resource-service.ts.
-  @@unique([topicId, level])
+  // One matched video per (topic, level, dailyMinutes) — re-fetching re-ranks
+  // in place rather than piling up rows. See lib/services/resource-service.ts.
+  @@unique([topicId, level, dailyMinutes])
   @@map("resources")
 }
 

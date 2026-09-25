@@ -127,9 +127,12 @@ export async function getPathDetail(pathId: string, userId: string) {
     prisma.topic.findMany({
       where: { id: { in: path.orderedTopicIds } },
       include: {
-        // A topic can have a matched Resource per level (see Resource's
-        // topicId+level unique constraint) — only this goal's level applies.
-        resources: { where: { level: path.goal.level }, orderBy: { cachedAt: "desc" }, take: 1 },
+        // A topic can have a matched Resource per (level, dailyMinutes) — see
+        // Resource's unique constraint — so both of this goal's own values
+        // must be matched here, not just level. Otherwise a re-match
+        // triggered by a different student's daily-minutes budget could
+        // silently swap in a video sized for someone else's time budget.
+        resources: { where: { level: path.goal.level, dailyMinutes: path.goal.dailyMinutes }, orderBy: { cachedAt: "desc" }, take: 1 },
       },
     }),
     prisma.progress.findMany({
@@ -221,9 +224,9 @@ export async function getTopicDetail(pathId: string, topicId: string, userId: st
  * dashboard summary rows that only need counts, not full topic/resource
  * objects — keeps the "X/Y topics" number consistent between the two.
  */
-export async function getPathSummary(orderedTopicIds: string[], level: Level, userId: string) {
+export async function getPathSummary(orderedTopicIds: string[], level: Level, dailyMinutes: number, userId: string) {
   const [resourcedTopics, progressRows] = await Promise.all([
-    prisma.resource.findMany({ where: { topicId: { in: orderedTopicIds }, level }, select: { topicId: true } }),
+    prisma.resource.findMany({ where: { topicId: { in: orderedTopicIds }, level, dailyMinutes }, select: { topicId: true } }),
     prisma.progress.findMany({ where: { userId, topicId: { in: orderedTopicIds } }, select: { topicId: true, status: true } }),
   ]);
 
@@ -249,7 +252,7 @@ export async function getAllPathSummaries(userId: string) {
 
   const summaries = await Promise.all(
     paths.map(async (path) => {
-      const { total, completed } = await getPathSummary(path.orderedTopicIds, path.goal.level, userId);
+      const { total, completed } = await getPathSummary(path.orderedTopicIds, path.goal.level, path.goal.dailyMinutes, userId);
       return { id: path.id, subjectName: path.goal.subject.name, total, completed };
     })
   );

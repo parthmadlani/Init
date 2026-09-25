@@ -181,7 +181,7 @@ async function ensureResourceForTopic(
   }
 
   const existing = await prisma.resource.findUnique({
-    where: { topicId_level: { topicId: topic.id, level } },
+    where: { topicId_level_dailyMinutes: { topicId: topic.id, level, dailyMinutes } },
     select: { id: true, youtubeVideoId: true, aiTag: true },
   });
 
@@ -209,12 +209,14 @@ async function ensureResourceForTopic(
     // Nothing cleared even the loosest fallback tier — clear any stale
     // Resource left over from an earlier, looser computation rather than
     // silently keeping it. getPathDetail hides topics with no Resource.
-    await prisma.resource.deleteMany({ where: { topicId: topic.id, level } });
+    // Scoped to this dailyMinutes bucket only — other budgets' matches for
+    // the same topic/level are unrelated and must not be wiped out here.
+    await prisma.resource.deleteMany({ where: { topicId: topic.id, level, dailyMinutes } });
     return null;
   }
 
   const resource = await prisma.resource.upsert({
-    where: { topicId_level: { topicId: topic.id, level } },
+    where: { topicId_level_dailyMinutes: { topicId: topic.id, level, dailyMinutes } },
     update: {
       youtubeVideoId: best.videoId,
       title: best.title,
@@ -225,6 +227,7 @@ async function ensureResourceForTopic(
     create: {
       topicId: topic.id,
       level,
+      dailyMinutes,
       youtubeVideoId: best.videoId,
       title: best.title,
       channelName: best.channelName,
