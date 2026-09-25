@@ -1,15 +1,15 @@
-import { Mistral } from "@mistralai/mistralai";
+import { GoogleGenAI } from "@google/genai";
 import { z } from "zod";
 
-const MODEL = "mistral-small-latest";
+const MODEL = "gemini-2.5-flash";
 const TIMEOUT_MS = 10_000;
 
-let client: Mistral | null = null;
+let client: GoogleGenAI | null = null;
 
-function getClient(): Mistral | null {
+function getClient(): GoogleGenAI | null {
   const apiKey = process.env.AI_API_KEY;
   if (!apiKey) return null;
-  if (!client) client = new Mistral({ apiKey });
+  if (!client) client = new GoogleGenAI({ apiKey });
   return client;
 }
 
@@ -17,7 +17,11 @@ function getClient(): Mistral | null {
  * Graceful-degradation boundary for every AI call in the app (Build Spec v2
  * Phase 06) — missing key, network failure, timeout, refusal, and bad parses
  * all collapse to null instead of throwing, so every caller can fall back to
- * the deterministic wizard/path behavior with no special-casing.
+ * the deterministic wizard/path behavior with no special-casing. Schema
+ * enforcement happens via Zod's own safeParse rather than the provider's
+ * native structured-output mode, so swapping providers (this one runs on
+ * Gemini's free tier) never has to also match a provider-specific schema
+ * dialect — only "does this JSON match the Zod shape" has to hold.
  */
 export async function generateStructured<T>(
   schemaName: string,
@@ -25,30 +29,29 @@ export async function generateStructured<T>(
   systemPrompt: string,
   userPrompt: string,
 ): Promise<T | null> {
-  const mistral = getClient();
-  if (!mistral) return null;
+  const gemini = getClient();
+  if (!gemini) return null;
 
   try {
-    const response = await mistral.chat.complete(
-      {
+    const response = await Promise.race([
+      gemini.models.generateContent({
         model: MODEL,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
-        ],
-        responseFormat: {
-          type: "json_schema",
-          jsonSchema: {
-            name: schemaName,
-            schemaDefinition: z.toJSONSchema(schema) as Record<string, unknown>,
-            strict: true,
-          },
+        contents: userPrompt,
+        config: {
+          systemInstruction: systemPrompt,
+          responseMimeType: "application/json",
+          // Without this, Gemini free-styles the JSON shape (e.g. a bare
+          // array of IDs instead of the { topicIds: [...] } the Zod schema
+          // expects) — schema.safeParse then silently rejects it and every
+          // caller sees "no suggestions," indistinguishable from an actual
+          // AI failure. Constraining the shape up front avoids that.
+          responseSchema: z.toJSONSchema(schema) as Record<string, unknown>,
         },
-      },
-      { timeoutMs: TIMEOUT_MS },
-    );
+      }),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error("AI call timed out")), TIMEOUT_MS)),
+    ]);
 
-    const content = response.choices?.[0]?.message?.content;
+    const content = response.text;
     if (typeof content !== "string") return null;
 
     const parsed = schema.safeParse(JSON.parse(content));
