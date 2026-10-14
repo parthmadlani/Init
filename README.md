@@ -31,7 +31,7 @@ npm run dev
 | `YOUTUBE_API_KEY` | resource matching | Without it, paths still generate — topics just show "No matching video found yet" instead of a match. See `docs/api.md` and `src/lib/services/resource-service.ts`. `search.list` costs 100 quota units against a 10,000/day default quota; `SearchCache` guards against re-fetching, not optional. |
 | `AI_API_KEY` | Phase 06 | Google Gemini API key. Optional — enrichment only. Missing/failing key degrades gracefully (see `src/lib/integrations/ai/client.ts`): wizard note-tuning and resource tagging both just no-op. |
 
-Production migrations use `npm run db:migrate:deploy` (`prisma migrate deploy`) instead of `db:migrate` (`prisma migrate dev`, which is interactive and dev-only).
+Production migrations use `npm run db:migrate:deploy` (`prisma migrate deploy`) instead of `db:migrate` (`prisma migrate dev`, which is interactive and dev-only). The repository's `vercel.json` runs migrations before the Vercel build and stops deployment if a migration fails. Each deployment environment must point to its intended database; use an isolated database for previews.
 
 ## Project layout
 
