@@ -17,7 +17,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         unstyled: true,
         classNames: {
           toast:
-            "group flex items-center gap-3 w-full rounded-card border-2 border-brand-dark bg-white px-4 py-3 font-mono text-[13px] text-brand-dark shadow-[3px_3px_0_#111827]",
+            "group flex items-center gap-3 w-full rounded-card border border-black/10 bg-white px-4 py-3 text-sm text-brand-dark shadow-lg",
           title: "font-mono font-semibold text-brand-dark",
           description: "text-black/60",
           actionButton: "!bg-brand-pink !text-white !rounded-control !px-2.5 !py-1 !text-xs !font-semibold",

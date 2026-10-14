@@ -1,3 +1,4 @@
+import { siteUrl } from "@/lib/site-url";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
@@ -15,11 +16,14 @@ const geistMono = Geist_Mono({
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Init",
+  metadataBase: siteUrl,
+  title: { default: "Init — your daily learning path", template: "%s | Init" },
+  openGraph: { type: "website", siteName: "Init", title: "Init — your daily learning path", description: "Free videos. A clear learning path. A schedule that fits your day." },
+  twitter: { card: "summary", title: "Init — your daily learning path", description: "Turn your learning goal into a daily plan." },
   description: "Turns a goal, a skill level, and a time budget into a structured learning path.",
 };
 

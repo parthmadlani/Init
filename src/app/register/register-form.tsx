@@ -1,10 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
+import { PasswordInput } from "@/components/password-input";
 import { register } from "./actions";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 
 export function RegisterForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [error, formAction, pending] = useActionState(register, undefined);
 
   return (
@@ -17,6 +20,10 @@ export function RegisterForm() {
           id="name"
           name="name"
           type="text"
+          autoComplete="name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          maxLength={120}
           required
           className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
@@ -29,6 +36,9 @@ export function RegisterForm() {
           id="email"
           name="email"
           type="email"
+          autoComplete="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           required
           className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
@@ -37,18 +47,19 @@ export function RegisterForm() {
         <label htmlFor="password" className="text-sm font-semibold text-brand-dark">
           Password
         </label>
-        <input
+        <PasswordInput
           id="password"
           name="password"
-          type="password"
+          autoComplete="new-password"
+          aria-describedby="password-help"
           required
           minLength={8}
           className="rounded-control border border-black/15 px-3.5 py-2.5 text-sm outline-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/20"
         />
-        <p className="text-xs text-black/65">At least 8 characters.</p>
+        <p id="password-help" className="text-xs text-black/65">At least 8 characters.</p>
       </div>
 
-      {error && <p className="text-sm font-medium text-red-600">{error}</p>}
+      {error && <p role="alert" className="text-sm font-medium text-red-600">{error}</p>}
 
       <button
         type="submit"

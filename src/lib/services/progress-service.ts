@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import type { ProgressStatus } from "@/generated/prisma/client";
+import { deriveWatchProgress } from "@/lib/watch-progress";
 
 type UpdateProgressInput = {
   userId: string;
@@ -48,8 +49,6 @@ export async function updateProgress(input: UpdateProgressInput) {
   return progress;
 }
 
-const COMPLETE_THRESHOLD_PCT = 90;
-
 /**
  * Records real playback progress from the embedded YouTube player (furthest
  * timestamp reached, sampled every ~15s — see topic-player.tsx). This is a
@@ -60,8 +59,8 @@ const COMPLETE_THRESHOLD_PCT = 90;
  * activity calendar's buckets.
  *
  * watchedSeconds is monotonic: a rewind can't lower it, so scrubbing back to
- * rewatch a section never costs progress, and scrubbing forward can't be
- * used to fake having watched further than the player has actually reached.
+ * rewatch a section never costs progress. Seeking forward does advance
+ * this position; it is not proof that all preceding content was watched.
  */
 export async function recordWatchProgress(input: {
   userId: string;
@@ -73,10 +72,7 @@ export async function recordWatchProgress(input: {
     where: { userId_topicId: { userId: input.userId, topicId: input.topicId } },
   });
 
-  const watchedSeconds = Math.max(existing?.watchedSeconds ?? 0, input.watchedSeconds);
-  const pct =
-    input.durationSeconds > 0 ? Math.min(100, Math.round((watchedSeconds / input.durationSeconds) * 100)) : 0;
-  const status: ProgressStatus = pct >= COMPLETE_THRESHOLD_PCT ? "COMPLETE" : pct > 0 ? "IN_PROGRESS" : "NOT_STARTED";
+  const { watchedSeconds, pct, status } = deriveWatchProgress(existing, input.watchedSeconds, input.durationSeconds);
   const statusChanged = (existing?.status ?? "NOT_STARTED") !== status;
 
   const [progress] = await prisma.$transaction([

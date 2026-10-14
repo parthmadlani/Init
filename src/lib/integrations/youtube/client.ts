@@ -77,7 +77,7 @@ export async function searchYoutubeVideos(query: string, maxResults = 15): Promi
   searchUrl.searchParams.set("maxResults", String(maxResults));
   searchUrl.searchParams.set("key", apiKey);
 
-  const searchRes = await fetch(searchUrl);
+  const searchRes = await fetch(searchUrl, { signal: AbortSignal.timeout(10_000) });
   if (!searchRes.ok) {
     throw new Error(`YouTube search.list failed: ${searchRes.status} ${await searchRes.text()}`);
   }
@@ -90,7 +90,7 @@ export async function searchYoutubeVideos(query: string, maxResults = 15): Promi
   videosUrl.searchParams.set("id", items.map((item) => item.id.videoId).join(","));
   videosUrl.searchParams.set("key", apiKey);
 
-  const videosRes = await fetch(videosUrl);
+  const videosRes = await fetch(videosUrl, { signal: AbortSignal.timeout(10_000) });
   if (!videosRes.ok) {
     throw new Error(`YouTube videos.list failed: ${videosRes.status} ${await videosRes.text()}`);
   }
@@ -108,7 +108,7 @@ export async function searchYoutubeVideos(query: string, maxResults = 15): Promi
   channelsUrl.searchParams.set("id", channelIds.join(","));
   channelsUrl.searchParams.set("key", apiKey);
 
-  const channelsRes = await fetch(channelsUrl);
+  const channelsRes = await fetch(channelsUrl, { signal: AbortSignal.timeout(10_000) });
   if (!channelsRes.ok) {
     throw new Error(`YouTube channels.list failed: ${channelsRes.status} ${await channelsRes.text()}`);
   }

@@ -56,6 +56,7 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  quizAttempts     QuizAttempt[]
   goals            Goal[]
   paths            Path[]
   progress         Progress[]
@@ -167,6 +168,7 @@ model Path {
   createdAt       DateTime @default(now())
 
   bookmarks Bookmark[]
+  quizAttempts QuizAttempt[]
 
   @@index([userId])
   @@map("paths")
@@ -258,4 +260,43 @@ model ActivityLog {
 
   @@unique([userId, date])
   @@map("activity_log")
+}
+
+model QuizAttempt {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pathId String?
+  path Path? @relation(fields: [pathId], references: [id], onDelete: SetNull)
+  scopeKey String
+  kind String
+  title String
+  questions Json
+  answers Json @default("{}")
+  version Int @default(0)
+  reviewCount Int @default(0)
+  personalized Boolean @default(true)
+  score Int?
+  createdAt DateTime @default(now())
+  completedAt DateTime?
+  @@index([userId, createdAt])
+  @@index([userId, scopeKey, completedAt])
+  @@map("quiz_attempts")
+}
+
+// Immutable published packs, tied to video IDs rather than mutable resource matches.
+model LessonPack {
+  id String @id @default(cuid())
+  youtubeVideoId String
+  version String
+  language String
+  attribution String
+  permissionBasis String
+  reviewedBy String
+  cues Json
+  questions Json
+  publishedAt DateTime @default(now())
+  @@unique([youtubeVideoId, version])
+  @@index([youtubeVideoId, publishedAt])
+  @@map("lesson_packs")
 }

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
+import { requestJson } from "@/lib/client-request";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export type Reaction = "HELPFUL" | "NOT_HELPFUL";
 
 export function formatDuration(seconds: number): string {
-  const minutes = Math.round(seconds / 60);
+  const minutes = Math.ceil(seconds / 60);
   if (minutes < 60) return `${minutes} min`;
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
@@ -16,6 +18,7 @@ export function formatDuration(seconds: number): string {
 function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: boolean }) {
   return (
     <svg
+      aria-hidden="true"
       viewBox="0 0 20 20"
       width="16"
       height="16"
@@ -35,7 +38,8 @@ function ThumbIcon({ direction, filled }: { direction: "up" | "down"; filled: bo
 
 function BookmarkIcon({ filled }: { filled: boolean }) {
   return (
-    <svg viewBox="0 0 20 20" width="16" height="16" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6">
+    <svg aria-hidden="true"
+      viewBox="0 0 20 20" width="16" height="16" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.6">
       <path d="M5 3.5h10a.5.5 0 0 1 .5.5v12.3a.5.5 0 0 1-.77.42L10 13.5l-4.73 3.22a.5.5 0 0 1-.77-.42V4a.5.5 0 0 1 .5-.5Z" strokeLinejoin="round" />
     </svg>
   );
@@ -48,17 +52,22 @@ export function BookmarkToggle({ resourceId, initialBookmarkId }: { resourceId: 
   function toggle() {
     const wasBookmarked = bookmarkId !== null;
     startTransition(async () => {
-      if (wasBookmarked) {
-        setBookmarkId(null);
-        await fetch(`/api/v1/bookmarks/${bookmarkId}`, { method: "DELETE" });
-      } else {
-        const res = await fetch("/api/v1/bookmarks", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ targetType: "RESOURCE", resourceId }),
-        });
-        const body = await res.json().catch(() => null);
-        if (res.ok && body?.bookmark?.id) setBookmarkId(body.bookmark.id);
+      try {
+        if (wasBookmarked) {
+          await requestJson(`/api/v1/bookmarks/${bookmarkId}`, { method: "DELETE" });
+          setBookmarkId(null);
+        } else {
+          const body = await requestJson<{ bookmark: { id: string } }>("/api/v1/bookmarks", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ targetType: "RESOURCE", resourceId }),
+          });
+          if (!body?.bookmark?.id) throw new Error("Could not confirm the bookmark. Refresh and try again.");
+          setBookmarkId(body.bookmark.id);
+        }
+        toast.success(wasBookmarked ? "Bookmark removed" : "Video bookmarked");
+      } catch (error) {
+        toast.error(error instanceof Error ? error.message : "Could not save the bookmark. Please retry.");
       }
     });
   }
@@ -73,6 +82,8 @@ export function BookmarkToggle({ resourceId, initialBookmarkId }: { resourceId: 
             toggle();
           }}
           disabled={isPending}
+          aria-label="Bookmark this video"
+          aria-pressed={bookmarkId !== null}
           className={`rounded-control p-3.5 transition ${bookmarkId ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
         >
           <BookmarkIcon filled={bookmarkId !== null} />
@@ -91,13 +102,18 @@ export function ResourceFeedback({ resourceId, initialReaction }: { resourceId: 
   const [isPending, startTransition] = useTransition();
 
   function react(next: Reaction) {
-    setReaction(next);
     startTransition(async () => {
-      await fetch("/api/v1/resource-feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ resourceId, reaction: next }),
-      });
+      try {
+        await requestJson("/api/v1/resource-feedback", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ resourceId, reaction: next }),
+        });
+        setReaction(next);
+        toast.success("Feedback saved");
+      } catch (error) {
+        toast.error(error instanceof Error ? error.message : "Could not save your feedback. Please retry.");
+      }
     });
   }
 
@@ -108,6 +124,8 @@ export function ResourceFeedback({ resourceId, initialReaction }: { resourceId: 
           <button
             type="button"
             onClick={() => react("HELPFUL")}
+            aria-label="This video was helpful"
+            aria-pressed={reaction === "HELPFUL"}
             disabled={isPending}
             className={`rounded-control p-3.5 transition ${reaction === "HELPFUL" ? "text-brand-cyan" : "text-black/45 hover:text-black/70"}`}
           >
@@ -121,6 +139,8 @@ export function ResourceFeedback({ resourceId, initialReaction }: { resourceId: 
           <button
             type="button"
             onClick={() => react("NOT_HELPFUL")}
+            aria-label="This video was not helpful"
+            aria-pressed={reaction === "NOT_HELPFUL"}
             disabled={isPending}
             className={`rounded-control p-3.5 transition ${reaction === "NOT_HELPFUL" ? "text-brand-pink" : "text-black/45 hover:text-black/70"}`}
           >

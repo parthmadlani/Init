@@ -87,12 +87,12 @@ export function AvatarUploader({
         type="button"
         onClick={() => inputRef.current?.click()}
         disabled={isPending}
-        className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-full border-2 border-brand-dark bg-brand-pink"
+        className="group relative h-24 w-24 shrink-0 overflow-hidden rounded-full border border-black/10 bg-brand-pink"
       >
         {preview ? (
           <img src={preview} alt="" className="h-full w-full object-cover" />
         ) : (
-          <span className="flex h-full w-full items-center justify-center text-2xl font-extrabold text-white">
+          <span className="flex h-full w-full items-center justify-center text-2xl font-medium text-white">
             {initialsFor(name, email)}
           </span>
         )}

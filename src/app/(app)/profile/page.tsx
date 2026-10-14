@@ -27,7 +27,7 @@ function SubjectProgressRow({
   return (
     <Link
       href={`/paths/${pathId}`}
-      className="block rounded-card border border-black/10 p-4 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]"
+      className="block rounded-card border border-black/10 p-4 transition duration-150 hover:border-brand-cyan hover:bg-black/[0.02]"
     >
       <div className="flex items-center justify-between gap-2">
         <span className="font-semibold text-brand-dark">{subjectName}</span>
@@ -63,11 +63,12 @@ export default async function ProfilePage() {
   const streak = computeCurrentStreak(calendar);
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
+    <main className="page-shell">
       <BackToHomeLink />
-      <h1 className="font-serif text-display font-bold text-brand-dark">My Profile</h1>
+      <h1 className="page-title">My Profile</h1>
       <p className="mt-1 text-sm text-black/65">Your account, your progress, all in one place.</p>
 
+      {user.role === "ADMIN" && <Link href="/admin/lesson-materials" className="mt-5 inline-block text-sm font-semibold text-brand-pink underline">Open lesson content studio →</Link>}
       <div className="mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
         <div className="flex flex-col gap-6">
           <section className="rounded-card border border-black/10 bg-white p-6 text-center">
@@ -85,14 +86,14 @@ export default async function ProfilePage() {
 
           <Link
             href="/bookmarks"
-            className="flex items-center justify-between rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]"
+            className="flex items-center justify-between rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:border-brand-cyan hover:bg-black/[0.02]"
           >
             <span className="text-sm font-semibold text-brand-dark">Bookmarked videos</span>
             <span className="text-lg font-extrabold text-brand-pink">{bookmarkCount}</span>
           </Link>
 
           <section className="rounded-card border border-black/10 bg-white p-6">
-            <h2 className="font-serif text-heading font-bold text-brand-dark">Account</h2>
+            <h2 className="section-title">Account</h2>
             <p className="mt-1 text-sm text-black/65">Update your password or sign out below.</p>
             <div className="mt-5">
               <ChangePasswordForm />
@@ -106,9 +107,9 @@ export default async function ProfilePage() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <section className="rounded-card border-2 border-brand-dark bg-white p-6">
+          <section className="rounded-card border border-black/10 bg-white p-6">
             <div className="flex items-baseline justify-between gap-2">
-              <h2 className="font-serif text-heading font-bold text-brand-dark">Your learning progress</h2>
+              <h2 className="section-title">Your learning progress</h2>
               <span className="shrink-0 text-2xl font-extrabold text-brand-pink">{overallPct}%</span>
             </div>
             <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-black/10">
@@ -138,7 +139,7 @@ export default async function ProfilePage() {
 
           <section className="rounded-card border border-black/10 bg-white p-6">
             <div className="flex items-center justify-between gap-2">
-              <h2 className="font-serif text-heading font-bold text-brand-dark">Your activity</h2>
+              <h2 className="section-title">Your activity</h2>
               {streak > 0 && (
                 <span className="shrink-0 rounded-full bg-brand-pink-light px-2.5 py-1 text-xs font-bold text-brand-pink">
                   {streak} day{streak === 1 ? "" : "s"} streak

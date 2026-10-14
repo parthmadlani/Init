@@ -27,8 +27,9 @@ npm run dev
 | `DATABASE_URL` | everything | Postgres connection string. No Neon account yet? `npx prisma dev` spins up a disposable local Postgres and prints one — good for schema/seed work, not for anything you want to keep. |
 | `AUTH_SECRET` | auth | `openssl rand -base64 32`. Without this, login/register will fail. |
 | `NEXTAUTH_URL` | auth | `http://localhost:3000` locally; your deployed origin in production. |
+| `NEXT_PUBLIC_SITE_URL` | public metadata | Canonical public origin; defaults to `https://useinit.vercel.app`. Set explicitly for a different deployment. |
 | `YOUTUBE_API_KEY` | resource matching | Without it, paths still generate — topics just show "No matching video found yet" instead of a match. See `docs/api.md` and `src/lib/services/resource-service.ts`. `search.list` costs 100 quota units against a 10,000/day default quota; `SearchCache` guards against re-fetching, not optional. |
-| `AI_API_KEY` | Phase 06 | Mistral API key. Optional — enrichment only. Missing/failing key degrades gracefully (see `src/lib/integrations/ai/client.ts`): wizard note-tuning and resource tagging both just no-op. |
+| `AI_API_KEY` | Phase 06 | Google Gemini API key. Optional — enrichment only. Missing/failing key degrades gracefully (see `src/lib/integrations/ai/client.ts`): wizard note-tuning and resource tagging both just no-op. |
 
 Production migrations use `npm run db:migrate:deploy` (`prisma migrate deploy`) instead of `db:migrate` (`prisma migrate dev`, which is interactive and dev-only).
 
@@ -58,8 +59,37 @@ docs/api.md                    typed API contracts, endpoint by endpoint
 - **Phase 05** — typed API contracts (`docs/api.md`), deploy hardening (security headers, `postinstall` Prisma generate, `prisma migrate deploy`), and production infra on Neon + Vercel.
 - **Design pass** — full UI/UX audit and three-tier implementation: accessibility fixes (mobile layout, touch targets, contrast), a named type scale and consolidated design tokens, and a signature terminal/boot-sequence moment during path creation and completion.
 
-Built and verified locally, not yet deployed: **Phase 06** — AI enrichment layer on Mistral (`mistral-small-latest`). Wizard note-tuning suggests topics a learner's free-text notes indicate they already know, opt-in only, pre-marking them complete; resource tagging adds a short one-line caption per matched video, deduped per topic/level and generated in the background so it never adds latency to path creation. Both degrade to the fixed deterministic wizard/path if AI is absent or fails — never a hard dependency. Needs `prisma migrate deploy` against prod (adds `Resource.aiTag`) and a push before it's live.
+**Phase 06** — AI enrichment layer on Google Gemini (`gemini-2.5-flash`). Wizard note-tuning suggests topics a learner's free-text notes indicate they already know, opt-in only, pre-marking them complete; resource tagging adds a short one-line caption per matched video, deduped per topic/level and generated in the background so it never adds latency to path creation. Both degrade to the fixed deterministic wizard/path if AI is absent or fails — never a hard dependency. Deployments must apply pending database migrations before serving this version.
 
-Progress tracking today is self-reported (click a topic to advance Not Started → In Progress → Complete) rather than auto-detected from actual video watch time — a deliberate scope cut for now, not an oversight.
+Progress tracks the furthest playback position reached in the embedded player and saves periodically. Reaching 90% marks a lesson complete; this is not proof of watch time or mastery. Learners can also change status manually. Replaying a lesson preserves manual completion, and a manual reset clears its resume position.
 
 Known, deliberately deferred gap: no rate limiting on auth endpoints — see `docs/api.md`.
+
+
+## Audit improvements
+
+- Public homepage with an illustrative path, help page, branded errors and 404, and public sitemap metadata.
+- Immediately available sign-in, password visibility controls, preserved email after errors, and safe return navigation.
+- Named controls, selected states, keyboard focus, stronger contrast, reduced motion support, and responsive 16:9 lessons.
+- Required topic-title relevance at every ranking fallback; unavailable lessons remain in the curriculum.
+- Daily sessions prefer videos that fit the watch budget and split longer fallbacks into fixed watch blocks. A 30-minute budget reserves up to 23 minutes for video and 7 minutes for suggested practice. The player stops at the block endpoint; the full source duration is labelled separately. Ads and pauses are excluded from estimates.
+- Bookmark, feedback, and progress controls show success only after the server confirms the write. Playback exposes save failures and retries.
+
+### Verification
+
+```bash
+npm test          # ranking, scheduling, safe redirects, save failures, playback progress
+npm run typecheck
+npm run lint
+npm run build
+```
+
+Use a disposable database and separate test account for interactive tests. Never point test scripts or database migrations at production by accident. Video title checks are a relevance heuristic, not a review of the actual teaching content. Authentication rate limiting, account recovery, production monitoring, concurrent playback/reset conflict handling, and resource versioning remain follow-up work.
+
+## Learning experience update
+
+The professional layout now uses the playful pink/cyan palette. Python paths include a ten-chapter revision notebook, editable Excalidraw diagrams, 100 authored questions, ten-question practice, and a resumable final review of up to 69 questions. Retakes prioritize unseen questions and then shuffle reused questions and choices; optional personalization uses mistakes and confidence.
+
+The transcript panel and administrator publishing workflow are implemented. Current real videos still require permission-backed, reviewed transcript packs before their transcripts and video-specific quizzes become available. Notebook questions are clearly labelled separately. Lesson quiz length respects the daily time budget.
+
+See [the deployment and content guide](docs/lesson-materials.md) for the required database migration, content import schema, current limits, and verification instructions.

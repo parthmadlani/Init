@@ -1,5 +1,6 @@
 "use client";
 
+import { requestJson } from "@/lib/client-request";
 import Link from "next/link";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
@@ -45,19 +46,22 @@ export function PathRow({
 
   function handleDelete() {
     startTransition(async () => {
-      await fetch(`/api/v1/paths/${pathId}`, { method: "DELETE" });
-      toast("Your path is deleted");
-      router.refresh();
+      try {
+        await requestJson(`/api/v1/paths/${pathId}`, { method: "DELETE" });
+        toast.success("Your path was removed");
+        router.refresh();
+      } catch (error) {
+        toast.error(error instanceof Error ? error.message : "Could not remove the path. Please retry.");
+      }
     });
   }
 
   return (
-    <div className="flex items-center gap-2 rounded-card border border-black/10 bg-white p-4 transition duration-150 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]">
-      <Link href={`/paths/${pathId}`} className="flex min-w-0 flex-1 items-center justify-between">
-        <span className="font-semibold text-brand-dark">{subjectName}</span>
-        <span className="text-sm text-black/65">
-          {completed}/{total} topics
-        </span>
+    <div className="surface flex items-center gap-2 p-5 transition hover:border-black/20">
+      <Link href={`/paths/${pathId}`} className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center justify-between gap-2"><span className="text-base font-semibold text-brand-dark">{subjectName}</span><span className="text-xs text-black/55">{completed} of {total} complete</span></div>
+        <div className="mt-3 h-1 overflow-hidden rounded-full bg-black/[0.06]"><div className="h-full rounded-full bg-brand-cyan" style={{ width: `${total ? completed / total * 100 : 0}%` }} /></div>
+        <span className="mt-3 block text-xs text-black/55">View learning path →</span>
       </Link>
       <AlertDialog>
         <Tooltip>
@@ -66,7 +70,8 @@ export function PathRow({
               <button
                 type="button"
                 disabled={isPending}
-                className="shrink-0 rounded-control p-3.5 text-black/45 transition hover:text-brand-pink"
+                aria-label={`Remove ${subjectName} path`}
+                className="shrink-0 rounded-control p-3.5 text-black/55 transition hover:text-brand-pink"
               >
                 <TrashIcon />
               </button>
@@ -74,7 +79,7 @@ export function PathRow({
           </TooltipTrigger>
           <TooltipContent>Remove this path</TooltipContent>
         </Tooltip>
-        <AlertDialogContent className="rounded-card border-2 border-brand-dark bg-white p-6 shadow-[4px_4px_0_#111827] sm:max-w-sm">
+        <AlertDialogContent className="rounded-card border border-black/10 bg-white p-6 shadow-xl sm:max-w-sm">
           <AlertDialogHeader className="text-left">
             <AlertDialogTitle className="font-serif text-heading font-bold text-brand-dark">
               Remove {subjectName}?

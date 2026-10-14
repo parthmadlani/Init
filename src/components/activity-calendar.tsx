@@ -24,18 +24,18 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
 
   return (
     <div>
-      <div className={`flex gap-[3px] overflow-x-auto pb-1 ${isEmpty ? "motion-safe:animate-pulse" : ""}`}>
+      <div className="flex gap-1 overflow-x-auto pb-1">
         {weeks.map((week, wi) => (
-          <div key={wi} className="flex flex-col gap-[3px]">
+          <div key={wi} className="flex flex-col gap-1">
             {week.map((day, di) =>
               day ? (
                 <div
                   key={di}
                   title={`${day.date} — ${day.count} ${day.count === 1 ? "update" : "updates"}`}
-                  className={`h-[11px] w-[11px] rounded-[2px] ${levelFor(day.count)}`}
+                  className={`h-3 w-3 rounded-[2px] ${levelFor(day.count)}`}
                 />
               ) : (
-                <div key={di} className="h-[11px] w-[11px]" />
+                <div key={di} className="h-3 w-3" />
               ),
             )}
           </div>
@@ -44,7 +44,7 @@ export function ActivityCalendar({ days }: { days: DayCount[] }) {
       <p className="mt-2 text-xs text-black/65">
         {isEmpty
           ? "No activity yet — mark a topic as started and this fills in."
-          : `${totalActive} active days in the last ${days.length}`}
+          : `${totalActive} active ${totalActive === 1 ? "day" : "days"} in the last ${days.length}`}
       </p>
     </div>
   );

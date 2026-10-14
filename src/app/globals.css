@@ -11,49 +11,23 @@
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-fraunces);
 
-  /* Brand tokens — match the marketing site (Init Landing Wireframes) */
-  --color-brand-pink: #ff3d8a;
-  --color-brand-cyan: #00c2d1;
-  --color-brand-dark: #111827;
+  --color-brand-pink: #bf175b;
+  --color-brand-cyan: #007d87;
+  --color-brand-dark: #292824;
   --color-brand-cyan-light: #cff3f7;
   --color-brand-pink-light: #ffd6ea;
-
-  /*
-   * Type scale — five sizes, each with one job. Named by role, not size,
-   * so "what's this text for" stays legible in markup (text-heading, not
-   * text-xl). See design review §03: the old pattern used two raw sizes
-   * plus four different text-black/NN opacities to fake a hierarchy that
-   * should have been sizes and weights.
-   */
-  --text-display: 1.875rem; /* page-level h1 — login, register, roadmap subject, wizard step */
+  --text-display: 2.25rem;
   --text-display--line-height: 1.15;
-  --text-heading: 1.25rem; /* section h2 — dashboard cards */
+  --text-heading: 1.25rem;
   --text-heading--line-height: 1.3;
-  --text-label: 0.75rem; /* semibold, active meaning — status pills, eyebrows */
+  --text-label: 0.75rem;
   --text-label--line-height: 1.4;
-  --text-caption: 0.75rem; /* regular weight, passive meta — hints, counts, timestamps */
+  --text-caption: 0.75rem;
   --text-caption--line-height: 1.45;
-
-  /*
-   * Radius tiers — see design review §04. `rounded-xl`/`rounded-2xl` were
-   * used near-interchangeably before; now there are exactly two, one per
-   * component tier, and nothing reaches for a raw Tailwind radius value.
-   */
-  --radius-control: 0.5rem; /* buttons, inputs, small chips — rounded-control */
-  --radius-card: 1rem; /* cards, panels, the roadmap's topic rows — rounded-card */
-
-  /* Wizard step transition — see design review §06/§13 (award tier). */
+  --radius-control: 0.75rem;
+  --radius-card: 1.25rem;
   --animate-step-in: step-in 0.22s ease-out;
-  /* Roadmap topic rows settle in staggered by order (per-row delay set inline). */
   --animate-row-in: row-in 0.35s ease-out backwards;
-
-  /*
-   * Border weight — Tailwind's border-{width} utilities aren't
-   * theme-namespaced in v4, so this is convention, not a generated class:
-   * `border` (1px) for structural/regular surfaces, `border-2` for
-   * emphasis (primary CTAs, the dashboard hero, the active roadmap status
-   * ring). Don't reach for border-4+ or mix the two within one component.
-   */
 
   --font-heading: var(--font-sans);
 
@@ -157,23 +131,23 @@
      shadcn/Radix components inherit the site's own palette instead of
      shadcn's default neutral one — see design review §04 continuation. */
   --background: #ffffff;
-  --foreground: #111827;
+  --foreground: #292824;
   --card: #ffffff;
-  --card-foreground: #111827;
+  --card-foreground: #292824;
   --popover: #ffffff;
-  --popover-foreground: #111827;
-  --primary: #ff3d8a;
+  --popover-foreground: #292824;
+  --primary: #bf175b;
   --primary-foreground: #ffffff;
   --secondary: oklch(0 0 0 / 5%);
-  --secondary-foreground: #111827;
+  --secondary-foreground: #292824;
   --muted: oklch(0 0 0 / 5%);
   --muted-foreground: oklch(0 0 0 / 65%);
   --accent: oklch(0 0 0 / 5%);
-  --accent-foreground: #111827;
+  --accent-foreground: #292824;
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0 0 0 / 10%);
   --input: oklch(0 0 0 / 10%);
-  --ring: #ff3d8a;
+  --ring: #bf175b;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -234,4 +208,27 @@
   html {
     @apply font-sans;
   }
+}
+@layer base {
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 3px solid #007d87;
+    outline-offset: 3px;
+  }
+  button:not(:disabled), summary { cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .page-shell { @apply mx-auto w-full max-w-[1320px] px-5 py-8 sm:px-8 sm:py-10 lg:px-10; }
+  .page-title { @apply font-serif text-3xl font-medium tracking-[-0.035em] text-brand-dark sm:text-[2.5rem]; line-height: 1.15; }
+  .eyebrow { @apply text-[10px] font-semibold uppercase tracking-[0.18em] text-black/55; }
+  .surface { @apply rounded-card border border-black/[0.08] bg-white; box-shadow: 0 3px 14px -10px rgb(42 38 32 / 14%); }
+  .section-title { @apply text-sm font-semibold tracking-[-0.01em] text-brand-dark; }
 }

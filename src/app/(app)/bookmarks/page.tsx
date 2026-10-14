@@ -11,9 +11,9 @@ export default async function BookmarksPage() {
   const bookmarks = await getUserResourceBookmarks(userId);
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
+    <main className="page-shell">
       <BackToHomeLink />
-      <h1 className="font-serif text-display font-bold text-brand-dark">Bookmarks</h1>
+      <h1 className="page-title">Saved lessons</h1>
       <p className="mt-1 text-sm text-black/65">Videos you saved to come back to later.</p>
 
       <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

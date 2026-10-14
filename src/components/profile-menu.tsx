@@ -18,7 +18,8 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border-2 border-brand-dark bg-brand-pink text-xs font-extrabold text-white transition hover:brightness-105"
+          aria-label="Open account menu"
+          className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-black/10 bg-[#eae3dc] text-xs font-semibold text-brand-dark transition hover:bg-[#ded6ce]"
           title={user.name ?? user.email ?? "Account"}
         >
           {user.imageUrl ? (
@@ -41,7 +42,7 @@ export function ProfileMenu({ user, onSignOut }: { user: User; onSignOut: () => 
           <Link href="/profile">Profile</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer rounded-control px-3 py-2 text-sm font-semibold text-black/70 focus:bg-black/5 focus:text-black/70">
-          <Link href="/bookmarks">Bookmarks</Link>
+          <Link href="/bookmarks">Saved lessons</Link>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => onSignOut()}

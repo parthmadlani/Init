@@ -1,3 +1,4 @@
+import { hasNegativeConsensus, matchesTopic } from "@/lib/resource-ranking";
 import { prisma } from "@/lib/prisma";
 import type { GoalType, Level } from "@/generated/prisma/client";
 import { ensureResourcesForPath } from "@/lib/services/resource-service";
@@ -144,14 +145,18 @@ export async function getPathDetail(pathId: string, userId: string) {
   const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p]));
 
   const resourceIds = topics.flatMap((t) => t.resources.map((r) => r.id));
-  const [feedbackRows, bookmarkRows] = await Promise.all([
+  const [feedbackRows, bookmarkRows, feedbackCounts] = await Promise.all([
     resourceIds.length
       ? prisma.resourceFeedback.findMany({ where: { userId, resourceId: { in: resourceIds } } })
       : Promise.resolve([]),
     resourceIds.length
       ? prisma.bookmark.findMany({ where: { userId, targetType: "RESOURCE", resourceId: { in: resourceIds } } })
       : Promise.resolve([]),
+    resourceIds.length
+      ? prisma.resourceFeedback.groupBy({ by: ["resourceId", "reaction"], where: { resourceId: { in: resourceIds } }, _count: { _all: true } })
+      : Promise.resolve([]),
   ]);
+  const reactionCounts = new Map(feedbackCounts.map((row) => [`${row.resourceId}:${row.reaction}`, row._count._all]));
   const feedbackByResourceId = new Map(feedbackRows.map((f) => [f.resourceId, f.reaction]));
   const bookmarkIdByResourceId = new Map(bookmarkRows.map((b) => [b.resourceId!, b.id]));
 
@@ -159,7 +164,13 @@ export async function getPathDetail(pathId: string, userId: string) {
     .map((id) => topicsById.get(id))
     .filter((t): t is NonNullable<typeof t> => Boolean(t))
     .map((topic) => {
-      const resource = topic.resources[0] ?? null;
+      const candidate = topic.resources[0] ?? null;
+      const resource = candidate
+        && matchesTopic(candidate.title, topic.name, path.goal.subject.name)
+        && candidate.durationSeconds >= 90
+        && candidate.durationSeconds <= path.goal.dailyMinutes * 60 * 6
+        && !hasNegativeConsensus(reactionCounts.get(`${candidate.id}:HELPFUL`) ?? 0, reactionCounts.get(`${candidate.id}:NOT_HELPFUL`) ?? 0)
+        ? candidate : null;
       return {
         id: topic.id,
         slug: topic.slug,
@@ -176,14 +187,8 @@ export async function getPathDetail(pathId: string, userId: string) {
       };
     });
 
-  // A topic with no matched video is a dead end, not a lesson — hide it
-  // rather than show "no matching video found." Topics the user already
-  // has progress on stay visible even if the resource later disappears
-  // (video pulled, re-match came up empty), so earned progress is never
-  // silently hidden. Renumbered 1..N so the visible list has no gaps.
-  const learnableTopics = orderedTopics
-    .filter((t) => t.resource !== null || t.progress !== null)
-    .map((t, index) => ({ ...t, order: index + 1 }));
+  // Missing resources must not silently remove prerequisites from the curriculum.
+  const learnableTopics = orderedTopics.map((topic, index) => ({ ...topic, order: index + 1 }));
 
   const completedCount = learnableTopics.filter((t) => t.progress?.status === "COMPLETE").length;
 
@@ -213,6 +218,8 @@ export async function getTopicDetail(pathId: string, topicId: string, userId: st
   return {
     pathId: path.id,
     subjectName: path.subject.name,
+    dailyMinutes: path.goal.dailyMinutes,
+    goalType: path.goal.type,
     topic: path.topics[index],
     prevTopic: index > 0 ? path.topics[index - 1] : null,
     nextTopic: index < path.topics.length - 1 ? path.topics[index + 1] : null,
@@ -220,22 +227,16 @@ export async function getTopicDetail(pathId: string, topicId: string, userId: st
 }
 
 /**
- * Lightweight counterpart to getPathDetail's learnable-topic filter, for
+ * Lightweight counterpart to getPathDetail's full curriculum count, for
  * dashboard summary rows that only need counts, not full topic/resource
  * objects — keeps the "X/Y topics" number consistent between the two.
  */
-export async function getPathSummary(orderedTopicIds: string[], level: Level, dailyMinutes: number, userId: string) {
-  const [resourcedTopics, progressRows] = await Promise.all([
-    prisma.resource.findMany({ where: { topicId: { in: orderedTopicIds }, level, dailyMinutes }, select: { topicId: true } }),
-    prisma.progress.findMany({ where: { userId, topicId: { in: orderedTopicIds } }, select: { topicId: true, status: true } }),
-  ]);
-
-  const resourcedIds = new Set(resourcedTopics.map((r) => r.topicId));
-  const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p.status]));
-  const learnableIds = orderedTopicIds.filter((id) => resourcedIds.has(id) || progressByTopicId.has(id));
-  const completed = learnableIds.filter((id) => progressByTopicId.get(id) === "COMPLETE").length;
-
-  return { total: learnableIds.length, completed };
+export async function getPathSummary(orderedTopicIds: string[], userId: string) {
+  const progressRows = await prisma.progress.findMany({
+    where: { userId, topicId: { in: orderedTopicIds } }, select: { topicId: true, status: true },
+  });
+  const completed = progressRows.filter((row) => row.status === "COMPLETE").length;
+  return { total: orderedTopicIds.length, completed };
 }
 
 /**
@@ -252,7 +253,7 @@ export async function getAllPathSummaries(userId: string) {
 
   const summaries = await Promise.all(
     paths.map(async (path) => {
-      const { total, completed } = await getPathSummary(path.orderedTopicIds, path.goal.level, path.goal.dailyMinutes, userId);
+      const { total, completed } = await getPathSummary(path.orderedTopicIds, userId);
       return { id: path.id, subjectName: path.goal.subject.name, total, completed };
     })
   );

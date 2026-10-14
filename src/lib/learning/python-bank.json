@@ -1,0 +1,3045 @@
+[
+  {
+    "id": "python-v1-fundamentals-1",
+    "topic": "fundamentals",
+    "concept": "fundamentals-1",
+    "prompt": "What does this expression print?",
+    "choices": [
+      {
+        "id": "0222b9df0a22",
+        "text": "14"
+      },
+      {
+        "id": "eefb8393ab33",
+        "text": "20"
+      },
+      {
+        "id": "73f7ab85fb83",
+        "text": "24"
+      },
+      {
+        "id": "af00c2dcd053",
+        "text": "9"
+      }
+    ],
+    "correctId": "0222b9df0a22",
+    "explanation": "Multiplication is evaluated before addition.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(2 + 3 * 4)"
+  },
+  {
+    "id": "python-v1-fundamentals-2",
+    "topic": "fundamentals",
+    "concept": "fundamentals-2",
+    "prompt": "Which symbol starts a single-line comment?",
+    "choices": [
+      {
+        "id": "f57c336bad2a",
+        "text": "#"
+      },
+      {
+        "id": "b080199c4e01",
+        "text": "//"
+      },
+      {
+        "id": "499e8c9977f7",
+        "text": "<!--"
+      },
+      {
+        "id": "32234b6c05e1",
+        "text": "/*"
+      }
+    ],
+    "correctId": "f57c336bad2a",
+    "explanation": "Python ignores text after # outside a string.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    }
+  },
+  {
+    "id": "python-v1-fundamentals-3",
+    "topic": "fundamentals",
+    "concept": "fundamentals-3",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "3f6a2b62c531",
+        "text": "2.5"
+      },
+      {
+        "id": "19a585284e08",
+        "text": "2"
+      },
+      {
+        "id": "239f3755b5bb",
+        "text": "3"
+      },
+      {
+        "id": "d9b6a8746838",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "3f6a2b62c531",
+    "explanation": "The / operator performs true division.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(5 / 2)"
+  },
+  {
+    "id": "python-v1-fundamentals-4",
+    "topic": "fundamentals",
+    "concept": "fundamentals-4",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "82bcf69f6dd1",
+        "text": "2"
+      },
+      {
+        "id": "ba1121627538",
+        "text": "2.5"
+      },
+      {
+        "id": "f259e233c8d9",
+        "text": "3"
+      },
+      {
+        "id": "acb90e52cf8e",
+        "text": "1"
+      }
+    ],
+    "correctId": "82bcf69f6dd1",
+    "explanation": "// computes floor division.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(5 // 2)"
+  },
+  {
+    "id": "python-v1-fundamentals-5",
+    "topic": "fundamentals",
+    "concept": "fundamentals-5",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "1ff2d8ff268b",
+        "text": "1"
+      },
+      {
+        "id": "b4b64079b0da",
+        "text": "2"
+      },
+      {
+        "id": "ffa7ceeb81d1",
+        "text": "3.5"
+      },
+      {
+        "id": "bb3adb9591ff",
+        "text": "0"
+      }
+    ],
+    "correctId": "1ff2d8ff268b",
+    "explanation": "% returns the remainder.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(7 % 3)"
+  },
+  {
+    "id": "python-v1-fundamentals-6",
+    "topic": "fundamentals",
+    "concept": "fundamentals-6",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "37fff4f8e3b8",
+        "text": "8"
+      },
+      {
+        "id": "8fcb32250615",
+        "text": "6"
+      },
+      {
+        "id": "f230f9b6aacd",
+        "text": "9"
+      },
+      {
+        "id": "98b0a9fa37d2",
+        "text": "5"
+      }
+    ],
+    "correctId": "37fff4f8e3b8",
+    "explanation": "** raises a number to a power.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(2 ** 3)"
+  },
+  {
+    "id": "python-v1-fundamentals-7",
+    "topic": "fundamentals",
+    "concept": "fundamentals-7",
+    "prompt": "How are the statements inside an if block grouped?",
+    "choices": [
+      {
+        "id": "b623d9bddaf5",
+        "text": "By indentation"
+      },
+      {
+        "id": "01fcd228d60e",
+        "text": "By curly braces"
+      },
+      {
+        "id": "3c55f0bcc8bb",
+        "text": "By parentheses"
+      },
+      {
+        "id": "6f713038b853",
+        "text": "By quotation marks"
+      }
+    ],
+    "correctId": "b623d9bddaf5",
+    "explanation": "Indentation defines blocks; use consistent spacing.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    }
+  },
+  {
+    "id": "python-v1-fundamentals-8",
+    "topic": "fundamentals",
+    "concept": "fundamentals-8",
+    "prompt": "What does input() return when someone types 42?",
+    "choices": [
+      {
+        "id": "acef6f1ef17c",
+        "text": "The string \"42\""
+      },
+      {
+        "id": "852b19936fcf",
+        "text": "The integer 42"
+      },
+      {
+        "id": "6c34362ebc14",
+        "text": "The float 42.0"
+      },
+      {
+        "id": "292502341539",
+        "text": "A boolean"
+      }
+    ],
+    "correctId": "acef6f1ef17c",
+    "explanation": "input returns text; convert explicitly when you need a number.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    }
+  },
+  {
+    "id": "python-v1-fundamentals-9",
+    "topic": "fundamentals",
+    "concept": "fundamentals-9",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "cbcd84df9ac2",
+        "text": "Hi there"
+      },
+      {
+        "id": "738c23b81992",
+        "text": "Hithere"
+      },
+      {
+        "id": "c7bc60f6c253",
+        "text": "Hi,there"
+      },
+      {
+        "id": "0aa710401e2f",
+        "text": "[Hi, there]"
+      }
+    ],
+    "correctId": "cbcd84df9ac2",
+    "explanation": "print separates multiple arguments with a space by default.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(\"Hi\", \"there\")"
+  },
+  {
+    "id": "python-v1-fundamentals-10",
+    "topic": "fundamentals",
+    "concept": "fundamentals-10",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "1338292029df",
+        "text": "False"
+      },
+      {
+        "id": "d4c2a1131481",
+        "text": "True"
+      },
+      {
+        "id": "982510444db4",
+        "text": "0"
+      },
+      {
+        "id": "35bfb656d803",
+        "text": "None"
+      }
+    ],
+    "correctId": "1338292029df",
+    "explanation": "Python identifiers and strings are case-sensitive. These strings differ.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#fundamentals"
+    },
+    "code": "print(\"Python\" == \"python\")"
+  },
+  {
+    "id": "python-v1-variables-data-types-1",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-1",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "d4937d62e4af",
+        "text": "7"
+      },
+      {
+        "id": "8a8021eb797a",
+        "text": "52"
+      },
+      {
+        "id": "e0fbf4987767",
+        "text": "5"
+      },
+      {
+        "id": "4885d4f4077c",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "d4937d62e4af",
+    "explanation": "int converts the numeric string before addition.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(int(\"5\") + 2)"
+  },
+  {
+    "id": "python-v1-variables-data-types-2",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-2",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "92cd0471f782",
+        "text": "3"
+      },
+      {
+        "id": "92e2157a5e48",
+        "text": "2"
+      },
+      {
+        "id": "0cdb08470369",
+        "text": "4"
+      },
+      {
+        "id": "1c0880984201",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "92cd0471f782",
+    "explanation": "len counts the characters in this string.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(len(\"cat\"))"
+  },
+  {
+    "id": "python-v1-variables-data-types-3",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-3",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "d8f6eab07cab",
+        "text": "False"
+      },
+      {
+        "id": "5f196f284cbc",
+        "text": "True"
+      },
+      {
+        "id": "64b691f72c6f",
+        "text": "None"
+      },
+      {
+        "id": "7b3e8ea5fa0e",
+        "text": "ValueError"
+      }
+    ],
+    "correctId": "d8f6eab07cab",
+    "explanation": "An empty string is false in a boolean context.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(bool(\"\"))"
+  },
+  {
+    "id": "python-v1-variables-data-types-4",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-4",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "9433738bef17",
+        "text": "True"
+      },
+      {
+        "id": "e43145e70ff6",
+        "text": "False"
+      },
+      {
+        "id": "3dbbf7acfdc2",
+        "text": "0"
+      },
+      {
+        "id": "a60812548189",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "9433738bef17",
+    "explanation": "A nonempty string is truthy, even if its text is False.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(bool(\"False\"))"
+  },
+  {
+    "id": "python-v1-variables-data-types-5",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-5",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "aa25ad10896c",
+        "text": "c"
+      },
+      {
+        "id": "253175733029",
+        "text": "a"
+      },
+      {
+        "id": "575e1b305724",
+        "text": "t"
+      },
+      {
+        "id": "d1c2191ab086",
+        "text": "IndexError"
+      }
+    ],
+    "correctId": "aa25ad10896c",
+    "explanation": "String indexes start at zero.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(\"cat\"[0])"
+  },
+  {
+    "id": "python-v1-variables-data-types-6",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-6",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "99912d5ab9af",
+        "text": "t"
+      },
+      {
+        "id": "fc79b6ddb113",
+        "text": "c"
+      },
+      {
+        "id": "2c771a1b9e19",
+        "text": "a"
+      },
+      {
+        "id": "c53de581be6b",
+        "text": "IndexError"
+      }
+    ],
+    "correctId": "99912d5ab9af",
+    "explanation": "Index -1 selects the last character.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(\"cat\"[-1])"
+  },
+  {
+    "id": "python-v1-variables-data-types-7",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-7",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "b9861d81000f",
+        "text": "yth"
+      },
+      {
+        "id": "af8560f96e0c",
+        "text": "pyt"
+      },
+      {
+        "id": "246dcdee33d7",
+        "text": "ytho"
+      },
+      {
+        "id": "e9ff63d9512c",
+        "text": "thon"
+      }
+    ],
+    "correctId": "b9861d81000f",
+    "explanation": "A slice includes its start and excludes its stop.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(\"python\"[1:4])"
+  },
+  {
+    "id": "python-v1-variables-data-types-8",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-8",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "c41de14957fd",
+        "text": "ababab"
+      },
+      {
+        "id": "5e8a3c32936b",
+        "text": "ab3"
+      },
+      {
+        "id": "4840535fe67c",
+        "text": "aaa"
+      },
+      {
+        "id": "d36460c81e2f",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "c41de14957fd",
+    "explanation": "Multiplying a string by an integer repeats it.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "print(\"ab\" * 3)"
+  },
+  {
+    "id": "python-v1-variables-data-types-9",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-9",
+    "prompt": "Which value represents the absence of a value?",
+    "choices": [
+      {
+        "id": "d73b7093df6d",
+        "text": "None"
+      },
+      {
+        "id": "d9f649206df3",
+        "text": "\"None\""
+      },
+      {
+        "id": "362a680b1438",
+        "text": "0"
+      },
+      {
+        "id": "a279cd523451",
+        "text": "False"
+      }
+    ],
+    "correctId": "d73b7093df6d",
+    "explanation": "None is a distinct singleton; it is not the string None, zero, or False.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    }
+  },
+  {
+    "id": "python-v1-variables-data-types-10",
+    "topic": "variables-data-types",
+    "concept": "variables-data-types-10",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "c38561911c03",
+        "text": "Age: 18"
+      },
+      {
+        "id": "2e49fe12919d",
+        "text": "Age: {age}"
+      },
+      {
+        "id": "bd9286bbde03",
+        "text": "18Age:"
+      },
+      {
+        "id": "02d5d2e204dc",
+        "text": "SyntaxError"
+      }
+    ],
+    "correctId": "c38561911c03",
+    "explanation": "An f-string evaluates expressions inside braces.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#variables-data-types"
+    },
+    "code": "age = 18\nprint(f\"Age: {age}\")"
+  },
+  {
+    "id": "python-v1-control-flow-1",
+    "topic": "control-flow",
+    "concept": "control-flow-1",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "b40fa23f57ea",
+        "text": "[0, 1, 2]"
+      },
+      {
+        "id": "2ee36dd71ed8",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "3d86a04733ad",
+        "text": "[0, 1, 2, 3]"
+      },
+      {
+        "id": "9a84d38adad0",
+        "text": "[3]"
+      }
+    ],
+    "correctId": "b40fa23f57ea",
+    "explanation": "range stops before its stop value.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "print(list(range(3)))"
+  },
+  {
+    "id": "python-v1-control-flow-2",
+    "topic": "control-flow",
+    "concept": "control-flow-2",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "57bdca930744",
+        "text": "[2, 4, 6]"
+      },
+      {
+        "id": "7cee4264a395",
+        "text": "[2, 4, 6, 8]"
+      },
+      {
+        "id": "ae4b9e0c92ca",
+        "text": "[2, 3, 4, 5, 6, 7]"
+      },
+      {
+        "id": "5574e2ec4d1b",
+        "text": "[0, 2, 4, 6]"
+      }
+    ],
+    "correctId": "57bdca930744",
+    "explanation": "range(start, stop, step) excludes stop.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "print(list(range(2, 8, 2)))"
+  },
+  {
+    "id": "python-v1-control-flow-3",
+    "topic": "control-flow",
+    "concept": "control-flow-3",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "5a702456791a",
+        "text": "6"
+      },
+      {
+        "id": "761bef81ae47",
+        "text": "5"
+      },
+      {
+        "id": "182bf81a8dd3",
+        "text": "3"
+      },
+      {
+        "id": "da02d32c6133",
+        "text": "0"
+      }
+    ],
+    "correctId": "5a702456791a",
+    "explanation": "The loop adds 1, 2, and 3.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "total = 0\nfor n in [1, 2, 3]:\n    total += n\nprint(total)"
+  },
+  {
+    "id": "python-v1-control-flow-4",
+    "topic": "control-flow",
+    "concept": "control-flow-4",
+    "prompt": "Which statement exits the nearest loop immediately?",
+    "choices": [
+      {
+        "id": "9e001cda3a71",
+        "text": "break"
+      },
+      {
+        "id": "fa3e7da78f51",
+        "text": "continue"
+      },
+      {
+        "id": "6238f18d5c07",
+        "text": "pass"
+      },
+      {
+        "id": "c6a31fa3308f",
+        "text": "skip"
+      }
+    ],
+    "correctId": "9e001cda3a71",
+    "explanation": "break exits a loop; continue starts its next iteration.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    }
+  },
+  {
+    "id": "python-v1-control-flow-5",
+    "topic": "control-flow",
+    "concept": "control-flow-5",
+    "prompt": "Which statement skips the remaining body of the current loop iteration?",
+    "choices": [
+      {
+        "id": "0b98949a04f9",
+        "text": "continue"
+      },
+      {
+        "id": "359053d2c1c9",
+        "text": "break"
+      },
+      {
+        "id": "ee143a989c18",
+        "text": "return always"
+      },
+      {
+        "id": "ac113ac3dd76",
+        "text": "pass"
+      }
+    ],
+    "correctId": "0b98949a04f9",
+    "explanation": "continue moves to the next loop iteration.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    }
+  },
+  {
+    "id": "python-v1-control-flow-6",
+    "topic": "control-flow",
+    "concept": "control-flow-6",
+    "prompt": "What does pass do?",
+    "choices": [
+      {
+        "id": "f8efb0636993",
+        "text": "Nothing; it is a placeholder statement"
+      },
+      {
+        "id": "629b07fce8e5",
+        "text": "Exits the program"
+      },
+      {
+        "id": "3318aa4b3158",
+        "text": "Skips the next loop iteration"
+      },
+      {
+        "id": "1ca3ea6ccddb",
+        "text": "Returns True"
+      }
+    ],
+    "correctId": "f8efb0636993",
+    "explanation": "pass supplies a statement when syntax requires one without performing an action.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    }
+  },
+  {
+    "id": "python-v1-control-flow-7",
+    "topic": "control-flow",
+    "concept": "control-flow-7",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "08fe6814fad4",
+        "text": "positive"
+      },
+      {
+        "id": "f5a5f2cfb4e6",
+        "text": "zero"
+      },
+      {
+        "id": "0168a4b901d6",
+        "text": "negative"
+      },
+      {
+        "id": "3032c93ccdc7",
+        "text": "positive and zero"
+      }
+    ],
+    "correctId": "08fe6814fad4",
+    "explanation": "Only the first true branch in an if/elif chain runs.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "n = 2\nif n > 0:\n    print(\"positive\")\nelif n == 0:\n    print(\"zero\")\nelse:\n    print(\"negative\")"
+  },
+  {
+    "id": "python-v1-control-flow-8",
+    "topic": "control-flow",
+    "concept": "control-flow-8",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "bf30241b235a",
+        "text": "False"
+      },
+      {
+        "id": "ce433c78c676",
+        "text": "True"
+      },
+      {
+        "id": "d8e3767396ad",
+        "text": "None"
+      },
+      {
+        "id": "93f91d12f298",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "bf30241b235a",
+    "explanation": "and requires both operands to be truthy here.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "print(True and False)"
+  },
+  {
+    "id": "python-v1-control-flow-9",
+    "topic": "control-flow",
+    "concept": "control-flow-9",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "63f4df6e9b13",
+        "text": "True"
+      },
+      {
+        "id": "11b4afdb81de",
+        "text": "False"
+      },
+      {
+        "id": "dd4a35fd21a6",
+        "text": "None"
+      },
+      {
+        "id": "4128c469939d",
+        "text": "SyntaxError"
+      }
+    ],
+    "correctId": "63f4df6e9b13",
+    "explanation": "not negates the boolean value.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "print(not False)"
+  },
+  {
+    "id": "python-v1-control-flow-10",
+    "topic": "control-flow",
+    "concept": "control-flow-10",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "6df9638a94c3",
+        "text": "3"
+      },
+      {
+        "id": "c994a1ec3c92",
+        "text": "2"
+      },
+      {
+        "id": "8b1314cf76dd",
+        "text": "4"
+      },
+      {
+        "id": "bca0bcc03c05",
+        "text": "0"
+      }
+    ],
+    "correctId": "6df9638a94c3",
+    "explanation": "The loop increments n until n < 3 becomes false.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#control-flow"
+    },
+    "code": "n = 0\nwhile n < 3:\n    n += 1\nprint(n)"
+  },
+  {
+    "id": "python-v1-functions-1",
+    "topic": "functions",
+    "concept": "functions-1",
+    "prompt": "What keyword defines a function?",
+    "choices": [
+      {
+        "id": "cd493c5141f2",
+        "text": "def"
+      },
+      {
+        "id": "544fbd3ccdf9",
+        "text": "function"
+      },
+      {
+        "id": "8aa4c65baabf",
+        "text": "func"
+      },
+      {
+        "id": "fe610b95304a",
+        "text": "define"
+      }
+    ],
+    "correctId": "cd493c5141f2",
+    "explanation": "A Python function definition starts with def.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    }
+  },
+  {
+    "id": "python-v1-functions-2",
+    "topic": "functions",
+    "concept": "functions-2",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "7e2ef46985ee",
+        "text": "None"
+      },
+      {
+        "id": "783499825fc4",
+        "text": "0"
+      },
+      {
+        "id": "ce6c187c304b",
+        "text": "False"
+      },
+      {
+        "id": "c68be3a0dd8b",
+        "text": "An empty string"
+      }
+    ],
+    "correctId": "7e2ef46985ee",
+    "explanation": "A function without an explicit return value returns None.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    },
+    "code": "def hello():\n    pass\nprint(hello())"
+  },
+  {
+    "id": "python-v1-functions-3",
+    "topic": "functions",
+    "concept": "functions-3",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "70862806f06c",
+        "text": "8"
+      },
+      {
+        "id": "66267c5379e5",
+        "text": "4"
+      },
+      {
+        "id": "84fdef46960b",
+        "text": "2"
+      },
+      {
+        "id": "aa57f8661e4b",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "70862806f06c",
+    "explanation": "The function returns twice its argument.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    },
+    "code": "def double(n):\n    return n * 2\nprint(double(4))"
+  },
+  {
+    "id": "python-v1-functions-4",
+    "topic": "functions",
+    "concept": "functions-4",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "524a24bbeef7",
+        "text": "Hello Ada"
+      },
+      {
+        "id": "05b66ce63de5",
+        "text": "Hello name"
+      },
+      {
+        "id": "54b8bfc6e5c0",
+        "text": "Hello world"
+      },
+      {
+        "id": "fc3d1fcdd384",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "524a24bbeef7",
+    "explanation": "A supplied argument overrides the default.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    },
+    "code": "def greet(name=\"world\"):\n    return \"Hello \" + name\nprint(greet(\"Ada\"))"
+  },
+  {
+    "id": "python-v1-functions-5",
+    "topic": "functions",
+    "concept": "functions-5",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "8ee7ee4ba0cc",
+        "text": "5"
+      },
+      {
+        "id": "2c7bb95db1ae",
+        "text": "8"
+      },
+      {
+        "id": "ad036d8a3a7d",
+        "text": "-5"
+      },
+      {
+        "id": "014f1fcb4d0b",
+        "text": "TypeError"
+      }
+    ],
+    "correctId": "8ee7ee4ba0cc",
+    "explanation": "Keyword arguments bind by parameter name, not their call order.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    },
+    "code": "def subtract(a, b):\n    return a - b\nprint(subtract(b=3, a=8))"
+  },
+  {
+    "id": "python-v1-functions-6",
+    "topic": "functions",
+    "concept": "functions-6",
+    "prompt": "What does return do?",
+    "choices": [
+      {
+        "id": "5b23e0f10a77",
+        "text": "Ends the current function call and supplies a result"
+      },
+      {
+        "id": "59f40c6e62df",
+        "text": "Always prints a value"
+      },
+      {
+        "id": "1820d48b8dde",
+        "text": "Ends every loop in the program"
+      },
+      {
+        "id": "d2dc1067d2d2",
+        "text": "Restarts the function"
+      }
+    ],
+    "correctId": "5b23e0f10a77",
+    "explanation": "return sends a value to the caller and stops that function call.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    }
+  },
+  {
+    "id": "python-v1-functions-7",
+    "topic": "functions",
+    "concept": "functions-7",
+    "prompt": "How should a function avoid sharing a growing default list across calls?",
+    "choices": [
+      {
+        "id": "ff369c585994",
+        "text": "Use None as the default and create a list inside"
+      },
+      {
+        "id": "e12bcb9d0e33",
+        "text": "Use [] as the default"
+      },
+      {
+        "id": "340fecad2e24",
+        "text": "Use the same global list"
+      },
+      {
+        "id": "01f5802066d5",
+        "text": "Rename the parameter"
+      }
+    ],
+    "correctId": "ff369c585994",
+    "explanation": "Default arguments are evaluated once at definition time, so mutable defaults can persist.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    }
+  },
+  {
+    "id": "python-v1-functions-8",
+    "topic": "functions",
+    "concept": "functions-8",
+    "prompt": "What does *args collect in a function definition?",
+    "choices": [
+      {
+        "id": "cfea5b221654",
+        "text": "Extra positional arguments in a tuple"
+      },
+      {
+        "id": "95a3f05db09a",
+        "text": "Extra keyword arguments in a dictionary"
+      },
+      {
+        "id": "714765811744",
+        "text": "Only strings"
+      },
+      {
+        "id": "15cfa46b9254",
+        "text": "All global variables"
+      }
+    ],
+    "correctId": "cfea5b221654",
+    "explanation": "*args collects additional positional arguments.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    }
+  },
+  {
+    "id": "python-v1-functions-9",
+    "topic": "functions",
+    "concept": "functions-9",
+    "prompt": "What does **kwargs collect in a function definition?",
+    "choices": [
+      {
+        "id": "bbcb262abc62",
+        "text": "Extra keyword arguments in a dictionary"
+      },
+      {
+        "id": "dbed23ecdb30",
+        "text": "Only the first argument"
+      },
+      {
+        "id": "9cb189baf22a",
+        "text": "Extra positional arguments in a list"
+      },
+      {
+        "id": "fb9f5d56ddcc",
+        "text": "Return values"
+      }
+    ],
+    "correctId": "bbcb262abc62",
+    "explanation": "**kwargs collects additional named arguments.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    }
+  },
+  {
+    "id": "python-v1-functions-10",
+    "topic": "functions",
+    "concept": "functions-10",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "fd6679d5056a",
+        "text": "10"
+      },
+      {
+        "id": "5d2789df8f41",
+        "text": "3"
+      },
+      {
+        "id": "bd79cceaf456",
+        "text": "None"
+      },
+      {
+        "id": "12cddfea4a16",
+        "text": "NameError"
+      }
+    ],
+    "correctId": "fd6679d5056a",
+    "explanation": "Assignment inside the function creates a local x here.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#functions"
+    },
+    "code": "x = 10\ndef change():\n    x = 3\nchange()\nprint(x)"
+  },
+  {
+    "id": "python-v1-data-structures-1",
+    "topic": "data-structures",
+    "concept": "data-structures-1",
+    "prompt": "Which collection is mutable and preserves item order?",
+    "choices": [
+      {
+        "id": "106e02bc077f",
+        "text": "list"
+      },
+      {
+        "id": "9e698ce7ce63",
+        "text": "tuple"
+      },
+      {
+        "id": "d53a6ac8cf64",
+        "text": "frozenset"
+      },
+      {
+        "id": "0f909b66b132",
+        "text": "str"
+      }
+    ],
+    "correctId": "106e02bc077f",
+    "explanation": "Lists preserve order and support item changes.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    }
+  },
+  {
+    "id": "python-v1-data-structures-2",
+    "topic": "data-structures",
+    "concept": "data-structures-2",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "898083a10734",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "865470b27d4d",
+        "text": "[1, 2]"
+      },
+      {
+        "id": "60bdee77c369",
+        "text": "[3]"
+      },
+      {
+        "id": "b2aa31806ac2",
+        "text": "None"
+      }
+    ],
+    "correctId": "898083a10734",
+    "explanation": "append mutates the list by adding one item.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "items = [1, 2]\nitems.append(3)\nprint(items)"
+  },
+  {
+    "id": "python-v1-data-structures-3",
+    "topic": "data-structures",
+    "concept": "data-structures-3",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "1c5c5f0ad50c",
+        "text": "2"
+      },
+      {
+        "id": "215de463665c",
+        "text": "3"
+      },
+      {
+        "id": "052e8d9bde16",
+        "text": "1"
+      },
+      {
+        "id": "268a20b2d446",
+        "text": "0"
+      }
+    ],
+    "correctId": "1c5c5f0ad50c",
+    "explanation": "Sets retain distinct elements.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "print(len({1, 1, 2}))"
+  },
+  {
+    "id": "python-v1-data-structures-4",
+    "topic": "data-structures",
+    "concept": "data-structures-4",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "e8a3e3b3ccb8",
+        "text": "7"
+      },
+      {
+        "id": "889d9017221c",
+        "text": "\"score\""
+      },
+      {
+        "id": "b1226153d3d7",
+        "text": "None"
+      },
+      {
+        "id": "3fc7d338a3ca",
+        "text": "KeyError"
+      }
+    ],
+    "correctId": "e8a3e3b3ccb8",
+    "explanation": "Dictionary keys select their associated values.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "print({\"score\": 7}[\"score\"])"
+  },
+  {
+    "id": "python-v1-data-structures-5",
+    "topic": "data-structures",
+    "concept": "data-structures-5",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "4f44bed0efcd",
+        "text": "0"
+      },
+      {
+        "id": "378fa34e42a4",
+        "text": "None"
+      },
+      {
+        "id": "b04fa60182ad",
+        "text": "KeyError"
+      },
+      {
+        "id": "076a965b27c2",
+        "text": "False"
+      }
+    ],
+    "correctId": "4f44bed0efcd",
+    "explanation": "get returns its default when the key is absent.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "print({}.get(\"score\", 0))"
+  },
+  {
+    "id": "python-v1-data-structures-6",
+    "topic": "data-structures",
+    "concept": "data-structures-6",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "7b2e0ca24545",
+        "text": "[1, 4, 9]"
+      },
+      {
+        "id": "7201de5e6a07",
+        "text": "[1, 2, 3]"
+      },
+      {
+        "id": "634deb1aa78d",
+        "text": "[2, 4, 6]"
+      },
+      {
+        "id": "17071b89ce30",
+        "text": "[0, 1, 4]"
+      }
+    ],
+    "correctId": "7b2e0ca24545",
+    "explanation": "The comprehension squares each input.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "print([n * n for n in [1, 2, 3]])"
+  },
+  {
+    "id": "python-v1-data-structures-7",
+    "topic": "data-structures",
+    "concept": "data-structures-7",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "df3dcc6f8438",
+        "text": "[1, 2]"
+      },
+      {
+        "id": "51c1e4915275",
+        "text": "[1]"
+      },
+      {
+        "id": "704c731419cc",
+        "text": "[2]"
+      },
+      {
+        "id": "4a529f3769eb",
+        "text": "None"
+      }
+    ],
+    "correctId": "df3dcc6f8438",
+    "explanation": "Both names refer to the same mutable list.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "a = [1]\nb = a\nb.append(2)\nprint(a)"
+  },
+  {
+    "id": "python-v1-data-structures-8",
+    "topic": "data-structures",
+    "concept": "data-structures-8",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "3fa5b2802000",
+        "text": "[1]"
+      },
+      {
+        "id": "0c4cbd1ebb6e",
+        "text": "[1, 2]"
+      },
+      {
+        "id": "eee56f926899",
+        "text": "[2]"
+      },
+      {
+        "id": "8394ed33c1f4",
+        "text": "None"
+      }
+    ],
+    "correctId": "3fa5b2802000",
+    "explanation": "copy creates a new outer list.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "a = [1]\nb = a.copy()\nb.append(2)\nprint(a)"
+  },
+  {
+    "id": "python-v1-data-structures-9",
+    "topic": "data-structures",
+    "concept": "data-structures-9",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "4bf44c79a37a",
+        "text": "[1, 3]"
+      },
+      {
+        "id": "bc7166ce4523",
+        "text": "[3, 1]"
+      },
+      {
+        "id": "3e96a8e1fad8",
+        "text": "None"
+      },
+      {
+        "id": "1e39bb6a78fe",
+        "text": "(1, 3)"
+      }
+    ],
+    "correctId": "4bf44c79a37a",
+    "explanation": "sorted returns a new sorted list.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    },
+    "code": "print(sorted([3, 1]))"
+  },
+  {
+    "id": "python-v1-data-structures-10",
+    "topic": "data-structures",
+    "concept": "data-structures-10",
+    "prompt": "Which expression makes a one-item tuple?",
+    "choices": [
+      {
+        "id": "dd1661ccf4c5",
+        "text": "(5,)"
+      },
+      {
+        "id": "621679ab0e90",
+        "text": "(5)"
+      },
+      {
+        "id": "fea7c0cb29c5",
+        "text": "[5]"
+      },
+      {
+        "id": "3b2eb041a8e5",
+        "text": "{5}"
+      }
+    ],
+    "correctId": "dd1661ccf4c5",
+    "explanation": "The trailing comma makes the tuple; parentheses alone do not.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#data-structures"
+    }
+  },
+  {
+    "id": "python-v1-oop-1",
+    "topic": "oop",
+    "concept": "oop-1",
+    "prompt": "What keyword defines a class?",
+    "choices": [
+      {
+        "id": "5ce4d0c98fab",
+        "text": "class"
+      },
+      {
+        "id": "68fc7fdec151",
+        "text": "object"
+      },
+      {
+        "id": "c9df4e8f467c",
+        "text": "struct"
+      },
+      {
+        "id": "02d1726cbf87",
+        "text": "instance"
+      }
+    ],
+    "correctId": "5ce4d0c98fab",
+    "explanation": "class introduces a class definition.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-2",
+    "topic": "oop",
+    "concept": "oop-2",
+    "prompt": "What does self conventionally refer to inside an instance method?",
+    "choices": [
+      {
+        "id": "aec82a075000",
+        "text": "The current instance"
+      },
+      {
+        "id": "575210807872",
+        "text": "The class name string"
+      },
+      {
+        "id": "878d7d6d0179",
+        "text": "A global variable"
+      },
+      {
+        "id": "6db7d649f9d8",
+        "text": "The parent module"
+      }
+    ],
+    "correctId": "aec82a075000",
+    "explanation": "Python passes the instance as the first argument of a bound instance method.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-3",
+    "topic": "oop",
+    "concept": "oop-3",
+    "prompt": "What is __init__ commonly used for?",
+    "choices": [
+      {
+        "id": "f159fe0322ff",
+        "text": "Initializing a new instance’s state"
+      },
+      {
+        "id": "4a02b2388f53",
+        "text": "Importing a module"
+      },
+      {
+        "id": "b342cc0ef026",
+        "text": "Deleting every instance"
+      },
+      {
+        "id": "1f7f7d47ede1",
+        "text": "Calling all class methods"
+      }
+    ],
+    "correctId": "f159fe0322ff",
+    "explanation": "__init__ initializes an instance after it is created.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-4",
+    "topic": "oop",
+    "concept": "oop-4",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "019a712b63d8",
+        "text": "Ada"
+      },
+      {
+        "id": "8a33b4870150",
+        "text": "name"
+      },
+      {
+        "id": "cd762288ce76",
+        "text": "Person"
+      },
+      {
+        "id": "e6d0e7d69063",
+        "text": "None"
+      }
+    ],
+    "correctId": "019a712b63d8",
+    "explanation": "The initializer stores name on this instance.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    },
+    "code": "class Person:\n    def __init__(self, name):\n        self.name = name\nprint(Person(\"Ada\").name)"
+  },
+  {
+    "id": "python-v1-oop-5",
+    "topic": "oop",
+    "concept": "oop-5",
+    "prompt": "Which syntax declares Dog as a subclass of Animal?",
+    "choices": [
+      {
+        "id": "4cefc49466db",
+        "text": "class Dog(Animal):"
+      },
+      {
+        "id": "0d68ed573b2d",
+        "text": "class Dog extends Animal:"
+      },
+      {
+        "id": "3c959d06225e",
+        "text": "class Dog = Animal:"
+      },
+      {
+        "id": "20e9835f80be",
+        "text": "Dog inherits Animal"
+      }
+    ],
+    "correctId": "4cefc49466db",
+    "explanation": "Base classes appear in parentheses after the class name.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-6",
+    "topic": "oop",
+    "concept": "oop-6",
+    "prompt": "What does isinstance(value, SomeClass) test?",
+    "choices": [
+      {
+        "id": "464a8a07432e",
+        "text": "Whether value is an instance of the class or a subclass"
+      },
+      {
+        "id": "7b333ccd84f7",
+        "text": "Whether value is the class name string"
+      },
+      {
+        "id": "544c75899acc",
+        "text": "Whether value is callable"
+      },
+      {
+        "id": "02373c5e5964",
+        "text": "Whether two instances are identical"
+      }
+    ],
+    "correctId": "464a8a07432e",
+    "explanation": "isinstance supports inheritance relationships.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-7",
+    "topic": "oop",
+    "concept": "oop-7",
+    "prompt": "What is method overriding?",
+    "choices": [
+      {
+        "id": "2cd56ac0ae7d",
+        "text": "A subclass providing its own implementation of an inherited method"
+      },
+      {
+        "id": "4e32dda91033",
+        "text": "Calling a method twice"
+      },
+      {
+        "id": "d56a80fb0744",
+        "text": "Changing every object into a string"
+      },
+      {
+        "id": "a4f315d3e64b",
+        "text": "Importing a method"
+      }
+    ],
+    "correctId": "2cd56ac0ae7d",
+    "explanation": "An overriding method specializes inherited behavior.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-8",
+    "topic": "oop",
+    "concept": "oop-8",
+    "prompt": "Which attribute is normally shared through the class by its instances?",
+    "choices": [
+      {
+        "id": "83848b577c93",
+        "text": "A class attribute"
+      },
+      {
+        "id": "5f337db3ac80",
+        "text": "An attribute assigned only to self in __init__"
+      },
+      {
+        "id": "a7e058579506",
+        "text": "A local method variable"
+      },
+      {
+        "id": "187bec0a849d",
+        "text": "A function argument"
+      }
+    ],
+    "correctId": "83848b577c93",
+    "explanation": "Class attributes belong to the class; instance attributes can shadow them.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-oop-9",
+    "topic": "oop",
+    "concept": "oop-9",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "b80e78591ca0",
+        "text": "4"
+      },
+      {
+        "id": "5283aa371bb2",
+        "text": "2"
+      },
+      {
+        "id": "920d8534e1cc",
+        "text": "0"
+      },
+      {
+        "id": "0076a03d7dd0",
+        "text": "None"
+      }
+    ],
+    "correctId": "b80e78591ca0",
+    "explanation": "Two method calls increment instance state twice.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    },
+    "code": "class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 2\nc = Counter()\nc.add()\nc.add()\nprint(c.value)"
+  },
+  {
+    "id": "python-v1-oop-10",
+    "topic": "oop",
+    "concept": "oop-10",
+    "prompt": "What does super() help a subclass do?",
+    "choices": [
+      {
+        "id": "620936c65dca",
+        "text": "Access methods through the method resolution order"
+      },
+      {
+        "id": "a2fb12e1dadc",
+        "text": "Skip initialization permanently"
+      },
+      {
+        "id": "ff2a7e318046",
+        "text": "Make every method static"
+      },
+      {
+        "id": "182370ceee19",
+        "text": "Copy the whole module"
+      }
+    ],
+    "correctId": "620936c65dca",
+    "explanation": "super supports cooperative calls to inherited implementations.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#oop"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-1",
+    "topic": "file-handling",
+    "concept": "file-handling-1",
+    "prompt": "Which file mode reads text without requesting writing?",
+    "choices": [
+      {
+        "id": "1ccc0ac6449a",
+        "text": "r"
+      },
+      {
+        "id": "e1fc3b893995",
+        "text": "w"
+      },
+      {
+        "id": "aae5ebb29e1a",
+        "text": "a"
+      },
+      {
+        "id": "203aa1d23553",
+        "text": "x"
+      }
+    ],
+    "correctId": "1ccc0ac6449a",
+    "explanation": "r is read mode; opening a missing file this way raises an error.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-2",
+    "topic": "file-handling",
+    "concept": "file-handling-2",
+    "prompt": "What does opening an existing file with w do?",
+    "choices": [
+      {
+        "id": "7de3b5ba1ca3",
+        "text": "Truncates its existing content"
+      },
+      {
+        "id": "3a71b88c396d",
+        "text": "Appends to existing content"
+      },
+      {
+        "id": "b1801c16f8a3",
+        "text": "Makes it read-only"
+      },
+      {
+        "id": "816ec0cf0d17",
+        "text": "Preserves content automatically"
+      }
+    ],
+    "correctId": "7de3b5ba1ca3",
+    "explanation": "w opens for writing and truncates an existing file.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-3",
+    "topic": "file-handling",
+    "concept": "file-handling-3",
+    "prompt": "Which mode writes at the end of an existing file?",
+    "choices": [
+      {
+        "id": "22f12775b724",
+        "text": "a"
+      },
+      {
+        "id": "f20260bec338",
+        "text": "r"
+      },
+      {
+        "id": "c55bd29b167d",
+        "text": "w"
+      },
+      {
+        "id": "2f28de400053",
+        "text": "rb"
+      }
+    ],
+    "correctId": "22f12775b724",
+    "explanation": "Append mode adds data at the end.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-4",
+    "topic": "file-handling",
+    "concept": "file-handling-4",
+    "prompt": "Why use with open(...) as f?",
+    "choices": [
+      {
+        "id": "2ec39b786de8",
+        "text": "It closes the file when the block exits, including on exceptions"
+      },
+      {
+        "id": "503174c153fe",
+        "text": "It prevents every I/O error"
+      },
+      {
+        "id": "0bb47835a967",
+        "text": "It encrypts the file"
+      },
+      {
+        "id": "6806e501aa34",
+        "text": "It loads the entire file automatically"
+      }
+    ],
+    "correctId": "2ec39b786de8",
+    "explanation": "A file context manager manages cleanup.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-5",
+    "topic": "file-handling",
+    "concept": "file-handling-5",
+    "prompt": "What does f.read() return for a text file?",
+    "choices": [
+      {
+        "id": "9805780b3964",
+        "text": "A string of the remaining text"
+      },
+      {
+        "id": "1201ef77921d",
+        "text": "Always a list of lines"
+      },
+      {
+        "id": "511f3230d224",
+        "text": "The file path"
+      },
+      {
+        "id": "26654b5c2a0c",
+        "text": "The number of lines"
+      }
+    ],
+    "correctId": "9805780b3964",
+    "explanation": "read without a size reads from the current position to the end.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-6",
+    "topic": "file-handling",
+    "concept": "file-handling-6",
+    "prompt": "What does f.readline() return?",
+    "choices": [
+      {
+        "id": "cd2f30b308db",
+        "text": "The next line, retaining its newline if present"
+      },
+      {
+        "id": "f30d499e15a2",
+        "text": "All lines as a list"
+      },
+      {
+        "id": "e90f866810d5",
+        "text": "The last line only"
+      },
+      {
+        "id": "9f092b5caf07",
+        "text": "An integer"
+      }
+    ],
+    "correctId": "cd2f30b308db",
+    "explanation": "readline reads one line at the current position.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-7",
+    "topic": "file-handling",
+    "concept": "file-handling-7",
+    "prompt": "What does rb indicate?",
+    "choices": [
+      {
+        "id": "36e04fb418f6",
+        "text": "Read in binary mode"
+      },
+      {
+        "id": "a9e5cd04900f",
+        "text": "Read backwards"
+      },
+      {
+        "id": "48ab3ec75025",
+        "text": "Read and overwrite"
+      },
+      {
+        "id": "272b642cf0b9",
+        "text": "Read only JSON"
+      }
+    ],
+    "correctId": "36e04fb418f6",
+    "explanation": "Binary mode reads bytes rather than decoded text.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-8",
+    "topic": "file-handling",
+    "concept": "file-handling-8",
+    "prompt": "Why specify encoding=\"utf-8\" for a text file?",
+    "choices": [
+      {
+        "id": "0deecca36764",
+        "text": "To use an explicit text encoding"
+      },
+      {
+        "id": "b91280fa61cb",
+        "text": "To enable append mode"
+      },
+      {
+        "id": "0aa80e072120",
+        "text": "To compress the file"
+      },
+      {
+        "id": "de4c91b7c638",
+        "text": "To validate Python syntax"
+      }
+    ],
+    "correctId": "0deecca36764",
+    "explanation": "An explicit encoding avoids dependence on the platform default.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-9",
+    "topic": "file-handling",
+    "concept": "file-handling-9",
+    "prompt": "What does json.dump(data, f) do?",
+    "choices": [
+      {
+        "id": "e42394e98860",
+        "text": "Writes a JSON representation to a file-like object"
+      },
+      {
+        "id": "27e079f683f0",
+        "text": "Reads JSON from a file"
+      },
+      {
+        "id": "590fb2e299df",
+        "text": "Deletes JSON data"
+      },
+      {
+        "id": "a7303088d7a9",
+        "text": "Converts JSON text into a Python object"
+      }
+    ],
+    "correctId": "e42394e98860",
+    "explanation": "dump serializes to a file; load deserializes from one.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-file-handling-10",
+    "topic": "file-handling",
+    "concept": "file-handling-10",
+    "prompt": "What does f.seek(0) do on a file?",
+    "choices": [
+      {
+        "id": "d948e352b14b",
+        "text": "Moves its position to the beginning"
+      },
+      {
+        "id": "9faddd9045a9",
+        "text": "Deletes its content"
+      },
+      {
+        "id": "963cbe776ef8",
+        "text": "Closes it"
+      },
+      {
+        "id": "cd8f60efb4bc",
+        "text": "Reads its last byte"
+      }
+    ],
+    "correctId": "d948e352b14b",
+    "explanation": "seek changes where subsequent reads or writes occur.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#file-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-1",
+    "topic": "exception-handling",
+    "concept": "exception-handling-1",
+    "prompt": "Which block contains code that might raise an exception?",
+    "choices": [
+      {
+        "id": "094d8235546c",
+        "text": "try"
+      },
+      {
+        "id": "1111e7a6d735",
+        "text": "except only"
+      },
+      {
+        "id": "40ea866c66c2",
+        "text": "else only"
+      },
+      {
+        "id": "ee04f05bc033",
+        "text": "finally only"
+      }
+    ],
+    "correctId": "094d8235546c",
+    "explanation": "try encloses the operation being protected.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-2",
+    "topic": "exception-handling",
+    "concept": "exception-handling-2",
+    "prompt": "Which exception commonly results from int(\"hello\")?",
+    "choices": [
+      {
+        "id": "a86e3547a53f",
+        "text": "ValueError"
+      },
+      {
+        "id": "6b5cd6322bbe",
+        "text": "KeyError"
+      },
+      {
+        "id": "4f4a10e9035d",
+        "text": "IndexError"
+      },
+      {
+        "id": "2856779834a1",
+        "text": "ZeroDivisionError"
+      }
+    ],
+    "correctId": "a86e3547a53f",
+    "explanation": "The string cannot be parsed as an integer.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-3",
+    "topic": "exception-handling",
+    "concept": "exception-handling-3",
+    "prompt": "Which exception does 1 / 0 raise?",
+    "choices": [
+      {
+        "id": "6d024264eedb",
+        "text": "ZeroDivisionError"
+      },
+      {
+        "id": "ee4b11089f4c",
+        "text": "ValueError"
+      },
+      {
+        "id": "d2fa81b36182",
+        "text": "KeyError"
+      },
+      {
+        "id": "203cc1aa7a47",
+        "text": "ImportError"
+      }
+    ],
+    "correctId": "6d024264eedb",
+    "explanation": "Division by zero raises ZeroDivisionError.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-4",
+    "topic": "exception-handling",
+    "concept": "exception-handling-4",
+    "prompt": "When does a try statement’s else block run?",
+    "choices": [
+      {
+        "id": "36db86ba7a9d",
+        "text": "When the try suite finishes without an exception"
+      },
+      {
+        "id": "c0747358baf7",
+        "text": "Only when an exception is caught"
+      },
+      {
+        "id": "81d98b13be19",
+        "text": "Before try"
+      },
+      {
+        "id": "8cb6bd568d62",
+        "text": "Only when finally fails"
+      }
+    ],
+    "correctId": "36db86ba7a9d",
+    "explanation": "else runs on normal completion of the try suite.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-5",
+    "topic": "exception-handling",
+    "concept": "exception-handling-5",
+    "prompt": "What is finally intended for?",
+    "choices": [
+      {
+        "id": "5206870ad337",
+        "text": "Cleanup whether or not an exception occurs during normal control flow"
+      },
+      {
+        "id": "2eb65b4be139",
+        "text": "Suppressing every exception"
+      },
+      {
+        "id": "61e82ffe8c90",
+        "text": "Running only after a successful try"
+      },
+      {
+        "id": "dc30ea786940",
+        "text": "Returning True automatically"
+      }
+    ],
+    "correctId": "5206870ad337",
+    "explanation": "finally is used for cleanup; forcefully terminating the process is a separate case.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-6",
+    "topic": "exception-handling",
+    "concept": "exception-handling-6",
+    "prompt": "Which statement explicitly raises an exception?",
+    "choices": [
+      {
+        "id": "c374b497ce43",
+        "text": "raise ValueError(\"bad value\")"
+      },
+      {
+        "id": "953a72c81280",
+        "text": "throw ValueError(\"bad value\")"
+      },
+      {
+        "id": "795d41bc1900",
+        "text": "except ValueError(\"bad value\")"
+      },
+      {
+        "id": "074d88e4c707",
+        "text": "error = True"
+      }
+    ],
+    "correctId": "c374b497ce43",
+    "explanation": "raise signals an exception.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-7",
+    "topic": "exception-handling",
+    "concept": "exception-handling-7",
+    "prompt": "Why prefer except ValueError over a bare except here?",
+    "choices": [
+      {
+        "id": "dad8cb32cc97",
+        "text": "It handles the expected error without hiding unrelated failures"
+      },
+      {
+        "id": "0883d3672b80",
+        "text": "It runs faster in every program"
+      },
+      {
+        "id": "0c7f5fdadbcb",
+        "text": "It catches syntax errors before parsing"
+      },
+      {
+        "id": "3abcd929ffcd",
+        "text": "It prevents all future exceptions"
+      }
+    ],
+    "correctId": "dad8cb32cc97",
+    "explanation": "Narrow exception handling avoids swallowing unexpected problems.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-8",
+    "topic": "exception-handling",
+    "concept": "exception-handling-8",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "4726720e0023",
+        "text": "invalid"
+      },
+      {
+        "id": "09ccbf9a45da",
+        "text": "5"
+      },
+      {
+        "id": "45d7043119f9",
+        "text": "done"
+      },
+      {
+        "id": "bcd53f347204",
+        "text": "An uncaught ValueError"
+      }
+    ],
+    "correctId": "4726720e0023",
+    "explanation": "The matching handler catches the conversion failure.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    },
+    "code": "try:\n    print(int(\"x\"))\nexcept ValueError:\n    print(\"invalid\")"
+  },
+  {
+    "id": "python-v1-exception-handling-9",
+    "topic": "exception-handling",
+    "concept": "exception-handling-9",
+    "prompt": "How can you inspect a caught exception?",
+    "choices": [
+      {
+        "id": "32be52a8155d",
+        "text": "except ValueError as err:"
+      },
+      {
+        "id": "d5612c4ba891",
+        "text": "except ValueError into err:"
+      },
+      {
+        "id": "2cf5513ab39c",
+        "text": "catch err from ValueError:"
+      },
+      {
+        "id": "11fe511ebc13",
+        "text": "try ValueError as err:"
+      }
+    ],
+    "correctId": "32be52a8155d",
+    "explanation": "The as clause binds the exception to a name in the handler.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    }
+  },
+  {
+    "id": "python-v1-exception-handling-10",
+    "topic": "exception-handling",
+    "concept": "exception-handling-10",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "b9ccad7443e4",
+        "text": "cleanup"
+      },
+      {
+        "id": "6ed70e147e56",
+        "text": "ok"
+      },
+      {
+        "id": "6b1610844595",
+        "text": "None"
+      },
+      {
+        "id": "7a5901703a0c",
+        "text": "An uncaught ZeroDivisionError"
+      }
+    ],
+    "correctId": "b9ccad7443e4",
+    "explanation": "The exception is handled, then finally runs.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#exception-handling"
+    },
+    "code": "try:\n    1 / 0\nexcept ZeroDivisionError:\n    pass\nfinally:\n    print(\"cleanup\")"
+  },
+  {
+    "id": "python-v1-modules-packages-1",
+    "topic": "modules-packages",
+    "concept": "modules-packages-1",
+    "prompt": "After import math, how do you access its square-root function?",
+    "choices": [
+      {
+        "id": "4d822a7fed36",
+        "text": "math.sqrt(9)"
+      },
+      {
+        "id": "2098976fa23c",
+        "text": "sqrt.math(9)"
+      },
+      {
+        "id": "94a686400404",
+        "text": "math->sqrt(9)"
+      },
+      {
+        "id": "d2cccfd3d150",
+        "text": "import.sqrt(9)"
+      }
+    ],
+    "correctId": "4d822a7fed36",
+    "explanation": "Qualified names access members of a module.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-2",
+    "topic": "modules-packages",
+    "concept": "modules-packages-2",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "2a49faebf20b",
+        "text": "3.0"
+      },
+      {
+        "id": "627a80c236a1",
+        "text": "9"
+      },
+      {
+        "id": "be5edb865c6a",
+        "text": "3"
+      },
+      {
+        "id": "3f71683677db",
+        "text": "NameError"
+      }
+    ],
+    "correctId": "2a49faebf20b",
+    "explanation": "math.sqrt returns the square root as a float.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    },
+    "code": "import math\nprint(math.sqrt(9))"
+  },
+  {
+    "id": "python-v1-modules-packages-3",
+    "topic": "modules-packages",
+    "concept": "modules-packages-3",
+    "prompt": "What does import math as m do?",
+    "choices": [
+      {
+        "id": "f973e5e2b458",
+        "text": "Binds the imported module to the local name m"
+      },
+      {
+        "id": "d885ab1ba23b",
+        "text": "Renames the installed module file"
+      },
+      {
+        "id": "a59edc62774d",
+        "text": "Imports only sqrt"
+      },
+      {
+        "id": "76fd13722aee",
+        "text": "Creates a new package"
+      }
+    ],
+    "correctId": "f973e5e2b458",
+    "explanation": "as introduces a local alias.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-4",
+    "topic": "modules-packages",
+    "concept": "modules-packages-4",
+    "prompt": "What does from math import pi make directly available?",
+    "choices": [
+      {
+        "id": "6ead8a9ade66",
+        "text": "pi"
+      },
+      {
+        "id": "e71f5e4349f0",
+        "text": "Every math name"
+      },
+      {
+        "id": "c5958dbb7d21",
+        "text": "The math module name automatically"
+      },
+      {
+        "id": "35276b3516c7",
+        "text": "Only sqrt"
+      }
+    ],
+    "correctId": "6ead8a9ade66",
+    "explanation": "This import binds the selected name.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-5",
+    "topic": "modules-packages",
+    "concept": "modules-packages-5",
+    "prompt": "What is a Python module commonly stored as?",
+    "choices": [
+      {
+        "id": "68657a36be61",
+        "text": "A .py file"
+      },
+      {
+        "id": "81f060a6c261",
+        "text": "Only a .csv file"
+      },
+      {
+        "id": "6f37127c98c3",
+        "text": "Only a directory with no files"
+      },
+      {
+        "id": "ab3e204a70a2",
+        "text": "A browser cookie"
+      }
+    ],
+    "correctId": "68657a36be61",
+    "explanation": "A .py source file can serve as a module.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-6",
+    "topic": "modules-packages",
+    "concept": "modules-packages-6",
+    "prompt": "What is pip used for?",
+    "choices": [
+      {
+        "id": "c8e246d19e37",
+        "text": "Installing Python packages"
+      },
+      {
+        "id": "86b39faba966",
+        "text": "Running every Python statement"
+      },
+      {
+        "id": "c6a14439e40b",
+        "text": "Formatting JSON only"
+      },
+      {
+        "id": "9969b478bf0f",
+        "text": "Replacing the interpreter"
+      }
+    ],
+    "correctId": "c8e246d19e37",
+    "explanation": "pip installs packages into a Python environment.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-7",
+    "topic": "modules-packages",
+    "concept": "modules-packages-7",
+    "prompt": "What is a virtual environment useful for?",
+    "choices": [
+      {
+        "id": "6de93dc48d66",
+        "text": "Isolating a project’s Python packages"
+      },
+      {
+        "id": "89757bdd31ea",
+        "text": "Encrypting source files"
+      },
+      {
+        "id": "5f7d5f8c2707",
+        "text": "Making Python statically typed"
+      },
+      {
+        "id": "667038059299",
+        "text": "Preventing all bugs"
+      }
+    ],
+    "correctId": "6de93dc48d66",
+    "explanation": "Separate environments reduce dependency conflicts.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-8",
+    "topic": "modules-packages",
+    "concept": "modules-packages-8",
+    "prompt": "When is __name__ equal to \"__main__\" in a script?",
+    "choices": [
+      {
+        "id": "2dd5aa031c7b",
+        "text": "When the file is run as the main program"
+      },
+      {
+        "id": "5e3150092693",
+        "text": "Only when it is imported"
+      },
+      {
+        "id": "d31ac647af78",
+        "text": "Only if its name is main.py"
+      },
+      {
+        "id": "d3f53b7eb7a3",
+        "text": "Never"
+      }
+    ],
+    "correctId": "2dd5aa031c7b",
+    "explanation": "This check separates script entry-point behavior from import behavior.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-9",
+    "topic": "modules-packages",
+    "concept": "modules-packages-9",
+    "prompt": "Why avoid naming your own script json.py when you need the standard json module?",
+    "choices": [
+      {
+        "id": "79a5bc11b6cf",
+        "text": "It can shadow the standard module during import"
+      },
+      {
+        "id": "602f2b0641fb",
+        "text": "Python forbids all lowercase filenames"
+      },
+      {
+        "id": "2afe481e5c01",
+        "text": "JSON requires uppercase filenames"
+      },
+      {
+        "id": "cd65bf62efef",
+        "text": "It always deletes the standard module"
+      }
+    ],
+    "correctId": "79a5bc11b6cf",
+    "explanation": "A local file can be found before the intended library module.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-modules-packages-10",
+    "topic": "modules-packages",
+    "concept": "modules-packages-10",
+    "prompt": "What does python -m pip help ensure?",
+    "choices": [
+      {
+        "id": "fe531cfc5b97",
+        "text": "pip runs using the selected Python interpreter"
+      },
+      {
+        "id": "9f1b5ad401a4",
+        "text": "Every package is free of bugs"
+      },
+      {
+        "id": "fad0a3d99f01",
+        "text": "Packages install without network access"
+      },
+      {
+        "id": "10d0262bd13d",
+        "text": "The system Python is deleted"
+      }
+    ],
+    "correctId": "fe531cfc5b97",
+    "explanation": "-m runs a module with that interpreter.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#modules-packages"
+    }
+  },
+  {
+    "id": "python-v1-apis-1",
+    "topic": "apis",
+    "concept": "apis-1",
+    "prompt": "What does an HTTP API endpoint identify?",
+    "choices": [
+      {
+        "id": "291d4088ab67",
+        "text": "A URL where a service exposes an operation or resource"
+      },
+      {
+        "id": "fc2c5d8cba06",
+        "text": "A Python variable type"
+      },
+      {
+        "id": "9c894fe45ff3",
+        "text": "A local loop counter"
+      },
+      {
+        "id": "902507e24487",
+        "text": "A database password"
+      }
+    ],
+    "correctId": "291d4088ab67",
+    "explanation": "An endpoint is an address used to interact with a service.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-2",
+    "topic": "apis",
+    "concept": "apis-2",
+    "prompt": "Which HTTP method is normally used to retrieve a resource?",
+    "choices": [
+      {
+        "id": "6603ce4c3a1e",
+        "text": "GET"
+      },
+      {
+        "id": "7928082799c8",
+        "text": "DELETE"
+      },
+      {
+        "id": "6356ec5cd666",
+        "text": "PATCH"
+      },
+      {
+        "id": "bca499de7e52",
+        "text": "POST only"
+      }
+    ],
+    "correctId": "6603ce4c3a1e",
+    "explanation": "GET requests a representation of a resource.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-3",
+    "topic": "apis",
+    "concept": "apis-3",
+    "prompt": "Which HTTP method commonly submits data to create a resource?",
+    "choices": [
+      {
+        "id": "271b7c413f4a",
+        "text": "POST"
+      },
+      {
+        "id": "94a03673aa3d",
+        "text": "GET only"
+      },
+      {
+        "id": "a13f6dff3607",
+        "text": "HEAD"
+      },
+      {
+        "id": "cf94d616659a",
+        "text": "TRACE"
+      }
+    ],
+    "correctId": "271b7c413f4a",
+    "explanation": "POST commonly sends data for processing or resource creation.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-4",
+    "topic": "apis",
+    "concept": "apis-4",
+    "prompt": "What does HTTP 404 commonly mean?",
+    "choices": [
+      {
+        "id": "4046801d07e3",
+        "text": "The requested resource was not found"
+      },
+      {
+        "id": "3061a80f51ab",
+        "text": "The request succeeded"
+      },
+      {
+        "id": "51b547ad48eb",
+        "text": "Too many requests"
+      },
+      {
+        "id": "c80505ef00eb",
+        "text": "Authentication succeeded"
+      }
+    ],
+    "correctId": "4046801d07e3",
+    "explanation": "404 means Not Found.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-5",
+    "topic": "apis",
+    "concept": "apis-5",
+    "prompt": "What does HTTP 429 commonly mean?",
+    "choices": [
+      {
+        "id": "4e4f0a38d965",
+        "text": "Too many requests"
+      },
+      {
+        "id": "ecdc22d13a4e",
+        "text": "The resource was created"
+      },
+      {
+        "id": "30e65780a778",
+        "text": "The server permanently moved"
+      },
+      {
+        "id": "ae7a480bfe19",
+        "text": "The JSON is always invalid"
+      }
+    ],
+    "correctId": "4e4f0a38d965",
+    "explanation": "429 indicates rate limiting; respect retry guidance.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-6",
+    "topic": "apis",
+    "concept": "apis-6",
+    "prompt": "Why set a timeout for a network request?",
+    "choices": [
+      {
+        "id": "9652501b4112",
+        "text": "To avoid waiting indefinitely"
+      },
+      {
+        "id": "58f8c95dc898",
+        "text": "To guarantee the server is correct"
+      },
+      {
+        "id": "bdb8a0d6c81d",
+        "text": "To remove authentication"
+      },
+      {
+        "id": "f94d47648946",
+        "text": "To encrypt JSON automatically"
+      }
+    ],
+    "correctId": "9652501b4112",
+    "explanation": "A timeout bounds waiting; it does not ensure a successful response.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-7",
+    "topic": "apis",
+    "concept": "apis-7",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "24b7b5319f4f",
+        "text": "True"
+      },
+      {
+        "id": "8dd71ab6f28d",
+        "text": "true"
+      },
+      {
+        "id": "ea712a60e204",
+        "text": "\"true\""
+      },
+      {
+        "id": "62e68ce1d9c1",
+        "text": "None"
+      }
+    ],
+    "correctId": "24b7b5319f4f",
+    "explanation": "JSON true becomes Python True when decoded.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    },
+    "code": "import json\nprint(json.loads('{\"ok\": true}')[\"ok\"])"
+  },
+  {
+    "id": "python-v1-apis-8",
+    "topic": "apis",
+    "concept": "apis-8",
+    "prompt": "What is printed?",
+    "choices": [
+      {
+        "id": "c6f6bfbe9e8a",
+        "text": "2"
+      },
+      {
+        "id": "b9ee932af1ed",
+        "text": "3"
+      },
+      {
+        "id": "2052b837d1a3",
+        "text": "\"count\""
+      },
+      {
+        "id": "0a29c9f15939",
+        "text": "KeyError"
+      }
+    ],
+    "correctId": "c6f6bfbe9e8a",
+    "explanation": "Decode JSON text, then access the count key.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    },
+    "code": "import json\nprint(json.loads('{\"count\": 2}')[\"count\"])"
+  },
+  {
+    "id": "python-v1-apis-9",
+    "topic": "apis",
+    "concept": "apis-9",
+    "prompt": "Where should a private API key used by a web backend be kept?",
+    "choices": [
+      {
+        "id": "ec1f60674622",
+        "text": "In server-side secret configuration"
+      },
+      {
+        "id": "260ddb1d1a0b",
+        "text": "In public client JavaScript"
+      },
+      {
+        "id": "08b548a4e28e",
+        "text": "In a public repository"
+      },
+      {
+        "id": "948f798c298c",
+        "text": "In the page title"
+      }
+    ],
+    "correctId": "ec1f60674622",
+    "explanation": "A private key must not be shipped to browsers or published.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  },
+  {
+    "id": "python-v1-apis-10",
+    "topic": "apis",
+    "concept": "apis-10",
+    "prompt": "What should you check before treating an API response as successful?",
+    "choices": [
+      {
+        "id": "7d668853312f",
+        "text": "The status and expected response structure"
+      },
+      {
+        "id": "81bd5a9d3146",
+        "text": "Only that a response arrived"
+      },
+      {
+        "id": "69573556273c",
+        "text": "Only the URL length"
+      },
+      {
+        "id": "5a978eabdc85",
+        "text": "Only the current time"
+      }
+    ],
+    "correctId": "7d668853312f",
+    "explanation": "A response may contain an error or unexpected data even when the network request completes.",
+    "source": {
+      "label": "Init Python revision notebook",
+      "url": "/revision#apis"
+    }
+  }
+]

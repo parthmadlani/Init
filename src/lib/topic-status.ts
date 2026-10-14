@@ -20,7 +20,7 @@ export const STATUS_LABEL: Record<Status, string> = {
 
 export const STATUS_PILL: Record<Status, string> = {
   NOT_STARTED: "bg-black/5 text-black/60",
-  IN_PROGRESS: "bg-brand-cyan-light text-brand-cyan",
+  IN_PROGRESS: "bg-brand-cyan-light text-brand-dark",
   COMPLETE: "bg-brand-pink-light text-brand-pink",
 };
 

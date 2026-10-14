@@ -6,161 +6,23 @@ import { searchYoutubeVideos, type YoutubeCandidate } from "@/lib/integrations/y
 import { getCachedOrFetch } from "@/lib/services/search-cache-service";
 import { generateStructured } from "@/lib/integrations/ai/client";
 
+import { hasNegativeConsensus, pickBestCandidate, type ResourceFeedbackSignal } from "@/lib/resource-ranking";
+
 const LEVEL_QUERY_HINT: Record<Level, string> = {
   BEGINNER: "for beginners",
   INTERMEDIATE: "intermediate",
   ADVANCED: "advanced",
 };
 
-const LEVEL_TITLE_KEYWORDS: Record<Level, string[]> = {
-  BEGINNER: ["beginner", "introduction", "intro to", "basics", "for beginners"],
-  INTERMEDIATE: ["intermediate"],
-  ADVANCED: ["advanced", "deep dive", "in depth", "in-depth"],
-};
-
-// Titles that signal "this covers everything," not the one topic we asked
-// for — the exact failure mode where a "Full Python Crash Course" video
-// wins every topic in a subject. Reused across all subjects/topics.
-const BROAD_COURSE_KEYWORDS = [
-  "full course",
-  "complete course",
-  "crash course",
-  "zero to hero",
-  "everything you need",
-  "full tutorial",
-  "in one video",
-  "one shot",
-  "masterclass",
-  "bootcamp",
-  "roadmap",
-  "full playlist",
-];
-
-// Quality floor until real user feedback (see ResourceFeedback) exists to
-// rank on instead — see Build Spec v2 discussion on resource trust signals.
-// Subscriber count is the "reach" signal; there's no public rating/dislike
-// ratio to check anymore, so we don't invent one.
-const MIN_VIEW_COUNT = 1_000_000;
-const MIN_SUBSCRIBER_COUNT = 500_000;
-
-function passesQualityFilter(candidate: YoutubeCandidate): boolean {
-  return candidate.viewCount >= MIN_VIEW_COUNT && (candidate.subscriberCount ?? 0) >= MIN_SUBSCRIBER_COUNT;
-}
-
-// Hard cap, not just a scoring penalty — a video several multiples of the
-// daily budget is never the right single-topic lesson, no matter how well
-// it otherwise scores (caught an 11h42m match against a 60-minute budget).
-const MAX_DURATION_MULTIPLE = 3;
-
-function passesDurationCap(candidate: YoutubeCandidate, dailyMinutes: number): boolean {
-  return candidate.durationSeconds <= dailyMinutes * 60 * MAX_DURATION_MULTIPLE;
-}
-
-/**
- * Deterministic ranking (Build Spec v2 §04) — no ML. Score from topic-name
- * match, level-keyword match in the title, and how well duration fits the
- * daily time budget. `searchRank` preserves YouTube's own relevance order
- * as a tiebreaker. Penalizes titles that read as a full/broad course rather
- * than a single-topic lesson — see BROAD_COURSE_KEYWORDS.
- */
-function scoreCandidate(
-  candidate: YoutubeCandidate,
-  searchRank: number,
-  topicKeywords: string[],
-  level: Level,
-  dailyMinutes: number,
-  feedback: ResourceFeedbackSignal | null,
-): number {
-  const title = candidate.title.toLowerCase();
-  let score = Math.max(0, 10 - searchRank);
-
-  if (feedback && candidate.videoId === feedback.videoId) {
-    score += feedback.adjustment;
-  }
-
-  const topicHits = topicKeywords.filter((keyword) => title.includes(keyword)).length;
-  if (topicHits > 0) {
-    score += topicHits * 5;
-  } else {
-    score -= 10; // title doesn't even mention the topic — likely off-target
-  }
-
-  if (BROAD_COURSE_KEYWORDS.some((keyword) => title.includes(keyword))) {
-    score -= 25;
-  }
-
-  if (LEVEL_TITLE_KEYWORDS[level].some((keyword) => title.includes(keyword))) {
-    score += 8;
-  }
-
-  const budgetSeconds = dailyMinutes * 60;
-  if (candidate.durationSeconds < 90) {
-    score -= 20; // almost certainly a Short, not a lesson
-  } else if (candidate.durationSeconds <= budgetSeconds) {
-    score += 6;
-  } else {
-    score -= Math.min(10, Math.floor((candidate.durationSeconds - budgetSeconds) / 300));
-  }
-
-  return score;
-}
-
-// Applied in order until one yields candidates — a real, on-topic video
-// from a smaller channel (tier 2) or a bit outside the daily budget (tier
-// 3) beats leaving the topic with nothing. A topic only ends up with no
-// resource at all if it fails every tier; the caller then hides it rather
-// than showing a dead "no video" row (see getPathDetail).
-const FILTER_TIERS: Array<(candidate: YoutubeCandidate, dailyMinutes: number) => boolean> = [
-  (c, dailyMinutes) => passesQualityFilter(c) && passesDurationCap(c, dailyMinutes),
-  (c, dailyMinutes) => passesDurationCap(c, dailyMinutes),
-  (c, dailyMinutes) => c.durationSeconds <= dailyMinutes * 60 * MAX_DURATION_MULTIPLE * 2,
-];
-
-// Deterministic ranking on real usage (Build Spec v2 §04 update, closing the
-// gap docs/api.md flags under "Known gaps") — not ML, just a bounded scoring
-// adjustment plus one hard rule, both driven by ResourceFeedback counts on
-// the video currently matched to this topic+level.
-type ResourceFeedbackSignal = { videoId: string; adjustment: number };
 const FEEDBACK_SCORE_WEIGHT = 6;
 const FEEDBACK_SCORE_CAP = 18;
-const HARD_EXCLUDE_MIN_NOT_HELPFUL = 3;
-
-function pickBestCandidate(
-  candidates: YoutubeCandidate[],
-  topicName: string,
-  level: Level,
-  dailyMinutes: number,
-  feedback: ResourceFeedbackSignal | null,
-  excludeVideoId: string | null,
-): YoutubeCandidate | null {
-  const topicKeywords = topicName.toLowerCase().split(/\s+/).filter((word) => word.length > 2);
-  const pool = excludeVideoId ? candidates.filter((c) => c.videoId !== excludeVideoId) : candidates;
-
-  for (const passesTier of FILTER_TIERS) {
-    const qualified = pool.filter((candidate) => passesTier(candidate, dailyMinutes));
-    if (qualified.length === 0) continue;
-
-    let best = qualified[0];
-    let bestScore = -Infinity;
-    qualified.forEach((candidate, index) => {
-      const score = scoreCandidate(candidate, index, topicKeywords, level, dailyMinutes, feedback);
-      if (score > bestScore) {
-        bestScore = score;
-        best = candidate;
-      }
-    });
-    return best;
-  }
-
-  return null;
-}
 
 type TopicInput = { id: string; slug: string; name: string };
 
 // A resource is shared across every user matched to the same topic+level —
 // only worth an AI call the first time a given video lands there, not once
 // per user/path. Returned to the caller so tagging can happen in `after()`.
-type TagCandidate = { resourceId: string; topicName: string; videoTitle: string; channelName: string };
+type TagCandidate = { videoId: string; resourceId: string; topicName: string; videoTitle: string; channelName: string };
 
 async function ensureResourceForTopic(
   topic: TopicInput,
@@ -192,7 +54,7 @@ async function ensureResourceForTopic(
       prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "HELPFUL" } }),
       prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "NOT_HELPFUL" } }),
     ]);
-    if (notHelpfulCount >= HARD_EXCLUDE_MIN_NOT_HELPFUL && notHelpfulCount > helpfulCount) {
+    if (hasNegativeConsensus(helpfulCount, notHelpfulCount)) {
       // Clearly disliked, not just mixed — stop re-matching it and let a
       // different candidate win, rather than nudge a score that a strong
       // topic-keyword match could still overpower.
@@ -204,14 +66,10 @@ async function ensureResourceForTopic(
     }
   }
 
-  const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes, feedback, excludeVideoId);
+  const best = pickBestCandidate(candidates, topic.name, level, dailyMinutes, feedback, excludeVideoId, subjectName);
   if (!best) {
-    // Nothing cleared even the loosest fallback tier — clear any stale
-    // Resource left over from an earlier, looser computation rather than
-    // silently keeping it. getPathDetail hides topics with no Resource.
-    // Scoped to this dailyMinutes bucket only — other budgets' matches for
-    // the same topic/level are unrelated and must not be wiped out here.
-    await prisma.resource.deleteMany({ where: { topicId: topic.id, level, dailyMinutes } });
+    // Keep historical bookmarks/feedback intact. getPathDetail validates
+    // old matches and shows an unavailable resource instead of an unrelated video.
     return null;
   }
 
@@ -223,6 +81,7 @@ async function ensureResourceForTopic(
       channelName: best.channelName,
       durationSeconds: best.durationSeconds,
       cachedAt: new Date(),
+      ...(existing?.youtubeVideoId !== best.videoId ? { aiTag: null } : {}),
     },
     create: {
       topicId: topic.id,
@@ -238,7 +97,7 @@ async function ensureResourceForTopic(
   const needsTag = existing?.youtubeVideoId !== best.videoId || !existing?.aiTag;
   if (!needsTag) return null;
 
-  return { resourceId: resource.id, topicName: topic.name, videoTitle: best.title, channelName: best.channelName };
+  return { videoId: best.videoId, resourceId: resource.id, topicName: topic.name, videoTitle: best.title, channelName: best.channelName };
 }
 
 const resourceTagSchema = z.object({
@@ -268,7 +127,7 @@ async function tagResourcesInBackground(candidates: TagCandidate[]): Promise<voi
     const aiTag = await generateResourceTag(candidate.topicName, candidate.videoTitle, candidate.channelName);
     if (!aiTag) continue;
     try {
-      await prisma.resource.update({ where: { id: candidate.resourceId }, data: { aiTag } });
+      await prisma.resource.updateMany({ where: { id: candidate.resourceId, youtubeVideoId: candidate.videoId }, data: { aiTag } });
     } catch (error) {
       console.error(`Failed to save aiTag for resource ${candidate.resourceId}:`, error);
     }

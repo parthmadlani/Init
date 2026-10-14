@@ -40,7 +40,7 @@ export function BootSequence({ subjectName, level, dailyMinutes, resolved }: Pro
 
   return (
     <div
-      className="rounded-card border-2 border-brand-dark bg-white p-5 font-mono text-[13px] leading-[1.7] text-brand-dark/80 shadow-[3px_3px_0_#111827]"
+      className="surface p-6 text-sm leading-relaxed text-brand-dark/80"
       role="status"
       aria-live="polite"
     >

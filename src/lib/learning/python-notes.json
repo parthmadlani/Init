@@ -1,0 +1,544 @@
+[
+  {
+    "slug": "fundamentals",
+    "title": "Python fundamentals",
+    "summary": "Think in small steps: take an input, transform it, and show a result.",
+    "points": [
+      "Python uses indentation to group statements. Use four spaces per indentation level consistently.",
+      "Names and strings are case-sensitive. # begins a comment outside a string.",
+      "print displays values, separating multiple arguments with spaces by default. input always returns a string.",
+      "Parentheses make precedence explicit: multiplication happens before addition. / is true division; // is floor division; % gives a remainder; ** is exponentiation."
+    ],
+    "code": "minutes = 30\nwatch = 18\nremaining = minutes - watch\nprint(\"Time left:\", remaining)",
+    "output": "Time left: 12",
+    "mistake": "Do not assume user input is already a number. Convert and validate it.",
+    "challenge": "Ask for a daily budget and print how many minutes remain after a 12-minute lesson.",
+    "table": {
+      "headings": [
+        "Operator",
+        "Meaning",
+        "Example"
+      ],
+      "rows": [
+        [
+          "/",
+          "True division",
+          "5 / 2 → 2.5"
+        ],
+        [
+          "//",
+          "Floor division",
+          "5 // 2 → 2"
+        ],
+        [
+          "%",
+          "Remainder",
+          "7 % 3 → 1"
+        ],
+        [
+          "**",
+          "Power",
+          "2 ** 3 → 8"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Python fundamentals at a glance",
+      "steps": [
+        "Input",
+        "Transform",
+        "Output"
+      ],
+      "caption": "A program transforms information through explicit steps."
+    },
+    "source": "https://docs.python.org/3/tutorial/introduction.html"
+  },
+  {
+    "slug": "variables-data-types",
+    "title": "Variables & data types",
+    "summary": "A name refers to an object. The object has a type; the name can later refer to another object.",
+    "points": [
+      "Use int(\"5\") to convert numeric text before arithmetic. Invalid numeric text raises ValueError.",
+      "String indexes start at 0; -1 selects the last character. A slice includes its start and excludes its stop.",
+      "len reports a sequence’s length. Multiplying a string repeats it. An f-string evaluates expressions inside braces.",
+      "Empty strings and zero are false in boolean contexts. Nonempty strings, including \"False\", are truthy. None represents the absence of a value."
+    ],
+    "code": "name = \"Ada\"\nscore = int(\"7\")\nprint(f\"{name}: {score + 1}\")\nprint(name[0])",
+    "output": "Ada: 8\nA",
+    "mistake": "\"5\" + \"2\" produces \"52\". It does not perform numeric addition.",
+    "challenge": "Extract the first three characters of your name, then print them with your age using an f-string.",
+    "table": {
+      "headings": [
+        "Type",
+        "Example",
+        "Use"
+      ],
+      "rows": [
+        [
+          "int",
+          "42",
+          "Whole numbers"
+        ],
+        [
+          "float",
+          "2.5",
+          "Fractional values"
+        ],
+        [
+          "str",
+          "\"hello\"",
+          "Text"
+        ],
+        [
+          "bool",
+          "True / False",
+          "Truth values"
+        ],
+        [
+          "NoneType",
+          "None",
+          "No value"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Variables & data types at a glance",
+      "steps": [
+        "Name",
+        "Object",
+        "Type"
+      ],
+      "caption": "A variable name points to a value; operations depend on that value’s type."
+    },
+    "source": "https://docs.python.org/3/tutorial/introduction.html"
+  },
+  {
+    "slug": "control-flow",
+    "title": "Control flow",
+    "summary": "Decisions choose a branch; loops repeat a useful step.",
+    "points": [
+      "if / elif / else executes the first matching branch. Use == to compare; = assigns.",
+      "for visits items in an iterable. range(start, stop, step) stops before stop and defaults to start 0 and step 1.",
+      "while repeats while its condition is truthy. Change state so a loop can finish.",
+      "break exits the nearest loop. continue skips to its next iteration. pass is a no-operation placeholder.",
+      "and, or, and not combine or negate truth values. Expressions can short-circuit."
+    ],
+    "code": "total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)",
+    "output": "6",
+    "mistake": "An unchanged while condition can produce an infinite loop.",
+    "challenge": "Print the even numbers from 2 through 10 using range.",
+    "table": {
+      "headings": [
+        "Statement",
+        "Effect"
+      ],
+      "rows": [
+        [
+          "if / elif / else",
+          "Choose a branch"
+        ],
+        [
+          "for",
+          "Iterate over items"
+        ],
+        [
+          "while",
+          "Repeat while a condition holds"
+        ],
+        [
+          "break",
+          "Exit the nearest loop"
+        ],
+        [
+          "continue",
+          "Start the next iteration"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Control flow at a glance",
+      "steps": [
+        "Condition",
+        "Choose branch",
+        "Continue"
+      ],
+      "caption": "Only the matching branch runs; execution then continues after the block."
+    },
+    "source": "https://docs.python.org/3/tutorial/controlflow.html"
+  },
+  {
+    "slug": "functions",
+    "title": "Functions",
+    "summary": "Give a reusable piece of behavior a name, inputs, and a clear result.",
+    "points": [
+      "def defines a function. Parameters name its inputs; arguments supply values when it is called.",
+      "return ends the current call and gives a result to the caller. No explicit result means None; printing is not returning.",
+      "Default arguments are evaluated once when the function is defined. Use None and create a fresh list inside instead of a mutable list default.",
+      "Keyword arguments bind by name. *args collects extra positional arguments into a tuple; **kwargs collects extra named arguments into a dictionary.",
+      "Assignment inside a function normally creates a local name. It does not reassign a same-named global variable unless explicitly declared global."
+    ],
+    "code": "def remaining(budget, watched=0):\n    return budget - watched\n\nprint(remaining(watched=18, budget=30))",
+    "output": "12",
+    "mistake": "A function that prints a result but does not return it gives the caller None.",
+    "challenge": "Write a function that takes a price and discount and returns the discounted price.",
+    "table": {
+      "headings": [
+        "Feature",
+        "Purpose"
+      ],
+      "rows": [
+        [
+          "Parameter",
+          "Name of an input"
+        ],
+        [
+          "Argument",
+          "Value passed in"
+        ],
+        [
+          "return",
+          "Result sent back"
+        ],
+        [
+          "*args",
+          "Extra positional inputs"
+        ],
+        [
+          "**kwargs",
+          "Extra named inputs"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Functions at a glance",
+      "steps": [
+        "Arguments",
+        "Function body",
+        "Return value"
+      ],
+      "caption": "Separate the calculation from the code that displays its result."
+    },
+    "source": "https://docs.python.org/3/tutorial/controlflow.html#defining-functions"
+  },
+  {
+    "slug": "data-structures",
+    "title": "Data structures",
+    "summary": "Choose a collection by how you need to access and change the information.",
+    "points": [
+      "Lists preserve order and are mutable. append adds an item; list.copy makes a shallow copy. Nested mutable values can still be shared.",
+      "Tuples are immutable sequences. A single-item tuple needs a comma: (5,).",
+      "Sets contain unique hashable elements; do not rely on iteration order. Dictionaries map unique keys to values.",
+      "d[key] raises KeyError for a missing key. d.get(key, default) supplies a fallback.",
+      "Comprehensions build collections from iterables. sorted returns a new list; list.sort mutates a list and returns None.",
+      "Assigning b = a does not copy a list. Both names refer to the same object."
+    ],
+    "code": "scores = [3, 1, 3]\nprint(sorted(set(scores)))\nsquares = [n * n for n in [1, 2, 3]]\nprint(squares)",
+    "output": "[1, 3]\n[1, 4, 9]",
+    "mistake": "Changing an aliased list changes the object seen through both names.",
+    "challenge": "Build a dictionary of three learner names and scores; safely read a missing learner with a default.",
+    "table": {
+      "headings": [
+        "Collection",
+        "Mutable?",
+        "Useful for"
+      ],
+      "rows": [
+        [
+          "list",
+          "Yes",
+          "Ordered items"
+        ],
+        [
+          "tuple",
+          "No",
+          "Fixed sequences"
+        ],
+        [
+          "set",
+          "Yes",
+          "Unique elements"
+        ],
+        [
+          "dict",
+          "Yes",
+          "Key → value lookup"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Data structures at a glance",
+      "steps": [
+        "Choose collection",
+        "Store values",
+        "Access / update"
+      ],
+      "caption": "A good collection choice makes the next operation simple."
+    },
+    "source": "https://docs.python.org/3/tutorial/datastructures.html"
+  },
+  {
+    "slug": "oop",
+    "title": "Object-oriented programming",
+    "summary": "A class groups behavior with the state that behavior operates on.",
+    "points": [
+      "class defines a class; calling it normally creates an instance. __init__ initializes instance state.",
+      "self is the conventional name for the current instance in instance methods. Store instance attributes as self.name.",
+      "Class attributes are available through the class and its instances. Instance attributes may shadow them; shared mutable class attributes need care.",
+      "class Dog(Animal): declares inheritance. A subclass can override an inherited method.",
+      "isinstance also recognizes subclasses. super supports cooperative calls through the method resolution order."
+    ],
+    "code": "class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 1\n\ncounter = Counter()\ncounter.add()\nprint(counter.value)",
+    "output": "1",
+    "mistake": "Putting a mutable list on the class can unintentionally share it between instances.",
+    "challenge": "Create a Learner class with a name and a method that returns a greeting.",
+    "table": {
+      "headings": [
+        "Term",
+        "Meaning"
+      ],
+      "rows": [
+        [
+          "Class",
+          "Definition of behavior and attributes"
+        ],
+        [
+          "Instance",
+          "A particular object"
+        ],
+        [
+          "Method",
+          "Function accessed through an object or class"
+        ],
+        [
+          "Inheritance",
+          "Reuse / specialize a base class"
+        ],
+        [
+          "Override",
+          "Replace inherited behavior in a subclass"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Object-oriented programming at a glance",
+      "steps": [
+        "Class",
+        "Instance",
+        "State + methods"
+      ],
+      "caption": "Each instance can carry its own state while sharing behavior defined on the class."
+    },
+    "source": "https://docs.python.org/3/tutorial/classes.html"
+  },
+  {
+    "slug": "file-handling",
+    "title": "File handling",
+    "summary": "Files keep information beyond a single program run. Choose modes carefully.",
+    "points": [
+      "with open(...) as f manages closing the file when the block exits, including when an exception is raised.",
+      "r reads; w writes and truncates existing content; a appends; rb reads bytes. Use an explicit encoding such as utf-8 for text.",
+      "read reads remaining content; readline reads one line and retains a newline if present. Iterating over a file processes lines without reading all of it at once.",
+      "seek(0) returns the file position to the beginning. Reads happen from the current position.",
+      "json.dump writes JSON to a file-like object; json.load reads JSON from one. dumps and loads work with strings."
+    ],
+    "code": "from io import StringIO\nwith StringIO(\"Python\\nPractice\\n\") as file:\n    print(file.readline().strip())\n    print(file.readline().strip())",
+    "output": "Python\nPractice",
+    "mistake": "Opening a valuable existing file with w erases its old content. The example uses an in-memory file safely.",
+    "challenge": "In a disposable folder, write a short note, then reopen it with r and print it.",
+    "table": {
+      "headings": [
+        "Mode",
+        "Behavior"
+      ],
+      "rows": [
+        [
+          "r",
+          "Read text; file must exist"
+        ],
+        [
+          "w",
+          "Write; create or truncate"
+        ],
+        [
+          "a",
+          "Append; create if needed"
+        ],
+        [
+          "rb",
+          "Read bytes"
+        ],
+        [
+          "x",
+          "Create; fail if already present"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "File handling at a glance",
+      "steps": [
+        "Open",
+        "Read / write",
+        "Close"
+      ],
+      "caption": "The with block makes the cleanup step explicit and dependable."
+    },
+    "source": "https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files"
+  },
+  {
+    "slug": "exception-handling",
+    "title": "Exception handling",
+    "summary": "Handle the failures you expect and let unexpected problems remain visible.",
+    "points": [
+      "Put a risky operation in try and handle a specific exception in except. ValueError often signals an invalid conversion; ZeroDivisionError signals division by zero.",
+      "Use except ValueError as err to inspect the exception. Avoid bare except when you only intend to catch one kind of error.",
+      "else runs when the try suite finishes normally. finally provides cleanup during normal control flow, whether or not an exception was raised; it cannot protect against forceful process termination.",
+      "raise ValueError(\"message\") explicitly signals invalid input. Clear error messages help the caller recover."
+    ],
+    "code": "try:\n    score = int(\"not a number\")\nexcept ValueError:\n    print(\"Enter a whole number\")\nfinally:\n    print(\"Attempt finished\")",
+    "output": "Enter a whole number\nAttempt finished",
+    "mistake": "Catching every exception and ignoring it can hide real defects.",
+    "challenge": "Convert a text input to an integer and show a helpful message if conversion fails.",
+    "table": {
+      "headings": [
+        "Block",
+        "When it runs"
+      ],
+      "rows": [
+        [
+          "try",
+          "Attempt the operation"
+        ],
+        [
+          "except",
+          "Handle a matching exception"
+        ],
+        [
+          "else",
+          "After a successful try suite"
+        ],
+        [
+          "finally",
+          "Cleanup on leaving the statement"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Exception handling at a glance",
+      "steps": [
+        "Try operation",
+        "Handle expected error",
+        "Clean up"
+      ],
+      "caption": "Recovery should be specific to the failure you actually understand."
+    },
+    "source": "https://docs.python.org/3/tutorial/errors.html"
+  },
+  {
+    "slug": "modules-packages",
+    "title": "Modules & packages",
+    "summary": "Split code into reusable files and isolate project dependencies.",
+    "points": [
+      "A .py file can be a module. import math binds the module; math.sqrt accesses a member. import math as m introduces an alias.",
+      "from math import pi binds the selected name directly. Avoid wildcard imports when they obscure where names originate.",
+      "__name__ equals \"__main__\" when a file is run as the main program. Use the guard to separate entry-point behavior from import behavior.",
+      "pip installs packages. python -m pip runs pip with the chosen interpreter; virtual environments keep project packages separate.",
+      "A local file named json.py or math.py can shadow the library you intended to import."
+    ],
+    "code": "import math as m\nprint(m.sqrt(9))\nfrom math import pi\nprint(round(pi, 2))",
+    "output": "3.0\n3.14",
+    "mistake": "Installing into one Python environment and running another can cause confusing import errors.",
+    "challenge": "Create a helper module with one function and import it from a second file.",
+    "table": {
+      "headings": [
+        "Tool / syntax",
+        "Purpose"
+      ],
+      "rows": [
+        [
+          "import module",
+          "Use a module namespace"
+        ],
+        [
+          "from module import name",
+          "Import a specific name"
+        ],
+        [
+          "as alias",
+          "Choose a local name"
+        ],
+        [
+          "python -m venv .venv",
+          "Create an isolated environment"
+        ],
+        [
+          "python -m pip",
+          "Run pip with this interpreter"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Modules & packages at a glance",
+      "steps": [
+        "Your program",
+        "Import module",
+        "Reuse behavior"
+      ],
+      "caption": "Imports connect small, focused modules into a program."
+    },
+    "source": "https://docs.python.org/3/tutorial/modules.html"
+  },
+  {
+    "slug": "apis",
+    "title": "Working with APIs",
+    "summary": "An API request crosses a network boundary. Plan for missing data and failures.",
+    "points": [
+      "An endpoint is a URL exposing an operation or resource. GET normally retrieves a representation; POST commonly submits data for processing or creation.",
+      "Check status and response structure before using the result. 404 means Not Found; 429 indicates too many requests.",
+      "Set timeouts, handle connection errors, and respect retry guidance. A response arriving does not mean the operation succeeded.",
+      "JSON text is not a Python object. json.loads decodes text; JSON true becomes True and null becomes None. json.dumps encodes an object to JSON text.",
+      "Keep private API credentials in server-side secret configuration. Do not put them in public repositories or browser code."
+    ],
+    "code": "import json\nresponse_text = '{\"count\": 2, \"ok\": true}'\ndata = json.loads(response_text)\nif data.get(\"ok\") is True:\n    print(data[\"count\"])",
+    "output": "2",
+    "mistake": "Do not call every response a success or assume every body has the fields you expect. This example decodes a sample response without making a network call.",
+    "challenge": "Decode a sample JSON response and handle a missing field with a useful fallback.",
+    "table": {
+      "headings": [
+        "Item",
+        "Meaning"
+      ],
+      "rows": [
+        [
+          "GET",
+          "Retrieve a representation"
+        ],
+        [
+          "POST",
+          "Submit data"
+        ],
+        [
+          "2xx",
+          "Successful HTTP response category"
+        ],
+        [
+          "404",
+          "Not Found"
+        ],
+        [
+          "429",
+          "Too Many Requests"
+        ]
+      ]
+    },
+    "diagram": {
+      "title": "Working with APIs at a glance",
+      "steps": [
+        "Request",
+        "Check response",
+        "Use validated data"
+      ],
+      "caption": "Network failures, status errors, and malformed data need separate handling."
+    },
+    "source": "https://docs.python.org/3/library/json.html"
+  }
+]

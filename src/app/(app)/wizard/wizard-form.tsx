@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { requestJson } from "@/lib/client-request";
 import { useRouter } from "next/navigation";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 import { BootSequence } from "@/components/boot-sequence";
@@ -27,10 +28,11 @@ type Step = (typeof STEPS)[number];
 
 type SkipSuggestion = { topicId: string; name: string };
 
-export function WizardForm({ subjects }: { subjects: Subject[] }) {
+export function WizardForm({ subjects, initialSubjectId }: { subjects: Subject[]; initialSubjectId?: string }) {
   const router = useRouter();
+  const submitLock = useRef(false);
   const [stepIndex, setStepIndex] = useState(0);
-  const [subjectId, setSubjectId] = useState<string | null>(null);
+  const [subjectId, setSubjectId] = useState<string | null>(subjects.some((subject) => subject.id === initialSubjectId) ? initialSubjectId! : null);
   const [type, setType] = useState<(typeof GOAL_TYPES)[number]["value"] | null>(null);
   const [level, setLevel] = useState<(typeof LEVELS)[number]["value"] | null>(null);
   const [dailyMinutes, setDailyMinutes] = useState<number | null>(null);
@@ -52,30 +54,34 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
   const selectedSubject = subjects.find((s) => s.id === subjectId);
 
   async function submit(skipTopicIds?: string[]) {
+    if (submitLock.current) return;
+    submitLock.current = true;
     setSubmitting(true);
     setResolved(false);
     setError(null);
-    const res = await fetch("/api/v1/goals", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ subjectId, type, level, dailyMinutes, notes: notes || undefined, skipTopicIds }),
-    });
-    const body = await res.json();
-    if (!res.ok) {
-      setError(body.error ?? "Something went wrong");
+    try {
+      const body = await requestJson<{ path: { id: string } }>("/api/v1/goals", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subjectId, type, level, dailyMinutes, notes: notes || undefined, skipTopicIds }),
+        signal: AbortSignal.timeout(60_000),
+      });
+      if (!body?.path?.id) throw new Error("Could not confirm your path. Check your dashboard before retrying.");
+      setResolved(true);
+      router.push(`/paths/${body.path.id}`);
+    } catch (error) {
+      setError(error instanceof Error && error.name !== "TimeoutError"
+        ? error.message : "This is taking longer than expected. Check your dashboard or retry; your choices are still here.");
       setSubmitting(false);
-      return;
+      submitLock.current = false;
     }
-    setResolved(true);
-    // Let "path ready." land on screen for a beat before navigating away.
-    await new Promise((resolve) => setTimeout(resolve, 650));
-    router.push(`/paths/${body.path.id}`);
   }
 
   // Optional enrichment (Build Spec v2 Phase 06) — only runs when the learner
   // wrote something. Any failure (no AI key, network, empty result) just
   // falls straight through to the unchanged fixed submit path.
   async function handleNotesContinue() {
+    if (checkingNotes || submitLock.current) return;
     if (!notes.trim()) {
       submit();
       return;
@@ -85,6 +91,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ subjectId, notes }),
+      signal: AbortSignal.timeout(12_000),
     })
       .then((res) => (res.ok ? res.json() : null))
       .then((body) => (body?.suggestions as SkipSuggestion[]) ?? [])
@@ -125,9 +132,9 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
             {skipSuggestions.map((s) => (
               <label
                 key={s.topicId}
-                className={`flex cursor-pointer items-center gap-3 rounded-card border-2 p-4 transition duration-150 ${
+                className={`flex cursor-pointer items-center gap-3 rounded-control border p-4 transition duration-150 ${
                   checkedSkipIds.has(s.topicId)
-                    ? "border-brand-pink bg-brand-pink-light/40"
+                    ? "border-brand-pink bg-brand-pink-light/50"
                     : "border-black/10 hover:border-black/25"
                 }`}
               >
@@ -142,6 +149,7 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
             ))}
           </div>
         </StepShell>
+        {error && <p role="alert" className="mt-4 text-sm text-red-600">{error}</p>}
         <div className="mt-8 flex justify-between">
           <button
             onClick={() => setSkipSuggestions(null)}
@@ -159,12 +167,12 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
 
   return (
     <div>
-      <div className="mb-1.5 flex gap-1.5">
+      <div role="progressbar" aria-label="Path setup" aria-valuemin={1} aria-valuemax={STEPS.length} aria-valuenow={stepIndex + 1} className="mb-1.5 flex gap-1.5">
         {STEPS.map((s, i) => (
           <div key={s} className={`h-1.5 flex-1 rounded-full ${i <= stepIndex ? "bg-brand-pink" : "bg-black/10"}`} />
         ))}
       </div>
-      <p className="mb-6 font-mono text-[11px] text-black/65">
+      <p className="mb-6 text-[11px] text-black/65">
         [step {stepIndex + 1}/{STEPS.length}]
       </p>
 
@@ -227,8 +235,18 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
       )}
 
       {step === "notes" && (
-        <StepShell title="Anything else about your goals?" subtitle="Optional — helps future tuning, never required.">
+        <StepShell title="Anything else about your goals?" subtitle="Optional — describe what you already know. When available, suggestions let you choose topics to skip.">
+          <dl className="mb-5 grid grid-cols-2 gap-3 rounded-card bg-white p-4 text-sm">
+            <div><dt className="text-black/65">Subject</dt><dd className="font-semibold">{selectedSubject?.name}</dd></div>
+            <div><dt className="text-black/65">Goal</dt><dd className="font-semibold">{GOAL_TYPES.find((goal) => goal.value === type)?.label}</dd></div>
+            <div><dt className="text-black/65">Level</dt><dd className="font-semibold">{LEVELS.find((item) => item.value === level)?.label}</dd></div>
+            <div><dt className="text-black/65">Daily time</dt><dd className="font-semibold">{dailyMinutes} minutes</dd></div>
+          </dl>
+          <p className="mb-4 text-sm text-black/65">Your level guides video matching. Your daily time includes watching and suggested practice. Short videos are preferred; longer ones are split into blocks that stop automatically. Rebuilding a subject updates its path and keeps your topic progress.</p>
+          <label htmlFor="learning-notes" className="mb-2 block text-sm font-semibold">What do you already know? (optional)</label>
           <textarea
+            id="learning-notes"
+            maxLength={1000}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={4}
@@ -239,12 +257,12 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
       )}
       </div>
 
-      {error && <p className="mt-4 text-sm font-medium text-red-600">{error}</p>}
+      {error && <p role="alert" className="mt-4 text-sm font-medium text-red-600">{error}</p>}
 
       <div className="mt-8 flex justify-between">
         <button
           onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
-          disabled={stepIndex === 0}
+          disabled={stepIndex === 0 || checkingNotes}
           className="rounded-control px-4 py-2.5 text-sm font-semibold text-black/65 disabled:opacity-0"
         >
           Back
@@ -272,9 +290,11 @@ export function WizardForm({ subjects }: { subjects: Subject[] }) {
 }
 
 function StepShell({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
+  const heading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => { heading.current?.focus({ preventScroll: true }); }, [title]);
   return (
     <div>
-      <h1 className="font-serif text-display font-bold text-brand-dark">{title}</h1>
+      <h1 ref={heading} tabIndex={-1} className="font-serif text-3xl font-medium tracking-tight text-brand-dark focus:outline-none">{title}</h1>
       {subtitle && <p className="mt-1 text-sm text-black/65">{subtitle}</p>}
       <div className="mt-5">{children}</div>
     </div>
@@ -296,10 +316,11 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-card border-2 p-4 text-left transition duration-150 ${
+      aria-pressed={selected}
+      className={`rounded-control border p-4 text-left transition duration-150 ${
         selected
-          ? "border-brand-pink bg-brand-pink-light/40"
-          : "border-black/10 hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]"
+          ? "border-brand-pink bg-brand-pink-light/50"
+          : "border-black/10 hover:border-black/25 hover:bg-black/[0.02]"
       }`}
     >
       <div className="font-semibold text-brand-dark">{label}</div>

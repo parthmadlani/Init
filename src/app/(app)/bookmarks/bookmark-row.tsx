@@ -1,10 +1,14 @@
 "use client";
 
+import Image from "next/image";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { requestJson } from "@/lib/client-request";
 import { useState, useTransition } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 function formatDuration(seconds: number): string {
-  const minutes = Math.round(seconds / 60);
+  const minutes = Math.ceil(seconds / 60);
   if (minutes < 60) return `${minutes} min`;
   const hours = Math.floor(minutes / 60);
   const rest = minutes % 60;
@@ -39,30 +43,39 @@ export function BookmarkRow({
   topicName: string;
   subjectName: string;
 }) {
+  const router = useRouter();
   const [removed, setRemoved] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   function remove() {
-    setRemoved(true);
     startTransition(async () => {
-      await fetch(`/api/v1/bookmarks/${bookmarkId}`, { method: "DELETE" });
+      try {
+        await requestJson(`/api/v1/bookmarks/${bookmarkId}`, { method: "DELETE" });
+        setRemoved(true);
+        router.refresh();
+        toast.success("Bookmark removed");
+      } catch (error) {
+        toast.error(error instanceof Error ? error.message : "Could not remove the bookmark. Please retry.");
+      }
     });
   }
 
   if (removed) return null;
 
   return (
-    <Card className="h-full overflow-hidden rounded-card border border-black/10 bg-white py-0 shadow-none ring-0 transition duration-150 hover:border-brand-cyan hover:shadow-[0_8px_20px_-6px_rgba(0,194,209,0.45)]">
-      <a href={`https://www.youtube.com/watch?v=${youtubeVideoId}`} target="_blank" rel="noopener noreferrer">
-        <img
+    <Card className="h-full overflow-hidden rounded-card border border-black/10 bg-white py-0 shadow-none ring-0 transition duration-150 hover:border-brand-cyan hover:shadow-sm">
+      <a aria-label={`Watch ${title} on YouTube`} href={`https://www.youtube.com/watch?v=${youtubeVideoId}`} target="_blank" rel="noopener noreferrer">
+        <Image
           src={`https://i.ytimg.com/vi/${youtubeVideoId}/hqdefault.jpg`}
           alt=""
+          width={480}
+          height={360}
           className="h-40 w-full object-cover"
           loading="lazy"
         />
       </a>
 
-      <CardContent className="flex h-full flex-col gap-3 px-4 pt-4">
+      <CardContent className="flex h-full flex-col gap-3 px-5 pb-4 pt-0">
         <div className="text-label font-semibold uppercase tracking-wide text-black/45">
           {subjectName} · {topicName}
         </div>
@@ -88,7 +101,7 @@ export function BookmarkRow({
             type="button"
             onClick={remove}
             disabled={isPending}
-            className="shrink-0 rounded-control px-2 py-1.5 text-xs font-semibold text-black/45 transition hover:bg-black/5 hover:text-brand-pink"
+            className="min-h-11 shrink-0 rounded-control px-3 py-2 text-xs font-semibold text-black/45 transition hover:bg-black/5 hover:text-brand-pink"
           >
             Remove
           </button>
