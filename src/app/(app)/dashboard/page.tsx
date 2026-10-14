@@ -1,3 +1,4 @@
+import { AVAILABLE_COURSE_SLUGS } from "@/lib/courses/catalog";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, BookOpen, Clock3 } from "lucide-react";
 import { auth } from "@/lib/auth";
@@ -13,7 +14,7 @@ export default async function DashboardPage() {
   const session = await auth();
   const userId = session!.user.id;
   const [subjects, paths, calendar] = await Promise.all([
-    prisma.subject.findMany({ select: { id: true, name: true, _count: { select: { topics: true } } }, orderBy: { name: "asc" } }),
+    prisma.subject.findMany({ where: { slug: { in: AVAILABLE_COURSE_SLUGS } }, select: { id: true, slug: true, name: true, _count: { select: { topics: true } } }, orderBy: { name: "asc" } }),
     getAllPathSummaries(userId), getActivityCalendar(userId),
   ]);
   const active = paths.find(path => path.completed < path.total);
@@ -42,7 +43,7 @@ export default async function DashboardPage() {
       </div>
       <aside className="min-w-0 space-y-6">
         <section className="surface p-6"><p className="eyebrow">Small steps add up</p><div className="my-5 flex items-baseline gap-2"><span className="font-serif text-4xl font-medium">{completed}</span><span className="text-xs text-black/55">topics completed</span></div><h2 className="section-title mb-4">Your activity</h2><ActivityCalendar days={calendar} /></section>
-        <section className="surface p-6"><h2 className="section-title">Explore a subject</h2><p className="mt-2 text-xs leading-relaxed text-black/55">Make space for your next interest.</p><div className="mt-5 divide-y divide-black/[0.06]">{subjects.map(s => <Link key={s.id} href={`/wizard?subject=${s.id}`} className="group flex items-center justify-between gap-3 py-4 first:pt-0 last:pb-0"><div><p className="text-sm font-medium group-hover:text-brand-pink">{s.name}</p><p className="mt-1 text-xs text-black/55">{s._count.topics} topics to explore</p></div><ArrowUpRight size={16} className="text-black/55" /></Link>)}</div></section>
+        <section className="surface p-6"><h2 className="section-title">Explore a subject</h2><Link href="/courses" className="mt-2 inline-flex min-h-9 items-center text-xs font-medium text-brand-pink underline">Browse courses & collections →</Link><p className="mt-2 text-xs leading-relaxed text-black/55">Make space for your next interest.</p><div className="mt-5 divide-y divide-black/[0.06]">{subjects.map(s => <Link key={s.id} href={`/courses/${s.slug}`} className="group flex items-center justify-between gap-3 py-4 first:pt-0 last:pb-0"><div><p className="text-sm font-medium group-hover:text-brand-pink">{s.name}</p><p className="mt-1 text-xs text-black/55">{s._count.topics} topics to explore</p></div><ArrowUpRight size={16} className="text-black/55" /></Link>)}</div></section>
       </aside>
     </div>
   </main>;

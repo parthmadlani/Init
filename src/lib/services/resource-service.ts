@@ -1,3 +1,4 @@
+import { getCourse } from "@/lib/courses/catalog";
 import { z } from "zod";
 import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
@@ -32,7 +33,8 @@ async function ensureResourceForTopic(
   dailyMinutes: number,
 ): Promise<TagCandidate | null> {
   const queryKey = `${subjectSlug}:${topic.slug}:${level.toLowerCase()}`;
-  const query = `${subjectName} ${topic.name} tutorial ${LEVEL_QUERY_HINT[level]}`;
+  const configuredQuery = getCourse(subjectSlug)?.topics.find(t => t.slug === topic.slug)?.query;
+  const query = configuredQuery ?? `${subjectName} ${topic.name} tutorial ${LEVEL_QUERY_HINT[level]}`;
 
   let candidates: YoutubeCandidate[];
   try {

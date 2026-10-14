@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student planner — HTML starter</title>
+</head>
+<body>
+  <a href="#main">Skip to content</a>
+  <header>
+    <h1>My study planner</h1>
+    <p>One useful step each day.</p>
+  </header>
+  <nav aria-label="Main">
+    <a href="#schedule">Schedule</a>
+    <a href="#tasks">Task form</a>
+    <a href="#review">Self-review</a>
+  </nav>
+  <main id="main">
+    <section id="schedule">
+      <h2>My study week</h2>
+      <table>
+        <caption>A starter schedule — replace these entries with your plan</caption>
+        <thead><tr><th scope="col">Day</th><th scope="col">Focus</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Monday</th><td>Page structure</td></tr>
+          <tr><th scope="row">Tuesday</th><td>Links and navigation</td></tr>
+          <tr><th scope="row">Wednesday</th><td>Forms and accessibility</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="tasks">
+      <h2>Plan a task</h2>
+      <p id="prototype-note">This is a static HTML prototype. Inputs are not saved or sent anywhere. Task-saving behavior comes in a later course.</p>
+      <!-- A fieldset demonstrates controls without an active submission endpoint. -->
+      <fieldset aria-describedby="prototype-note">
+        <legend>Task details</legend>
+        <p><label for="task-title">Task title (required)</label><br><input id="task-title" name="title" required></p>
+        <p><label for="due-date">Due date</label><br><input id="due-date" name="due" type="date"></p>
+        <p><label for="task-notes">Notes</label><br><textarea id="task-notes" name="notes" rows="4"></textarea></p>
+      </fieldset>
+    </section>
+    <section id="review">
+      <h2>Build it further</h2>
+      <ol>
+        <li>Split this into three pages with working relative links.</li>
+        <li>Add a meaningful image with an appropriate alternative.</li>
+        <li>Test every link and control using a keyboard.</li>
+        <li>Validate the markup and inspect the page at narrow widths.</li>
+        <li>Write a README and record your milestones with Git.</li>
+      </ol>
+    </section>
+  </main>
+  <footer><p>Original Init learning starter. Make it your own.</p></footer>
+</body>
+</html>

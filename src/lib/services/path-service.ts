@@ -1,3 +1,4 @@
+import { getCourse } from "@/lib/courses/catalog";
 import { hasNegativeConsensus, matchesTopic } from "@/lib/resource-ranking";
 import { prisma } from "@/lib/prisma";
 import type { GoalType, Level } from "@/generated/prisma/client";
@@ -33,6 +34,8 @@ export async function createGoalWithPath(input: CreateGoalInput) {
       select: { slug: true, name: true },
     }),
   ]);
+
+  if (!getCourse(subject.slug)) throw new Error("This course is not available yet.");
 
   if (topics.length === 0) {
     throw new Error("Subject has no topics yet");

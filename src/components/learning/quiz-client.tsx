@@ -5,6 +5,7 @@ import { Check, ArrowRight, RotateCcw } from "lucide-react";
 import { PRIMARY_CTA_CLASS } from "@/lib/ui";
 import type { QuizView } from "@/lib/learning/types";
 import PYTHON_NOTES from "@/lib/learning/python-notes.json";
+import { topicLabel } from "@/lib/courses/catalog";
 
 export function QuizClient({ initial }: { initial: QuizView }) {
   const [quiz, setQuiz] = useState(initial);
@@ -23,7 +24,7 @@ export function QuizClient({ initial }: { initial: QuizView }) {
   }, [index, quiz.completed]);
   const q = quiz.questions[index];
   const answered = Object.keys(quiz.answers).length;
-  const labelFor = (slug: string) => PYTHON_NOTES.find(n => n.slug === slug)?.title ?? slug;
+  const labelFor = (slug: string) => topicLabel(slug) ?? PYTHON_NOTES.find(n => n.slug === slug)?.title ?? slug;
   async function save(payload: { questionId: string; choiceId: string; confidence: "sure" | "unsure" } | { finish: true }) {
     if (lock.current) return;
     lock.current = true; setBusy(true); setError("");

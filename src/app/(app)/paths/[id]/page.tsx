@@ -18,6 +18,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
   return (
     <main className="page-shell">
       <BackToHomeLink />
+      <Link href={`/courses/${path.subject.slug}`} className="inline-flex min-h-11 items-center text-xs text-brand-cyan underline">About this course</Link>
       <p className="eyebrow mt-3">
         {path.goal.type.toLowerCase()} · {path.goal.level.toLowerCase()}
       </p>
@@ -72,7 +73,7 @@ export default async function PathPage({ params }: { params: Promise<{ id: strin
           />
         ))}
       </div>
-      <section className="mt-7 rounded-card border border-brand-pink/20 bg-brand-pink-light/35 p-6"><p className="eyebrow text-brand-pink">Bring it all together</p><h2 className="mt-3 font-serif text-2xl font-medium">Your revision notebook & final review</h2><p className="mt-3 text-sm leading-relaxed text-black/65">Diagrams, comparison tables, Python examples, and practice that adapts to your answers. Available whenever you want to revisit a concept.</p><Link href={`/paths/${path.id}/revision`} className="mt-4 inline-flex min-h-11 items-center font-semibold text-brand-pink">Open revision & quizzes →</Link></section>
+      <section className="mt-7 rounded-card border border-brand-pink/20 bg-brand-pink-light/35 p-6"><p className="eyebrow text-brand-pink">Bring it all together</p><h2 className="mt-3 font-serif text-2xl font-medium">Your revision notebook & final review</h2><p className="mt-3 text-sm leading-relaxed text-black/65">Diagrams, comparison tables, {path.subject.name} examples, and practice that adapts to your answers. Available whenever you want to revisit a concept.</p><Link href={`/paths/${path.id}/revision`} className="mt-4 inline-flex min-h-11 items-center font-semibold text-brand-pink">Open revision & quizzes →</Link></section>
       </section></div>
     </main>
   );

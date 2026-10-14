@@ -14,9 +14,31 @@ const TOPIC_PATTERNS: Array<[RegExp, RegExp]> = [
   [/\bapis?\b/i, /\bapis?\b|\bhttp requests?\b/],
 ];
 
+const HTML_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "How the web works": /how (?:the )?(?:web|internet) works|\bhttp\b|client server|browser.*server/,
+  "Editor & first page": /first (?:web ?)?page|first website|vs code|visual studio code|setup|getting started|html basics/,
+  "Git & GitHub basics": /\bgit\b|\bgithub\b/,
+  "HTML document structure": /document structure|html structure|doctype|html head|html basics|html boilerplate/,
+  "Text & lists": /\blists?\b|headings?|paragraphs?|text formatting/,
+  "Links & paths": /\blinks?\b|hyperlinks?|relative paths?|file paths?|anchor tags?/,
+  "Images & media": /\bimages?\b|\bmedia\b|audio.*video|video.*audio/,
+  "Semantic page layout": /semantic|header.*footer|html layout/,
+  "Accessible data tables": /\btables?\b/,
+  "Forms & validation": /\bforms?\b|input validation/,
+  "Accessibility & debugging": /accessibility|accessible|semantic/,
+  "Build a student planner": /\bproject\b|build.*website|create.*website/,
+};
+
 /** Conservative title matching, not a claim to have verified a video's contents. */
 export function matchesTopic(title: string, topicName: string, subjectName = ""): boolean {
   const normalized = title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  if (subjectName.toLowerCase() === "html") {
+    const pattern = HTML_TOPIC_PATTERNS[topicName];
+    if (!pattern?.test(normalized)) return false;
+    // Web mechanics and Git are supporting foundations, not HTML-specific videos.
+    if (["How the web works", "Git & GitHub basics"].includes(topicName)) return true;
+    return /\bhtml5?\b/.test(normalized);
+  }
   if (/fundamentals|basics|introduction/i.test(topicName)) {
     const subject = subjectName.toLowerCase().trim() || topicName.toLowerCase().replace(/fundamentals|basics|introduction|to/g, "").trim();
     if (subject && !normalized.split(" ").includes(subject)) return false;
