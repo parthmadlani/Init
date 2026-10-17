@@ -42,11 +42,27 @@ Video matching uses actual YouTube API results and duration-aware ranking. HTML-
 
 No third-party transcripts are bundled. Reviewed, permission-backed transcript packs are still required for video-specific quizzes, exactly as for Python. Notebook questions are separately labelled and may cover more than a matched video. See `lesson-materials.md` for publication.
 
+## Phase 2: CSS and Tailwind CSS
+
+Two standalone courses also available through the Full Stack collection. Recommended order is HTML → CSS → Tailwind; these recommendations do not lock out learners with equivalent knowledge.
+
+- **CSS:** foundations, selectors/cascade, box model, typography/color, Flexbox, Grid, responsive design, focus/motion, custom properties, and the styled planner project.
+- **Tailwind CSS v4:** CLI setup, utilities/spacing, typography/colors/borders, layout, responsive variants, interaction states, theme variables, system dark mode, source detection/builds, and the planner rebuild.
+- Each course has ten original notebook chapters, ten editable diagrams, 100 authored MCQs, ten-question topic checks, mixed practice, and a resumable 69-question final review. Namespaced topics and IDs preserve history isolation. The shared engine prioritizes unseen questions, then shuffles necessary review questions and their answer choices.
+- Starter ZIPs are in `public/course-projects/css` and `public/course-projects/tailwind`. Their unpacked sources are versioned alongside the ZIP. Each includes setup instructions, exercises, and a self-review checklist. Both are static prototypes with clearly labelled unsaved inputs and disabled save actions.
+- The Tailwind starter includes a compiled stylesheet and a package lock, verified with CLI **4.3.3**. To rebuild the extracted project, run `npm ci` and `npm run build`; watch mode uses `npm run dev`. No CDN runtime or JavaScript is needed to open the built starter. Dark mode follows the system preference.
+- CSS matches exclude Tailwind/Bootstrap lessons. Tailwind matches exclude explicitly named React, Next, Vue, Angular, and Svelte prerequisites. Setup, theme, dark mode, and source-detection lessons require v4 in their titles. Matching still uses metadata rather than transcript editorial review, and languages can vary.
+- Notebook questions are not claimed to be video-specific. Transcript packs and transcript-derived lesson quizzes remain unavailable until reviewed, permitted materials are published.
+
+Run the local integration script separately for `INIT_QA_COURSE=html`, `css`, and `tailwind` using the same explicit localhost settings below. Run one course at a time against the PGlite local preview: overlapping independent suites produced transient HTTP 500 responses in this preview, while separate runs passed. Each suite still checks parallel starts of one quiz. These checks are not production load testing; concurrency/load verification requires a real isolated PostgreSQL instance.
+
+The curriculum seed now upserts HTML, CSS, Tailwind, and Python without deleting learner records. Production still requires the approved curriculum seed at the eventual release; no production database changes are made by this phase.
+
 ## Local setup and verification
 
 1. Install dependencies (`npm ci`).
 2. Set `DATABASE_URL` to an isolated local database and apply existing migrations.
-3. Run `npm run db:seed` with that explicit local URL. This idempotently adds HTML, preserves Python topic IDs, and does not delete users, progress, paths, quiz history, or resource matches.
+3. Run `npm run db:seed` with that explicit local URL. This idempotently adds the available courses, preserves existing topic IDs, and does not delete users, progress, paths, quiz history, or resource matches.
 4. Build/start the local preview with local authentication/site settings.
 5. Run `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`, `python3 scripts/check-python-content.py`, and `python3 scripts/check-html-content.py`.
 6. For integration coverage run:
@@ -58,13 +74,12 @@ DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:55314/postgres?sslmode=dis
 node scripts/check-courses-local.mjs
 ```
 
-The integration check refuses non-local URLs, creates its own disposable users, and cleans up only those users. It checks authentication, ownership, canonical progress, seed idempotence with retained progress, rebuild/resume, HTML video matching, notebook questions, scoring, shuffled retakes, unseen final questions, missing-transcript behavior, and Python notebook/quiz regression. A cold cache requires a valid YouTube API key and consumes search quota; video availability may change.
+The integration check refuses non-local URLs, creates its own disposable users, and cleans up only those users. It checks authentication, ownership, canonical progress, seed idempotence with retained progress, rebuild/resume, course video matching, notebook questions, scoring, shuffled retakes, unseen final questions, missing-transcript behavior, and Python notebook/quiz regression. A cold cache requires a valid YouTube API key and consumes search quota; video availability may change.
 
 Before the eventual release, run migrations and the idempotent curriculum seed against the intended production database under the user's release authorization. Building alone does not seed HTML. Verify existing learner progress, both course entry points, video availability, and mobile layouts before promotion. Never copy local demo accounts or credentials to production.
 
-## Subsequent phases (not included in this branch's Phase 0/1 delivery)
+## Subsequent phases (not included in the Phase 0–2 delivery)
 
-- Phase 2: CSS, then Tailwind CSS.
 - Phase 3: JavaScript and browser interaction.
 - Phase 4: TypeScript and React.
 - Phase 5: Node.js/Express and SQL/PostgreSQL.

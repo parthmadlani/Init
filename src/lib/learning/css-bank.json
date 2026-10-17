@@ -1,0 +1,2902 @@
+[
+  {
+    "id": "css-v1-css-basics-01",
+    "topic": "css-basics",
+    "concept": "css-basics-01",
+    "prompt": "Which technology should control a planner card’s visual spacing?",
+    "choices": [
+      {
+        "id": "d3f574ab974f",
+        "text": "CSS"
+      },
+      {
+        "id": "425a086a2849",
+        "text": "HTML heading ranks"
+      },
+      {
+        "id": "a1e18ef94852",
+        "text": "DNS"
+      },
+      {
+        "id": "60f20f835ec3",
+        "text": "Git commits"
+      }
+    ],
+    "correctId": "d3f574ab974f",
+    "explanation": "CSS controls presentation while HTML supplies meaningful structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-02",
+    "topic": "css-basics",
+    "concept": "css-basics-02",
+    "prompt": "Which HTML element connects styles.css as a stylesheet?",
+    "choices": [
+      {
+        "id": "dde0161a2bd3",
+        "text": "<a src=\"styles.css\">"
+      },
+      {
+        "id": "3f6eef6ae42b",
+        "text": "<img href=\"styles.css\">"
+      },
+      {
+        "id": "1236b234ff18",
+        "text": "<link rel=\"stylesheet\" href=\"styles.css\">"
+      },
+      {
+        "id": "ebef06837391",
+        "text": "<style href=\"styles.css\">"
+      }
+    ],
+    "correctId": "1236b234ff18",
+    "explanation": "A stylesheet link belongs in the document head and uses rel and href.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-03",
+    "topic": "css-basics",
+    "concept": "css-basics-03",
+    "prompt": "Which selector targets elements with class=\"card\"?",
+    "choices": [
+      {
+        "id": "b3514bd4a678",
+        "text": "card()"
+      },
+      {
+        "id": "7724b7b97322",
+        "text": "#card"
+      },
+      {
+        "id": "e669abebe6db",
+        "text": "@card"
+      },
+      {
+        "id": "deade02d4c6f",
+        "text": ".card"
+      }
+    ],
+    "correctId": "deade02d4c6f",
+    "explanation": "A dot introduces a class selector; an ID selector begins with #.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-04",
+    "topic": "css-basics",
+    "concept": "css-basics-04",
+    "prompt": "How should the class name appear in HTML for the selector .card?",
+    "choices": [
+      {
+        "id": "8445d5a1ba0e",
+        "text": "class=\"card{}\""
+      },
+      {
+        "id": "53ae117531c6",
+        "text": "class=\"#card\""
+      },
+      {
+        "id": "3197e89fcf7e",
+        "text": "class=\".card\""
+      },
+      {
+        "id": "e7611cc39c83",
+        "text": "class=\"card\""
+      }
+    ],
+    "correctId": "e7611cc39c83",
+    "explanation": "The dot is CSS selector syntax and is not part of the HTML class name.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-05",
+    "topic": "css-basics",
+    "concept": "css-basics-05",
+    "prompt": "Which is a valid CSS declaration?",
+    "choices": [
+      {
+        "id": "2ebd81e68f96",
+        "text": "navy: color()"
+      },
+      {
+        "id": "6681fe3a7069",
+        "text": "<color navy>"
+      },
+      {
+        "id": "44b2a4df51ee",
+        "text": "color: navy;"
+      },
+      {
+        "id": "205635a6c56e",
+        "text": "color = navy;"
+      }
+    ],
+    "correctId": "44b2a4df51ee",
+    "explanation": "A declaration separates the property and value with a colon.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-06",
+    "topic": "css-basics",
+    "concept": "css-basics-06",
+    "prompt": "What encloses a CSS rule’s declarations?",
+    "choices": [
+      {
+        "id": "b18fef3f12a4",
+        "text": "Curly braces"
+      },
+      {
+        "id": "6bf9418c2688",
+        "text": "HTML tags"
+      },
+      {
+        "id": "f59b1bf51671",
+        "text": "Square brackets only"
+      },
+      {
+        "id": "7ed23171604b",
+        "text": "Quotation marks only"
+      }
+    ],
+    "correctId": "b18fef3f12a4",
+    "explanation": "Declarations sit inside braces after the selector.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-07",
+    "topic": "css-basics",
+    "concept": "css-basics-07",
+    "prompt": "Which property changes text foreground color?",
+    "choices": [
+      {
+        "id": "b370a217cad5",
+        "text": "color"
+      },
+      {
+        "id": "07e62b46bb69",
+        "text": "padding"
+      },
+      {
+        "id": "9ea8113608aa",
+        "text": "background-color"
+      },
+      {
+        "id": "63036163d0d2",
+        "text": "font-family"
+      }
+    ],
+    "correctId": "b370a217cad5",
+    "explanation": "The color property sets the foreground used by text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-08",
+    "topic": "css-basics",
+    "concept": "css-basics-08",
+    "prompt": "A stylesheet request returns 404. What should you inspect first?",
+    "choices": [
+      {
+        "id": "ae0e09f865d7",
+        "text": "The font weight"
+      },
+      {
+        "id": "8fed0abe02e8",
+        "text": "The page’s quiz score"
+      },
+      {
+        "id": "403900e30d47",
+        "text": "The link’s file path and saved filename"
+      },
+      {
+        "id": "7676fa525bc5",
+        "text": "The Git branch color"
+      }
+    ],
+    "correctId": "403900e30d47",
+    "explanation": "A missing resource is commonly caused by an incorrect path or filename.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-09",
+    "topic": "css-basics",
+    "concept": "css-basics-09",
+    "prompt": "Where can you inspect a crossed-out CSS declaration?",
+    "choices": [
+      {
+        "id": "a2595c9d8c1c",
+        "text": "Only the address bar"
+      },
+      {
+        "id": "4734e2f1c78f",
+        "text": "The DNS settings"
+      },
+      {
+        "id": "c2af3f426b29",
+        "text": "The browser’s Styles panel"
+      },
+      {
+        "id": "2b715d27da78",
+        "text": "Only Git history"
+      }
+    ],
+    "correctId": "c2af3f426b29",
+    "explanation": "Developer tools show matched rules and indicate overridden or invalid declarations.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-basics-10",
+    "topic": "css-basics",
+    "concept": "css-basics-10",
+    "prompt": "Does styling a div to look like a heading make it a semantic heading?",
+    "choices": [
+      {
+        "id": "7021e772e9dd",
+        "text": "Only on desktop"
+      },
+      {
+        "id": "501f8a5efe9f",
+        "text": "No, use an appropriate heading element"
+      },
+      {
+        "id": "7d131419a396",
+        "text": "Only when the font is bold"
+      },
+      {
+        "id": "5e6d922dc5aa",
+        "text": "Yes, any large text becomes h1"
+      }
+    ],
+    "correctId": "501f8a5efe9f",
+    "explanation": "CSS appearance does not replace meaningful HTML structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-01",
+    "topic": "css-cascade",
+    "concept": "css-cascade-01",
+    "prompt": "In equal origin, importance, and layer, which selector is most specific?",
+    "choices": [
+      {
+        "id": "64cfcc4820a2",
+        "text": "#planner"
+      },
+      {
+        "id": "069beeca01c9",
+        "text": ".planner"
+      },
+      {
+        "id": "7f3584244a95",
+        "text": "main"
+      },
+      {
+        "id": "1fdb4eb3cc50",
+        "text": "*"
+      }
+    ],
+    "correctId": "64cfcc4820a2",
+    "explanation": "An ID selector has greater specificity than a class or element selector under these equal conditions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-02",
+    "topic": "css-cascade",
+    "concept": "css-cascade-02",
+    "prompt": "Two normal rules in the same layer use the same selector. Which color wins?",
+    "choices": [
+      {
+        "id": "13c642b86c84",
+        "text": "The color in the later rule"
+      },
+      {
+        "id": "d936c5d26eba",
+        "text": "The first rule always"
+      },
+      {
+        "id": "67a0c319d29c",
+        "text": "The alphabetically first color"
+      },
+      {
+        "id": "31c3e1b3a70a",
+        "text": "The shorter color name"
+      }
+    ],
+    "correctId": "13c642b86c84",
+    "explanation": "When preceding cascade criteria and specificity tie, later source order wins.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-03",
+    "topic": "css-cascade",
+    "concept": "css-cascade-03",
+    "prompt": "Does the order of class names in class=\"large pink\" determine which conflicting CSS rule wins?",
+    "choices": [
+      {
+        "id": "40c086e3c8ab",
+        "text": "Yes, large always wins"
+      },
+      {
+        "id": "78e3a257b198",
+        "text": "Yes, pink always wins"
+      },
+      {
+        "id": "1bfe50011bf4",
+        "text": "No, the CSS cascade decides"
+      },
+      {
+        "id": "ba8aa8d305fa",
+        "text": "Only on mobile"
+      }
+    ],
+    "correctId": "1bfe50011bf4",
+    "explanation": "HTML class-attribute order is not stylesheet source order.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-04",
+    "topic": "css-cascade",
+    "concept": "css-cascade-04",
+    "prompt": "Which property normally inherits from a parent?",
+    "choices": [
+      {
+        "id": "b29b693a69dc",
+        "text": "border-width"
+      },
+      {
+        "id": "855e5281d6f2",
+        "text": "margin-top"
+      },
+      {
+        "id": "4bf0c57f53e2",
+        "text": "color"
+      },
+      {
+        "id": "e49e1ac037e8",
+        "text": "padding-left"
+      }
+    ],
+    "correctId": "4bf0c57f53e2",
+    "explanation": "Text color normally inherits; spacing and border widths do not normally do so.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-05",
+    "topic": "css-cascade",
+    "concept": "css-cascade-05",
+    "prompt": "Which selector targets only direct paragraph children of .card?",
+    "choices": [
+      {
+        "id": "076017168e6a",
+        "text": ".card > p"
+      },
+      {
+        "id": "29e06a2f1fc2",
+        "text": "p.card"
+      },
+      {
+        "id": "737d91a623bd",
+        "text": ".card p"
+      },
+      {
+        "id": "1c9d49bbc653",
+        "text": ".card + p"
+      }
+    ],
+    "correctId": "076017168e6a",
+    "explanation": "The child combinator > restricts matching to direct children.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-06",
+    "topic": "css-cascade",
+    "concept": "css-cascade-06",
+    "prompt": "Which selector can match a paragraph nested several levels inside .card?",
+    "choices": [
+      {
+        "id": "6865a7c7f6e4",
+        "text": ".card:p"
+      },
+      {
+        "id": "7f95cfb8c9d3",
+        "text": "card[p]"
+      },
+      {
+        "id": "b740f3085d3c",
+        "text": ".card p"
+      },
+      {
+        "id": "69976c350eb6",
+        "text": ".card > p only"
+      }
+    ],
+    "correctId": "b740f3085d3c",
+    "explanation": "The descendant combinator matches descendants regardless of nesting depth.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-07",
+    "topic": "css-cascade",
+    "concept": "css-cascade-07",
+    "prompt": "A child has its own color declaration. What happens to its parent’s inherited color?",
+    "choices": [
+      {
+        "id": "7aaf259fb184",
+        "text": "The parent always wins"
+      },
+      {
+        "id": "667329e4f03f",
+        "text": "The child’s declaration can replace the inherited value"
+      },
+      {
+        "id": "c559ec6a2002",
+        "text": "Both colors alternate"
+      },
+      {
+        "id": "1a22d80141d9",
+        "text": "The browser deletes the child"
+      }
+    ],
+    "correctId": "667329e4f03f",
+    "explanation": "Inheritance supplies a value when the child does not receive its own applicable value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-08",
+    "topic": "css-cascade",
+    "concept": "css-cascade-08",
+    "prompt": "Why is “the last rule always wins” incomplete?",
+    "choices": [
+      {
+        "id": "f0ff9aa32ea4",
+        "text": "Browsers read CSS backward only"
+      },
+      {
+        "id": "e1ee87382a4c",
+        "text": "Source order never matters"
+      },
+      {
+        "id": "3ccdb7011b6f",
+        "text": "Earlier cascade steps can decide the winner"
+      },
+      {
+        "id": "a7eb3d51f73e",
+        "text": "All declarations are equally specific"
+      }
+    ],
+    "correctId": "3ccdb7011b6f",
+    "explanation": "Origin, importance, layers, and specificity can decide before source order.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-09",
+    "topic": "css-cascade",
+    "concept": "css-cascade-09",
+    "prompt": "What is a good first step when a style unexpectedly loses?",
+    "choices": [
+      {
+        "id": "1b43dd295d14",
+        "text": "Inspect the competing rules and cascade"
+      },
+      {
+        "id": "a10a76639acd",
+        "text": "Delete semantic HTML"
+      },
+      {
+        "id": "69c883fadbff",
+        "text": "Add !important to every declaration"
+      },
+      {
+        "id": "2f0e9361ee3f",
+        "text": "Increase every margin"
+      }
+    ],
+    "correctId": "1b43dd295d14",
+    "explanation": "Inspecting the actual matched rules identifies the cause instead of hiding it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-cascade-10",
+    "topic": "css-cascade",
+    "concept": "css-cascade-10",
+    "prompt": "Which selector expresses the hover state of a card?",
+    "choices": [
+      {
+        "id": "abbd3f1f11ff",
+        "text": ".card:hover"
+      },
+      {
+        "id": "4317e9954c6d",
+        "text": ".card hover"
+      },
+      {
+        "id": "6d6710ed7857",
+        "text": ".card::class"
+      },
+      {
+        "id": "ad69c2fbb805",
+        "text": "hover=.card"
+      }
+    ],
+    "correctId": "abbd3f1f11ff",
+    "explanation": "A pseudo-class can match an element in a particular state.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-01",
+    "topic": "css-box",
+    "concept": "css-box-01",
+    "prompt": "Which space is inside an element’s border?",
+    "choices": [
+      {
+        "id": "7a206113ea65",
+        "text": "Margin"
+      },
+      {
+        "id": "e4c77a37318f",
+        "text": "The containing block’s gap"
+      },
+      {
+        "id": "1071677375dd",
+        "text": "The URL path"
+      },
+      {
+        "id": "cb0478517122",
+        "text": "Padding"
+      }
+    ],
+    "correctId": "cb0478517122",
+    "explanation": "Padding separates content from the inside of the border.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-02",
+    "topic": "css-box",
+    "concept": "css-box-02",
+    "prompt": "Which space lies outside the border?",
+    "choices": [
+      {
+        "id": "1589a683451e",
+        "text": "Margin"
+      },
+      {
+        "id": "50fb1bf4d562",
+        "text": "Line height"
+      },
+      {
+        "id": "597ef7a54a16",
+        "text": "Padding"
+      },
+      {
+        "id": "53c29de8c8cb",
+        "text": "Content width"
+      }
+    ],
+    "correctId": "1589a683451e",
+    "explanation": "Margin separates the outside of a box from surrounding boxes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-03",
+    "topic": "css-box",
+    "concept": "css-box-03",
+    "prompt": "With content-box, width: 200px, 10px padding per side and 2px borders per side, what is the border-box width?",
+    "choices": [
+      {
+        "id": "b2c7897fa1b2",
+        "text": "204px"
+      },
+      {
+        "id": "f1aa59e0d421",
+        "text": "220px"
+      },
+      {
+        "id": "97a596354312",
+        "text": "200px"
+      },
+      {
+        "id": "59b3e1b00e1c",
+        "text": "224px"
+      }
+    ],
+    "correctId": "59b3e1b00e1c",
+    "explanation": "Add both paddings and both borders to the 200px content width.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-04",
+    "topic": "css-box",
+    "concept": "css-box-04",
+    "prompt": "With border-box and width: 200px, does padding increase the declared border-box width?",
+    "choices": [
+      {
+        "id": "7deac0c87340",
+        "text": "Borders are ignored"
+      },
+      {
+        "id": "d5f8ab76eee1",
+        "text": "No, padding is included in the 200px"
+      },
+      {
+        "id": "524e6d945be7",
+        "text": "Only the left padding counts"
+      },
+      {
+        "id": "3f100bdf6c9c",
+        "text": "Yes, it always doubles it"
+      }
+    ],
+    "correctId": "d5f8ab76eee1",
+    "explanation": "Border-box includes padding and borders in the declared width.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-05",
+    "topic": "css-box",
+    "concept": "css-box-05",
+    "prompt": "Which rule sets border-box for elements and their pseudo-elements?",
+    "choices": [
+      {
+        "id": "00a303a92b5b",
+        "text": "html { margin: border-box; }"
+      },
+      {
+        "id": "3febe779f3ab",
+        "text": "*, *::before, *::after { box-sizing: border-box; }"
+      },
+      {
+        "id": "4b181c67238d",
+        "text": "body { border: box; }"
+      },
+      {
+        "id": "7dd10c90b6b2",
+        "text": "* { width: border-box; }"
+      }
+    ],
+    "correctId": "3febe779f3ab",
+    "explanation": "The universal selectors include pseudo-elements explicitly and set the sizing model.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-06",
+    "topic": "css-box",
+    "concept": "css-box-06",
+    "prompt": "Which property puts an upper limit on an element’s width?",
+    "choices": [
+      {
+        "id": "74346bba89fb",
+        "text": "z-index"
+      },
+      {
+        "id": "cbf0a5f2c890",
+        "text": "font-weight"
+      },
+      {
+        "id": "3a68e0b3a9f4",
+        "text": "max-width"
+      },
+      {
+        "id": "eaec6d63d896",
+        "text": "min-height"
+      }
+    ],
+    "correctId": "3a68e0b3a9f4",
+    "explanation": "max-width constrains the width without requiring that width at every viewport size.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-07",
+    "topic": "css-box",
+    "concept": "css-box-07",
+    "prompt": "A flex item refuses to shrink around a long title. Which sizing rule may help?",
+    "choices": [
+      {
+        "id": "fcf26ed4a54d",
+        "text": "margin: 100vw"
+      },
+      {
+        "id": "8673bed741e7",
+        "text": "min-width: 0"
+      },
+      {
+        "id": "1ce7c71d6d7e",
+        "text": "position: fixed"
+      },
+      {
+        "id": "6f7ab20c6c3a",
+        "text": "font-weight: 900"
+      }
+    ],
+    "correctId": "8673bed741e7",
+    "explanation": "An automatic minimum can prevent shrinking; min-width: 0 removes that constraint.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-08",
+    "topic": "css-box",
+    "concept": "css-box-08",
+    "prompt": "Which rule helps an unbroken long task title wrap?",
+    "choices": [
+      {
+        "id": "a6e05424c8f5",
+        "text": "display: none"
+      },
+      {
+        "id": "b667f7128c05",
+        "text": "overflow-wrap: anywhere"
+      },
+      {
+        "id": "585d68cf506b",
+        "text": "height: 1px"
+      },
+      {
+        "id": "53311ae81f2e",
+        "text": "white-space: nowrap"
+      }
+    ],
+    "correctId": "b667f7128c05",
+    "explanation": "Overflow wrapping permits breaks that can avoid horizontal overflow.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-09",
+    "topic": "css-box",
+    "concept": "css-box-09",
+    "prompt": "Can adjacent vertical block margins collapse in normal flow?",
+    "choices": [
+      {
+        "id": "aa39e5f9209e",
+        "text": "Only horizontal margins collapse"
+      },
+      {
+        "id": "fc473520a22b",
+        "text": "No, margins always add"
+      },
+      {
+        "id": "7034143e63ae",
+        "text": "Yes, under the applicable margin-collapsing rules"
+      },
+      {
+        "id": "55dfe290a001",
+        "text": "Only flex-item margins collapse"
+      }
+    ],
+    "correctId": "7034143e63ae",
+    "explanation": "Normal block flow can collapse adjoining vertical margins; flex/grid item margins do not collapse with each other.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-box-10",
+    "topic": "css-box",
+    "concept": "css-box-10",
+    "prompt": "Why test a fixed-width card on a narrow viewport?",
+    "choices": [
+      {
+        "id": "819b6ae24ead",
+        "text": "CSS disables zoom automatically"
+      },
+      {
+        "id": "9a7967eab657",
+        "text": "Fixed width guarantees responsiveness"
+      },
+      {
+        "id": "4cba2c4e97a8",
+        "text": "Phones ignore width"
+      },
+      {
+        "id": "c724ed7b9e93",
+        "text": "Its width may exceed the available space"
+      }
+    ],
+    "correctId": "c724ed7b9e93",
+    "explanation": "A fixed width can force page overflow when the viewport is smaller.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-01",
+    "topic": "css-type",
+    "concept": "css-type-01",
+    "prompt": "Which declaration gives text a system font with a generic fallback?",
+    "choices": [
+      {
+        "id": "efc53e47ac2b",
+        "text": "font-family: system-ui, sans-serif"
+      },
+      {
+        "id": "b740113827df",
+        "text": "font-size: system-ui"
+      },
+      {
+        "id": "c9d4efd433b2",
+        "text": "line-height: sans-serif"
+      },
+      {
+        "id": "25b246b2a83a",
+        "text": "font-family: 16px"
+      }
+    ],
+    "correctId": "efc53e47ac2b",
+    "explanation": "A font-family list provides a preferred family and fallback.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-02",
+    "topic": "css-type",
+    "concept": "css-type-02",
+    "prompt": "What does rem refer to?",
+    "choices": [
+      {
+        "id": "936998121c68",
+        "text": "The current viewport width"
+      },
+      {
+        "id": "86b9fd6dcc95",
+        "text": "The border width"
+      },
+      {
+        "id": "964e286d06b1",
+        "text": "The root element’s font size"
+      },
+      {
+        "id": "a16921757fe7",
+        "text": "The number of paragraphs"
+      }
+    ],
+    "correctId": "964e286d06b1",
+    "explanation": "rem units are relative to the root font size.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-03",
+    "topic": "css-type",
+    "concept": "css-type-03",
+    "prompt": "What is an advantage of a unitless line-height?",
+    "choices": [
+      {
+        "id": "e198853c2a3f",
+        "text": "It removes font inheritance"
+      },
+      {
+        "id": "00c6f3d79295",
+        "text": "It prevents text wrapping"
+      },
+      {
+        "id": "c897504f12e9",
+        "text": "It scales with each element’s font size"
+      },
+      {
+        "id": "7ba2001e5955",
+        "text": "It fixes every line to 1px"
+      }
+    ],
+    "correctId": "c897504f12e9",
+    "explanation": "A unitless multiplier computes line height from the element’s own font size.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-04",
+    "topic": "css-type",
+    "concept": "css-type-04",
+    "prompt": "What does font-weight primarily change?",
+    "choices": [
+      {
+        "id": "913c5c9e4fec",
+        "text": "The weight of the glyphs"
+      },
+      {
+        "id": "42f7bd1abced",
+        "text": "The viewport width"
+      },
+      {
+        "id": "8e9d360098b0",
+        "text": "The paragraph’s URL"
+      },
+      {
+        "id": "6b125d1dbffe",
+        "text": "The number of list items"
+      }
+    ],
+    "correctId": "913c5c9e4fec",
+    "explanation": "Font weight changes how light or heavy the type appears.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-05",
+    "topic": "css-type",
+    "concept": "css-type-05",
+    "prompt": "In clamp(2rem, 5vw, 3.5rem), which value is the maximum?",
+    "choices": [
+      {
+        "id": "127e9eaa5a09",
+        "text": "2rem"
+      },
+      {
+        "id": "b80b0f10bb04",
+        "text": "5vw"
+      },
+      {
+        "id": "9c1416334cae",
+        "text": "3.5rem"
+      },
+      {
+        "id": "d0908f25d39b",
+        "text": "All three are maxima"
+      }
+    ],
+    "correctId": "9c1416334cae",
+    "explanation": "clamp takes a minimum, a preferred value, and a maximum.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-06",
+    "topic": "css-type",
+    "concept": "css-type-06",
+    "prompt": "Is max-width: 65ch an exact limit of 65 characters per line?",
+    "choices": [
+      {
+        "id": "1e0a5ad6b923",
+        "text": "No, ch is based on a font glyph metric"
+      },
+      {
+        "id": "5b0c750f25ae",
+        "text": "It counts only words"
+      },
+      {
+        "id": "f559a2e120dd",
+        "text": "Yes, every font has identical character widths"
+      },
+      {
+        "id": "178dec4984a2",
+        "text": "Yes, including all emoji"
+      }
+    ],
+    "correctId": "1e0a5ad6b923",
+    "explanation": "The ch unit uses the zero glyph’s advance measure, not a character counter.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-07",
+    "topic": "css-type",
+    "concept": "css-type-07",
+    "prompt": "What should accompany a red overdue-task color?",
+    "choices": [
+      {
+        "id": "d76720049aad",
+        "text": "A hidden heading"
+      },
+      {
+        "id": "02e85d4edbc8",
+        "text": "A smaller font only"
+      },
+      {
+        "id": "8f309623b975",
+        "text": "Nothing, red is universal"
+      },
+      {
+        "id": "2455ae607e5b",
+        "text": "A readable status word or other non-color cue"
+      }
+    ],
+    "correctId": "2455ae607e5b",
+    "explanation": "Meaning should remain understandable without relying only on color.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-08",
+    "topic": "css-type",
+    "concept": "css-type-08",
+    "prompt": "Why can fixed-height text cards fail at 200% zoom?",
+    "choices": [
+      {
+        "id": "9d501b15cb6e",
+        "text": "All cards become tables"
+      },
+      {
+        "id": "fd2eefddf7ba",
+        "text": "Enlarged text can be clipped or overflow"
+      },
+      {
+        "id": "5cc3e43447b8",
+        "text": "The browser removes paragraphs"
+      },
+      {
+        "id": "3ed0004dedf0",
+        "text": "Zoom always shrinks fonts"
+      }
+    ],
+    "correctId": "fd2eefddf7ba",
+    "explanation": "Text needs room to grow and wrap when users enlarge it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-09",
+    "topic": "css-type",
+    "concept": "css-type-09",
+    "prompt": "What should you evaluate when choosing a muted text color?",
+    "choices": [
+      {
+        "id": "b73587738404",
+        "text": "Only the border radius"
+      },
+      {
+        "id": "bad81b84dc63",
+        "text": "Its contrast against the actual background"
+      },
+      {
+        "id": "7c60734968d8",
+        "text": "Only its palette name"
+      },
+      {
+        "id": "d8803c26b833",
+        "text": "Only whether it looks gray"
+      }
+    ],
+    "correctId": "bad81b84dc63",
+    "explanation": "Contrast is a relationship between foreground and background colors.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-type-10",
+    "topic": "css-type",
+    "concept": "css-type-10",
+    "prompt": "Which property changes line spacing rather than text color?",
+    "choices": [
+      {
+        "id": "195b50250677",
+        "text": "color"
+      },
+      {
+        "id": "35eae3b4e882",
+        "text": "line-height"
+      },
+      {
+        "id": "8c8c05a73cc3",
+        "text": "border-color"
+      },
+      {
+        "id": "f30ec88ab9e4",
+        "text": "background-color"
+      }
+    ],
+    "correctId": "35eae3b4e882",
+    "explanation": "Line height controls the line box height and affects vertical readability.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-01",
+    "topic": "css-flex",
+    "concept": "css-flex-01",
+    "prompt": "Where should display: flex be placed to arrange a toolbar’s children?",
+    "choices": [
+      {
+        "id": "7d1ab5dcd4f8",
+        "text": "Only on the browser body in every case"
+      },
+      {
+        "id": "df226a1419f7",
+        "text": "In a URL parameter"
+      },
+      {
+        "id": "88f5a444194b",
+        "text": "On the toolbar container"
+      },
+      {
+        "id": "e89c607606fa",
+        "text": "On every text node"
+      }
+    ],
+    "correctId": "88f5a444194b",
+    "explanation": "The container establishes the flex formatting context for direct children.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-02",
+    "topic": "css-flex",
+    "concept": "css-flex-02",
+    "prompt": "Which children become flex items?",
+    "choices": [
+      {
+        "id": "4dcc805c94ac",
+        "text": "Every descendant at every depth"
+      },
+      {
+        "id": "89ae1f22079b",
+        "text": "Only images"
+      },
+      {
+        "id": "57e5e86e1588",
+        "text": "The container’s direct children"
+      },
+      {
+        "id": "72d139654bb6",
+        "text": "Only elements with IDs"
+      }
+    ],
+    "correctId": "57e5e86e1588",
+    "explanation": "Flexbox lays out direct children of the flex container.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-03",
+    "topic": "css-flex",
+    "concept": "css-flex-03",
+    "prompt": "What determines the main-axis direction?",
+    "choices": [
+      {
+        "id": "34767863c086",
+        "text": "font-weight"
+      },
+      {
+        "id": "85388d0d4049",
+        "text": "border-radius"
+      },
+      {
+        "id": "497836c28fc0",
+        "text": "color"
+      },
+      {
+        "id": "4dd5cb62c201",
+        "text": "flex-direction"
+      }
+    ],
+    "correctId": "4dd5cb62c201",
+    "explanation": "The flex direction establishes whether the main axis follows a row or a column.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-04",
+    "topic": "css-flex",
+    "concept": "css-flex-04",
+    "prompt": "Which property distributes space on the flex main axis?",
+    "choices": [
+      {
+        "id": "d8f3dbfdd225",
+        "text": "overflow-wrap"
+      },
+      {
+        "id": "4ea888759cf8",
+        "text": "justify-content"
+      },
+      {
+        "id": "46bb43b804b6",
+        "text": "text-decoration"
+      },
+      {
+        "id": "3caf0d293996",
+        "text": "align-items"
+      }
+    ],
+    "correctId": "4ea888759cf8",
+    "explanation": "justify-content handles distribution along the main axis.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-05",
+    "topic": "css-flex",
+    "concept": "css-flex-05",
+    "prompt": "Which property aligns flex items on the cross axis?",
+    "choices": [
+      {
+        "id": "450430a10884",
+        "text": "background-size"
+      },
+      {
+        "id": "c4f2c9d5c975",
+        "text": "justify-content"
+      },
+      {
+        "id": "00e3c1253fd1",
+        "text": "font-family"
+      },
+      {
+        "id": "5f13e5eb000a",
+        "text": "align-items"
+      }
+    ],
+    "correctId": "5f13e5eb000a",
+    "explanation": "align-items controls cross-axis alignment for the items.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-06",
+    "topic": "css-flex",
+    "concept": "css-flex-06",
+    "prompt": "Which rule permits flex items to move onto additional lines?",
+    "choices": [
+      {
+        "id": "81a38a926348",
+        "text": "flex-wrap: wrap"
+      },
+      {
+        "id": "c22559a6453d",
+        "text": "white-space: nowrap"
+      },
+      {
+        "id": "314513a24162",
+        "text": "display: inline only"
+      },
+      {
+        "id": "acc03a70aba0",
+        "text": "flex-wrap: none"
+      }
+    ],
+    "correctId": "81a38a926348",
+    "explanation": "Wrapping allows items to form multiple flex lines.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-07",
+    "topic": "css-flex",
+    "concept": "css-flex-07",
+    "prompt": "What does gap control in a flex container?",
+    "choices": [
+      {
+        "id": "f0e95751e311",
+        "text": "The browser zoom"
+      },
+      {
+        "id": "0e5bf8935e87",
+        "text": "Space between items and lines"
+      },
+      {
+        "id": "16d6e463bda9",
+        "text": "The URL fragment"
+      },
+      {
+        "id": "636ebeba2350",
+        "text": "The page title"
+      }
+    ],
+    "correctId": "0e5bf8935e87",
+    "explanation": "Gap supplies gutters without needing a margin on every child.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-08",
+    "topic": "css-flex",
+    "concept": "css-flex-08",
+    "prompt": "Does visual reordering with Flexbox reliably change keyboard focus order?",
+    "choices": [
+      {
+        "id": "919ed7e83f63",
+        "text": "Only if the color changes"
+      },
+      {
+        "id": "9bd86e9fe07e",
+        "text": "Yes, always"
+      },
+      {
+        "id": "6b6f738cab7c",
+        "text": "It removes keyboard access entirely"
+      },
+      {
+        "id": "be39c70ed10f",
+        "text": "No, keep source order meaningful"
+      }
+    ],
+    "correctId": "be39c70ed10f",
+    "explanation": "Visual order and source-based navigation can differ.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-09",
+    "topic": "css-flex",
+    "concept": "css-flex-09",
+    "prompt": "What does flex-grow describe?",
+    "choices": [
+      {
+        "id": "793dbe178ba9",
+        "text": "How many HTML children it creates"
+      },
+      {
+        "id": "c54f707cc1e2",
+        "text": "Its absolute screen position"
+      },
+      {
+        "id": "316f3514e3db",
+        "text": "How an item shares positive free space"
+      },
+      {
+        "id": "78aff6e4edf5",
+        "text": "Its text color"
+      }
+    ],
+    "correctId": "316f3514e3db",
+    "explanation": "The grow factor participates in distributing available free space.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-flex-10",
+    "topic": "css-flex",
+    "concept": "css-flex-10",
+    "prompt": "With flex-direction: column, is justify-content necessarily horizontal?",
+    "choices": [
+      {
+        "id": "ab303f75c099",
+        "text": "It becomes font alignment"
+      },
+      {
+        "id": "56f6a3f1de17",
+        "text": "Yes, always"
+      },
+      {
+        "id": "c8a851e66ccb",
+        "text": "It stops working"
+      },
+      {
+        "id": "15b38c95046b",
+        "text": "No, it follows the vertical main axis in the usual writing mode"
+      }
+    ],
+    "correctId": "15b38c95046b",
+    "explanation": "The main axis follows flex-direction, so column changes the direction of distribution.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-01",
+    "topic": "css-grid",
+    "concept": "css-grid-01",
+    "prompt": "Which declaration establishes a grid container?",
+    "choices": [
+      {
+        "id": "e321f0410db0",
+        "text": "grid: true"
+      },
+      {
+        "id": "71227aebdaf9",
+        "text": "position: grid"
+      },
+      {
+        "id": "730c84f421bb",
+        "text": "display: grid"
+      },
+      {
+        "id": "6a8a1febd6df",
+        "text": "layout: grid"
+      }
+    ],
+    "correctId": "730c84f421bb",
+    "explanation": "The display property creates the grid formatting context.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-02",
+    "topic": "css-grid",
+    "concept": "css-grid-02",
+    "prompt": "Which property defines explicit column tracks?",
+    "choices": [
+      {
+        "id": "dbd9c01a60e0",
+        "text": "column-text"
+      },
+      {
+        "id": "7bb4894fc330",
+        "text": "grid-column-color"
+      },
+      {
+        "id": "2c69d6c7fba2",
+        "text": "grid-template-columns"
+      },
+      {
+        "id": "14311fe5ca71",
+        "text": "font-columns"
+      }
+    ],
+    "correctId": "2c69d6c7fba2",
+    "explanation": "Grid template columns defines the sizes and structure of explicit columns.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-03",
+    "topic": "css-grid",
+    "concept": "css-grid-03",
+    "prompt": "What does fr represent in grid track sizing?",
+    "choices": [
+      {
+        "id": "66222b570612",
+        "text": "A fixed number of pixels"
+      },
+      {
+        "id": "ee772e2c01ed",
+        "text": "A share of available remaining space"
+      },
+      {
+        "id": "4e85a52342f9",
+        "text": "A font family"
+      },
+      {
+        "id": "9b7047eea7ef",
+        "text": "A frame rate"
+      }
+    ],
+    "correctId": "ee772e2c01ed",
+    "explanation": "Fractional units divide remaining space among flexible tracks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-04",
+    "topic": "css-grid",
+    "concept": "css-grid-04",
+    "prompt": "What does repeat(2, minmax(0, 1fr)) create?",
+    "choices": [
+      {
+        "id": "f5c447eeebd3",
+        "text": "Two equally flexible columns with a zero minimum"
+      },
+      {
+        "id": "a1629addec6b",
+        "text": "One column with two borders"
+      },
+      {
+        "id": "8fcb1a802f1d",
+        "text": "Two rows only"
+      },
+      {
+        "id": "a7f779f889fe",
+        "text": "Two fixed 1px columns"
+      }
+    ],
+    "correctId": "f5c447eeebd3",
+    "explanation": "The repeat count is two and each track uses the same flexible sizing function.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-05",
+    "topic": "css-grid",
+    "concept": "css-grid-05",
+    "prompt": "Why can minmax(0, 1fr) help avoid content-driven track expansion?",
+    "choices": [
+      {
+        "id": "56da55f5ef24",
+        "text": "It hides every child"
+      },
+      {
+        "id": "2ba5b5114a28",
+        "text": "It fixes the browser width"
+      },
+      {
+        "id": "2787e5e33a5a",
+        "text": "It removes the automatic minimum for that track"
+      },
+      {
+        "id": "ff53cbc6abf4",
+        "text": "It deletes long text"
+      }
+    ],
+    "correctId": "2787e5e33a5a",
+    "explanation": "A zero minimum allows the track to shrink instead of imposing an automatic content minimum.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-06",
+    "topic": "css-grid",
+    "concept": "css-grid-06",
+    "prompt": "Which property adds gutters between grid tracks?",
+    "choices": [
+      {
+        "id": "43089aff9f53",
+        "text": "outline-offset"
+      },
+      {
+        "id": "401ca1fb1b9d",
+        "text": "padding-text"
+      },
+      {
+        "id": "6805d56150be",
+        "text": "font-gap"
+      },
+      {
+        "id": "91047ce7731f",
+        "text": "gap"
+      }
+    ],
+    "correctId": "91047ce7731f",
+    "explanation": "Gap sets spacing between grid tracks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-07",
+    "topic": "css-grid",
+    "concept": "css-grid-07",
+    "prompt": "Does moving a grid item visually guarantee the same reading order?",
+    "choices": [
+      {
+        "id": "d5fac65099bc",
+        "text": "Only if a border is present"
+      },
+      {
+        "id": "b51d197526c2",
+        "text": "Yes, in all assistive technology"
+      },
+      {
+        "id": "c6483d678b7b",
+        "text": "Grid has no source order"
+      },
+      {
+        "id": "7e3a6831502c",
+        "text": "No, source order still matters"
+      }
+    ],
+    "correctId": "7e3a6831502c",
+    "explanation": "Visual placement can diverge from source order, so structure should remain logical.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-08",
+    "topic": "css-grid",
+    "concept": "css-grid-08",
+    "prompt": "Which tool can create an adaptive number of card columns?",
+    "choices": [
+      {
+        "id": "b04fb25ac64b",
+        "text": "repeat(auto-fit, minmax(...))"
+      },
+      {
+        "id": "5290141fca69",
+        "text": "margin: columns"
+      },
+      {
+        "id": "41e39cb84f72",
+        "text": "color: auto-fit"
+      },
+      {
+        "id": "dbf0219b4ec7",
+        "text": "font-size: grid"
+      }
+    ],
+    "correctId": "b04fb25ac64b",
+    "explanation": "auto-fit with a minimum track size can adapt the number of tracks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-09",
+    "topic": "css-grid",
+    "concept": "css-grid-09",
+    "prompt": "What does grid-column control on an item?",
+    "choices": [
+      {
+        "id": "dad3595ab3b2",
+        "text": "Its font size"
+      },
+      {
+        "id": "abada5a28f70",
+        "text": "Its column placement or span"
+      },
+      {
+        "id": "2a79aae8fb3a",
+        "text": "Its keyboard shortcut"
+      },
+      {
+        "id": "433d67d4272f",
+        "text": "Its text color"
+      }
+    ],
+    "correctId": "abada5a28f70",
+    "explanation": "The item’s grid-column property places it across grid column lines.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-grid-10",
+    "topic": "css-grid",
+    "concept": "css-grid-10",
+    "prompt": "Why is a two-column grid not automatically phone-friendly?",
+    "choices": [
+      {
+        "id": "6f5c853220e1",
+        "text": "Phones always have two columns"
+      },
+      {
+        "id": "92bff2ec224b",
+        "text": "CSS disables wrapping in every grid"
+      },
+      {
+        "id": "412364533120",
+        "text": "Grid never works on phones"
+      },
+      {
+        "id": "95d95b3638a2",
+        "text": "The available columns may be too narrow for the content"
+      }
+    ],
+    "correctId": "95d95b3638a2",
+    "explanation": "Responsive choices must follow the needs of actual content.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-01",
+    "topic": "css-responsive",
+    "concept": "css-responsive-01",
+    "prompt": "Which HTML metadata helps mobile browsers use the device width?",
+    "choices": [
+      {
+        "id": "b51385df8d12",
+        "text": "<meta name=\"desktop\" content=\"true\">"
+      },
+      {
+        "id": "844e143c4b86",
+        "text": "<title width=\"mobile\">"
+      },
+      {
+        "id": "3ba68018d769",
+        "text": "<link rel=\"phone\">"
+      },
+      {
+        "id": "e4c14d33a5a1",
+        "text": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+      }
+    ],
+    "correctId": "e4c14d33a5a1",
+    "explanation": "The viewport declaration enables the intended mobile layout viewport behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-02",
+    "topic": "css-responsive",
+    "concept": "css-responsive-02",
+    "prompt": "In a mobile-first stylesheet, where do you usually put the simplest narrow layout?",
+    "choices": [
+      {
+        "id": "6c279b6f1517",
+        "text": "In a hidden stylesheet"
+      },
+      {
+        "id": "947f74504139",
+        "text": "Only in inline JavaScript"
+      },
+      {
+        "id": "c5dbda13b63d",
+        "text": "Only inside a desktop query"
+      },
+      {
+        "id": "bd6ad88d5cdc",
+        "text": "In the base rules"
+      }
+    ],
+    "correctId": "bd6ad88d5cdc",
+    "explanation": "Base rules establish a useful layout before wider-screen enhancements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-03",
+    "topic": "css-responsive",
+    "concept": "css-responsive-03",
+    "prompt": "When does @media (min-width: 48rem) apply?",
+    "choices": [
+      {
+        "id": "0c8af58ad3da",
+        "text": "Only at exactly 48px"
+      },
+      {
+        "id": "25aaff185426",
+        "text": "Only on a named tablet model"
+      },
+      {
+        "id": "bb4b52fb4871",
+        "text": "Only below 48rem"
+      },
+      {
+        "id": "3dd60a1b1c0b",
+        "text": "At widths of 48rem and above"
+      }
+    ],
+    "correctId": "3dd60a1b1c0b",
+    "explanation": "A min-width condition includes the threshold and wider viewports.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-04",
+    "topic": "css-responsive",
+    "concept": "css-responsive-04",
+    "prompt": "What should guide a layout breakpoint?",
+    "choices": [
+      {
+        "id": "3c6134db2de1",
+        "text": "The file creation date"
+      },
+      {
+        "id": "fd3a48a1aac8",
+        "text": "A random device brand"
+      },
+      {
+        "id": "0907fec91a22",
+        "text": "The quiz question count"
+      },
+      {
+        "id": "4273ead75a20",
+        "text": "Where the content needs a different arrangement"
+      }
+    ],
+    "correctId": "4273ead75a20",
+    "explanation": "Content-based breakpoints respond to actual layout needs.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-05",
+    "topic": "css-responsive",
+    "concept": "css-responsive-05",
+    "prompt": "Which common image rules prevent an image exceeding its container while preserving proportions?",
+    "choices": [
+      {
+        "id": "bcf207c74d8c",
+        "text": "height: 100vh only"
+      },
+      {
+        "id": "474dc35189bc",
+        "text": "display: none in all cases"
+      },
+      {
+        "id": "19eb52c9ab88",
+        "text": "width: 200vw; height: 10px"
+      },
+      {
+        "id": "b8dab6936023",
+        "text": "max-width: 100%; height: auto"
+      }
+    ],
+    "correctId": "b8dab6936023",
+    "explanation": "A width limit constrains the image and automatic height preserves its intrinsic aspect ratio.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-06",
+    "topic": "css-responsive",
+    "concept": "css-responsive-06",
+    "prompt": "A schedule table is wider than a phone. What is a useful approach?",
+    "choices": [
+      {
+        "id": "ad2a9dd0fca3",
+        "text": "Give the table a local horizontal scroll container"
+      },
+      {
+        "id": "e631ad418ba8",
+        "text": "Hide all task content"
+      },
+      {
+        "id": "bd7b4fb95e76",
+        "text": "Delete every column label"
+      },
+      {
+        "id": "f26d430bf690",
+        "text": "Force the entire page to 1200px"
+      }
+    ],
+    "correctId": "ad2a9dd0fca3",
+    "explanation": "Local scrolling can preserve the table while keeping the main page within the viewport.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-07",
+    "topic": "css-responsive",
+    "concept": "css-responsive-07",
+    "prompt": "Which content is especially useful for responsive testing?",
+    "choices": [
+      {
+        "id": "eb0fb50de1fd",
+        "text": "Only a one-word heading"
+      },
+      {
+        "id": "bbc74031fa38",
+        "text": "An empty page"
+      },
+      {
+        "id": "f7b30461ba83",
+        "text": "A long task title"
+      },
+      {
+        "id": "f1c246f4b501",
+        "text": "Only an icon"
+      }
+    ],
+    "correctId": "f7b30461ba83",
+    "explanation": "Long content reveals shrinking, wrapping, and overflow problems.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-08",
+    "topic": "css-responsive",
+    "concept": "css-responsive-08",
+    "prompt": "Why also test zoom when checking responsive design?",
+    "choices": [
+      {
+        "id": "005c112f0cd5",
+        "text": "Zoom is never used"
+      },
+      {
+        "id": "937175083d5d",
+        "text": "It validates the database"
+      },
+      {
+        "id": "abdb1f3aba26",
+        "text": "Users may need enlarged content and controls"
+      },
+      {
+        "id": "34c4d6389af4",
+        "text": "Zoom changes the server language"
+      }
+    ],
+    "correctId": "abdb1f3aba26",
+    "explanation": "Responsive testing should include the way users enlarge and read content.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-09",
+    "topic": "css-responsive",
+    "concept": "css-responsive-09",
+    "prompt": "Does overflow: hidden fix every layout overflow accessibly?",
+    "choices": [
+      {
+        "id": "4cef2d688713",
+        "text": "It automatically adds a scrollbar"
+      },
+      {
+        "id": "d957b632127d",
+        "text": "No, it may conceal content and controls"
+      },
+      {
+        "id": "b8b5d1f0644e",
+        "text": "Yes, it always solves the cause"
+      },
+      {
+        "id": "24b14dabad0b",
+        "text": "It changes HTML semantics"
+      }
+    ],
+    "correctId": "d957b632127d",
+    "explanation": "Clipping can hide the symptom while making information unavailable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-responsive-10",
+    "topic": "css-responsive",
+    "concept": "css-responsive-10",
+    "prompt": "How many columns does the notebook example use below its 48rem breakpoint?",
+    "choices": [
+      {
+        "id": "176fe4ee1fda",
+        "text": "Three"
+      },
+      {
+        "id": "7d57afa37f15",
+        "text": "Zero"
+      },
+      {
+        "id": "7a94a49d0945",
+        "text": "Two"
+      },
+      {
+        "id": "30f26b2ab922",
+        "text": "One"
+      }
+    ],
+    "correctId": "30f26b2ab922",
+    "explanation": "The base grid has one implicit column; the media query adds the two-column template.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-01",
+    "topic": "css-states",
+    "concept": "css-states-01",
+    "prompt": "Which selector is designed for focus that should be visibly indicated?",
+    "choices": [
+      {
+        "id": "7e1349ee92cf",
+        "text": ":visited only"
+      },
+      {
+        "id": "d8ebbfb866dd",
+        "text": ":focus-visible"
+      },
+      {
+        "id": "b4c564abc06f",
+        "text": "::placeholder"
+      },
+      {
+        "id": "6a2df0227d14",
+        "text": ":hover only"
+      }
+    ],
+    "correctId": "d8ebbfb866dd",
+    "explanation": "The focus-visible pseudo-class supports a clear focus indicator when the browser determines it is needed.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-02",
+    "topic": "css-states",
+    "concept": "css-states-02",
+    "prompt": "Why is a hover-only indicator insufficient?",
+    "choices": [
+      {
+        "id": "5e5c7c246555",
+        "text": "Hover works only on headings"
+      },
+      {
+        "id": "3892c713da7c",
+        "text": "It prevents CSS loading"
+      },
+      {
+        "id": "7955c5c7457d",
+        "text": "Keyboard and touch users may not trigger hover"
+      },
+      {
+        "id": "52645a4213f2",
+        "text": "Hover adds a database"
+      }
+    ],
+    "correctId": "7955c5c7457d",
+    "explanation": "Useful interaction feedback must cover input methods beyond a pointer.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-03",
+    "topic": "css-states",
+    "concept": "css-states-03",
+    "prompt": "What does outline-offset change?",
+    "choices": [
+      {
+        "id": "3fa4ab99007a",
+        "text": "The line-height multiplier"
+      },
+      {
+        "id": "6b712896a2ef",
+        "text": "The distance between an outline and the element"
+      },
+      {
+        "id": "ceeaaf0d122a",
+        "text": "The element’s URL"
+      },
+      {
+        "id": "f945f4384488",
+        "text": "The form method"
+      }
+    ],
+    "correctId": "6b712896a2ef",
+    "explanation": "Outline offset separates the indicator from the element’s border edge.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-04",
+    "topic": "css-states",
+    "concept": "css-states-04",
+    "prompt": "Does a gray disabled-looking style prevent a button action?",
+    "choices": [
+      {
+        "id": "eb96c07a60dc",
+        "text": "Yes, if gray is dark enough"
+      },
+      {
+        "id": "dd787c364e5c",
+        "text": "Yes, on all phones"
+      },
+      {
+        "id": "a62ddec4f7ea",
+        "text": "No, visual styling alone does not disable behavior"
+      },
+      {
+        "id": "9f9a57cbfa72",
+        "text": "Only when opacity is 50%"
+      }
+    ],
+    "correctId": "a62ddec4f7ea",
+    "explanation": "Use native disabled semantics or appropriate behavior as well as appearance.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-05",
+    "topic": "css-states",
+    "concept": "css-states-05",
+    "prompt": "Which media query responds to a request for less motion?",
+    "choices": [
+      {
+        "id": "3db3ef27ab23",
+        "text": "prefers-fast-animation: yes"
+      },
+      {
+        "id": "d4797dc526a6",
+        "text": "screen-reader: true"
+      },
+      {
+        "id": "504b6909f8b2",
+        "text": "prefers-reduced-motion: reduce"
+      },
+      {
+        "id": "7f270f2096a9",
+        "text": "max-motion: 0"
+      }
+    ],
+    "correctId": "504b6909f8b2",
+    "explanation": "The reduced-motion preference can be used to simplify nonessential movement.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-06",
+    "topic": "css-states",
+    "concept": "css-states-06",
+    "prompt": "Why transition only the properties that need it?",
+    "choices": [
+      {
+        "id": "63a45e8578c0",
+        "text": "To keep feedback intentional and avoid unintended animations"
+      },
+      {
+        "id": "cd9f366ade1a",
+        "text": "To disable keyboard access"
+      },
+      {
+        "id": "ec3beba0461b",
+        "text": "To load every image"
+      },
+      {
+        "id": "719ab1d1908a",
+        "text": "To encrypt the page"
+      }
+    ],
+    "correctId": "63a45e8578c0",
+    "explanation": "Targeted transitions are easier to predict and maintain.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-07",
+    "topic": "css-states",
+    "concept": "css-states-07",
+    "prompt": "Is removing all focus outlines without replacement a good default?",
+    "choices": [
+      {
+        "id": "b7d5fb4c68e9",
+        "text": "No, it can hide keyboard position"
+      },
+      {
+        "id": "32dc4a7461fa",
+        "text": "Only if the page is colorful"
+      },
+      {
+        "id": "131f49e553d0",
+        "text": "Yes, it improves accessibility"
+      },
+      {
+        "id": "918f30e5e736",
+        "text": "Yes, buttons do not need focus"
+      }
+    ],
+    "correctId": "b7d5fb4c68e9",
+    "explanation": "Keyboard users need a visible way to know which control is focused.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-08",
+    "topic": "css-states",
+    "concept": "css-states-08",
+    "prompt": "Which native selector can style a disabled form control?",
+    "choices": [
+      {
+        "id": "4fd4eee2538d",
+        "text": ":no-click"
+      },
+      {
+        "id": "d37d480edb87",
+        "text": ":gray"
+      },
+      {
+        "id": "b387d9a028e0",
+        "text": "::disabled-text"
+      },
+      {
+        "id": "69839445ba13",
+        "text": ":disabled"
+      }
+    ],
+    "correctId": "69839445ba13",
+    "explanation": "The disabled pseudo-class matches controls in the native disabled state.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-09",
+    "topic": "css-states",
+    "concept": "css-states-09",
+    "prompt": "Does reduced-motion support eliminate the need to review default animation?",
+    "choices": [
+      {
+        "id": "d741853d72b3",
+        "text": "Yes, all animation is automatically safe"
+      },
+      {
+        "id": "8166b4dfd0b7",
+        "text": "It prevents layout changes"
+      },
+      {
+        "id": "d6ec0dd01f4d",
+        "text": "It removes every animation globally"
+      },
+      {
+        "id": "e13014410e92",
+        "text": "No, defaults should also be thoughtful"
+      }
+    ],
+    "correctId": "e13014410e92",
+    "explanation": "Preference handling supplements good defaults rather than replacing them.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-states-10",
+    "topic": "css-states",
+    "concept": "css-states-10",
+    "prompt": "Which practical check directly tests focus visibility?",
+    "choices": [
+      {
+        "id": "a5e1d6ccb7f8",
+        "text": "Count stylesheet lines"
+      },
+      {
+        "id": "3393d5c7d7da",
+        "text": "Refresh the database"
+      },
+      {
+        "id": "5ea029a77029",
+        "text": "Navigate controls with Tab and Shift+Tab"
+      },
+      {
+        "id": "db4af8477c8f",
+        "text": "Change the Git username"
+      }
+    ],
+    "correctId": "5ea029a77029",
+    "explanation": "Keyboard navigation reveals whether focus is visible and follows a sensible order.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-01",
+    "topic": "css-variables",
+    "concept": "css-variables-01",
+    "prompt": "How do CSS custom property names begin?",
+    "choices": [
+      {
+        "id": "0cb6874dd08d",
+        "text": "With two hyphens"
+      },
+      {
+        "id": "c6674cfa19e3",
+        "text": "With an HTML tag"
+      },
+      {
+        "id": "edb68d56dd7d",
+        "text": "With two colons"
+      },
+      {
+        "id": "7c48adab7d0f",
+        "text": "With a dollar sign only"
+      }
+    ],
+    "correctId": "0cb6874dd08d",
+    "explanation": "Custom property names use the -- prefix.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-02",
+    "topic": "css-variables",
+    "concept": "css-variables-02",
+    "prompt": "Which expression reads the custom property --accent?",
+    "choices": [
+      {
+        "id": "bd632d0a06cc",
+        "text": "$accent"
+      },
+      {
+        "id": "4c0c3f5ee932",
+        "text": "get(accent)"
+      },
+      {
+        "id": "93312e8a5e87",
+        "text": "var(--accent)"
+      },
+      {
+        "id": "d3282433304e",
+        "text": "color(--accent)"
+      }
+    ],
+    "correctId": "93312e8a5e87",
+    "explanation": "The var function substitutes a custom property value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-03",
+    "topic": "css-variables",
+    "concept": "css-variables-03",
+    "prompt": "Where can a shared theme token be declared for broad use?",
+    "choices": [
+      {
+        "id": "280651fbca28",
+        "text": "On :root"
+      },
+      {
+        "id": "f4f67b84a072",
+        "text": "Only in a URL"
+      },
+      {
+        "id": "eb669fb605f2",
+        "text": "Only in Git config"
+      },
+      {
+        "id": "77c6b0bb483c",
+        "text": "Only on an img"
+      }
+    ],
+    "correctId": "280651fbca28",
+    "explanation": "Root-level custom properties can inherit throughout the document.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-04",
+    "topic": "css-variables",
+    "concept": "css-variables-04",
+    "prompt": "Do ordinary custom properties normally inherit?",
+    "choices": [
+      {
+        "id": "cf1f0d6f7c46",
+        "text": "Only in tables"
+      },
+      {
+        "id": "485eb77b07fb",
+        "text": "Yes"
+      },
+      {
+        "id": "08d17ac9653a",
+        "text": "No, never"
+      },
+      {
+        "id": "2c9dc609789a",
+        "text": "Only when their names are uppercase"
+      }
+    ],
+    "correctId": "485eb77b07fb",
+    "explanation": "Custom properties normally inherit and participate in the cascade.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-05",
+    "topic": "css-variables",
+    "concept": "css-variables-05",
+    "prompt": "What happens when .card--calm declares a local --accent value?",
+    "choices": [
+      {
+        "id": "38a4d112b898",
+        "text": "Descendants can use that overridden token value"
+      },
+      {
+        "id": "0cc3c409a1dc",
+        "text": "The HTML class is renamed"
+      },
+      {
+        "id": "27941eed48de",
+        "text": "Every CSS file is deleted"
+      },
+      {
+        "id": "99c4d8b56345",
+        "text": "All cards must use it globally"
+      }
+    ],
+    "correctId": "38a4d112b898",
+    "explanation": "A local custom property changes the value in that element’s scope and inherited subtree.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-06",
+    "topic": "css-variables",
+    "concept": "css-variables-06",
+    "prompt": "Which is a semantic token name?",
+    "choices": [
+      {
+        "id": "70f8d6e2a7da",
+        "text": "--random-482-only"
+      },
+      {
+        "id": "1e4cb71a2eab",
+        "text": "--copy-9"
+      },
+      {
+        "id": "193b6095e88d",
+        "text": "--thing-do-not-touch"
+      },
+      {
+        "id": "79a7da7327cc",
+        "text": "--surface"
+      }
+    ],
+    "correctId": "79a7da7327cc",
+    "explanation": "A semantic token communicates the design role of its value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-07",
+    "topic": "css-variables",
+    "concept": "css-variables-07",
+    "prompt": "What is the fallback in var(--accent, navy)?",
+    "choices": [
+      {
+        "id": "9fed3e16dc7b",
+        "text": "--accent"
+      },
+      {
+        "id": "fc3a7b2bc4d0",
+        "text": "navy"
+      },
+      {
+        "id": "d4ab4fc49dce",
+        "text": "var"
+      },
+      {
+        "id": "4a935dfd02b8",
+        "text": "There is no fallback"
+      }
+    ],
+    "correctId": "fc3a7b2bc4d0",
+    "explanation": "The second argument is used when the variable cannot supply a usable substitution under the variable rules.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-08",
+    "topic": "css-variables",
+    "concept": "css-variables-08",
+    "prompt": "Will a var() fallback repair every value that is unsuitable for the final property?",
+    "choices": [
+      {
+        "id": "bb9d85039835",
+        "text": "No"
+      },
+      {
+        "id": "c41beda6e1db",
+        "text": "Yes, it is a complete type checker"
+      },
+      {
+        "id": "2080f2f34877",
+        "text": "It converts every value to pixels"
+      },
+      {
+        "id": "3b7d4128141e",
+        "text": "Only if written in capitals"
+      }
+    ],
+    "correctId": "bb9d85039835",
+    "explanation": "A substituted value can still make the final declaration invalid.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-09",
+    "topic": "css-variables",
+    "concept": "css-variables-09",
+    "prompt": "Why extract repeated spacing into a token?",
+    "choices": [
+      {
+        "id": "b7c46c1d425b",
+        "text": "To remove HTML semantics"
+      },
+      {
+        "id": "1dcd2f450cfd",
+        "text": "To make shared changes consistent"
+      },
+      {
+        "id": "383018c06d06",
+        "text": "To disable responsive layouts"
+      },
+      {
+        "id": "6f9563ffe6df",
+        "text": "To avoid all testing"
+      }
+    ],
+    "correctId": "1dcd2f450cfd",
+    "explanation": "A shared decision can be changed in one place and reviewed across components.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-variables-10",
+    "topic": "css-variables",
+    "concept": "css-variables-10",
+    "prompt": "What should you inspect after changing a shared accent token?",
+    "choices": [
+      {
+        "id": "f22b3845bb0d",
+        "text": "Nothing, tokens cannot break contrast"
+      },
+      {
+        "id": "aeccea7bb5b5",
+        "text": "All affected text, borders, focus states, and surfaces"
+      },
+      {
+        "id": "5273daf9aa78",
+        "text": "Only the filename"
+      },
+      {
+        "id": "991e51501345",
+        "text": "Only the browser title"
+      }
+    ],
+    "correctId": "aeccea7bb5b5",
+    "explanation": "A token can affect many uses, including color relationships and interaction indicators.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-01",
+    "topic": "css-project",
+    "concept": "css-project-01",
+    "prompt": "What should happen to the HTML planner’s semantic structure during styling?",
+    "choices": [
+      {
+        "id": "e0425804e595",
+        "text": "Preserve it while improving presentation"
+      },
+      {
+        "id": "1eae9a82f2ae",
+        "text": "Remove all labels"
+      },
+      {
+        "id": "8f9fda18af90",
+        "text": "Turn headings into images"
+      },
+      {
+        "id": "10a936151f06",
+        "text": "Replace every element with a div"
+      }
+    ],
+    "correctId": "e0425804e595",
+    "explanation": "Presentation changes should retain meaningful structure and controls.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-02",
+    "topic": "css-project",
+    "concept": "css-project-02",
+    "prompt": "Which layout model is a good fit for a wrapping toolbar?",
+    "choices": [
+      {
+        "id": "22a764a47123",
+        "text": "Git merge"
+      },
+      {
+        "id": "3c0c18c024e2",
+        "text": "DNS"
+      },
+      {
+        "id": "fe6969361a8e",
+        "text": "Flexbox"
+      },
+      {
+        "id": "95c6444a2cac",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "fe6969361a8e",
+    "explanation": "Flexbox handles a one-dimensional group that may wrap.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-03",
+    "topic": "css-project",
+    "concept": "css-project-03",
+    "prompt": "Which layout model suits a two-dimensional card arrangement?",
+    "choices": [
+      {
+        "id": "9dfddf1c15b6",
+        "text": "Grid"
+      },
+      {
+        "id": "7c9b879c5d10",
+        "text": "A form method"
+      },
+      {
+        "id": "8c4bb73291fe",
+        "text": "HTTP"
+      },
+      {
+        "id": "df06108dce92",
+        "text": "A title element"
+      }
+    ],
+    "correctId": "9dfddf1c15b6",
+    "explanation": "Grid provides rows and columns for arranging cards.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-04",
+    "topic": "css-project",
+    "concept": "css-project-04",
+    "prompt": "What should the project README disclose about task saving?",
+    "choices": [
+      {
+        "id": "9232fa0ff744",
+        "text": "It is stored in DNS"
+      },
+      {
+        "id": "db41c29cbef5",
+        "text": "It works because a button is pink"
+      },
+      {
+        "id": "1379fad56fd7",
+        "text": "It is not implemented in this static phase"
+      },
+      {
+        "id": "daec562f7125",
+        "text": "It is guaranteed by CSS"
+      }
+    ],
+    "correctId": "1379fad56fd7",
+    "explanation": "Static styling does not implement storage or submission behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-05",
+    "topic": "css-project",
+    "concept": "css-project-05",
+    "prompt": "Which set of checks best reviews the responsive project?",
+    "choices": [
+      {
+        "id": "29c7c735b046",
+        "text": "Only the file size"
+      },
+      {
+        "id": "488e7a724ead",
+        "text": "Only a quiz score"
+      },
+      {
+        "id": "63384ea7e782",
+        "text": "Only one desktop screenshot"
+      },
+      {
+        "id": "285ea6be97dc",
+        "text": "Narrow and wide widths, zoom, long content, and keyboard use"
+      }
+    ],
+    "correctId": "285ea6be97dc",
+    "explanation": "These checks exercise the real layout and interaction constraints.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-06",
+    "topic": "css-project",
+    "concept": "css-project-06",
+    "prompt": "What should you do if a wide table makes the whole page scroll sideways?",
+    "choices": [
+      {
+        "id": "b164fa86025f",
+        "text": "Hide all headings"
+      },
+      {
+        "id": "6f7c3a97edd2",
+        "text": "Make the body even wider"
+      },
+      {
+        "id": "c7314a499766",
+        "text": "Keep table overflow local and inspect the layout"
+      },
+      {
+        "id": "0618238be917",
+        "text": "Remove the viewport meta tag"
+      }
+    ],
+    "correctId": "c7314a499766",
+    "explanation": "A local overflow container can preserve table access without forcing page-wide overflow.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-07",
+    "topic": "css-project",
+    "concept": "css-project-07",
+    "prompt": "What is a useful Git milestone for this project?",
+    "choices": [
+      {
+        "id": "e4beea05606e",
+        "text": "Save all work under an unrelated filename"
+      },
+      {
+        "id": "5517cfd107fe",
+        "text": "Add responsive card layout"
+      },
+      {
+        "id": "ae137c1c81ba",
+        "text": "Delete the README"
+      },
+      {
+        "id": "3ed00604d02a",
+        "text": "Commit a password"
+      }
+    ],
+    "correctId": "5517cfd107fe",
+    "explanation": "A focused commit records a meaningful, reviewable step.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-08",
+    "topic": "css-project",
+    "concept": "css-project-08",
+    "prompt": "Does a passing MCQ score prove the planner works on mobile?",
+    "choices": [
+      {
+        "id": "8e5aae1e9789",
+        "text": "No, test the actual project"
+      },
+      {
+        "id": "074e13e1ee29",
+        "text": "Only on one browser"
+      },
+      {
+        "id": "4823ded0c202",
+        "text": "Only if the score is above 50%"
+      },
+      {
+        "id": "e65f3612be85",
+        "text": "Yes, automatically"
+      }
+    ],
+    "correctId": "8e5aae1e9789",
+    "explanation": "Recall and practical implementation are different forms of evidence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-09",
+    "topic": "css-project",
+    "concept": "css-project-09",
+    "prompt": "What should a before/after comparison explain?",
+    "choices": [
+      {
+        "id": "2ee3f85281e8",
+        "text": "Only the browser version"
+      },
+      {
+        "id": "b855ed573a5c",
+        "text": "Only the project name"
+      },
+      {
+        "id": "a558a8019b47",
+        "text": "Why the layout and readability improved"
+      },
+      {
+        "id": "eeaa6961a963",
+        "text": "Only the number of CSS lines"
+      }
+    ],
+    "correctId": "a558a8019b47",
+    "explanation": "Explaining decisions shows understanding beyond copying styles.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "css-v1-css-project-10",
+    "topic": "css-project",
+    "concept": "css-project-10",
+    "prompt": "What is the best response to a keyboard focus issue found in review?",
+    "choices": [
+      {
+        "id": "23a4a451df45",
+        "text": "Ignore keyboard users"
+      },
+      {
+        "id": "f3e9865d275c",
+        "text": "Fix it and document the change"
+      },
+      {
+        "id": "546e147ba2b7",
+        "text": "Increase animation speed"
+      },
+      {
+        "id": "0a0547fb8f93",
+        "text": "Hide the control"
+      }
+    ],
+    "correctId": "f3e9865d275c",
+    "explanation": "The project review should lead to concrete improvements and a record of what was learned.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  }
+]

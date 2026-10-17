@@ -29,9 +29,49 @@ const HTML_TOPIC_PATTERNS: Record<string, RegExp> = {
   "Build a student planner": /\bproject\b|build.*website|create.*website/,
 };
 
+const CSS_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "CSS foundations": /basics|fundamentals|introduction|selectors?|stylesheet|beginner/,
+  "Selectors & cascade": /selectors?|cascade|specificity|inheritance/,
+  "Box model & sizing": /box model|box sizing|sizing/,
+  "Typography & color": /typography|fonts?|text styling|colors?/,
+  "Flexbox layouts": /flexbox|flex layout/,
+  "Grid layouts": /\bgrid\b/,
+  "Responsive design": /responsive|media queries/,
+  "Focus & motion": /focus|reduced motion/,
+  "Custom properties": /custom properties|variables/,
+  "Style your student planner": /project|build.*website|responsive.*website|website.*design/,
+};
+const TAILWIND_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "Tailwind v4 setup": /setup|install|getting started|cli/,
+  "Utility classes & spacing": /utilities|utility|spacing|padding|margin/,
+  "Type, color & borders": /typography|fonts?|colors?|borders?/,
+  "Flex & Grid utilities": /flex|grid|layout/,
+  "Responsive variants": /responsive|breakpoints/,
+  "Interactive states": /hover|focus|states|variants/,
+  "Theme variables in v4": /theme|custom colors|customization/,
+  "Dark mode": /dark mode/,
+  "Source detection & builds": /source|detect|finds? (?:your )?classes|not generating|production build/,
+  "Rebuild your planner": /project|dashboard|build.*website|responsive.*website/,
+};
+
 /** Conservative title matching, not a claim to have verified a video's contents. */
 export function matchesTopic(title: string, topicName: string, subjectName = ""): boolean {
   const normalized = title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const subject = subjectName.toLowerCase();
+  if (subject === "css") {
+    return /\bcss3?\b/.test(normalized) && !/\btailwind\b|\bbootstrap\b/.test(normalized)
+      && !!CSS_TOPIC_PATTERNS[topicName]?.test(normalized);
+  }
+  if (subject === "tailwind css") {
+    if (/\breact(?:js)?\b|\bnext(?:js)?\b|\bvue\b|\bangular\b|\bsvelte\b/.test(normalized)) return false;
+    if (!/\btailwind(?:css)?\b/.test(normalized) || !TAILWIND_TOPIC_PATTERNS[topicName]?.test(normalized)) return false;
+    // Setup, theme configuration, and source detection changed in v4.
+    if (["Tailwind v4 setup", "Theme variables in v4", "Source detection & builds", "Dark mode"].includes(topicName)) {
+      return /\bv ?4\b|\bversion 4\b|\btailwind(?: ?css)? 4\b/.test(normalized)
+        && !/\bv ?[123]\b|\bversion [123]\b/.test(normalized);
+    }
+    return true;
+  }
   if (subjectName.toLowerCase() === "html") {
     const pattern = HTML_TOPIC_PATTERNS[topicName];
     if (!pattern?.test(normalized)) return false;

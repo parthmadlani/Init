@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { HTML_TOPICS } from "../src/lib/courses/catalog";
+import { COURSES } from "../src/lib/courses/catalog";
 import { prisma } from "../src/lib/prisma";
 
 // Hand-curated for v2 — see Build Spec v2 §04 (scope) and §05 (data model).
@@ -21,7 +21,7 @@ type SubjectSeed = {
 };
 
 const subjects: SubjectSeed[] = [
-  { slug: "html", name: "HTML", topics: HTML_TOPICS.map((topic, index) => ({ slug: topic.slug, name: topic.name, order: index + 1, prerequisites: topic.prerequisites })) },
+  ...COURSES.filter(course => course.topics.length).map(course => ({ slug: course.slug, name: course.name, topics: course.topics.map((topic, index) => ({ slug: topic.slug, name: topic.name, order: index + 1, prerequisites: topic.prerequisites })) })),
   {
     slug: "python",
     name: "Python",

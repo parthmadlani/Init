@@ -12,7 +12,7 @@ const notes = load<RevisionNote[]>("../src/lib/learning/html-notes.json");
 const python = load<Question[]>("../src/lib/learning/python-bank.json");
 
 test("the collection references standalone courses without introducing duplicate subjects or a Python prerequisite", () => {
-  assert.deepEqual(COURSES.map(c => c.slug), ["python", "html"]);
+  assert.deepEqual(COURSES.map(c => c.slug), ["python", "html", "css", "tailwind"]);
   assert.equal(FULL_STACK.steps[0].slug, "html");
   assert.deepEqual(FULL_STACK.steps[0].prerequisites, []);
   assert.equal(courseDestination("html-subject", "existing-path"), "/paths/existing-path");

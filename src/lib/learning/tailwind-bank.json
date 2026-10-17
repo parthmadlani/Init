@@ -1,0 +1,2902 @@
+[
+  {
+    "id": "tailwind-v1-tailwind-setup-01",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-01",
+    "prompt": "Which major Tailwind version does this course teach?",
+    "choices": [
+      {
+        "id": "74d0967fbcc5",
+        "text": "v4"
+      },
+      {
+        "id": "406499fbe784",
+        "text": "v1"
+      },
+      {
+        "id": "5e3a29f48a25",
+        "text": "Only an unspecified legacy version"
+      },
+      {
+        "id": "18c172a6ef03",
+        "text": "v2"
+      }
+    ],
+    "correctId": "74d0967fbcc5",
+    "explanation": "The setup, theme, and source-detection examples use Tailwind v4.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-02",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-02",
+    "prompt": "Which packages are installed for the v4 CLI workflow?",
+    "choices": [
+      {
+        "id": "b8c9a06e8577",
+        "text": "Only react-dom"
+      },
+      {
+        "id": "db0e43cecdb6",
+        "text": "Only a browser extension"
+      },
+      {
+        "id": "c3726991ca0b",
+        "text": "Only a Python package"
+      },
+      {
+        "id": "cd2a8526a43b",
+        "text": "tailwindcss@4 and @tailwindcss/cli@4"
+      }
+    ],
+    "correctId": "cd2a8526a43b",
+    "explanation": "Tailwind’s v4 CLI is provided as a separate package alongside tailwindcss.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-03",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-03",
+    "prompt": "Which line imports Tailwind into input.css in this course?",
+    "choices": [
+      {
+        "id": "b9a1540b17c2",
+        "text": "@tailwind init;"
+      },
+      {
+        "id": "9c02eedd774e",
+        "text": "import React from \"tailwind\";"
+      },
+      {
+        "id": "73ccffcdda06",
+        "text": "@import \"tailwindcss\";"
+      },
+      {
+        "id": "d05fd5db4ae3",
+        "text": "<tailwind css>"
+      }
+    ],
+    "correctId": "73ccffcdda06",
+    "explanation": "The v4 stylesheet starts with the Tailwind CSS import.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-04",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-04",
+    "prompt": "What is input.css in the starter?",
+    "choices": [
+      {
+        "id": "bae364630fbc",
+        "text": "The source stylesheet used by the build"
+      },
+      {
+        "id": "bd5e12f0c729",
+        "text": "The finished database"
+      },
+      {
+        "id": "d608781d2130",
+        "text": "The browser password file"
+      },
+      {
+        "id": "77cf3f6bd706",
+        "text": "A video transcript"
+      }
+    ],
+    "correctId": "bae364630fbc",
+    "explanation": "The input contains imports, source configuration, and custom theme definitions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-05",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-05",
+    "prompt": "What is output.css in the starter?",
+    "choices": [
+      {
+        "id": "f7eb7dcb9494",
+        "text": "The generated stylesheet linked by HTML"
+      },
+      {
+        "id": "4e5d52de0690",
+        "text": "An HTML password field"
+      },
+      {
+        "id": "63253ee81ee6",
+        "text": "The input video list"
+      },
+      {
+        "id": "0c74b1f5939d",
+        "text": "A required Git branch"
+      }
+    ],
+    "correctId": "f7eb7dcb9494",
+    "explanation": "The CLI writes the stylesheet that the browser loads.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-06",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-06",
+    "prompt": "What does --watch do in a Tailwind CLI command?",
+    "choices": [
+      {
+        "id": "e4057858d6d9",
+        "text": "Keeps rebuilding as source files change"
+      },
+      {
+        "id": "ccdf5631ec6a",
+        "text": "Publishes to production automatically"
+      },
+      {
+        "id": "31dcd3784cc3",
+        "text": "Records a webcam"
+      },
+      {
+        "id": "cdbbdd3b4ad4",
+        "text": "Runs a final quiz"
+      }
+    ],
+    "correctId": "e4057858d6d9",
+    "explanation": "Watch mode keeps the build process active during local editing.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-07",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-07",
+    "prompt": "Which setup is intentionally not used in this v4 course?",
+    "choices": [
+      {
+        "id": "2470cc882114",
+        "text": "An HTML stylesheet link"
+      },
+      {
+        "id": "3391131188df",
+        "text": "The old tailwindcss init workflow"
+      },
+      {
+        "id": "6b0b70e72867",
+        "text": "A CSS import"
+      },
+      {
+        "id": "739d3ba1f578",
+        "text": "A CLI output file"
+      }
+    ],
+    "correctId": "3391131188df",
+    "explanation": "Mixing older initialization instructions with the v4 workflow can confuse learners.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-08",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-08",
+    "prompt": "What must HTML do to use the compiled styles?",
+    "choices": [
+      {
+        "id": "8475cb593675",
+        "text": "Add a database password"
+      },
+      {
+        "id": "7f2c61fc935b",
+        "text": "Link package.json as an image"
+      },
+      {
+        "id": "0f556b39e7f8",
+        "text": "Rename body to tailwind"
+      },
+      {
+        "id": "ad04a45767f3",
+        "text": "Link the generated stylesheet"
+      }
+    ],
+    "correctId": "ad04a45767f3",
+    "explanation": "The browser needs a stylesheet link pointing to the generated CSS file.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-09",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-09",
+    "prompt": "Is the Play CDN the production build workflow taught here?",
+    "choices": [
+      {
+        "id": "0fb9c6542c6c",
+        "text": "Yes, always"
+      },
+      {
+        "id": "9c904f712dcf",
+        "text": "It stores tasks automatically"
+      },
+      {
+        "id": "ae6ab28d6931",
+        "text": "No, it is for development experiments"
+      },
+      {
+        "id": "278fb1b845e3",
+        "text": "It replaces all HTML"
+      }
+    ],
+    "correctId": "ae6ab28d6931",
+    "explanation": "The course teaches a compiled stylesheet for the finished project.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-setup-10",
+    "topic": "tailwind-setup",
+    "concept": "tailwind-setup-10",
+    "prompt": "Where should you edit a theme value so rebuilding preserves the change?",
+    "choices": [
+      {
+        "id": "a1c370c1b956",
+        "text": "In node_modules at random"
+      },
+      {
+        "id": "24d443bc419d",
+        "text": "In the browser address bar"
+      },
+      {
+        "id": "0da436206949",
+        "text": "Only in generated output.css"
+      },
+      {
+        "id": "a469789cb4ee",
+        "text": "In input.css"
+      }
+    ],
+    "correctId": "a469789cb4ee",
+    "explanation": "Generated output is replaced by the next build, so change the source.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-01",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-01",
+    "prompt": "What does a Tailwind utility class primarily express?",
+    "choices": [
+      {
+        "id": "8e736c2b65e6",
+        "text": "A Git permission"
+      },
+      {
+        "id": "ab8e92e468e4",
+        "text": "A focused CSS styling decision"
+      },
+      {
+        "id": "54ee3fb99ffb",
+        "text": "A new HTML document type"
+      },
+      {
+        "id": "44da8c4fa2e5",
+        "text": "A database query"
+      }
+    ],
+    "correctId": "ab8e92e468e4",
+    "explanation": "Utilities map to CSS declarations and should be understood through their underlying properties.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-02",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-02",
+    "prompt": "Which utility adds padding on all sides?",
+    "choices": [
+      {
+        "id": "4a397f341476",
+        "text": "p-4"
+      },
+      {
+        "id": "2ccfea73889b",
+        "text": "mt-4"
+      },
+      {
+        "id": "24c04820e36d",
+        "text": "m-4"
+      },
+      {
+        "id": "63b75bcd927b",
+        "text": "gap-4"
+      }
+    ],
+    "correctId": "4a397f341476",
+    "explanation": "The p prefix sets padding rather than margin or layout gutters.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-03",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-03",
+    "prompt": "Which utility adds top margin?",
+    "choices": [
+      {
+        "id": "f74ee4e59b5d",
+        "text": "pt-4"
+      },
+      {
+        "id": "a4279c808fde",
+        "text": "px-4"
+      },
+      {
+        "id": "2f3f70a7cd64",
+        "text": "mt-4"
+      },
+      {
+        "id": "966231ac7d0d",
+        "text": "gap-4"
+      }
+    ],
+    "correctId": "2f3f70a7cd64",
+    "explanation": "mt sets margin-top; pt would set padding-top.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-04",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-04",
+    "prompt": "Which utility adds gutters between grid items?",
+    "choices": [
+      {
+        "id": "1b09a0e26cfc",
+        "text": "border-4 alone"
+      },
+      {
+        "id": "34caabc30d08",
+        "text": "gap-4"
+      },
+      {
+        "id": "d89e1739d96a",
+        "text": "font-4"
+      },
+      {
+        "id": "11648bc8c5b1",
+        "text": "text-4"
+      }
+    ],
+    "correctId": "34caabc30d08",
+    "explanation": "Gap acts on the layout container to separate items or tracks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-05",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-05",
+    "prompt": "With the default spacing theme, what is p-4 based on?",
+    "choices": [
+      {
+        "id": "695fea24c0de",
+        "text": "Always four device pixels"
+      },
+      {
+        "id": "cbbc051bf02c",
+        "text": "Four spacing steps, normally 1rem"
+      },
+      {
+        "id": "949a050546fb",
+        "text": "Four percent of the screen"
+      },
+      {
+        "id": "184a39bf7b6b",
+        "text": "Four text characters"
+      }
+    ],
+    "correctId": "cbbc051bf02c",
+    "explanation": "Numeric spacing utilities use the theme’s spacing value, which can be customized.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-06",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-06",
+    "prompt": "What does px-4 control?",
+    "choices": [
+      {
+        "id": "8576cf40a047",
+        "text": "Grid column count"
+      },
+      {
+        "id": "17d75c5b4f97",
+        "text": "Font weight"
+      },
+      {
+        "id": "eef9897982d2",
+        "text": "Inline-axis padding"
+      },
+      {
+        "id": "95b3856ceb4f",
+        "text": "Top margin only"
+      }
+    ],
+    "correctId": "eef9897982d2",
+    "explanation": "The px utility adds padding on the inline axis.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-07",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-07",
+    "prompt": "What is Preflight’s role?",
+    "choices": [
+      {
+        "id": "7e8083c14705",
+        "text": "It uploads a site"
+      },
+      {
+        "id": "a92b6c39761c",
+        "text": "It replaces semantic HTML"
+      },
+      {
+        "id": "4ff47ce0d1be",
+        "text": "It provides base styles and resets some browser defaults"
+      },
+      {
+        "id": "abb32b1e74a1",
+        "text": "It runs user quizzes"
+      }
+    ],
+    "correctId": "4ff47ce0d1be",
+    "explanation": "Preflight standardizes starting styles, so headings and other elements may need explicit presentation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-08",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-08",
+    "prompt": "Will the last conflicting class in the HTML attribute always win?",
+    "choices": [
+      {
+        "id": "53814f97d341",
+        "text": "No, the generated CSS and cascade decide"
+      },
+      {
+        "id": "f858a2718d5a",
+        "text": "Yes, always"
+      },
+      {
+        "id": "0e44151a500b",
+        "text": "Only if the class is shorter"
+      },
+      {
+        "id": "522bb7cb9d09",
+        "text": "Only on mobile"
+      }
+    ],
+    "correctId": "53814f97d341",
+    "explanation": "Class-attribute order is not the ordering of competing CSS declarations.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-09",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-09",
+    "prompt": "Which is a better way to understand a copied card’s classes?",
+    "choices": [
+      {
+        "id": "54b4b65bb075",
+        "text": "Keep every class without reading it"
+      },
+      {
+        "id": "d08839023204",
+        "text": "Remove the HTML headings"
+      },
+      {
+        "id": "fb163917dec0",
+        "text": "Identify the CSS purpose of each class"
+      },
+      {
+        "id": "4dcbb6d91076",
+        "text": "Rename classes randomly"
+      }
+    ],
+    "correctId": "fb163917dec0",
+    "explanation": "Mapping utilities back to properties makes the design maintainable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-utilities-10",
+    "topic": "tailwind-utilities",
+    "concept": "tailwind-utilities-10",
+    "prompt": "Does rounded-xl make an element a semantic card or article?",
+    "choices": [
+      {
+        "id": "a14e2cfab247",
+        "text": "It creates a database row"
+      },
+      {
+        "id": "fe242e1e872a",
+        "text": "Yes, it changes the tag name"
+      },
+      {
+        "id": "5a8aee7852c6",
+        "text": "No, it only changes appearance"
+      },
+      {
+        "id": "8b122abe693c",
+        "text": "Yes, it adds a heading"
+      }
+    ],
+    "correctId": "5a8aee7852c6",
+    "explanation": "Visual utilities do not supply semantic HTML structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-01",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-01",
+    "prompt": "What does text-xl primarily change?",
+    "choices": [
+      {
+        "id": "63d6d80f637f",
+        "text": "Margin"
+      },
+      {
+        "id": "10880b1ce584",
+        "text": "Font size"
+      },
+      {
+        "id": "8d2244c59b12",
+        "text": "Background color"
+      },
+      {
+        "id": "434f505412dc",
+        "text": "Border width"
+      }
+    ],
+    "correctId": "10880b1ce584",
+    "explanation": "Tailwind’s named text-size utility controls the type size and its default line height.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-02",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-02",
+    "prompt": "What does text-slate-800 change?",
+    "choices": [
+      {
+        "id": "cfc836b1691c",
+        "text": "HTML language"
+      },
+      {
+        "id": "13b9893b415f",
+        "text": "Text color"
+      },
+      {
+        "id": "f19d0e955774",
+        "text": "Padding"
+      },
+      {
+        "id": "ea796b7cea17",
+        "text": "Grid rows"
+      }
+    ],
+    "correctId": "13b9893b415f",
+    "explanation": "The color token following text- selects a foreground color.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-03",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-03",
+    "prompt": "Which utility controls font weight?",
+    "choices": [
+      {
+        "id": "9db0868d7bc5",
+        "text": "max-w-prose"
+      },
+      {
+        "id": "59dea95cba09",
+        "text": "leading-relaxed"
+      },
+      {
+        "id": "ede52666b7fe",
+        "text": "font-semibold"
+      },
+      {
+        "id": "726983d989e3",
+        "text": "text-center"
+      }
+    ],
+    "correctId": "ede52666b7fe",
+    "explanation": "The font weight utility changes the weight of the glyphs.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-04",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-04",
+    "prompt": "Which utility controls line height?",
+    "choices": [
+      {
+        "id": "8a1a114a10e1",
+        "text": "bg-white"
+      },
+      {
+        "id": "81fe6c41bad1",
+        "text": "border-slate-300"
+      },
+      {
+        "id": "4e0a570f910c",
+        "text": "leading-relaxed"
+      },
+      {
+        "id": "1ffde9b9fa2e",
+        "text": "rounded-xl"
+      }
+    ],
+    "correctId": "4e0a570f910c",
+    "explanation": "Leading utilities set line height for text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-05",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-05",
+    "prompt": "Which utility constrains a paragraph to a reading measure?",
+    "choices": [
+      {
+        "id": "f499e3626d57",
+        "text": "border-0"
+      },
+      {
+        "id": "609eb1ddaac5",
+        "text": "h-screen"
+      },
+      {
+        "id": "a465fd35f931",
+        "text": "max-w-prose"
+      },
+      {
+        "id": "a7f88b4df9e1",
+        "text": "w-screen"
+      }
+    ],
+    "correctId": "a465fd35f931",
+    "explanation": "A prose-width limit helps prevent excessively wide text lines.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-06",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-06",
+    "prompt": "Why may an h2 need explicit text-size classes with Tailwind?",
+    "choices": [
+      {
+        "id": "f40148427119",
+        "text": "h2 has no semantic meaning"
+      },
+      {
+        "id": "04b9e0c0fb7d",
+        "text": "Browsers cannot display headings"
+      },
+      {
+        "id": "8272f31b0503",
+        "text": "Preflight removes default heading appearance"
+      },
+      {
+        "id": "12c4b1b38db0",
+        "text": "Tailwind turns it into an image"
+      }
+    ],
+    "correctId": "8272f31b0503",
+    "explanation": "The semantic heading remains but its visual hierarchy is intentionally styled.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-07",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-07",
+    "prompt": "What should accompany border-slate-300 to make a normal card border visible?",
+    "choices": [
+      {
+        "id": "b63b9096be0b",
+        "text": "Only a font class"
+      },
+      {
+        "id": "329c7684dda2",
+        "text": "A SQL query"
+      },
+      {
+        "id": "948af1344c7b",
+        "text": "An unrelated hover event"
+      },
+      {
+        "id": "1bec29e25a98",
+        "text": "A border-width utility such as border"
+      }
+    ],
+    "correctId": "1bec29e25a98",
+    "explanation": "Color alone does not supply a visible border width.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-08",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-08",
+    "prompt": "Does using a named palette color guarantee sufficient contrast?",
+    "choices": [
+      {
+        "id": "f8f69ede4ab5",
+        "text": "Only for gray palettes"
+      },
+      {
+        "id": "35a62b48c18f",
+        "text": "Yes, every pair is accessible"
+      },
+      {
+        "id": "ec0c6a1d4876",
+        "text": "Only when text is small"
+      },
+      {
+        "id": "3ff3de5a1435",
+        "text": "No, check the actual foreground/background pair"
+      }
+    ],
+    "correctId": "3ff3de5a1435",
+    "explanation": "Accessibility depends on the colors in combination and the text or control context.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-09",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-09",
+    "prompt": "Which element best preserves a card heading’s meaning?",
+    "choices": [
+      {
+        "id": "511e5325490c",
+        "text": "An appropriately ranked heading element"
+      },
+      {
+        "id": "ef6c3e3b1454",
+        "text": "A decorative image of the text"
+      },
+      {
+        "id": "3bbd634ab898",
+        "text": "A large div only"
+      },
+      {
+        "id": "a5e55a305b97",
+        "text": "A paragraph with random role"
+      }
+    ],
+    "correctId": "511e5325490c",
+    "explanation": "Utilities can style a proper heading without replacing its semantics.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-type-10",
+    "topic": "tailwind-type",
+    "concept": "tailwind-type-10",
+    "prompt": "Which review is appropriate after changing a surface color?",
+    "choices": [
+      {
+        "id": "89999657a843",
+        "text": "Only rename the file"
+      },
+      {
+        "id": "22db6da0a798",
+        "text": "Only count classes"
+      },
+      {
+        "id": "6f579380cbfb",
+        "text": "Recheck text, border, and focus contrast"
+      },
+      {
+        "id": "12de337a610e",
+        "text": "Skip dark mode"
+      }
+    ],
+    "correctId": "6f579380cbfb",
+    "explanation": "A changed surface alters several important visual relationships.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-01",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-01",
+    "prompt": "Which class makes a container’s direct children flex items?",
+    "choices": [
+      {
+        "id": "53987b19e931",
+        "text": "flex"
+      },
+      {
+        "id": "01d41bf7a66f",
+        "text": "items-center alone"
+      },
+      {
+        "id": "de979e55bda9",
+        "text": "flex-child-only"
+      },
+      {
+        "id": "fb3cce4fb06b",
+        "text": "gap-4 alone"
+      }
+    ],
+    "correctId": "53987b19e931",
+    "explanation": "The flex display utility establishes the flex layout context.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-02",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-02",
+    "prompt": "Which combination creates a two-column grid?",
+    "choices": [
+      {
+        "id": "6f19faecac78",
+        "text": "columns-text-2"
+      },
+      {
+        "id": "4ec17e11da53",
+        "text": "flex font-2"
+      },
+      {
+        "id": "dba413b6c16f",
+        "text": "grid grid-cols-2"
+      },
+      {
+        "id": "498c3cd017f8",
+        "text": "rows:2"
+      }
+    ],
+    "correctId": "dba413b6c16f",
+    "explanation": "The container needs grid display and a column-template utility.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-03",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-03",
+    "prompt": "Which utility allows a flex toolbar to wrap?",
+    "choices": [
+      {
+        "id": "caa9a48ab3d0",
+        "text": "whitespace-nowrap"
+      },
+      {
+        "id": "b43905bb9b8f",
+        "text": "flex-wrap"
+      },
+      {
+        "id": "92710f2ecc5c",
+        "text": "flex-none only"
+      },
+      {
+        "id": "2fa9446d7a7e",
+        "text": "overflow-hidden only"
+      }
+    ],
+    "correctId": "b43905bb9b8f",
+    "explanation": "Flex wrapping lets items flow to another line when space is limited.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-04",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-04",
+    "prompt": "In a row-direction flex toolbar, what does items-center align?",
+    "choices": [
+      {
+        "id": "773f008ec23c",
+        "text": "Items along the cross axis"
+      },
+      {
+        "id": "5dff36122d01",
+        "text": "The number of columns"
+      },
+      {
+        "id": "c5691851e28d",
+        "text": "Text color"
+      },
+      {
+        "id": "9ac97134b31e",
+        "text": "The page URL"
+      }
+    ],
+    "correctId": "773f008ec23c",
+    "explanation": "Items utilities correspond to align-items and use the cross axis in Flexbox.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-05",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-05",
+    "prompt": "What does justify-between do in a flex container?",
+    "choices": [
+      {
+        "id": "41459bc37fd2",
+        "text": "Centers every line of text"
+      },
+      {
+        "id": "c761f83fe318",
+        "text": "Changes HTML order"
+      },
+      {
+        "id": "824a9363395c",
+        "text": "Distributes main-axis free space between items"
+      },
+      {
+        "id": "800665ac14b7",
+        "text": "Adds a background image"
+      }
+    ],
+    "correctId": "824a9363395c",
+    "explanation": "The utility maps to space-between distribution along the main axis.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-06",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-06",
+    "prompt": "What can min-w-0 help a flex or grid item do?",
+    "choices": [
+      {
+        "id": "29c739d9538d",
+        "text": "Grow beyond the page always"
+      },
+      {
+        "id": "d099d74d6be1",
+        "text": "Shrink below its automatic minimum width"
+      },
+      {
+        "id": "58ca71c4dbfd",
+        "text": "Become a button"
+      },
+      {
+        "id": "3071b7816a38",
+        "text": "Hide its content"
+      }
+    ],
+    "correctId": "d099d74d6be1",
+    "explanation": "A zero minimum can allow shrinking around long content, which may also need wrapping.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-07",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-07",
+    "prompt": "Which class provides container gutters?",
+    "choices": [
+      {
+        "id": "7f1e7da550df",
+        "text": "underline"
+      },
+      {
+        "id": "0c0764f31118",
+        "text": "font-bold"
+      },
+      {
+        "id": "a734c3e0aced",
+        "text": "gap-4"
+      },
+      {
+        "id": "990993103cab",
+        "text": "text-left"
+      }
+    ],
+    "correctId": "a734c3e0aced",
+    "explanation": "Gap separates items or tracks in supported layouts.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-08",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-08",
+    "prompt": "What does grid-cols-1 md:grid-cols-2 describe?",
+    "choices": [
+      {
+        "id": "eedfa18e8475",
+        "text": "Two columns only below md"
+      },
+      {
+        "id": "611b7ef227f5",
+        "text": "No columns until md"
+      },
+      {
+        "id": "687c95d1275e",
+        "text": "One fixed pixel column"
+      },
+      {
+        "id": "34295fe43da3",
+        "text": "One base column and two from md upward"
+      }
+    ],
+    "correctId": "34295fe43da3",
+    "explanation": "The unprefixed rule is the base and the responsive variant enhances wider layouts.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-09",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-09",
+    "prompt": "Should order utilities be used without reviewing keyboard and reading order?",
+    "choices": [
+      {
+        "id": "0e1484562e20",
+        "text": "Yes, they always update all reading order"
+      },
+      {
+        "id": "1e1c0ea35aa1",
+        "text": "Yes, if the cards are colorful"
+      },
+      {
+        "id": "01060e96d730",
+        "text": "Only on touch devices"
+      },
+      {
+        "id": "5a49f082de1a",
+        "text": "No, source and visual order can disagree"
+      }
+    ],
+    "correctId": "5a49f082de1a",
+    "explanation": "Layout reordering should not create a confusing interaction sequence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-layout-10",
+    "topic": "tailwind-layout",
+    "concept": "tailwind-layout-10",
+    "prompt": "Where should the grid display utility be applied for a set of task cards?",
+    "choices": [
+      {
+        "id": "9af805888c5b",
+        "text": "On their container"
+      },
+      {
+        "id": "6eca011dd319",
+        "text": "Only inside their text"
+      },
+      {
+        "id": "3a2dc6c50dff",
+        "text": "On the browser address bar"
+      },
+      {
+        "id": "0592b39a0766",
+        "text": "In the stylesheet filename"
+      }
+    ],
+    "correctId": "9af805888c5b",
+    "explanation": "The layout model is established by the container around its direct children.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-01",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-01",
+    "prompt": "What does an unprefixed Tailwind utility represent in responsive styling?",
+    "choices": [
+      {
+        "id": "3d0d14e061d3",
+        "text": "A base rule that can apply at every width"
+      },
+      {
+        "id": "62747cdf01c3",
+        "text": "A phone-brand selector"
+      },
+      {
+        "id": "67c5bf63282c",
+        "text": "A hidden style"
+      },
+      {
+        "id": "d1f4e79cfbff",
+        "text": "A desktop-only rule"
+      }
+    ],
+    "correctId": "3d0d14e061d3",
+    "explanation": "Unprefixed utilities establish the base until another matching rule changes the same property.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-02",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-02",
+    "prompt": "Does sm: mean “only small phones”?",
+    "choices": [
+      {
+        "id": "de822426607a",
+        "text": "Yes, always"
+      },
+      {
+        "id": "a0d28ca0ea76",
+        "text": "No, it applies from the sm minimum width upward"
+      },
+      {
+        "id": "1162794cc5b0",
+        "text": "It applies only to a named phone"
+      },
+      {
+        "id": "4543ab885298",
+        "text": "It disables larger screens"
+      }
+    ],
+    "correctId": "a0d28ca0ea76",
+    "explanation": "Default responsive variants use minimum widths rather than exclusive device categories.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-03",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-03",
+    "prompt": "With the default theme, where does md begin?",
+    "choices": [
+      {
+        "id": "cb8e2942580d",
+        "text": "48rem"
+      },
+      {
+        "id": "d4d2a5435315",
+        "text": "At every width below 20rem"
+      },
+      {
+        "id": "3bb44a5ff137",
+        "text": "48px"
+      },
+      {
+        "id": "20327a6ca366",
+        "text": "Only at 1440px"
+      }
+    ],
+    "correctId": "cb8e2942580d",
+    "explanation": "The default md breakpoint is 48rem, though themes can customize it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-04",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-04",
+    "prompt": "What does p-4 md:p-8 do?",
+    "choices": [
+      {
+        "id": "82e8d0f98a12",
+        "text": "Changes only the text color"
+      },
+      {
+        "id": "87a5377a68ac",
+        "text": "Uses smaller base padding and larger padding from md upward"
+      },
+      {
+        "id": "7807d262f114",
+        "text": "Creates eight columns"
+      },
+      {
+        "id": "29b12c02276c",
+        "text": "Applies padding only below md"
+      }
+    ],
+    "correctId": "87a5377a68ac",
+    "explanation": "The responsive variant replaces the padding value when its condition matches.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-05",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-05",
+    "prompt": "Why is the viewport meta tag still needed in a Tailwind page?",
+    "choices": [
+      {
+        "id": "1a017befd771",
+        "text": "Mobile layout still depends on correct viewport behavior"
+      },
+      {
+        "id": "b3019b18c6ba",
+        "text": "It creates a dark-mode toggle"
+      },
+      {
+        "id": "79966cf6865f",
+        "text": "It saves tasks"
+      },
+      {
+        "id": "92f6d1361a6b",
+        "text": "Tailwind replaces HTML metadata"
+      }
+    ],
+    "correctId": "1a017befd771",
+    "explanation": "Using utility classes does not remove the normal HTML viewport requirement.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-06",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-06",
+    "prompt": "Which class is a complete responsive utility?",
+    "choices": [
+      {
+        "id": "8c0c56f78d5d",
+        "text": "md: plus an unknown fragment"
+      },
+      {
+        "id": "e53497b7bbaa",
+        "text": "responsive columns"
+      },
+      {
+        "id": "c5685ba0e61c",
+        "text": "grid-cols-${count} as literal text"
+      },
+      {
+        "id": "670b720ea938",
+        "text": "md:grid-cols-2"
+      }
+    ],
+    "correctId": "670b720ea938",
+    "explanation": "A full class name can be detected and compiled by Tailwind.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-07",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-07",
+    "prompt": "How should the smallest-screen font size be expressed?",
+    "choices": [
+      {
+        "id": "9f5a509143e8",
+        "text": "Only with xl:"
+      },
+      {
+        "id": "a04ca07f811f",
+        "text": "With an unprefixed base utility"
+      },
+      {
+        "id": "817568ad7a67",
+        "text": "By removing all text"
+      },
+      {
+        "id": "5a936c317745",
+        "text": "Only with sm:"
+      }
+    ],
+    "correctId": "a04ca07f811f",
+    "explanation": "The base style covers widths below the first breakpoint as well as larger widths unless overridden.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-08",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-08",
+    "prompt": "What should decide whether a two-column breakpoint works?",
+    "choices": [
+      {
+        "id": "b079573ed844",
+        "text": "Only the project date"
+      },
+      {
+        "id": "487c454738ac",
+        "text": "Only the device’s brand"
+      },
+      {
+        "id": "6de7e761ad63",
+        "text": "Only the screenshot file size"
+      },
+      {
+        "id": "b32dd54eebee",
+        "text": "The content remains readable and controls remain usable"
+      }
+    ],
+    "correctId": "b32dd54eebee",
+    "explanation": "Responsive choices need to work for actual content and interaction.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-09",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-09",
+    "prompt": "Can Tailwind breakpoints be customized?",
+    "choices": [
+      {
+        "id": "8558c128408d",
+        "text": "Yes, through the theme configuration"
+      },
+      {
+        "id": "b646568808bd",
+        "text": "No, they are hard-coded forever"
+      },
+      {
+        "id": "69cb420d2923",
+        "text": "Only by changing HTML language"
+      },
+      {
+        "id": "c4e05f2db4ae",
+        "text": "Only with a database"
+      }
+    ],
+    "correctId": "8558c128408d",
+    "explanation": "The default breakpoint values are theme decisions rather than universal constants.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-responsive-10",
+    "topic": "tailwind-responsive",
+    "concept": "tailwind-responsive-10",
+    "prompt": "Which test can reveal problems missed by a clean demo?",
+    "choices": [
+      {
+        "id": "66d64af1c28f",
+        "text": "Long text plus narrow width and zoom"
+      },
+      {
+        "id": "8c07fd00bccf",
+        "text": "A single tiny icon"
+      },
+      {
+        "id": "a7836565e540",
+        "text": "A hidden page"
+      },
+      {
+        "id": "92607a8216ce",
+        "text": "An empty card only"
+      }
+    ],
+    "correctId": "66d64af1c28f",
+    "explanation": "Realistic content and enlarged views exercise wrapping, sizing, and access.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-01",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-01",
+    "prompt": "Which variant styles an element during pointer hover?",
+    "choices": [
+      {
+        "id": "8648e9f4582d",
+        "text": "always-disabled:"
+      },
+      {
+        "id": "5d3b3d4f0dba",
+        "text": "database:"
+      },
+      {
+        "id": "ad9cd059231e",
+        "text": "hover:"
+      },
+      {
+        "id": "d8bccef9af51",
+        "text": "click-save:"
+      }
+    ],
+    "correctId": "ad9cd059231e",
+    "explanation": "The hover variant applies when the corresponding pointer state matches.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-02",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-02",
+    "prompt": "Which variant helps create a visible keyboard focus indicator?",
+    "choices": [
+      {
+        "id": "a8657b0cb536",
+        "text": "print: only"
+      },
+      {
+        "id": "06fe6b35071a",
+        "text": "visited: only"
+      },
+      {
+        "id": "4e8eaf85b315",
+        "text": "focus-visible:"
+      },
+      {
+        "id": "96c3e07c05d9",
+        "text": "hover: only"
+      }
+    ],
+    "correctId": "4e8eaf85b315",
+    "explanation": "Focus-visible styles provide feedback when focus should be visibly indicated.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-03",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-03",
+    "prompt": "Does disabled:opacity-50 itself disable a button?",
+    "choices": [
+      {
+        "id": "993cfe396731",
+        "text": "No, the button must actually be disabled"
+      },
+      {
+        "id": "5d2cd5d4ddc5",
+        "text": "Yes, opacity prevents actions"
+      },
+      {
+        "id": "235745d81eac",
+        "text": "Only in dark mode"
+      },
+      {
+        "id": "2f210e8dc40b",
+        "text": "Only if placed last"
+      }
+    ],
+    "correctId": "993cfe396731",
+    "explanation": "The variant styles an existing native state and does not create the disabled behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-04",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-04",
+    "prompt": "Which attribute provides a native disabled button state?",
+    "choices": [
+      {
+        "id": "fe6d00d82fed",
+        "text": "title=\"disabled\" alone"
+      },
+      {
+        "id": "31c8789dffb6",
+        "text": "class=\"gray\" alone"
+      },
+      {
+        "id": "74f8462123a0",
+        "text": "aria-label=\"disabled\" alone"
+      },
+      {
+        "id": "3ff61ee31e7e",
+        "text": "disabled"
+      }
+    ],
+    "correctId": "3ff61ee31e7e",
+    "explanation": "The disabled attribute changes the native control’s behavior as well as its state.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-05",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-05",
+    "prompt": "Which class marks a parent for group-based state variants?",
+    "choices": [
+      {
+        "id": "657b3db95c02",
+        "text": "peer-child"
+      },
+      {
+        "id": "70eddd5df955",
+        "text": "state-root"
+      },
+      {
+        "id": "83032264407a",
+        "text": "group"
+      },
+      {
+        "id": "3232df97976d",
+        "text": "ancestor-auto"
+      }
+    ],
+    "correctId": "83032264407a",
+    "explanation": "Group variants respond to the state of a parent marked with group.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-06",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-06",
+    "prompt": "What is a peer variant commonly based on?",
+    "choices": [
+      {
+        "id": "7ab62b7a6827",
+        "text": "The state of a preceding sibling marked peer"
+      },
+      {
+        "id": "12d10b1ec533",
+        "text": "The server’s Git branch"
+      },
+      {
+        "id": "2400f6d1efaa",
+        "text": "Any random later page"
+      },
+      {
+        "id": "5bdac40779c8",
+        "text": "A browser password"
+      }
+    ],
+    "correctId": "7ab62b7a6827",
+    "explanation": "Peer variants use sibling relationships and require the appropriate marked sibling.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-07",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-07",
+    "prompt": "Which utility variant can remove a transition for reduced-motion users?",
+    "choices": [
+      {
+        "id": "721eae16ae7b",
+        "text": "md:grid"
+      },
+      {
+        "id": "f8ff1beece24",
+        "text": "motion-reduce:transition-none"
+      },
+      {
+        "id": "fc498b724f3b",
+        "text": "dark:font-bold"
+      },
+      {
+        "id": "f892e410b170",
+        "text": "hover:p-4"
+      }
+    ],
+    "correctId": "f8ff1beece24",
+    "explanation": "The motion-reduce condition respects the user’s reduced-motion preference.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-08",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-08",
+    "prompt": "What does focus-visible:outline-offset-2 adjust?",
+    "choices": [
+      {
+        "id": "227debe3903d",
+        "text": "Spacing between the focused element and its outline"
+      },
+      {
+        "id": "2f26ea4a1b0f",
+        "text": "The document title"
+      },
+      {
+        "id": "ac88b1dc0a56",
+        "text": "The number of quiz answers"
+      },
+      {
+        "id": "891e37cd7a22",
+        "text": "The button’s URL"
+      }
+    ],
+    "correctId": "227debe3903d",
+    "explanation": "Outline offset can separate the focus indicator from the element edge.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-09",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-09",
+    "prompt": "Do Tailwind state classes implement task saving?",
+    "choices": [
+      {
+        "id": "37b2fbe6da65",
+        "text": "Only if a theme exists"
+      },
+      {
+        "id": "f9a5fe8ebdd1",
+        "text": "No, behavior must be implemented separately"
+      },
+      {
+        "id": "daae672ffc2d",
+        "text": "Yes, hover saves tasks"
+      },
+      {
+        "id": "ccb5882d7139",
+        "text": "Yes, rounded buttons save data"
+      }
+    ],
+    "correctId": "f9a5fe8ebdd1",
+    "explanation": "Tailwind handles styling, not storage, application events, or server logic.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-states-10",
+    "topic": "tailwind-states",
+    "concept": "tailwind-states-10",
+    "prompt": "What should you check besides hover on a styled link?",
+    "choices": [
+      {
+        "id": "c69b30a8fbfe",
+        "text": "Only its file extension"
+      },
+      {
+        "id": "a82b108866e8",
+        "text": "Only the Git username"
+      },
+      {
+        "id": "f1a3a72b54c1",
+        "text": "Only whether it has a shadow"
+      },
+      {
+        "id": "0a7d206bb159",
+        "text": "Keyboard focus visibility"
+      }
+    ],
+    "correctId": "0a7d206bb159",
+    "explanation": "Links need clear feedback for keyboard interaction as well as pointer use.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-01",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-01",
+    "prompt": "Which v4 directive declares variables that participate in Tailwind’s theme?",
+    "choices": [
+      {
+        "id": "8f5e6de3116d",
+        "text": "@database"
+      },
+      {
+        "id": "40b320829252",
+        "text": "@component-only"
+      },
+      {
+        "id": "ccc7202ae0c1",
+        "text": "@theme"
+      },
+      {
+        "id": "fc433007edf2",
+        "text": "@html"
+      }
+    ],
+    "correctId": "ccc7202ae0c1",
+    "explanation": "The theme directive registers design variables used by utility generation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-02",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-02",
+    "prompt": "Which theme variable can support a bg-brand utility?",
+    "choices": [
+      {
+        "id": "f7d9ce285083",
+        "text": "--color-brand"
+      },
+      {
+        "id": "128325d3f53c",
+        "text": "--font-brand only"
+      },
+      {
+        "id": "7dc2391aa4bc",
+        "text": "--url-brand"
+      },
+      {
+        "id": "89e4a3aaa3d6",
+        "text": "--database-brand"
+      }
+    ],
+    "correctId": "f7d9ce285083",
+    "explanation": "The color namespace connects a token to color utilities.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-03",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-03",
+    "prompt": "What is the purpose of bg-brand?",
+    "choices": [
+      {
+        "id": "0344c7db21f5",
+        "text": "Create a Git branch"
+      },
+      {
+        "id": "4e6f1811cb3c",
+        "text": "Add a heading"
+      },
+      {
+        "id": "ea6726e29c59",
+        "text": "Run a quiz"
+      },
+      {
+        "id": "244b965205cf",
+        "text": "Use the registered brand background color"
+      }
+    ],
+    "correctId": "244b965205cf",
+    "explanation": "A generated color utility applies the theme value to a CSS property.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-04",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-04",
+    "prompt": "Does declaring --color-brand only in :root automatically register new Tailwind utilities?",
+    "choices": [
+      {
+        "id": "38fb66ba24a2",
+        "text": "Only if the value is red"
+      },
+      {
+        "id": "d4b0b4f5583e",
+        "text": "Only on phones"
+      },
+      {
+        "id": "13feca259a71",
+        "text": "Yes, every custom property becomes a class"
+      },
+      {
+        "id": "68ffc4df24b9",
+        "text": "No, use the Tailwind theme mechanism"
+      }
+    ],
+    "correctId": "68ffc4df24b9",
+    "explanation": "Ordinary custom properties and Tailwind theme variables have different roles.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-05",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-05",
+    "prompt": "When can a custom theme utility be generated by source detection?",
+    "choices": [
+      {
+        "id": "c3a40c397887",
+        "text": "Only if a user clicks it"
+      },
+      {
+        "id": "862f4a2082f3",
+        "text": "Only if it appears in a screenshot"
+      },
+      {
+        "id": "0ecd5413b92b",
+        "text": "When its complete class name is present in a scanned source"
+      },
+      {
+        "id": "fd12e98f8375",
+        "text": "Only after a quiz"
+      }
+    ],
+    "correctId": "0ecd5413b92b",
+    "explanation": "The compiler needs a complete detected utility candidate and its supporting theme definition.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-06",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-06",
+    "prompt": "What is a good reason to use a named theme color?",
+    "choices": [
+      {
+        "id": "a227d5e0cf6d",
+        "text": "Disable the cascade"
+      },
+      {
+        "id": "74e9027ed969",
+        "text": "Replace semantic HTML"
+      },
+      {
+        "id": "a416d4e590f2",
+        "text": "Express a shared design role consistently"
+      },
+      {
+        "id": "5e58fe7a9103",
+        "text": "Avoid every contrast check"
+      }
+    ],
+    "correctId": "a416d4e590f2",
+    "explanation": "Named tokens communicate and centralize a design decision.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-07",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-07",
+    "prompt": "When is an arbitrary value most appropriate?",
+    "choices": [
+      {
+        "id": "1e547a8511a1",
+        "text": "To avoid understanding CSS"
+      },
+      {
+        "id": "27a1f5e64d3f",
+        "text": "For a deliberate exception that the theme does not cover"
+      },
+      {
+        "id": "20a45a34e9f3",
+        "text": "For every repeated spacing value by default"
+      },
+      {
+        "id": "1c2bf50a0e1e",
+        "text": "To hide broken layouts"
+      }
+    ],
+    "correctId": "27a1f5e64d3f",
+    "explanation": "A small system benefits from shared values with intentional exceptions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-08",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-08",
+    "prompt": "What should you do after changing a shared theme color?",
+    "choices": [
+      {
+        "id": "12dc6091e65c",
+        "text": "Delete the stylesheet"
+      },
+      {
+        "id": "f1958825109f",
+        "text": "Recheck all affected color pairs and focus states"
+      },
+      {
+        "id": "1854cd032bcd",
+        "text": "Change every HTML tag"
+      },
+      {
+        "id": "3d14430a09e7",
+        "text": "Assume every component is still readable"
+      }
+    ],
+    "correctId": "f1958825109f",
+    "explanation": "A shared token affects multiple components and interaction states.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-09",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-09",
+    "prompt": "Where does this course place its v4 theme definitions?",
+    "choices": [
+      {
+        "id": "14df6b4e562a",
+        "text": "In input.css"
+      },
+      {
+        "id": "92a80745e4d0",
+        "text": "Only in a database"
+      },
+      {
+        "id": "caa157e51ca5",
+        "text": "Only in generated output edits"
+      },
+      {
+        "id": "b10eea975dcb",
+        "text": "Only in a video title"
+      }
+    ],
+    "correctId": "14df6b4e562a",
+    "explanation": "The input stylesheet is the source for imports and theme configuration.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-theme-10",
+    "topic": "tailwind-theme",
+    "concept": "tailwind-theme-10",
+    "prompt": "Why keep the theme small at first?",
+    "choices": [
+      {
+        "id": "a75e6841b695",
+        "text": "It hides accessibility issues"
+      },
+      {
+        "id": "797ec7f71549",
+        "text": "It makes design decisions easier to use and maintain"
+      },
+      {
+        "id": "f332d212e23e",
+        "text": "It makes every page identical"
+      },
+      {
+        "id": "afba2affa086",
+        "text": "It prevents responsive styling"
+      }
+    ],
+    "correctId": "797ec7f71549",
+    "explanation": "A focused set of intentional values is easier to apply consistently.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-01",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-01",
+    "prompt": "What does Tailwind’s default dark: variant follow?",
+    "choices": [
+      {
+        "id": "0b9324fa8087",
+        "text": "The system prefers-color-scheme setting"
+      },
+      {
+        "id": "2a9bccc3211f",
+        "text": "A required custom database flag"
+      },
+      {
+        "id": "b6170f5cb2eb",
+        "text": "The Git branch name"
+      },
+      {
+        "id": "050ddad69e94",
+        "text": "The time of day always"
+      }
+    ],
+    "correctId": "0b9324fa8087",
+    "explanation": "The default variant uses the system color-scheme preference.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-02",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-02",
+    "prompt": "Which class provides a dark-mode card background?",
+    "choices": [
+      {
+        "id": "45a675255640",
+        "text": "font-dark"
+      },
+      {
+        "id": "e9d6ab0558aa",
+        "text": "dark:bg-slate-900"
+      },
+      {
+        "id": "0ef52bbf9d5b",
+        "text": "hover:text-white"
+      },
+      {
+        "id": "8100a3a15d71",
+        "text": "bg:dark"
+      }
+    ],
+    "correctId": "e9d6ab0558aa",
+    "explanation": "The dark variant conditionally applies the chosen background utility.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-03",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-03",
+    "prompt": "Why is changing only the dark background risky?",
+    "choices": [
+      {
+        "id": "346c9afe0da8",
+        "text": "It disables all forms"
+      },
+      {
+        "id": "5d092509aa4a",
+        "text": "It always removes images"
+      },
+      {
+        "id": "b5c5a56cd1d0",
+        "text": "It deletes semantic HTML"
+      },
+      {
+        "id": "33015b180f5e",
+        "text": "Existing text and borders may become unreadable"
+      }
+    ],
+    "correctId": "33015b180f5e",
+    "explanation": "Readable dark mode requires coordinated foreground, surface, border, and state colors.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-04",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-04",
+    "prompt": "Does a moon icon by itself implement a working theme toggle?",
+    "choices": [
+      {
+        "id": "60d2c94fc235",
+        "text": "Only if it is pink"
+      },
+      {
+        "id": "aa37b578ba7b",
+        "text": "Only inside a header"
+      },
+      {
+        "id": "a0303ea2531a",
+        "text": "No"
+      },
+      {
+        "id": "38243077ea5e",
+        "text": "Yes, browsers infer its action"
+      }
+    ],
+    "correctId": "a0303ea2531a",
+    "explanation": "A custom toggle requires actual state-changing behavior and a configured strategy.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-05",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-05",
+    "prompt": "What extra setup is needed for a manual selector-based dark strategy?",
+    "choices": [
+      {
+        "id": "d904b867410c",
+        "text": "A matching custom variant plus behavior to set the selector"
+      },
+      {
+        "id": "2e3aab413919",
+        "text": "Only a larger font"
+      },
+      {
+        "id": "1e055a471dbc",
+        "text": "Only a new title"
+      },
+      {
+        "id": "12e06db228fe",
+        "text": "Only a border utility"
+      }
+    ],
+    "correctId": "d904b867410c",
+    "explanation": "The selector condition and the control that changes it must agree.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-06",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-06",
+    "prompt": "Why does the phase-two starter show no custom dark-mode toggle?",
+    "choices": [
+      {
+        "id": "78b54f1a65bc",
+        "text": "It follows the system preference"
+      },
+      {
+        "id": "5db72b6325ed",
+        "text": "Buttons cannot have labels"
+      },
+      {
+        "id": "6b4a14946314",
+        "text": "Dark mode requires Python"
+      },
+      {
+        "id": "b7b5c002f11a",
+        "text": "Tailwind cannot style dark colors"
+      }
+    ],
+    "correctId": "78b54f1a65bc",
+    "explanation": "The starter uses a working default rather than displaying an inert control.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-07",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-07",
+    "prompt": "Which utility pairs with text-slate-900 for lighter dark-mode text?",
+    "choices": [
+      {
+        "id": "bbea5b774c37",
+        "text": "dark:bg-white only"
+      },
+      {
+        "id": "f2aa0cfc6b48",
+        "text": "border-0"
+      },
+      {
+        "id": "ac05263049ba",
+        "text": "dark:text-slate-100"
+      },
+      {
+        "id": "306a7ea71fd5",
+        "text": "font-light only"
+      }
+    ],
+    "correctId": "ac05263049ba",
+    "explanation": "The foreground needs a suitable value on the dark surface.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-08",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-08",
+    "prompt": "Does dark mode replace contrast review?",
+    "choices": [
+      {
+        "id": "06b146af90ea",
+        "text": "Yes, every dark palette is accessible"
+      },
+      {
+        "id": "8226df666b12",
+        "text": "It eliminates focus indicators"
+      },
+      {
+        "id": "e13f2d65488d",
+        "text": "Only if text is large"
+      },
+      {
+        "id": "d05214e61dae",
+        "text": "No, both modes need review"
+      }
+    ],
+    "correctId": "d05214e61dae",
+    "explanation": "Color relationships need to remain readable in each mode.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-09",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-09",
+    "prompt": "What is a useful dark-mode testing procedure?",
+    "choices": [
+      {
+        "id": "3d2e1c7e4cf4",
+        "text": "Switch the system appearance and inspect every surface and control"
+      },
+      {
+        "id": "6b1310b2400b",
+        "text": "Only inspect the logo"
+      },
+      {
+        "id": "50659cf70663",
+        "text": "Only count classes"
+      },
+      {
+        "id": "28f3bd8ee5e4",
+        "text": "Never change system appearance"
+      }
+    ],
+    "correctId": "3d2e1c7e4cf4",
+    "explanation": "The default variant can be tested by changing the preference it follows.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-dark-10",
+    "topic": "tailwind-dark",
+    "concept": "tailwind-dark-10",
+    "prompt": "Should a dark-mode change alter the page’s semantic heading structure?",
+    "choices": [
+      {
+        "id": "015baa632768",
+        "text": "Yes, hide labels"
+      },
+      {
+        "id": "f1b804f7ff7f",
+        "text": "Yes, replace headings with divs"
+      },
+      {
+        "id": "aec13f897840",
+        "text": "No, preserve the same meaningful structure"
+      },
+      {
+        "id": "e98198eb3b6a",
+        "text": "Only keep one word"
+      }
+    ],
+    "correctId": "aec13f897840",
+    "explanation": "Color-scheme styling should not remove semantic content or navigation structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-01",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-01",
+    "prompt": "How does Tailwind discover classes in source files?",
+    "choices": [
+      {
+        "id": "7e5862aca22d",
+        "text": "By scanning source text for complete class names"
+      },
+      {
+        "id": "cb06e81dd136",
+        "text": "By reading screenshots"
+      },
+      {
+        "id": "d9da36fb5ca4",
+        "text": "By watching users click"
+      },
+      {
+        "id": "bbd459798c64",
+        "text": "By executing all application JavaScript"
+      }
+    ],
+    "correctId": "7e5862aca22d",
+    "explanation": "Source detection recognizes full utility candidates without running application code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-02",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-02",
+    "prompt": "Why can a constructed string such as bg- plus a color variable fail?",
+    "choices": [
+      {
+        "id": "61535c2028d5",
+        "text": "The browser removes all classes"
+      },
+      {
+        "id": "fa71548d2c6e",
+        "text": "Every variable is forbidden in HTML"
+      },
+      {
+        "id": "e0ed20b1a10a",
+        "text": "CSS cannot have colors"
+      },
+      {
+        "id": "069033a68417",
+        "text": "The complete utility may never appear in scanned text"
+      }
+    ],
+    "correctId": "069033a68417",
+    "explanation": "The compiler cannot infer arbitrary runtime string assembly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-03",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-03",
+    "prompt": "Which approach makes conditional color classes detectable?",
+    "choices": [
+      {
+        "id": "8f57891a570a",
+        "text": "Hide classes in a screenshot"
+      },
+      {
+        "id": "92db86d349a5",
+        "text": "Concatenate unknown fragments only"
+      },
+      {
+        "id": "38a8f90022e1",
+        "text": "Map choices to complete class strings"
+      },
+      {
+        "id": "be28c407b945",
+        "text": "Edit generated output by hand"
+      }
+    ],
+    "correctId": "38a8f90022e1",
+    "explanation": "Full class names in scanned source can be recognized and generated.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-04",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-04",
+    "prompt": "What does @source register in Tailwind v4?",
+    "choices": [
+      {
+        "id": "d49ba3899a1a",
+        "text": "A video transcript"
+      },
+      {
+        "id": "f18ec04f575c",
+        "text": "A database connection"
+      },
+      {
+        "id": "45701646580e",
+        "text": "Additional source files to scan"
+      },
+      {
+        "id": "7df5fd2640ed",
+        "text": "A CSS animation name"
+      }
+    ],
+    "correctId": "45701646580e",
+    "explanation": "The source directive identifies files that should participate in class detection.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-05",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-05",
+    "prompt": "In the taught @source example, paths are relative to what?",
+    "choices": [
+      {
+        "id": "ea3741359bfd",
+        "text": "The browser history"
+      },
+      {
+        "id": "97dbf736fef4",
+        "text": "The stylesheet"
+      },
+      {
+        "id": "74c788a8cd04",
+        "text": "The current YouTube video"
+      },
+      {
+        "id": "b2632369af2e",
+        "text": "The GitHub username"
+      }
+    ],
+    "correctId": "97dbf736fef4",
+    "explanation": "Source paths in the directive are resolved relative to the stylesheet.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-06",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-06",
+    "prompt": "What is the purpose of source(none) in the starter’s Tailwind import?",
+    "choices": [
+      {
+        "id": "5aa1f75bfa34",
+        "text": "Disable all CSS imports"
+      },
+      {
+        "id": "26c139ad6bca",
+        "text": "Stop HTML from rendering"
+      },
+      {
+        "id": "a350bc07020e",
+        "text": "Disable automatic source detection so explicit sources control scanning"
+      },
+      {
+        "id": "0c5fa7c29894",
+        "text": "Remove every theme color"
+      }
+    ],
+    "correctId": "a350bc07020e",
+    "explanation": "The starter explicitly lists its HTML source instead of scanning unrelated folders.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-07",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-07",
+    "prompt": "Which CLI option compacts the generated stylesheet?",
+    "choices": [
+      {
+        "id": "3b9b99700eec",
+        "text": "--database"
+      },
+      {
+        "id": "df9236d0eb90",
+        "text": "--dark-only"
+      },
+      {
+        "id": "797e7e884085",
+        "text": "--minify"
+      },
+      {
+        "id": "4716f4a22cf8",
+        "text": "--quiz"
+      }
+    ],
+    "correctId": "797e7e884085",
+    "explanation": "Minification reduces the generated output representation for delivery.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-08",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-08",
+    "prompt": "How should a one-time release build behave?",
+    "choices": [
+      {
+        "id": "220d452c32aa",
+        "text": "Generate the stylesheet and exit"
+      },
+      {
+        "id": "07097e02a443",
+        "text": "Delete source files"
+      },
+      {
+        "id": "6ee162f3cf00",
+        "text": "Stay in watch mode forever"
+      },
+      {
+        "id": "b6b6db4a6c1c",
+        "text": "Upload credentials"
+      }
+    ],
+    "correctId": "220d452c32aa",
+    "explanation": "A final build produces the artifact without requiring an ongoing watcher.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-09",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-09",
+    "prompt": "Why avoid hand-editing output.css as the main workflow?",
+    "choices": [
+      {
+        "id": "afb1b48ee45f",
+        "text": "The file is a database"
+      },
+      {
+        "id": "5230f13481ba",
+        "text": "The next build replaces generated output"
+      },
+      {
+        "id": "b6bdb85815e2",
+        "text": "CSS cannot be edited"
+      },
+      {
+        "id": "0b2d6cd89bd9",
+        "text": "It has no effect in browsers"
+      }
+    ],
+    "correctId": "5230f13481ba",
+    "explanation": "Maintain changes in source files so builds reproduce them.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-build-10",
+    "topic": "tailwind-build",
+    "concept": "tailwind-build-10",
+    "prompt": "What should be moved together when checking the finished static package?",
+    "choices": [
+      {
+        "id": "608bbbac03c3",
+        "text": "Only a screenshot"
+      },
+      {
+        "id": "9d9951d9ee76",
+        "text": "Only the quiz answers"
+      },
+      {
+        "id": "c5145c88b33c",
+        "text": "Only package.json"
+      },
+      {
+        "id": "e6a5f0f948e6",
+        "text": "HTML and its referenced generated CSS"
+      }
+    ],
+    "correctId": "e6a5f0f948e6",
+    "explanation": "Relative stylesheet links require the output file to be available with the intended folder structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-01",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-01",
+    "prompt": "What is the central project in the Tailwind course?",
+    "choices": [
+      {
+        "id": "349c8bac914b",
+        "text": "Rebuild the student planner with utilities"
+      },
+      {
+        "id": "3dbaecbf3a7c",
+        "text": "Replace the Python interpreter"
+      },
+      {
+        "id": "e878a37e81e3",
+        "text": "Deploy production automatically"
+      },
+      {
+        "id": "78c3694a44c4",
+        "text": "Create a new database engine"
+      }
+    ],
+    "correctId": "349c8bac914b",
+    "explanation": "Reusing the planner lets learners compare styling workflows on the same content.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-02",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-02",
+    "prompt": "What should remain consistent between the plain CSS and Tailwind versions?",
+    "choices": [
+      {
+        "id": "33a50ba1fa3a",
+        "text": "The exact CSS line count"
+      },
+      {
+        "id": "c12b93f3359d",
+        "text": "Semantic structure and accessible behavior"
+      },
+      {
+        "id": "9d7bd8271141",
+        "text": "Every class name"
+      },
+      {
+        "id": "cf44c73765a5",
+        "text": "Only the filename"
+      }
+    ],
+    "correctId": "c12b93f3359d",
+    "explanation": "Different styling approaches should preserve the meaning and usability of the page.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-03",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-03",
+    "prompt": "What does npm run build do in the supplied Tailwind starter?",
+    "choices": [
+      {
+        "id": "13ac3de3bf7b",
+        "text": "Merge the GitHub branch"
+      },
+      {
+        "id": "913c6f09432a",
+        "text": "Compile the final stylesheet"
+      },
+      {
+        "id": "bd7a8b10295c",
+        "text": "Store user tasks"
+      },
+      {
+        "id": "2d741d870183",
+        "text": "Deploy Init production"
+      }
+    ],
+    "correctId": "913c6f09432a",
+    "explanation": "The starter’s build script runs the Tailwind CLI once to generate CSS.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-04",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-04",
+    "prompt": "What is npm run dev used for in the starter?",
+    "choices": [
+      {
+        "id": "d675b740b736",
+        "text": "Running a production database migration"
+      },
+      {
+        "id": "b708e11f2788",
+        "text": "Sending messages"
+      },
+      {
+        "id": "b48276ddf4d4",
+        "text": "Rebuilding styles while editing"
+      },
+      {
+        "id": "3bcbffba44b9",
+        "text": "Scoring the final exam"
+      }
+    ],
+    "correctId": "b48276ddf4d4",
+    "explanation": "The development script uses watch mode for local source changes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-05",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-05",
+    "prompt": "Why does the starter include compiled CSS as well as sources?",
+    "choices": [
+      {
+        "id": "32892e677e01",
+        "text": "To avoid all future builds"
+      },
+      {
+        "id": "aa655976f800",
+        "text": "It can be opened immediately and rebuilt when edited"
+      },
+      {
+        "id": "cc8f92ff4c19",
+        "text": "To hide the source permanently"
+      },
+      {
+        "id": "64ea8900d9b3",
+        "text": "To store quiz scores"
+      }
+    ],
+    "correctId": "aa655976f800",
+    "explanation": "A ready output makes the starter inspectable while sources preserve the learning workflow.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-06",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-06",
+    "prompt": "Which README comparison demonstrates understanding?",
+    "choices": [
+      {
+        "id": "fca28b58eb20",
+        "text": "Only which version has more classes"
+      },
+      {
+        "id": "28f176450ebd",
+        "text": "Only which screenshot is larger"
+      },
+      {
+        "id": "420b4f65309d",
+        "text": "Only the project creation time"
+      },
+      {
+        "id": "5269d66f3bf1",
+        "text": "Tradeoffs in readability, reuse, builds, and maintenance"
+      }
+    ],
+    "correctId": "5269d66f3bf1",
+    "explanation": "The same project makes it possible to explain meaningful differences between approaches.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-07",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-07",
+    "prompt": "Does this phase’s polished task form persist tasks?",
+    "choices": [
+      {
+        "id": "47a247fa382b",
+        "text": "Only after adding a shadow"
+      },
+      {
+        "id": "8f0dd9a7e912",
+        "text": "Yes, dark mode saves them"
+      },
+      {
+        "id": "b8aef2598b73",
+        "text": "No, it remains a clearly labelled static prototype"
+      },
+      {
+        "id": "a6b6cb3ca59c",
+        "text": "Yes, Tailwind stores them"
+      }
+    ],
+    "correctId": "b8aef2598b73",
+    "explanation": "Styling and compilation do not implement application storage.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-08",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-08",
+    "prompt": "What should a completed project review include?",
+    "choices": [
+      {
+        "id": "55877bf1e479",
+        "text": "Only a quiz result"
+      },
+      {
+        "id": "151a08e30a6c",
+        "text": "Keyboard, narrow width, zoom, and both color schemes"
+      },
+      {
+        "id": "c0b4cabec280",
+        "text": "Only a successful npm install"
+      },
+      {
+        "id": "62bbd263967a",
+        "text": "Only one light desktop screenshot"
+      }
+    ],
+    "correctId": "151a08e30a6c",
+    "explanation": "The project should be checked in realistic interaction and viewing conditions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-09",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-09",
+    "prompt": "How should you handle a copied utility that you cannot explain?",
+    "choices": [
+      {
+        "id": "521022b04f53",
+        "text": "Add three more conflicting utilities"
+      },
+      {
+        "id": "2f29418d39f4",
+        "text": "Keep it forever without review"
+      },
+      {
+        "id": "bcfd82d54715",
+        "text": "Rename it randomly"
+      },
+      {
+        "id": "6317e0d6a21f",
+        "text": "Look up its CSS effect and test whether it is needed"
+      }
+    ],
+    "correctId": "6317e0d6a21f",
+    "explanation": "Understanding each utility makes future changes more reliable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "tailwind-v1-tailwind-project-10",
+    "topic": "tailwind-project",
+    "concept": "tailwind-project-10",
+    "prompt": "What does marking the project complete represent in this course?",
+    "choices": [
+      {
+        "id": "58de79feef41",
+        "text": "Automatic certification of a deployed app"
+      },
+      {
+        "id": "a487d558fba8",
+        "text": "The learner’s own practical self-review"
+      },
+      {
+        "id": "9420102d0f9f",
+        "text": "A production release"
+      },
+      {
+        "id": "c58691be8e17",
+        "text": "A guarantee that every video was watched"
+      }
+    ],
+    "correctId": "a487d558fba8",
+    "explanation": "The project is self-assessed and separate from quiz scoring or deployment.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  }
+]

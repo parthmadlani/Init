@@ -27,9 +27,9 @@ class CheckHTML(HTMLParser):
         assert not self.stack, 'Unclosed elements'
         assert all(x in self.ids for x in self.labels), 'Label references missing control'
         assert all(x in self.ids for x in self.fragments), 'Fragment references missing target'
-notes=json.loads((root/'src/lib/learning/html-notes.json').read_text())
+notes=[n for course in ['html','css','tailwind'] for n in json.loads((root/f'src/lib/learning/{course}-notes.json').read_text())]
 examples=[(n['slug'],n['code']) for n in notes if n['code'].startswith('<')]
-examples.append(('student-planner', (root/'public/course-projects/html/student-planner.html').read_text()))
+examples.extend((str(p.relative_to(root)), p.read_text()) for p in (root/'public/course-projects').rglob('*.html'))
 for name, source in examples:
     try:
         parser=CheckHTML();parser.feed(source);parser.close();parser.finish()

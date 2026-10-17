@@ -1,0 +1,32 @@
+/* Start here: change tokens, inspect the layout, then complete the README. */
+:root { --accent: #97264f; --ink: #25333a; --surface: #fff; --paper: #fff9fb; --space: 1rem; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; font-size: 1rem; line-height: 1.6; color: var(--ink); background: var(--paper); }
+.shell { width: min(100%, 68rem); margin-inline: auto; padding: var(--space); }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:focus-visible, input:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px solid #175d78; outline-offset: 3px; }
+.skip { position: absolute; top: .5rem; left: 1rem; transform: translateY(-200%); background: white; padding: .5rem; z-index: 2; }
+.skip:focus { transform: translateY(0); }
+.toolbar, nav { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.toolbar { justify-content: space-between; border-bottom: 1px solid #d8cdd2; }
+.brand { font-weight: 700; }
+.intro { padding-block: 2rem; }
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.15; max-width: 18ch; }
+h2 { font-size: 1.5rem; } h3 { font-size: 1.2rem; }
+p { max-width: 65ch; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: .85rem; }
+.cards { display: grid; gap: 1rem; }
+.card { min-width: 0; overflow-wrap: anywhere; padding: 1.5rem; background: var(--surface); border: 1px solid #dacbd3; border-top: 4px solid var(--accent); border-radius: 1rem; transition: box-shadow 160ms ease; }
+.card--calm { --accent: #17677b; }
+.card:hover { box-shadow: 0 5px 18px #25333a12; }
+.section { margin-block: 2rem; }
+label { display: block; font-weight: 600; }
+input { width: 100%; padding: .65rem; font: inherit; border: 1px solid #64747b; border-radius: .4rem; }
+button { max-width: 100%; white-space: normal; padding: .65rem; font: inherit; }
+button:disabled { color: #4a5358; background: #e8e8e8; border: 1px solid #a7adb0; }
+.hint { font-size: .875rem; }
+.table-region { overflow-x: auto; border: 1px solid #dacbd3; border-radius: .5rem; }
+table { width: 100%; border-collapse: collapse; } caption { padding: .75rem; text-align: start; }
+th, td { padding: .75rem; text-align: start; border-top: 1px solid #dacbd3; }
+@media (min-width: 48rem) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shell { padding: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } }

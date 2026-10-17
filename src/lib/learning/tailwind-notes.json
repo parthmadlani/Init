@@ -1,0 +1,503 @@
+[
+  {
+    "slug": "tailwind-setup",
+    "title": "Tailwind v4 setup",
+    "summary": "Compile utility classes into a stylesheet that your page can load.",
+    "points": [
+      "This course uses Tailwind CSS v4. Install a supported Node.js version and npm before using the CLI starter.",
+      "Install tailwindcss@4 and @tailwindcss/cli@4 in your own project. The CLI is a separate package.",
+      "Import tailwindcss from the input CSS file, then run the CLI with input and output paths.",
+      "Link the generated output stylesheet in HTML. Watch mode rebuilds after source changes; a production build should finish and exit.",
+      "The Play CDN is for development experiments, not the production workflow taught here. Do not mix v3 setup instructions into this v4 project."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "input.css",
+          "Source stylesheet"
+        ],
+        [
+          "@tailwindcss/cli",
+          "Build tool"
+        ],
+        [
+          "output.css",
+          "Generated stylesheet"
+        ],
+        [
+          "--watch",
+          "Rebuild while editing"
+        ]
+      ]
+    },
+    "code": "# Inside your practice project\nnpm install -D tailwindcss@4 @tailwindcss/cli@4\nnpx @tailwindcss/cli -i ./input.css -o ./output.css --watch\n\n/* input.css */\n@import \"tailwindcss\";",
+    "output": "The CLI scans source classes and writes output.css. The HTML must link that file. Keep source edits in input.css and HTML rather than modifying generated output.",
+    "mistake": "The old tailwindcss init command and @tailwind base/components/utilities directives are not this v4 CLI setup.",
+    "challenge": "Unzip the starter, install its dependencies, run the build, and open index.html. Change a utility, rebuild, and verify the visible result.",
+    "diagram": {
+      "title": "Tailwind v4 setup",
+      "steps": [
+        "Source classes",
+        "CLI build",
+        "Static CSS"
+      ],
+      "caption": "Compile utility classes into a stylesheet that your page can load."
+    },
+    "source": "https://tailwindcss.com/docs/installation/tailwind-cli"
+  },
+  {
+    "slug": "tailwind-utilities",
+    "title": "Utility classes & spacing",
+    "summary": "Use small classes while still reasoning in CSS properties.",
+    "points": [
+      "Utilities map to focused CSS declarations. Understand the underlying property before combining classes.",
+      "p-4 adds padding; m-4 adds margin; gap-4 adds space between flex or grid items. These are not interchangeable.",
+      "Numeric spacing utilities use the theme spacing value. With the default theme, 4 steps are 1rem; customized themes can differ.",
+      "Preflight supplies base styles and removes some browser defaults. Headings still need intentional typography classes.",
+      "Do not place conflicting utilities on the same element and expect the last class in the HTML attribute to win. CSS generation and cascade decide."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "p-4",
+          "All-side padding"
+        ],
+        [
+          "px-4",
+          "Inline-axis padding"
+        ],
+        [
+          "mt-4",
+          "Top margin"
+        ],
+        [
+          "gap-4",
+          "Container gutters"
+        ]
+      ]
+    },
+    "code": "<article class=\"rounded-xl border border-slate-300 bg-white p-6\">\n  <h2 class=\"text-xl font-semibold\">Study block</h2>\n  <p class=\"mt-2 text-slate-700\">Make time for one topic.</p>\n</article>",
+    "output": "The card has a visible border, rounded corners, and inner spacing. The paragraph’s top margin separates it from the heading.",
+    "mistake": "Utilities do not add HTML semantics. An article, heading, or label should still be chosen for its meaning.",
+    "challenge": "Rebuild one CSS card with utilities. Identify the CSS property behind each class and remove redundant or conflicting classes.",
+    "diagram": {
+      "title": "Utility classes & spacing",
+      "steps": [
+        "Property intent",
+        "Utility class",
+        "Styled element"
+      ],
+      "caption": "Use small classes while still reasoning in CSS properties."
+    },
+    "source": "https://tailwindcss.com/docs/styling-with-utility-classes"
+  },
+  {
+    "slug": "tailwind-type",
+    "title": "Type, color & borders",
+    "summary": "Make a small visual system from intentional utility combinations.",
+    "points": [
+      "text-lg changes font size; text-slate-800 changes color. Similar prefixes can represent different CSS properties.",
+      "Use font-semibold for weight, leading-relaxed for line height, and max-w-prose for a reading measure.",
+      "Headings retain semantic meaning even when Preflight removes their default browser appearance.",
+      "A border needs a width and a suitable color. Choose colors that remain distinct from the surface.",
+      "Check contrast for normal, hover, focus, and dark states. Palette names do not guarantee accessible combinations."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "text-xl",
+          "Font size"
+        ],
+        [
+          "font-semibold",
+          "Font weight"
+        ],
+        [
+          "leading-relaxed",
+          "Line height"
+        ],
+        [
+          "border-slate-300",
+          "Border color"
+        ]
+      ]
+    },
+    "code": "<section class=\"rounded-xl border border-slate-300 bg-white p-6\">\n  <h2 class=\"text-2xl font-semibold text-slate-900\">This week</h2>\n  <p class=\"mt-3 max-w-prose leading-relaxed text-slate-700\">Plan a little time to learn.</p>\n</section>",
+    "output": "The heading is larger and heavier than the supporting paragraph. The surrounding section still needs an appropriate place in the document hierarchy.",
+    "mistake": "A utility class that makes text look like a heading does not make a div a semantic heading.",
+    "challenge": "Give your planner three text styles and two surfaces. Check contrast for the exact pairs you used and keep task status readable without color.",
+    "diagram": {
+      "title": "Type, color & borders",
+      "steps": [
+        "Type scale",
+        "Color pairs",
+        "Clear hierarchy"
+      ],
+      "caption": "Make a small visual system from intentional utility combinations."
+    },
+    "source": "https://tailwindcss.com/docs/font-size"
+  },
+  {
+    "slug": "tailwind-layout",
+    "title": "Flex & Grid utilities",
+    "summary": "Choose the layout model first, then its utilities.",
+    "points": [
+      "flex makes direct children flex items; grid makes them grid items. Layout utilities belong on the relevant container.",
+      "items-center aligns on the cross axis in Flexbox; justify-between distributes along its main axis.",
+      "grid-cols-2 creates two equal tracks; gap-4 adds gutters. Add responsive variants when columns should change.",
+      "flex-wrap permits wrapping. min-w-0 on an item can help long content shrink, while text still needs suitable wrapping.",
+      "Avoid using order utilities to create a visual sequence that disagrees with keyboard or reading order."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "flex-wrap",
+          "Permit wrapped flex lines"
+        ],
+        [
+          "items-center",
+          "Cross-axis alignment"
+        ],
+        [
+          "grid-cols-2",
+          "Two grid columns"
+        ],
+        [
+          "min-w-0",
+          "Allow shrinking below auto minimum"
+        ]
+      ]
+    },
+    "code": "<div class=\"flex flex-wrap items-center justify-between gap-4\">\n  <h2 class=\"text-xl font-semibold\">Today</h2>\n  <a class=\"underline\" href=\"#tasks\">View tasks</a>\n</div>\n<div id=\"tasks\" class=\"mt-6 grid grid-cols-1 gap-4 md:grid-cols-2\">\n  <article class=\"min-w-0 p-4\">Reading</article>\n  <article class=\"min-w-0 p-4\">Practice</article>\n</div>",
+    "output": "The toolbar wraps when needed. Cards stack until the md breakpoint and then share two columns.",
+    "mistake": "items-center and justify-center are not synonymous; their axes depend on the layout model and flex direction.",
+    "challenge": "Recreate your CSS toolbar and card grid with utilities. Compare narrow and wide layouts while using the same HTML source order.",
+    "diagram": {
+      "title": "Flex & Grid utilities",
+      "steps": [
+        "Layout model",
+        "Container utilities",
+        "Child sizing"
+      ],
+      "caption": "Choose the layout model first, then its utilities."
+    },
+    "source": "https://tailwindcss.com/docs/display"
+  },
+  {
+    "slug": "tailwind-responsive",
+    "title": "Responsive variants",
+    "summary": "Unprefixed classes are the base; breakpoints add wider-screen behavior.",
+    "points": [
+      "Tailwind’s default breakpoint variants use minimum widths. sm: is not a “phones only” selector.",
+      "An unprefixed class applies by default at every width unless another matching rule overrides the same property.",
+      "With the default theme, md starts at 48rem. Custom themes can change breakpoints.",
+      "Keep the viewport meta tag in the page. Test content and zoom rather than relying only on device presets.",
+      "Use complete classes such as md:grid-cols-2. Responsive variants can change layout, spacing, typography, and more."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "grid-cols-1",
+          "Base column count"
+        ],
+        [
+          "md:grid-cols-2",
+          "Two columns from md upward"
+        ],
+        [
+          "p-4 md:p-8",
+          "Increase spacing on wider screens"
+        ],
+        [
+          "max-w-5xl",
+          "Constrain the content width"
+        ]
+      ]
+    },
+    "code": "<main class=\"mx-auto max-w-5xl p-4 md:p-8\">\n  <div class=\"grid grid-cols-1 gap-4 md:grid-cols-2\">\n    <article>Read</article>\n    <article>Practice</article>\n  </div>\n</main>",
+    "output": "The base layout is one column with smaller padding. Matching the md breakpoint changes both padding and column count.",
+    "mistake": "Using only sm:text-sm does not set the smallest-screen text size. Put the base size in an unprefixed utility.",
+    "challenge": "Resize your planner through the breakpoint slowly. Confirm that controls remain reachable and long task titles do not cause page overflow.",
+    "diagram": {
+      "title": "Responsive variants",
+      "steps": [
+        "Base utilities",
+        "Matching breakpoint",
+        "Enhanced layout"
+      ],
+      "caption": "Unprefixed classes are the base; breakpoints add wider-screen behavior."
+    },
+    "source": "https://tailwindcss.com/docs/responsive-design"
+  },
+  {
+    "slug": "tailwind-states",
+    "title": "Interactive states",
+    "summary": "Describe visual feedback without losing native behavior.",
+    "points": [
+      "hover:, focus-visible:, and disabled: apply a utility only when their state condition matches.",
+      "A focus-visible outline should be easy to distinguish from the surface. Do not remove it just to simplify a design.",
+      "disabled: styles an actual disabled state; it does not disable a control by itself.",
+      "group-hover: can respond to a parent marked group; peer variants can respond to a preceding sibling marked peer.",
+      "motion-reduce: can remove nonessential transitions. Tailwind classes do not implement click handlers, storage, or form submission logic."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "hover:bg-rose-800",
+          "Pointer feedback"
+        ],
+        [
+          "focus-visible:outline-2",
+          "Focus outline width"
+        ],
+        [
+          "disabled:opacity-50",
+          "Disabled appearance"
+        ],
+        [
+          "motion-reduce:transition-none",
+          "Reduced-motion override"
+        ]
+      ]
+    },
+    "code": "<button type=\"button\" disabled\n  class=\"rounded-lg bg-rose-700 px-4 py-2 text-white\n  hover:bg-rose-800 focus-visible:outline-2\n  focus-visible:outline-offset-2 focus-visible:outline-rose-900\n  disabled:opacity-50\">Saving comes later</button>",
+    "output": "This button is natively disabled, so it cannot submit or run an action. The classes describe appearance for states; they do not supply behavior.",
+    "mistake": "Changing opacity does not disable a control. Likewise a hover style does not provide keyboard focus feedback.",
+    "challenge": "Add visible keyboard focus to the planner’s real links. Include an honest disabled prototype action and explain why it is disabled.",
+    "diagram": {
+      "title": "Interactive states",
+      "steps": [
+        "Native state",
+        "Variant",
+        "Visual feedback"
+      ],
+      "caption": "Describe visual feedback without losing native behavior."
+    },
+    "source": "https://tailwindcss.com/docs/hover-focus-and-other-states"
+  },
+  {
+    "slug": "tailwind-theme",
+    "title": "Theme variables in v4",
+    "summary": "Define shared design choices in the CSS theme.",
+    "points": [
+      "In Tailwind v4, @theme declares theme variables used to generate matching utilities.",
+      "A variable in the --color-* namespace can support color utilities such as bg-brand and text-brand.",
+      "Ordinary :root custom properties are useful too, but do not automatically create new Tailwind utilities.",
+      "Keep a small palette and spacing system. Use arbitrary values only when a deliberate exception needs them.",
+      "Theme changes can affect many components. Recheck text contrast, focus outlines, and responsive behavior after changing shared values."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "@theme",
+          "Tailwind theme configuration"
+        ],
+        [
+          "--color-brand",
+          "A color token"
+        ],
+        [
+          "bg-brand",
+          "Background utility from that token"
+        ],
+        [
+          ":root",
+          "Ordinary custom properties"
+        ]
+      ]
+    },
+    "code": "@import \"tailwindcss\";\n@theme {\n  --color-brand: #9d2855;\n  --color-paper: #fffafc;\n}\n/* HTML: class=\"bg-paper text-brand\" */",
+    "output": "Tailwind can generate bg-paper and text-brand when it detects those complete class names in source files. Both refer to the declared theme values.",
+    "mistake": "Putting --color-brand only inside :root does not register a new Tailwind theme utility.",
+    "challenge": "Replace repeated palette choices with two named theme colors. Build the stylesheet and inspect the compiled result and rendered contrast.",
+    "diagram": {
+      "title": "Theme variables in v4",
+      "steps": [
+        "Theme variables",
+        "Generated utilities",
+        "Shared identity"
+      ],
+      "caption": "Define shared design choices in the CSS theme."
+    },
+    "source": "https://tailwindcss.com/docs/theme"
+  },
+  {
+    "slug": "tailwind-dark",
+    "title": "Dark mode",
+    "summary": "Design a second set of readable color relationships.",
+    "points": [
+      "By default, dark: follows the system prefers-color-scheme setting. You do not need a custom toggle to use that default.",
+      "Pair background, foreground, border, and focus colors in each mode. Changing only the background can make text unreadable.",
+      "A manual selector strategy needs an explicit custom dark variant and behavior to set that selector. A class name alone is not a toggle.",
+      "The phase-two starter uses the system preference, so no nonworking toggle is shown.",
+      "Test both modes, including controls and muted text. Dark mode is not a substitute for contrast checks."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "bg-white",
+          "Light surface"
+        ],
+        [
+          "dark:bg-slate-900",
+          "Dark surface"
+        ],
+        [
+          "text-slate-900",
+          "Light-mode text"
+        ],
+        [
+          "dark:text-slate-100",
+          "Dark-mode text"
+        ]
+      ]
+    },
+    "code": "<article class=\"rounded-xl border border-slate-300 bg-white p-6\n  text-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100\">\n  <h2 class=\"text-xl font-semibold\">Study plan</h2>\n  <p class=\"mt-2\">This card follows the system color preference.</p>\n</article>",
+    "output": "With the default dark variant, the dark utilities apply when the system asks for a dark color scheme. The semantic structure remains unchanged.",
+    "mistake": "Adding a moon icon without working behavior creates a misleading control. This starter intentionally follows the system instead.",
+    "challenge": "Switch the system between light and dark appearances. Inspect every planner surface, border, link, and focus indicator.",
+    "diagram": {
+      "title": "Dark mode",
+      "steps": [
+        "System preference",
+        "Dark variants",
+        "Readable pairs"
+      ],
+      "caption": "Design a second set of readable color relationships."
+    },
+    "source": "https://tailwindcss.com/docs/dark-mode"
+  },
+  {
+    "slug": "tailwind-build",
+    "title": "Source detection & builds",
+    "summary": "Make sure the classes you use become CSS in the final file.",
+    "points": [
+      "Tailwind scans source text for complete class names. It does not run JavaScript to understand string concatenation.",
+      "Keep full class names visible, such as bg-rose-700, rather than assembling fragments like bg- plus a variable.",
+      "In v4, @source can register files outside the usual detected sources. Paths are relative to the stylesheet.",
+      "Watch builds are for editing. A release build should generate the final stylesheet once, usually with minification.",
+      "Test the compiled output with the intended HTML. A development preview working does not prove the packaged output includes every needed style."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "Complete class",
+          "Can be detected in source"
+        ],
+        [
+          "@source",
+          "Register additional source files"
+        ],
+        [
+          "--minify",
+          "Compact the generated CSS"
+        ],
+        [
+          "output.css",
+          "Deliver alongside the HTML"
+        ]
+      ]
+    },
+    "code": "/* input.css in the starter folder */\n@import \"tailwindcss\" source(none);\n@source \"./index.html\";\n\n/* Build once in the terminal */\n/* npx @tailwindcss/cli -i ./input.css -o ./output.css --minify */",
+    "output": "This explicit source configuration scans the starter’s index.html instead of unrelated folders. The finished HTML still links output.css.",
+    "mistake": "Do not edit generated output.css as your source of truth; rebuilding replaces it. Change the input file or source classes.",
+    "challenge": "Run a one-time minified build. Move the built HTML and output.css together to another local folder and verify the styles still load.",
+    "diagram": {
+      "title": "Source detection & builds",
+      "steps": [
+        "Source detection",
+        "Build output",
+        "Verify package"
+      ],
+      "caption": "Make sure the classes you use become CSS in the final file."
+    },
+    "source": "https://tailwindcss.com/docs/detecting-classes-in-source-files"
+  },
+  {
+    "slug": "tailwind-project",
+    "title": "Rebuild your planner",
+    "summary": "Compare two styling approaches through the same useful project.",
+    "points": [
+      "Reuse your planner’s semantic structure and rewrite its presentation with Tailwind utilities.",
+      "Include a responsive grid, a wrapping toolbar, a consistent theme, and clear keyboard focus.",
+      "Use system dark-mode variants and verify both color schemes. Do not promise a custom toggle or task storage in this static phase.",
+      "Build the stylesheet from complete source classes and confirm the final HTML links the generated file.",
+      "Write a short comparison with your plain CSS version: readability, reuse, build steps, and maintenance tradeoffs.",
+      "Keep source files and setup instructions in version control. Finish the self-review before marking the project complete."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "index.html",
+          "Semantic content and utilities"
+        ],
+        [
+          "input.css",
+          "Imports, sources, theme"
+        ],
+        [
+          "output.css",
+          "Compiled deliverable"
+        ],
+        [
+          "README.md",
+          "Setup, decisions, limitations"
+        ]
+      ]
+    },
+    "code": "# In the downloaded starter folder\nnpm install\nnpm run build\n# Open index.html after the build.\n# While editing, use npm run dev.\n\n# Review: keyboard, narrow width, zoom, both color schemes",
+    "output": "The starter ships with a compiled stylesheet and build instructions. Dependencies are installed only when you rebuild. Quizzes assess recall; project review remains your own practical check.",
+    "mistake": "Copying every class without understanding it makes later changes harder. Explain the CSS concept behind each layout choice.",
+    "challenge": "Finish the README checklist, compare screenshots with your CSS version, and explain one tradeoff you would make differently next time.",
+    "diagram": {
+      "title": "Rebuild your planner",
+      "steps": [
+        "Rebuild",
+        "Compare",
+        "Explain"
+      ],
+      "caption": "Compare two styling approaches through the same useful project."
+    },
+    "source": "https://tailwindcss.com/docs/styling-with-utility-classes"
+  }
+]
