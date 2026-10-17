@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Prisma } from "@/generated/prisma/client";
 import { getPathDetail } from "./path-service";
 import { lessonWindow, studyBudget } from "@/lib/study-plan";
-import { PYTHON_QUESTIONS } from "@/lib/learning/python-content";
+import { getCourseContent } from "@/lib/learning/course-content";
 import { buildQuiz, gradeQuiz } from "@/lib/learning/quiz-engine";
 import { questionsForWindow } from "@/lib/learning/lesson-pack";
 import type { Answer, Question, QuizView } from "@/lib/learning/types";
@@ -45,9 +45,10 @@ export async function startQuiz(userId: string, input: StartQuiz) {
     scopeKey += `:${topic.resource.youtubeVideoId}:${window.startSeconds}:${window.endSeconds}`;
     title = `${topic.name} · watch-block check`;
   } else {
-    if (path.subject.slug !== "python") throw new QuizError("Revision questions are not available for this subject yet.", 409);
+    const content = getCourseContent(path.subject.slug);
+    if (!content) throw new QuizError("Revision questions are not available for this subject yet.", 409);
     const slugs = new Set(topic ? [topic.slug] : path.topics.map(t => t.slug));
-    bank = PYTHON_QUESTIONS.filter(q => slugs.has(q.topic)).map(q => ({ ...q, source: { ...q.source, url: `/paths/${path.id}/revision#${q.topic}` } }));
+    bank = content.questions.filter(q => slugs.has(q.topic)).map(q => ({ ...q, source: { ...q.source, url: `/paths/${path.id}/revision#${q.topic}` } }));
   }
   if (!bank.length) throw new QuizError("No reviewed questions are available for these topics yet.", 409);
   return prisma.$transaction(async tx => {

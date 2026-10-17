@@ -1,0 +1,3608 @@
+[
+  {
+    "id": "html-v1-html-web-1",
+    "topic": "html-web",
+    "concept": "html-web-1",
+    "prompt": "Which part of a typical website describes the meaning and structure of its content?",
+    "choices": [
+      {
+        "id": "14db35c491f0",
+        "text": "HTML"
+      },
+      {
+        "id": "33fb749f38a7",
+        "text": "DNS"
+      },
+      {
+        "id": "688a3f919e43",
+        "text": "Git"
+      },
+      {
+        "id": "766e9edecf99",
+        "text": "CSS"
+      }
+    ],
+    "correctId": "14db35c491f0",
+    "explanation": "HTML marks up the content. CSS handles presentation, while DNS and Git have different roles.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-2",
+    "topic": "html-web",
+    "concept": "html-web-2",
+    "prompt": "A browser asks a server for a page. What is the browser acting as?",
+    "choices": [
+      {
+        "id": "27b564b25e86",
+        "text": "A DNS record"
+      },
+      {
+        "id": "403a6114b352",
+        "text": "A Git commit"
+      },
+      {
+        "id": "b77f78b45629",
+        "text": "A client"
+      },
+      {
+        "id": "fbe5f5c51b8d",
+        "text": "A database migration"
+      }
+    ],
+    "correctId": "b77f78b45629",
+    "explanation": "The browser is the client making the request; the server responds with resources.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-3",
+    "topic": "html-web",
+    "concept": "html-web-3",
+    "prompt": "Which service helps a browser find an IP address for a domain?",
+    "choices": [
+      {
+        "id": "07caf4d11919",
+        "text": "The HTML validator"
+      },
+      {
+        "id": "61384526c029",
+        "text": "DNS"
+      },
+      {
+        "id": "8ff15c61007d",
+        "text": "GitHub Actions"
+      },
+      {
+        "id": "b54bd6db6cff",
+        "text": "CSS"
+      }
+    ],
+    "correctId": "61384526c029",
+    "explanation": "DNS resolves domain names. It does not style or validate the page.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-4",
+    "topic": "html-web",
+    "concept": "html-web-4",
+    "prompt": "In this address, which part is the resource path?",
+    "choices": [
+      {
+        "id": "108ee32b7edd",
+        "text": "example.com"
+      },
+      {
+        "id": "24095728b813",
+        "text": "/study/week.html"
+      },
+      {
+        "id": "3bb4b94262b2",
+        "text": "The entire internet"
+      },
+      {
+        "id": "62de3f1faf3a",
+        "text": "https"
+      }
+    ],
+    "correctId": "24095728b813",
+    "explanation": "The path identifies a resource within the origin.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    },
+    "code": "https://example.com/study/week.html"
+  },
+  {
+    "id": "html-v1-html-web-5",
+    "topic": "html-web",
+    "concept": "html-web-5",
+    "prompt": "A request for a removed image returns 404. What does that status indicate?",
+    "choices": [
+      {
+        "id": "15edc35a2cb3",
+        "text": "The browser committed the image"
+      },
+      {
+        "id": "18fa26b9c416",
+        "text": "The request succeeded"
+      },
+      {
+        "id": "4708891a8533",
+        "text": "The image has no alt attribute"
+      },
+      {
+        "id": "bf4f7e62fdef",
+        "text": "The requested resource was not found"
+      }
+    ],
+    "correctId": "bf4f7e62fdef",
+    "explanation": "404 concerns the requested resource, not the accessibility of its markup.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-6",
+    "topic": "html-web",
+    "concept": "html-web-6",
+    "prompt": "Which statement about HTTPS is accurate?",
+    "choices": [
+      {
+        "id": "59af83400183",
+        "text": "It guarantees the site has no bugs"
+      },
+      {
+        "id": "83c12c1359b6",
+        "text": "It makes all pages accessible"
+      },
+      {
+        "id": "8dabeb81f972",
+        "text": "It replaces HTML"
+      },
+      {
+        "id": "ecb313006b25",
+        "text": "It protects data in transit, but does not guarantee trustworthy content"
+      }
+    ],
+    "correctId": "ecb313006b25",
+    "explanation": "Transport protection and the trustworthiness of a site’s content are separate concerns.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-7",
+    "topic": "html-web",
+    "concept": "html-web-7",
+    "prompt": "Why might loading one HTML page generate several network requests?",
+    "choices": [
+      {
+        "id": "540f7807283c",
+        "text": "Each heading always needs a different server"
+      },
+      {
+        "id": "a6d83e77af58",
+        "text": "The page references other resources such as images and stylesheets"
+      },
+      {
+        "id": "dc4c9dcd69c0",
+        "text": "Git requires a push for every paragraph"
+      },
+      {
+        "id": "debaa6b13a33",
+        "text": "HTML cannot be transferred in a response"
+      }
+    ],
+    "correctId": "a6d83e77af58",
+    "explanation": "A document may refer to additional resources that the browser requests separately.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-8",
+    "topic": "html-web",
+    "concept": "html-web-8",
+    "prompt": "Which technology would normally control the colors and layout of the planner?",
+    "choices": [
+      {
+        "id": "4b708c119614",
+        "text": "CSS"
+      },
+      {
+        "id": "563cc270ad15",
+        "text": "DNS"
+      },
+      {
+        "id": "a802f53e977c",
+        "text": "Git"
+      },
+      {
+        "id": "ad7f47ee5ed9",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "4b708c119614",
+    "explanation": "CSS describes presentation. HTML still provides the underlying structure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-9",
+    "topic": "html-web",
+    "concept": "html-web-9",
+    "prompt": "Which HTTP response status usually indicates a successful page request?",
+    "choices": [
+      {
+        "id": "04c4fe590130",
+        "text": "500"
+      },
+      {
+        "id": "4fcb41ccb30d",
+        "text": "404"
+      },
+      {
+        "id": "9e1f3e8ce27c",
+        "text": "200"
+      },
+      {
+        "id": "f1b3ca9bdfe1",
+        "text": "A CSS class"
+      }
+    ],
+    "correctId": "9e1f3e8ce27c",
+    "explanation": "A 200 response indicates success; 404 and 500 indicate different kinds of failure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    }
+  },
+  {
+    "id": "html-v1-html-web-10",
+    "topic": "html-web",
+    "concept": "html-web-10",
+    "prompt": "Which part of this address is not sent as part of the HTTP request?",
+    "choices": [
+      {
+        "id": "0955014abd2b",
+        "text": "#tasks"
+      },
+      {
+        "id": "12e893cb9a71",
+        "text": "/planner.html"
+      },
+      {
+        "id": "40dd7cec5fcd",
+        "text": "The hostname"
+      },
+      {
+        "id": "a393bd47cbe9",
+        "text": "The HTTPS scheme"
+      }
+    ],
+    "correctId": "0955014abd2b",
+    "explanation": "The fragment identifies a location within a resource and is handled by the browser.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-web"
+    },
+    "code": "https://example.com/planner.html#tasks"
+  },
+  {
+    "id": "html-v1-html-setup-1",
+    "topic": "html-setup",
+    "concept": "html-setup-1",
+    "prompt": "Which filename is appropriate for a plain HTML entry page?",
+    "choices": [
+      {
+        "id": "5d184d9cf49b",
+        "text": "index.html.txt"
+      },
+      {
+        "id": "86ac6f3352b3",
+        "text": "index.html"
+      },
+      {
+        "id": "8d5763639d35",
+        "text": "index.docx"
+      },
+      {
+        "id": "bc265748abd7",
+        "text": "index.png"
+      }
+    ],
+    "correctId": "86ac6f3352b3",
+    "explanation": "The .html extension identifies an HTML document; make sure the editor does not append .txt.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-2",
+    "topic": "html-setup",
+    "concept": "html-setup-2",
+    "prompt": "You changed a paragraph in your editor, but the refreshed browser still shows the old text. What should you check first?",
+    "choices": [
+      {
+        "id": "537e4b026cf3",
+        "text": "Whether every paragraph has a class"
+      },
+      {
+        "id": "757b848605a7",
+        "text": "Whether the edited file was saved and is the file being opened"
+      },
+      {
+        "id": "811946c20ed1",
+        "text": "Whether GitHub has a paid plan"
+      },
+      {
+        "id": "ee312f8876b0",
+        "text": "Whether DNS was deleted"
+      }
+    ],
+    "correctId": "757b848605a7",
+    "explanation": "The browser must load the saved file you actually edited.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-3",
+    "topic": "html-setup",
+    "concept": "html-setup-3",
+    "prompt": "Which tool is suited to editing HTML source directly?",
+    "choices": [
+      {
+        "id": "23bc303e5c83",
+        "text": "A photo filter"
+      },
+      {
+        "id": "317d0a7fd155",
+        "text": "A rich-text export alone"
+      },
+      {
+        "id": "6435a299437d",
+        "text": "A plain-text code editor"
+      },
+      {
+        "id": "e5436d5e8b86",
+        "text": "An audio mixer"
+      }
+    ],
+    "correctId": "6435a299437d",
+    "explanation": "A code editor saves plain source text rather than a rich-text document format.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-4",
+    "topic": "html-setup",
+    "concept": "html-setup-4",
+    "prompt": "In a POSIX-style shell, which command shows your current directory?",
+    "choices": [
+      {
+        "id": "346563b8bb33",
+        "text": "git push"
+      },
+      {
+        "id": "47a7288b6c00",
+        "text": "cd planner"
+      },
+      {
+        "id": "83c3c55dbe21",
+        "text": "pwd"
+      },
+      {
+        "id": "ef6990953d85",
+        "text": "mkdir"
+      }
+    ],
+    "correctId": "83c3c55dbe21",
+    "explanation": "pwd prints the working directory; cd changes it.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-5",
+    "topic": "html-setup",
+    "concept": "html-setup-5",
+    "prompt": "What does this command do from the parent folder?",
+    "choices": [
+      {
+        "id": "83ffe72e7816",
+        "text": "Opens a remote database"
+      },
+      {
+        "id": "8671c51d35ac",
+        "text": "Publishes the website"
+      },
+      {
+        "id": "adecbe5b0489",
+        "text": "Enters the planner directory"
+      },
+      {
+        "id": "f9ddfb343715",
+        "text": "Creates a Git commit"
+      }
+    ],
+    "correctId": "adecbe5b0489",
+    "explanation": "cd changes the shell’s current directory.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    },
+    "code": "cd planner"
+  },
+  {
+    "id": "html-v1-html-setup-6",
+    "topic": "html-setup",
+    "concept": "html-setup-6",
+    "prompt": "Where would you normally place local image files in this small project?",
+    "choices": [
+      {
+        "id": "95090ae5ec12",
+        "text": "Only in a browser tab name"
+      },
+      {
+        "id": "96b36de260b3",
+        "text": "Inside a Git commit message"
+      },
+      {
+        "id": "9a67b519dde7",
+        "text": "In an assets folder such as images/"
+      },
+      {
+        "id": "e3e861ce357f",
+        "text": "Inside the title element"
+      }
+    ],
+    "correctId": "9a67b519dde7",
+    "explanation": "A dedicated folder keeps assets organized; source paths must match their location.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-7",
+    "topic": "html-setup",
+    "concept": "html-setup-7",
+    "prompt": "You edit a heading in the browser’s Elements panel. What should you do to keep that change?",
+    "choices": [
+      {
+        "id": "08df7408b5f7",
+        "text": "Assume developer tools always updates the disk file"
+      },
+      {
+        "id": "36b8234f3dca",
+        "text": "Delete the doctype"
+      },
+      {
+        "id": "583d69d65df3",
+        "text": "Close the editor without saving"
+      },
+      {
+        "id": "c7f089755672",
+        "text": "Make the corresponding change in the source file and save it"
+      }
+    ],
+    "correctId": "c7f089755672",
+    "explanation": "Ordinary developer-tools DOM edits are temporary and do not rewrite the original HTML file.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-8",
+    "topic": "html-setup",
+    "concept": "html-setup-8",
+    "prompt": "Which sequence best describes the basic local editing loop?",
+    "choices": [
+      {
+        "id": "6877765b9eb0",
+        "text": "Edit the source, save it, refresh the browser"
+      },
+      {
+        "id": "79ea63a1ffa6",
+        "text": "Refresh, push a secret, delete the source"
+      },
+      {
+        "id": "8b747faf8e71",
+        "text": "Change DNS after every edit"
+      },
+      {
+        "id": "b681f931e455",
+        "text": "Commit before every keystroke"
+      }
+    ],
+    "correctId": "6877765b9eb0",
+    "explanation": "Saving and reloading connects your source changes to the rendered page.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-9",
+    "topic": "html-setup",
+    "concept": "html-setup-9",
+    "prompt": "What does opening index.html on your computer accomplish by itself?",
+    "choices": [
+      {
+        "id": "758cc422863d",
+        "text": "It creates a public domain automatically"
+      },
+      {
+        "id": "919bf314d022",
+        "text": "It configures HTTPS hosting"
+      },
+      {
+        "id": "d3736ee9534b",
+        "text": "It displays a local file; it does not publish a public website"
+      },
+      {
+        "id": "d9fac1fa20a2",
+        "text": "It pushes the file to GitHub"
+      }
+    ],
+    "correctId": "d3736ee9534b",
+    "explanation": "A local preview and a hosted public site are different environments.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-setup-10",
+    "topic": "html-setup",
+    "concept": "html-setup-10",
+    "prompt": "A link works locally but fails on a case-sensitive host. Which mismatch should you inspect?",
+    "choices": [
+      {
+        "id": "1dbe4b84e369",
+        "text": "Whether the paragraph uses strong"
+      },
+      {
+        "id": "d6afae65013a",
+        "text": "Whether DNS supports headings"
+      },
+      {
+        "id": "dfb0504b9bf4",
+        "text": "The order of Git log entries"
+      },
+      {
+        "id": "e1be8052adae",
+        "text": "Schedule.html versus schedule.html"
+      }
+    ],
+    "correctId": "e1be8052adae",
+    "explanation": "File names and links must match case on a case-sensitive system.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-setup"
+    }
+  },
+  {
+    "id": "html-v1-html-git-1",
+    "topic": "html-git",
+    "concept": "html-git-1",
+    "prompt": "What is the difference between Git and GitHub?",
+    "choices": [
+      {
+        "id": "0ad9e3ebfe99",
+        "text": "GitHub is a required part of every local commit"
+      },
+      {
+        "id": "1b0fcabdbfa7",
+        "text": "Git is a browser; GitHub is HTML"
+      },
+      {
+        "id": "25166ec4043c",
+        "text": "Git versions files; GitHub hosts repositories and collaboration"
+      },
+      {
+        "id": "9d7c0223fb03",
+        "text": "They both require a public website"
+      }
+    ],
+    "correctId": "25166ec4043c",
+    "explanation": "Git can maintain history locally without a GitHub account.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-2",
+    "topic": "html-git",
+    "concept": "html-git-2",
+    "prompt": "Which command should you use to inspect changed and staged files?",
+    "choices": [
+      {
+        "id": "29f36c133562",
+        "text": "cd .."
+      },
+      {
+        "id": "51f08ff2be90",
+        "text": "git status"
+      },
+      {
+        "id": "a5efec8800e4",
+        "text": "git push --force"
+      },
+      {
+        "id": "b3fbbbaeb566",
+        "text": "git init on every edit"
+      }
+    ],
+    "correctId": "51f08ff2be90",
+    "explanation": "git status reports the state of the working tree and staging area.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-3",
+    "topic": "html-git",
+    "concept": "html-git-3",
+    "prompt": "What does this command prepare?",
+    "choices": [
+      {
+        "id": "5c3aa104cab0",
+        "text": "An automatic public deployment"
+      },
+      {
+        "id": "669cd94717b4",
+        "text": "The selected file’s current changes for the next commit"
+      },
+      {
+        "id": "7660c9786b8b",
+        "text": "All future edits to every file"
+      },
+      {
+        "id": "c6ec4e6ed653",
+        "text": "A new remote account"
+      }
+    ],
+    "correctId": "669cd94717b4",
+    "explanation": "git add stages the current version of the named file.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    },
+    "code": "git add index.html"
+  },
+  {
+    "id": "html-v1-html-git-4",
+    "topic": "html-git",
+    "concept": "html-git-4",
+    "prompt": "Which changes are recorded by a normal git commit?",
+    "choices": [
+      {
+        "id": "576d311b8af5",
+        "text": "Every unsaved editor buffer"
+      },
+      {
+        "id": "780e5e1ad097",
+        "text": "Only remote files"
+      },
+      {
+        "id": "852c9aa9694d",
+        "text": "All ignored files automatically"
+      },
+      {
+        "id": "c5f25c4b1f4f",
+        "text": "The staged snapshot"
+      }
+    ],
+    "correctId": "c5f25c4b1f4f",
+    "explanation": "A commit records what has been staged, not unsaved or unstaged changes.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-5",
+    "topic": "html-git",
+    "concept": "html-git-5",
+    "prompt": "How do you inspect the changes currently staged for your next commit?",
+    "choices": [
+      {
+        "id": "2c39b5bcdc9f",
+        "text": "pwd"
+      },
+      {
+        "id": "b44efb009cd4",
+        "text": "git remote -v"
+      },
+      {
+        "id": "e01b6ba6ac43",
+        "text": "git push"
+      },
+      {
+        "id": "f5cec34f7cce",
+        "text": "git diff --staged"
+      }
+    ],
+    "correctId": "f5cec34f7cce",
+    "explanation": "git diff --staged compares the staged snapshot with the current commit.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-6",
+    "topic": "html-git",
+    "concept": "html-git-6",
+    "prompt": "Which command creates and switches to a new branch?",
+    "choices": [
+      {
+        "id": "1d7d3c58bbc4",
+        "text": "git diff --new add-schedule"
+      },
+      {
+        "id": "6ce2faae7130",
+        "text": "git push -c add-schedule"
+      },
+      {
+        "id": "be71053e7ec6",
+        "text": "git status add-schedule"
+      },
+      {
+        "id": "d410015943de",
+        "text": "git switch -c add-schedule"
+      }
+    ],
+    "correctId": "d410015943de",
+    "explanation": "The -c option creates a new branch and switches to it.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-7",
+    "topic": "html-git",
+    "concept": "html-git-7",
+    "prompt": "You committed a page locally. Which statement is true before you push?",
+    "choices": [
+      {
+        "id": "7f06755ca685",
+        "text": "The public website must already be updated"
+      },
+      {
+        "id": "85d5d6531565",
+        "text": "The commit exists locally and has not necessarily reached the remote"
+      },
+      {
+        "id": "bbe94ec144b7",
+        "text": "The commit has become a pull request"
+      },
+      {
+        "id": "fa219fe2a8e1",
+        "text": "The commit cannot be inspected"
+      }
+    ],
+    "correctId": "85d5d6531565",
+    "explanation": "Committing and sending commits to a remote are separate actions.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-8",
+    "topic": "html-git",
+    "concept": "html-git-8",
+    "prompt": "What is a pull request mainly used for?",
+    "choices": [
+      {
+        "id": "3a241e5452ee",
+        "text": "Encrypting every repository file"
+      },
+      {
+        "id": "61192381ad77",
+        "text": "Proposing and reviewing a branch’s changes before merging"
+      },
+      {
+        "id": "c2626a42c2a4",
+        "text": "Saving an unsaved editor buffer"
+      },
+      {
+        "id": "ce7f7f221d5a",
+        "text": "Assigning HTML heading levels"
+      }
+    ],
+    "correctId": "61192381ad77",
+    "explanation": "A pull request provides a collaboration and review workflow around changes.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-9",
+    "topic": "html-git",
+    "concept": "html-git-9",
+    "prompt": "You discover a secret already tracked in Git. Will adding it to .gitignore erase its history?",
+    "choices": [
+      {
+        "id": "21b8a723c4ec",
+        "text": "Yes, but only for HTML files"
+      },
+      {
+        "id": "5604bad6178c",
+        "text": "Yes, all copies are erased immediately"
+      },
+      {
+        "id": "7f30cc62c490",
+        "text": "Only if the file is named index.html"
+      },
+      {
+        "id": "ca3059cf6559",
+        "text": "No; ignore rules do not remove tracked content or past commits"
+      }
+    ],
+    "correctId": "ca3059cf6559",
+    "explanation": "Ignoring future untracked files does not undo previous tracking or exposure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-git-10",
+    "topic": "html-git",
+    "concept": "html-git-10",
+    "prompt": "Which commit message most clearly describes a focused change?",
+    "choices": [
+      {
+        "id": "2e8c4b5bc6d0",
+        "text": "Add accessible schedule table"
+      },
+      {
+        "id": "9fe7f0900d10",
+        "text": "stuff"
+      },
+      {
+        "id": "bc6490ccc785",
+        "text": "final final again"
+      },
+      {
+        "id": "f15641f41c39",
+        "text": "asdf"
+      }
+    ],
+    "correctId": "2e8c4b5bc6d0",
+    "explanation": "A useful commit message explains the change so future readers can understand its purpose.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-git"
+    }
+  },
+  {
+    "id": "html-v1-html-document-1",
+    "topic": "html-document",
+    "concept": "html-document-1",
+    "prompt": "What is the purpose of <!doctype html> in a modern HTML page?",
+    "choices": [
+      {
+        "id": "0f0bedfe5060",
+        "text": "Select standards mode"
+      },
+      {
+        "id": "17a6525dec83",
+        "text": "Create a visible heading"
+      },
+      {
+        "id": "46b03548b1e2",
+        "text": "Submit a form"
+      },
+      {
+        "id": "8776f9585e4e",
+        "text": "Declare a CSS class"
+      }
+    ],
+    "correctId": "0f0bedfe5060",
+    "explanation": "The doctype tells the browser to use standards mode.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-2",
+    "topic": "html-document",
+    "concept": "html-document-2",
+    "prompt": "Which element normally contains the document title and character encoding?",
+    "choices": [
+      {
+        "id": "1442e177484b",
+        "text": "head"
+      },
+      {
+        "id": "3d78bc5eac1d",
+        "text": "footer"
+      },
+      {
+        "id": "bdabe8ddb1b6",
+        "text": "main"
+      },
+      {
+        "id": "cdd19cfe5e1e",
+        "text": "nav"
+      }
+    ],
+    "correctId": "1442e177484b",
+    "explanation": "Metadata such as title and meta belongs in head.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-3",
+    "topic": "html-document",
+    "concept": "html-document-3",
+    "prompt": "Where should the main content people read be placed?",
+    "choices": [
+      {
+        "id": "0caf0cfeec15",
+        "text": "Only inside title"
+      },
+      {
+        "id": "120bc9387728",
+        "text": "Inside body"
+      },
+      {
+        "id": "8d4ef2cb034f",
+        "text": "Inside the doctype"
+      },
+      {
+        "id": "b191d266efda",
+        "text": "Inside a charset attribute"
+      }
+    ],
+    "correctId": "120bc9387728",
+    "explanation": "The body contains the content of the document.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-4",
+    "topic": "html-document",
+    "concept": "html-document-4",
+    "prompt": "What does lang=\"en\" on the html element communicate?",
+    "choices": [
+      {
+        "id": "3a456da7bba2",
+        "text": "The page must use a particular font"
+      },
+      {
+        "id": "a054b7b7426d",
+        "text": "The server runs Node.js"
+      },
+      {
+        "id": "cd733b5a3ebc",
+        "text": "The document’s language is English"
+      },
+      {
+        "id": "f9e81cea6390",
+        "text": "The document is encrypted"
+      }
+    ],
+    "correctId": "cd733b5a3ebc",
+    "explanation": "Language metadata helps tools, including assistive technology, interpret text correctly.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-5",
+    "topic": "html-document",
+    "concept": "html-document-5",
+    "prompt": "Which element changes the browser tab’s document title?",
+    "choices": [
+      {
+        "id": "1363caec3653",
+        "text": "br"
+      },
+      {
+        "id": "5783c3ca41a9",
+        "text": "strong"
+      },
+      {
+        "id": "736a904586e4",
+        "text": "h1 alone"
+      },
+      {
+        "id": "ed1f97c9474a",
+        "text": "title"
+      }
+    ],
+    "correctId": "ed1f97c9474a",
+    "explanation": "The title element supplies the document title; h1 is a heading in the body.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-6",
+    "topic": "html-document",
+    "concept": "html-document-6",
+    "prompt": "Which example closes nested elements in the correct order?",
+    "choices": [
+      {
+        "id": "3a50d95fb32e",
+        "text": "<p><em>Focus</p></em>"
+      },
+      {
+        "id": "3eeebbed5ef1",
+        "text": "<p></em>Focus<em></p>"
+      },
+      {
+        "id": "a17dc0b3cdc0",
+        "text": "<p><em>Focus</p>"
+      },
+      {
+        "id": "e14457166cc8",
+        "text": "<p><em>Focus</em></p>"
+      }
+    ],
+    "correctId": "e14457166cc8",
+    "explanation": "Close the innermost element before its containing element.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-7",
+    "topic": "html-document",
+    "concept": "html-document-7",
+    "prompt": "Which of these is a void element with no closing tag?",
+    "choices": [
+      {
+        "id": "36d3fb2646ce",
+        "text": "p"
+      },
+      {
+        "id": "4288113b98dc",
+        "text": "img"
+      },
+      {
+        "id": "46c6b4c7df25",
+        "text": "title"
+      },
+      {
+        "id": "8fdc0a69f6da",
+        "text": "section"
+      }
+    ],
+    "correctId": "4288113b98dc",
+    "explanation": "img is a void element; writing a separate closing img tag is not the correct HTML structure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-8",
+    "topic": "html-document",
+    "concept": "html-document-8",
+    "prompt": "How should a literal < character be written in HTML text when it might otherwise begin markup?",
+    "choices": [
+      {
+        "id": "3e94d882315f",
+        "text": "</>"
+      },
+      {
+        "id": "6f1d3771549e",
+        "text": "<html>"
+      },
+      {
+        "id": "9171a65e234c",
+        "text": "&lt;"
+      },
+      {
+        "id": "e24b654eb33e",
+        "text": "&close;"
+      }
+    ],
+    "correctId": "9171a65e234c",
+    "explanation": "The character reference &lt; represents a literal less-than character.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-9",
+    "topic": "html-document",
+    "concept": "html-document-9",
+    "prompt": "Which rule applies to id values within one HTML document?",
+    "choices": [
+      {
+        "id": "58243e80727c",
+        "text": "Each id should be unique"
+      },
+      {
+        "id": "5fe79c6cdd72",
+        "text": "Every element must use the same id"
+      },
+      {
+        "id": "b63fdc5ae2b0",
+        "text": "Only images may have ids"
+      },
+      {
+        "id": "f0334fa98b22",
+        "text": "Ids must be complete URLs"
+      }
+    ],
+    "correctId": "58243e80727c",
+    "explanation": "Unique ids allow links, labels, and scripts to identify the intended element.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-document-10",
+    "topic": "html-document",
+    "concept": "html-document-10",
+    "prompt": "A browser displays misnested HTML without an obvious visual error. What does that prove?",
+    "choices": [
+      {
+        "id": "242b8cb568f8",
+        "text": "That the page needs no testing"
+      },
+      {
+        "id": "b96817825e11",
+        "text": "That the markup is valid"
+      },
+      {
+        "id": "c062ab041428",
+        "text": "That all labels are accessible"
+      },
+      {
+        "id": "fd3a1fca9a05",
+        "text": "Only that the browser rendered it; the source may still be invalid"
+      }
+    ],
+    "correctId": "fd3a1fca9a05",
+    "explanation": "Browsers repair many markup errors, so visual appearance alone is not validation.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-document"
+    }
+  },
+  {
+    "id": "html-v1-html-text-1",
+    "topic": "html-text",
+    "concept": "html-text-1",
+    "prompt": "How should heading ranks be selected?",
+    "choices": [
+      {
+        "id": "301772ff72ae",
+        "text": "According to the desired font size only"
+      },
+      {
+        "id": "d0ddd4385300",
+        "text": "According to the content hierarchy"
+      },
+      {
+        "id": "d52c7bad17f5",
+        "text": "Always use h6"
+      },
+      {
+        "id": "d9e0cd211bc6",
+        "text": "Randomly to create variety"
+      }
+    ],
+    "correctId": "d0ddd4385300",
+    "explanation": "Heading ranks describe structure; styling can change their visual size separately.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-2",
+    "topic": "html-text",
+    "concept": "html-text-2",
+    "prompt": "Which list is best for steps that must happen in a particular order?",
+    "choices": [
+      {
+        "id": "36bd8ae9fb4f",
+        "text": "ul in every case"
+      },
+      {
+        "id": "c517c2a4f575",
+        "text": "img"
+      },
+      {
+        "id": "df67f462495e",
+        "text": "ol"
+      },
+      {
+        "id": "fd0c29739723",
+        "text": "p without items"
+      }
+    ],
+    "correctId": "df67f462495e",
+    "explanation": "An ordered list communicates a meaningful sequence.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-3",
+    "topic": "html-text",
+    "concept": "html-text-3",
+    "prompt": "Which element represents an item inside an ol or ul?",
+    "choices": [
+      {
+        "id": "044e28a89623",
+        "text": "td"
+      },
+      {
+        "id": "0eb05c9482dc",
+        "text": "li"
+      },
+      {
+        "id": "3f13c141a414",
+        "text": "meta"
+      },
+      {
+        "id": "80fc78ac0fd0",
+        "text": "head"
+      }
+    ],
+    "correctId": "0eb05c9482dc",
+    "explanation": "li marks a list item within an ordered or unordered list.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-4",
+    "topic": "html-text",
+    "concept": "html-text-4",
+    "prompt": "Which element marks a paragraph?",
+    "choices": [
+      {
+        "id": "402d51464903",
+        "text": "br"
+      },
+      {
+        "id": "480f4b58ef59",
+        "text": "h1 for every sentence"
+      },
+      {
+        "id": "4ac3d8920331",
+        "text": "strong"
+      },
+      {
+        "id": "8e1bb83587bc",
+        "text": "p"
+      }
+    ],
+    "correctId": "8e1bb83587bc",
+    "explanation": "A paragraph groups related prose; br only introduces a line break.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-5",
+    "topic": "html-text",
+    "concept": "html-text-5",
+    "prompt": "What does strong communicate?",
+    "choices": [
+      {
+        "id": "631627cf5273",
+        "text": "Importance"
+      },
+      {
+        "id": "bc3c1c552335",
+        "text": "A table column"
+      },
+      {
+        "id": "c01458ab1dda",
+        "text": "A required line break"
+      },
+      {
+        "id": "f51e7f4037ea",
+        "text": "A destination URL"
+      }
+    ],
+    "correctId": "631627cf5273",
+    "explanation": "strong adds semantic importance, rather than merely requesting a bold appearance.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-6",
+    "topic": "html-text",
+    "concept": "html-text-6",
+    "prompt": "What does em communicate?",
+    "choices": [
+      {
+        "id": "00847d884021",
+        "text": "An empty image alternative"
+      },
+      {
+        "id": "10533d257904",
+        "text": "An external link"
+      },
+      {
+        "id": "54fbd2dbe408",
+        "text": "A Git branch"
+      },
+      {
+        "id": "7a5d0049de2a",
+        "text": "Stress emphasis"
+      }
+    ],
+    "correctId": "7a5d0049de2a",
+    "explanation": "em indicates emphasis that can affect how the sentence is read.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-7",
+    "topic": "html-text",
+    "concept": "html-text-7",
+    "prompt": "How does normal HTML text usually render repeated spaces?",
+    "choices": [
+      {
+        "id": "27a3c406b7fd",
+        "text": "They collapse rather than acting as a layout grid"
+      },
+      {
+        "id": "2a05ab3d0625",
+        "text": "They submit the paragraph"
+      },
+      {
+        "id": "87d5eac332ab",
+        "text": "Each space always becomes a fixed-width column"
+      },
+      {
+        "id": "9bd3f01b378a",
+        "text": "They create new heading levels"
+      }
+    ],
+    "correctId": "27a3c406b7fd",
+    "explanation": "Ordinary whitespace is collapsed; use CSS for layout rather than repeated spaces.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-8",
+    "topic": "html-text",
+    "concept": "html-text-8",
+    "prompt": "Which element is appropriate when spaces and line breaks in a code block must be preserved?",
+    "choices": [
+      {
+        "id": "38e1339ea17d",
+        "text": "input"
+      },
+      {
+        "id": "93cad5a94fda",
+        "text": "title"
+      },
+      {
+        "id": "c21a55d77855",
+        "text": "nav"
+      },
+      {
+        "id": "d0d517b2d1e1",
+        "text": "pre"
+      }
+    ],
+    "correctId": "d0d517b2d1e1",
+    "explanation": "pre preserves preformatted whitespace. code can identify the enclosed text as code.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-9",
+    "topic": "html-text",
+    "concept": "html-text-9",
+    "prompt": "What is the best structure for a page title followed by two equal sections?",
+    "choices": [
+      {
+        "id": "46cedbfa35d8",
+        "text": "One h1 followed by two h2 headings"
+      },
+      {
+        "id": "6e6c3fe58013",
+        "text": "An h6 followed by an h1 inside each word"
+      },
+      {
+        "id": "db5ae8366c81",
+        "text": "Only bold paragraphs"
+      },
+      {
+        "id": "fb3e01d61aaf",
+        "text": "Three unrelated h1 headings solely for font size"
+      }
+    ],
+    "correctId": "46cedbfa35d8",
+    "explanation": "The h2 elements represent sibling sections beneath the page’s main heading.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-text-10",
+    "topic": "html-text",
+    "concept": "html-text-10",
+    "prompt": "Which is a better way to create vertical spacing than adding many empty paragraphs?",
+    "choices": [
+      {
+        "id": "0c177abcd33f",
+        "text": "Replace all text with images"
+      },
+      {
+        "id": "558b7ce35456",
+        "text": "Add more empty headings"
+      },
+      {
+        "id": "6bb89a33351f",
+        "text": "Apply CSS spacing to correctly structured elements"
+      },
+      {
+        "id": "d3b1c8386791",
+        "text": "Use a table for the entire page"
+      }
+    ],
+    "correctId": "6bb89a33351f",
+    "explanation": "Spacing is presentation. Keeping meaningful HTML makes the document easier to understand.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-text"
+    }
+  },
+  {
+    "id": "html-v1-html-links-1",
+    "topic": "html-links",
+    "concept": "html-links-1",
+    "prompt": "Which attribute supplies an anchor’s destination?",
+    "choices": [
+      {
+        "id": "50545ad22b74",
+        "text": "alt"
+      },
+      {
+        "id": "ac19c09302d2",
+        "text": "href"
+      },
+      {
+        "id": "e27431eb493e",
+        "text": "charset"
+      },
+      {
+        "id": "f5cd2392dfe2",
+        "text": "src"
+      }
+    ],
+    "correctId": "ac19c09302d2",
+    "explanation": "An anchor with href creates a hyperlink to that destination.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-2",
+    "topic": "html-links",
+    "concept": "html-links-2",
+    "prompt": "From /pages/tasks.html, where does ../index.html point?",
+    "choices": [
+      {
+        "id": "43605e8c0908",
+        "text": "/pages/tasks/index.html"
+      },
+      {
+        "id": "8ff2f71ef50d",
+        "text": "/index.html"
+      },
+      {
+        "id": "aead8f5e9339",
+        "text": "An automatically created external domain"
+      },
+      {
+        "id": "d06148d55e43",
+        "text": "/pages/index.html"
+      }
+    ],
+    "correctId": "8ff2f71ef50d",
+    "explanation": "../ moves up one directory before resolving index.html.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-3",
+    "topic": "html-links",
+    "concept": "html-links-3",
+    "prompt": "Which target does this link refer to?",
+    "choices": [
+      {
+        "id": "05ffe32678de",
+        "text": "A class named tasks on another site"
+      },
+      {
+        "id": "5fd0986c16dd",
+        "text": "An element with id=\"tasks\" in the current document"
+      },
+      {
+        "id": "7df24fc9304c",
+        "text": "A file named #tasks.html"
+      },
+      {
+        "id": "d1f48a0e8bff",
+        "text": "Every form on the internet"
+      }
+    ],
+    "correctId": "5fd0986c16dd",
+    "explanation": "A fragment link targets a matching id within the document.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    },
+    "code": "<a href=\"#tasks\">Today’s tasks</a>"
+  },
+  {
+    "id": "html-v1-html-links-4",
+    "topic": "html-links",
+    "concept": "html-links-4",
+    "prompt": "Which link text best communicates its destination?",
+    "choices": [
+      {
+        "id": "582cfcc731e0",
+        "text": "More"
+      },
+      {
+        "id": "78e2da2ae460",
+        "text": "This"
+      },
+      {
+        "id": "8dea400a2372",
+        "text": "Click here"
+      },
+      {
+        "id": "a3a4afd80f1d",
+        "text": "View the study schedule"
+      }
+    ],
+    "correctId": "a3a4afd80f1d",
+    "explanation": "Descriptive text helps people understand a link even outside its surrounding paragraph.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-5",
+    "topic": "html-links",
+    "concept": "html-links-5",
+    "prompt": "Which element should normally navigate to another page?",
+    "choices": [
+      {
+        "id": "a64eb7897d9f",
+        "text": "A div with no behavior"
+      },
+      {
+        "id": "a97d7d82a2bf",
+        "text": "An img with a file name"
+      },
+      {
+        "id": "f919c694dc26",
+        "text": "A submit button in every case"
+      },
+      {
+        "id": "fa67d8b81535",
+        "text": "An anchor with href"
+      }
+    ],
+    "correctId": "fa67d8b81535",
+    "explanation": "Links represent navigation; buttons represent actions.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-6",
+    "topic": "html-links",
+    "concept": "html-links-6",
+    "prompt": "Which is an absolute HTTPS URL?",
+    "choices": [
+      {
+        "id": "4f11f4f249aa",
+        "text": "schedule.html"
+      },
+      {
+        "id": "c3021bbbeaa1",
+        "text": "https://example.com/schedule"
+      },
+      {
+        "id": "e33d6f6ffa44",
+        "text": "#schedule"
+      },
+      {
+        "id": "f809f3233c78",
+        "text": "../schedule.html"
+      }
+    ],
+    "correctId": "c3021bbbeaa1",
+    "explanation": "An absolute web URL includes a scheme and an origin.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-7",
+    "topic": "html-links",
+    "concept": "html-links-7",
+    "prompt": "On https://example.com/pages/tasks.html, where does /schedule.html resolve?",
+    "choices": [
+      {
+        "id": "a1c4e1b7e78a",
+        "text": "The parent of the entire internet"
+      },
+      {
+        "id": "a4ed7042b872",
+        "text": "https://example.com/schedule.html"
+      },
+      {
+        "id": "bc7cdff53032",
+        "text": "https://example.com/pages/schedule.html"
+      },
+      {
+        "id": "e3d2de64be27",
+        "text": "The local editor installation"
+      }
+    ],
+    "correctId": "a4ed7042b872",
+    "explanation": "A leading slash resolves from the origin root.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-8",
+    "topic": "html-links",
+    "concept": "html-links-8",
+    "prompt": "Which problem can a placeholder href=\"#\" create?",
+    "choices": [
+      {
+        "id": "164a81f11fa7",
+        "text": "It automatically deletes the page"
+      },
+      {
+        "id": "4497b09fb54d",
+        "text": "It can move to the top instead of opening a meaningful destination"
+      },
+      {
+        "id": "b3c251dc7b26",
+        "text": "It makes the link a database query"
+      },
+      {
+        "id": "d89c224078a7",
+        "text": "It supplies a useful destination without further work"
+      }
+    ],
+    "correctId": "4497b09fb54d",
+    "explanation": "A bare fragment is not a substitute for a real destination.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-9",
+    "topic": "html-links",
+    "concept": "html-links-9",
+    "prompt": "When you move schedule.html into a pages folder, what should you test?",
+    "choices": [
+      {
+        "id": "4ac5fb8f3678",
+        "text": "Nothing if the file contents are unchanged"
+      },
+      {
+        "id": "9596a3586537",
+        "text": "Links to it and links back from it"
+      },
+      {
+        "id": "ccfcbc4d6378",
+        "text": "Only the page’s font size"
+      },
+      {
+        "id": "ed17e5d4ac89",
+        "text": "Only the remote Git author name"
+      }
+    ],
+    "correctId": "9596a3586537",
+    "explanation": "Relative paths depend on document location, so both directions can need changes.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-links-10",
+    "topic": "html-links",
+    "concept": "html-links-10",
+    "prompt": "Why might a link include rel=\"noopener\" when opening a new tab?",
+    "choices": [
+      {
+        "id": "175d2ee6c71a",
+        "text": "To change the page’s language"
+      },
+      {
+        "id": "28684d72d827",
+        "text": "To disable all keyboard navigation"
+      },
+      {
+        "id": "4de2caf5534a",
+        "text": "To explicitly separate opener access"
+      },
+      {
+        "id": "54e06e64bc98",
+        "text": "To make the destination a local file"
+      }
+    ],
+    "correctId": "4de2caf5534a",
+    "explanation": "noopener prevents the opened page from using an opener reference to the originating page.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-links"
+    }
+  },
+  {
+    "id": "html-v1-html-media-1",
+    "topic": "html-media",
+    "concept": "html-media-1",
+    "prompt": "Which attribute provides an image’s text alternative?",
+    "choices": [
+      {
+        "id": "0b480334ec18",
+        "text": "alt"
+      },
+      {
+        "id": "18794287cf50",
+        "text": "href"
+      },
+      {
+        "id": "5989732569e2",
+        "text": "scope"
+      },
+      {
+        "id": "7938b3d705fb",
+        "text": "method"
+      }
+    ],
+    "correctId": "0b480334ec18",
+    "explanation": "alt supplies the alternative text for an img element.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-2",
+    "topic": "html-media",
+    "concept": "html-media-2",
+    "prompt": "What is appropriate for an image that is purely decorative in its context?",
+    "choices": [
+      {
+        "id": "527bb1b8128e",
+        "text": "alt=\"image image image\""
+      },
+      {
+        "id": "71eb0d0edff6",
+        "text": "Omit alt without considering it"
+      },
+      {
+        "id": "ad0426e6a731",
+        "text": "Use the image file path as the heading"
+      },
+      {
+        "id": "bad5984ba668",
+        "text": "alt=\"\""
+      }
+    ],
+    "correctId": "bad5984ba668",
+    "explanation": "An explicitly empty alternative lets the decorative image be skipped by assistive technology.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-3",
+    "topic": "html-media",
+    "concept": "html-media-3",
+    "prompt": "Which alternative best describes a meaningful study-plan image?",
+    "choices": [
+      {
+        "id": "3c1f801fe29e",
+        "text": "week-final-v7.png"
+      },
+      {
+        "id": "4639de1716b4",
+        "text": "Monday: HTML; Tuesday: Git; Wednesday: forms"
+      },
+      {
+        "id": "9a374faa3a86",
+        "text": "Nice colors"
+      },
+      {
+        "id": "cea300cea7fd",
+        "text": "A picture"
+      }
+    ],
+    "correctId": "4639de1716b4",
+    "explanation": "The useful alternative conveys the information the image contributes in context.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-4",
+    "topic": "html-media",
+    "concept": "html-media-4",
+    "prompt": "What is a benefit of supplying image width and height?",
+    "choices": [
+      {
+        "id": "0901d25d0bc0",
+        "text": "The image becomes a secure password field"
+      },
+      {
+        "id": "143c505fa937",
+        "text": "It replaces the need for alt"
+      },
+      {
+        "id": "2a4eda3e89d5",
+        "text": "The browser can reserve the image’s layout space"
+      },
+      {
+        "id": "b8e8b606a5d8",
+        "text": "It automatically creates captions"
+      }
+    ],
+    "correctId": "2a4eda3e89d5",
+    "explanation": "Dimensions help the browser allocate space before the image loads.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-5",
+    "topic": "html-media",
+    "concept": "html-media-5",
+    "prompt": "Which element provides a visible caption within a figure?",
+    "choices": [
+      {
+        "id": "2d4d7df00819",
+        "text": "legend in every case"
+      },
+      {
+        "id": "67d97653472f",
+        "text": "label for every image"
+      },
+      {
+        "id": "a064882e8c60",
+        "text": "figcaption"
+      },
+      {
+        "id": "fcddf434aea1",
+        "text": "charset"
+      }
+    ],
+    "correctId": "a064882e8c60",
+    "explanation": "figcaption supplies a visible caption for a figure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-6",
+    "topic": "html-media",
+    "concept": "html-media-6",
+    "prompt": "Does a visible image caption always remove the need to consider alt text?",
+    "choices": [
+      {
+        "id": "15f6e06bd8cf",
+        "text": "Yes, captions always override all alternatives"
+      },
+      {
+        "id": "26176d8a7a54",
+        "text": "Only on desktop browsers"
+      },
+      {
+        "id": "7a271f2716e4",
+        "text": "No; the two serve different purposes"
+      },
+      {
+        "id": "877ab6dabbaa",
+        "text": "Only if Git is enabled"
+      }
+    ],
+    "correctId": "7a271f2716e4",
+    "explanation": "A caption adds visible context; the image’s alternative still needs deliberate treatment.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-7",
+    "topic": "html-media",
+    "concept": "html-media-7",
+    "prompt": "Which kind of image is usually a good candidate for loading=\"lazy\"?",
+    "choices": [
+      {
+        "id": "3044da4e547f",
+        "text": "An image farther down the page, initially off-screen"
+      },
+      {
+        "id": "599cce77ae0b",
+        "text": "The main above-the-fold image in every case"
+      },
+      {
+        "id": "af30268df17c",
+        "text": "Every icon regardless of context"
+      },
+      {
+        "id": "dca1c283e238",
+        "text": "An image that must never load"
+      }
+    ],
+    "correctId": "3044da4e547f",
+    "explanation": "Lazy loading can defer off-screen work, but should not unnecessarily delay a prominent initial image.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-8",
+    "topic": "html-media",
+    "concept": "html-media-8",
+    "prompt": "Which attribute exposes native playback controls on audio or video?",
+    "choices": [
+      {
+        "id": "1f232ff3cc3a",
+        "text": "scope"
+      },
+      {
+        "id": "3605b47a964d",
+        "text": "lang=\"controls\""
+      },
+      {
+        "id": "72cbd4ba949b",
+        "text": "required"
+      },
+      {
+        "id": "e1a61f07a2bc",
+        "text": "controls"
+      }
+    ],
+    "correctId": "e1a61f07a2bc",
+    "explanation": "The controls attribute asks the browser to display its playback controls.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-9",
+    "topic": "html-media",
+    "concept": "html-media-9",
+    "prompt": "Which element can attach a WebVTT caption file to a video?",
+    "choices": [
+      {
+        "id": "3ccc55121ec8",
+        "text": "strong"
+      },
+      {
+        "id": "4f3138ad265c",
+        "text": "track"
+      },
+      {
+        "id": "5c5f652a3429",
+        "text": "meta charset"
+      },
+      {
+        "id": "d62a023fac59",
+        "text": "table"
+      }
+    ],
+    "correctId": "4f3138ad265c",
+    "explanation": "track associates timed text such as captions with media.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-media-10",
+    "topic": "html-media",
+    "concept": "html-media-10",
+    "prompt": "An img uses src=\"images/week.png\" but the file is absent. What should you inspect?",
+    "choices": [
+      {
+        "id": "1e455b7a55df",
+        "text": "Whether the page has an ordered list"
+      },
+      {
+        "id": "350af73be838",
+        "text": "Whether git status is blue"
+      },
+      {
+        "id": "b96774487724",
+        "text": "The actual file location, name, and case"
+      },
+      {
+        "id": "fb01ea231434",
+        "text": "Whether all paragraphs are bold"
+      }
+    ],
+    "correctId": "b96774487724",
+    "explanation": "A media source must resolve to an existing resource with matching spelling and case.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-media"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-1",
+    "topic": "html-semantics",
+    "concept": "html-semantics-1",
+    "prompt": "Which element identifies the dominant content on a typical page?",
+    "choices": [
+      {
+        "id": "8e58dde535ee",
+        "text": "main"
+      },
+      {
+        "id": "c56110b809db",
+        "text": "meta"
+      },
+      {
+        "id": "e3b21a0a6a51",
+        "text": "head"
+      },
+      {
+        "id": "ee9462bf9cf9",
+        "text": "nav"
+      }
+    ],
+    "correctId": "8e58dde535ee",
+    "explanation": "main identifies the page’s primary content, separate from repeated navigation and related regions.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-2",
+    "topic": "html-semantics",
+    "concept": "html-semantics-2",
+    "prompt": "Which element is intended for a major navigation block?",
+    "choices": [
+      {
+        "id": "37acab8730cc",
+        "text": "pre"
+      },
+      {
+        "id": "a94d0eb253b4",
+        "text": "th"
+      },
+      {
+        "id": "cdeb71d4a52e",
+        "text": "nav"
+      },
+      {
+        "id": "f24fb959470e",
+        "text": "input"
+      }
+    ],
+    "correctId": "cdeb71d4a52e",
+    "explanation": "nav communicates a section whose purpose is navigation.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-3",
+    "topic": "html-semantics",
+    "concept": "html-semantics-3",
+    "prompt": "Which content is a good fit for article?",
+    "choices": [
+      {
+        "id": "1c8c3e91221f",
+        "text": "A self-contained student update that can stand on its own"
+      },
+      {
+        "id": "261ec1438f56",
+        "text": "Every word that needs a different color"
+      },
+      {
+        "id": "6c04fd5d3776",
+        "text": "An arbitrary empty spacing box"
+      },
+      {
+        "id": "c1eb4c0f09db",
+        "text": "Only a site’s database password"
+      }
+    ],
+    "correctId": "1c8c3e91221f",
+    "explanation": "article suits independently meaningful content.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-4",
+    "topic": "html-semantics",
+    "concept": "html-semantics-4",
+    "prompt": "When is a section usually appropriate?",
+    "choices": [
+      {
+        "id": "0d0855fc0360",
+        "text": "For a thematic grouping, normally identified by a heading"
+      },
+      {
+        "id": "4f14fbc86d36",
+        "text": "Only for a single image file"
+      },
+      {
+        "id": "e5e1d3a50802",
+        "text": "Whenever an extra styling wrapper is needed"
+      },
+      {
+        "id": "f10314ce4567",
+        "text": "Only for hidden metadata"
+      }
+    ],
+    "correctId": "0d0855fc0360",
+    "explanation": "section conveys a thematic part of the document rather than being a generic styling container.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-5",
+    "topic": "html-semantics",
+    "concept": "html-semantics-5",
+    "prompt": "Which element is appropriate for tangential content beside a main lesson?",
+    "choices": [
+      {
+        "id": "7172527e0886",
+        "text": "title"
+      },
+      {
+        "id": "a140c6c50165",
+        "text": "aside"
+      },
+      {
+        "id": "db61ab6ea0c3",
+        "text": "thead"
+      },
+      {
+        "id": "eec2268db484",
+        "text": "meta"
+      }
+    ],
+    "correctId": "a140c6c50165",
+    "explanation": "aside marks related but tangential material.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-6",
+    "topic": "html-semantics",
+    "concept": "html-semantics-6",
+    "prompt": "When is a div a reasonable choice?",
+    "choices": [
+      {
+        "id": "0e381d71da2c",
+        "text": "When a generic container is needed and no meaningful element fits"
+      },
+      {
+        "id": "2a7bb42af7b3",
+        "text": "Whenever a heading is needed"
+      },
+      {
+        "id": "7faf5137037c",
+        "text": "Whenever a button is needed"
+      },
+      {
+        "id": "952c0e918725",
+        "text": "As a replacement for all navigation links"
+      }
+    ],
+    "correctId": "0e381d71da2c",
+    "explanation": "div has no special semantic meaning, which is appropriate for genuinely generic grouping.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-7",
+    "topic": "html-semantics",
+    "concept": "html-semantics-7",
+    "prompt": "What is the purpose of a skip link?",
+    "choices": [
+      {
+        "id": "7566604cb987",
+        "text": "Replace all headings"
+      },
+      {
+        "id": "75f9dc5d5ec1",
+        "text": "Hide the main content from screen readers"
+      },
+      {
+        "id": "80499a6d4577",
+        "text": "Automatically skip every quiz"
+      },
+      {
+        "id": "a92612a13133",
+        "text": "Let keyboard users bypass repeated navigation"
+      }
+    ],
+    "correctId": "a92612a13133",
+    "explanation": "A skip link moves directly to a meaningful page location such as main.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-8",
+    "topic": "html-semantics",
+    "concept": "html-semantics-8",
+    "prompt": "How many visible main areas should a typical page have?",
+    "choices": [
+      {
+        "id": "3466f883648d",
+        "text": "One"
+      },
+      {
+        "id": "3c6baa770a86",
+        "text": "None because only div is allowed"
+      },
+      {
+        "id": "50b4c70a0486",
+        "text": "One for every paragraph"
+      },
+      {
+        "id": "e2a85d866ff8",
+        "text": "At least ten"
+      }
+    ],
+    "correctId": "3466f883648d",
+    "explanation": "A typical page has one dominant main content region.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-9",
+    "topic": "html-semantics",
+    "concept": "html-semantics-9",
+    "prompt": "What should remain understandable before CSS is added?",
+    "choices": [
+      {
+        "id": "6e515d621f4b",
+        "text": "Nothing until animation is added"
+      },
+      {
+        "id": "707755e73879",
+        "text": "The document’s source and reading order"
+      },
+      {
+        "id": "9b2e24df85d4",
+        "text": "Only the chosen brand colors"
+      },
+      {
+        "id": "fc2ded87e552",
+        "text": "Only a screenshot of the design"
+      }
+    ],
+    "correctId": "707755e73879",
+    "explanation": "A logical source order supports reading and interaction independently of presentation.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-semantics-10",
+    "topic": "html-semantics",
+    "concept": "html-semantics-10",
+    "prompt": "Which element often contains closing or related information at the end of a page?",
+    "choices": [
+      {
+        "id": "68e77cd18720",
+        "text": "ol in every case"
+      },
+      {
+        "id": "782e976cb6b1",
+        "text": "footer"
+      },
+      {
+        "id": "a183623f2f3a",
+        "text": "input"
+      },
+      {
+        "id": "cb26120c617d",
+        "text": "head"
+      }
+    ],
+    "correctId": "782e976cb6b1",
+    "explanation": "footer can contain closing information for a page or section.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-semantics"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-1",
+    "topic": "html-tables",
+    "concept": "html-tables-1",
+    "prompt": "What kind of content is a good reason to use an HTML table?",
+    "choices": [
+      {
+        "id": "56c650a15a44",
+        "text": "Creating arbitrary blank spacing"
+      },
+      {
+        "id": "63f3fbd01d68",
+        "text": "A schedule with related days and topics"
+      },
+      {
+        "id": "9efced5dc8bc",
+        "text": "Positioning the entire page header and sidebar"
+      },
+      {
+        "id": "d647383aae82",
+        "text": "Replacing all lists"
+      }
+    ],
+    "correctId": "63f3fbd01d68",
+    "explanation": "Tables express relationships between data in rows and columns.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-2",
+    "topic": "html-tables",
+    "concept": "html-tables-2",
+    "prompt": "Which element names a table visibly?",
+    "choices": [
+      {
+        "id": "267faab2ca8c",
+        "text": "title inside td"
+      },
+      {
+        "id": "9eb023030398",
+        "text": "figcaption outside every table"
+      },
+      {
+        "id": "baf03e5ae4d7",
+        "text": "caption"
+      },
+      {
+        "id": "e2f5aacac43a",
+        "text": "alt"
+      }
+    ],
+    "correctId": "baf03e5ae4d7",
+    "explanation": "caption supplies the table’s title or identifying description.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-3",
+    "topic": "html-tables",
+    "concept": "html-tables-3",
+    "prompt": "Which element defines a table row?",
+    "choices": [
+      {
+        "id": "42994bc10491",
+        "text": "td"
+      },
+      {
+        "id": "6baea595d919",
+        "text": "main"
+      },
+      {
+        "id": "920c0444528b",
+        "text": "tr"
+      },
+      {
+        "id": "cca0d9bfed12",
+        "text": "th"
+      }
+    ],
+    "correctId": "920c0444528b",
+    "explanation": "tr contains the cells in one row.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-4",
+    "topic": "html-tables",
+    "concept": "html-tables-4",
+    "prompt": "Which element marks a data cell rather than a header?",
+    "choices": [
+      {
+        "id": "0138be684ed6",
+        "text": "caption"
+      },
+      {
+        "id": "2ac8ccc9e249",
+        "text": "thead"
+      },
+      {
+        "id": "5c9c49583d5c",
+        "text": "td"
+      },
+      {
+        "id": "c0e0b91aeb0c",
+        "text": "th"
+      }
+    ],
+    "correctId": "5c9c49583d5c",
+    "explanation": "td contains ordinary data. th identifies a header cell.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-5",
+    "topic": "html-tables",
+    "concept": "html-tables-5",
+    "prompt": "What does scope=\"col\" on a simple th communicate?",
+    "choices": [
+      {
+        "id": "10ea7309a521",
+        "text": "The cell is an image alternative"
+      },
+      {
+        "id": "52199d43abd4",
+        "text": "The row cannot contain data"
+      },
+      {
+        "id": "b63d44904c86",
+        "text": "The table is a CSS layout grid"
+      },
+      {
+        "id": "e6c9155a072d",
+        "text": "The cell is a header for its column"
+      }
+    ],
+    "correctId": "e6c9155a072d",
+    "explanation": "scope associates the header with the corresponding column.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-6",
+    "topic": "html-tables",
+    "concept": "html-tables-6",
+    "prompt": "Which scope suits Monday when it labels a row of schedule data?",
+    "choices": [
+      {
+        "id": "00412d047b84",
+        "text": "image"
+      },
+      {
+        "id": "25e02ce19b0f",
+        "text": "col in every table"
+      },
+      {
+        "id": "4ca4ba0c4c1e",
+        "text": "none-required-always"
+      },
+      {
+        "id": "c57209bdea72",
+        "text": "row"
+      }
+    ],
+    "correctId": "c57209bdea72",
+    "explanation": "A row header describes the cells across its row.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-7",
+    "topic": "html-tables",
+    "concept": "html-tables-7",
+    "prompt": "Does making text bold inside td turn it into a header cell?",
+    "choices": [
+      {
+        "id": "2a710a00b2f2",
+        "text": "Only in a Git repository"
+      },
+      {
+        "id": "66f27b2bd679",
+        "text": "Only when the text is Monday"
+      },
+      {
+        "id": "c5f04cea3840",
+        "text": "Yes, font weight changes element type"
+      },
+      {
+        "id": "cc74ac0f2e0a",
+        "text": "No; use th for the header semantics"
+      }
+    ],
+    "correctId": "cc74ac0f2e0a",
+    "explanation": "Visual style does not replace the semantic distinction between td and th.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-8",
+    "topic": "html-tables",
+    "concept": "html-tables-8",
+    "prompt": "What does tbody group?",
+    "choices": [
+      {
+        "id": "2b17335f4d28",
+        "text": "The table’s body rows"
+      },
+      {
+        "id": "2d779e419749",
+        "text": "All pages in a website"
+      },
+      {
+        "id": "da6550c4f5a5",
+        "text": "Only image captions"
+      },
+      {
+        "id": "fb900e799fcf",
+        "text": "The browser title"
+      }
+    ],
+    "correctId": "2b17335f4d28",
+    "explanation": "tbody groups data rows within a table.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-9",
+    "topic": "html-tables",
+    "concept": "html-tables-9",
+    "prompt": "Why should a beginner keep a schedule table simple?",
+    "choices": [
+      {
+        "id": "42601f1e23ea",
+        "text": "Simple header relationships are easier to understand and navigate"
+      },
+      {
+        "id": "4fae42bfd5e0",
+        "text": "Browsers require every cell to span two rows"
+      },
+      {
+        "id": "74f9910ece24",
+        "text": "Tables cannot contain text"
+      },
+      {
+        "id": "dafde35bfcd8",
+        "text": "Merged cells always improve accessibility"
+      }
+    ],
+    "correctId": "42601f1e23ea",
+    "explanation": "Unnecessary merging complicates the relationships between headers and data.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-tables-10",
+    "topic": "html-tables",
+    "concept": "html-tables-10",
+    "prompt": "Does placing cells inside thead replace the need for th headers?",
+    "choices": [
+      {
+        "id": "04d26f0002bf",
+        "text": "Only for rows containing dates"
+      },
+      {
+        "id": "520d8a0faba6",
+        "text": "Only if a caption is missing"
+      },
+      {
+        "id": "5c3bd209ae5d",
+        "text": "No; grouping rows and identifying header cells are separate jobs"
+      },
+      {
+        "id": "fda1de8fab66",
+        "text": "Yes, every descendant automatically becomes th"
+      }
+    ],
+    "correctId": "5c3bd209ae5d",
+    "explanation": "thead groups rows, while th explicitly identifies header cells.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-tables"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-1",
+    "topic": "html-forms",
+    "concept": "html-forms-1",
+    "prompt": "Which pairing explicitly associates this label with its input?",
+    "choices": [
+      {
+        "id": "b25a2e6fc58d",
+        "text": "for=\"task\" and id=\"task\""
+      },
+      {
+        "id": "b82c5751bd5f",
+        "text": "Two unrelated class names"
+      },
+      {
+        "id": "e80da128d07d",
+        "text": "for=\"task\" and name=\"other\" only"
+      },
+      {
+        "id": "ea652fb22a00",
+        "text": "Matching placeholder text only"
+      }
+    ],
+    "correctId": "b25a2e6fc58d",
+    "explanation": "The label’s for value must match the control’s id.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    },
+    "code": "<label for=\"task\">Task title</label>\n<input id=\"task\" name=\"title\">"
+  },
+  {
+    "id": "html-v1-html-forms-2",
+    "topic": "html-forms",
+    "concept": "html-forms-2",
+    "prompt": "Which attribute provides the submitted field key?",
+    "choices": [
+      {
+        "id": "4594daf72428",
+        "text": "alt"
+      },
+      {
+        "id": "6782375bf72a",
+        "text": "id alone"
+      },
+      {
+        "id": "8d93794a5ef4",
+        "text": "name"
+      },
+      {
+        "id": "cf4f8cc4dac0",
+        "text": "class"
+      }
+    ],
+    "correctId": "8d93794a5ef4",
+    "explanation": "name identifies the field in submitted form data; id has a different linking role.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-3",
+    "topic": "html-forms",
+    "concept": "html-forms-3",
+    "prompt": "Which input type is appropriate for an email address?",
+    "choices": [
+      {
+        "id": "0cf992b5b72d",
+        "text": "file in every case"
+      },
+      {
+        "id": "44b879d6c009",
+        "text": "checkbox"
+      },
+      {
+        "id": "4cfdcb89aa77",
+        "text": "date"
+      },
+      {
+        "id": "b630c0ae7bd5",
+        "text": "email"
+      }
+    ],
+    "correctId": "b630c0ae7bd5",
+    "explanation": "type=\"email\" provides semantics and basic browser constraints for email-shaped input.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-4",
+    "topic": "html-forms",
+    "concept": "html-forms-4",
+    "prompt": "What is the best control for multi-line task notes?",
+    "choices": [
+      {
+        "id": "05bf251e163a",
+        "text": "textarea"
+      },
+      {
+        "id": "1f096aa146a8",
+        "text": "A title element"
+      },
+      {
+        "id": "d38ff7adb37f",
+        "text": "A single radio button"
+      },
+      {
+        "id": "e5372fd19950",
+        "text": "A hidden image"
+      }
+    ],
+    "correctId": "05bf251e163a",
+    "explanation": "textarea is designed for multi-line text input.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-5",
+    "topic": "html-forms",
+    "concept": "html-forms-5",
+    "prompt": "How do radio buttons form a single-choice group?",
+    "choices": [
+      {
+        "id": "3b38767f791c",
+        "text": "They all have the same id"
+      },
+      {
+        "id": "45e8c8350b0b",
+        "text": "They use different page titles"
+      },
+      {
+        "id": "595b66a49078",
+        "text": "They are all converted to images"
+      },
+      {
+        "id": "cc1c439046eb",
+        "text": "They share the same name"
+      }
+    ],
+    "correctId": "cc1c439046eb",
+    "explanation": "A named radio group allows one selected option; ids should still be unique.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-6",
+    "topic": "html-forms",
+    "concept": "html-forms-6",
+    "prompt": "Which elements group related form controls with a group label?",
+    "choices": [
+      {
+        "id": "10a16a10a541",
+        "text": "table and title"
+      },
+      {
+        "id": "2a172b01e137",
+        "text": "pre and code"
+      },
+      {
+        "id": "5f55b8968fa2",
+        "text": "fieldset and legend"
+      },
+      {
+        "id": "87f7a4ef6f7a",
+        "text": "img and alt only"
+      }
+    ],
+    "correctId": "5f55b8968fa2",
+    "explanation": "fieldset groups controls and legend provides the group’s caption.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-7",
+    "topic": "html-forms",
+    "concept": "html-forms-7",
+    "prompt": "What does required provide during a normal browser form submission?",
+    "choices": [
+      {
+        "id": "02a183682a42",
+        "text": "Encryption of every submitted value"
+      },
+      {
+        "id": "33f0fceebe71",
+        "text": "A guarantee that malicious requests cannot be sent"
+      },
+      {
+        "id": "411cef6d718f",
+        "text": "Automatic database storage"
+      },
+      {
+        "id": "683902d72565",
+        "text": "A browser-side constraint that still needs server-side validation"
+      }
+    ],
+    "correctId": "683902d72565",
+    "explanation": "Browser validation helps users but can be bypassed; the server must validate independently.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-8",
+    "topic": "html-forms",
+    "concept": "html-forms-8",
+    "prompt": "Which method normally puts submitted fields into the URL query string?",
+    "choices": [
+      {
+        "id": "07221a354a68",
+        "text": "POST"
+      },
+      {
+        "id": "2b12c4660f1b",
+        "text": "GET"
+      },
+      {
+        "id": "8a164f2fce6e",
+        "text": "Git"
+      },
+      {
+        "id": "a743e7848afa",
+        "text": "CSS"
+      }
+    ],
+    "correctId": "2b12c4660f1b",
+    "explanation": "GET encodes form fields in the query string. Do not treat it as suitable for exposing sensitive values.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-9",
+    "topic": "html-forms",
+    "concept": "html-forms-9",
+    "prompt": "Does method=\"post\" alone encrypt form data?",
+    "choices": [
+      {
+        "id": "00111989fb81",
+        "text": "No; transport encryption depends on HTTPS"
+      },
+      {
+        "id": "1059f0c5589b",
+        "text": "Only when required is present"
+      },
+      {
+        "id": "543cfedd8ed7",
+        "text": "Only when the input has a name"
+      },
+      {
+        "id": "a9dbbd229ef5",
+        "text": "Yes, regardless of the URL scheme"
+      }
+    ],
+    "correctId": "00111989fb81",
+    "explanation": "POST describes request semantics; HTTPS provides protection in transit.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-forms-10",
+    "topic": "html-forms",
+    "concept": "html-forms-10",
+    "prompt": "What does a button with type=\"button\" do by itself inside a form?",
+    "choices": [
+      {
+        "id": "1f281abc0fab",
+        "text": "It does not submit the form"
+      },
+      {
+        "id": "4721382f4596",
+        "text": "It turns all fields into required fields"
+      },
+      {
+        "id": "5efffc7601d0",
+        "text": "It saves data to a database automatically"
+      },
+      {
+        "id": "975800daf44f",
+        "text": "It always sends a POST request"
+      }
+    ],
+    "correctId": "1f281abc0fab",
+    "explanation": "An ordinary button needs behavior to perform an action; a submit button triggers submission.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-forms"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-1",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-1",
+    "prompt": "Which action tests whether controls can be reached without a mouse?",
+    "choices": [
+      {
+        "id": "1c6aff244503",
+        "text": "Navigate with Tab and Shift+Tab"
+      },
+      {
+        "id": "70b64f7783ac",
+        "text": "Only count div elements"
+      },
+      {
+        "id": "937b11621931",
+        "text": "Only run git log"
+      },
+      {
+        "id": "d216aea7412c",
+        "text": "Only resize a screenshot"
+      }
+    ],
+    "correctId": "1c6aff244503",
+    "explanation": "Keyboard navigation reveals focus order and whether controls can be reached.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-2",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-2",
+    "prompt": "Which is the better starting point for an interactive action?",
+    "choices": [
+      {
+        "id": "52f565981aa3",
+        "text": "A paragraph styled as a control without behavior"
+      },
+      {
+        "id": "60832a2ea20f",
+        "text": "A div with button-like colors only"
+      },
+      {
+        "id": "79dcac60c4e9",
+        "text": "An image with a vague file name"
+      },
+      {
+        "id": "bc3f084ee1c5",
+        "text": "A native button"
+      }
+    ],
+    "correctId": "bc3f084ee1c5",
+    "explanation": "Native controls provide established semantics and keyboard behavior.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-3",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-3",
+    "prompt": "What should a keyboard user be able to see as focus moves?",
+    "choices": [
+      {
+        "id": "027d5e6fed24",
+        "text": "Only a loading spinner"
+      },
+      {
+        "id": "0d836f7bd311",
+        "text": "No visible change"
+      },
+      {
+        "id": "a7f1d0be7d40",
+        "text": "Only a changed page title"
+      },
+      {
+        "id": "ed11dbbc2d79",
+        "text": "A clear focus indicator"
+      }
+    ],
+    "correctId": "ed11dbbc2d79",
+    "explanation": "Visible focus identifies the active control so users can operate the interface.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-4",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-4",
+    "prompt": "Why should positive tabindex values generally be avoided?",
+    "choices": [
+      {
+        "id": "2819339030d1",
+        "text": "They always encrypt inputs"
+      },
+      {
+        "id": "85d4931514fb",
+        "text": "They automatically fix missing labels"
+      },
+      {
+        "id": "898ef5efc715",
+        "text": "They can create a surprising order separate from the document flow"
+      },
+      {
+        "id": "b4f0a0a7832f",
+        "text": "They are required on every native link"
+      }
+    ],
+    "correctId": "898ef5efc715",
+    "explanation": "Prefer a logical source order and native focus behavior rather than manually rearranging it.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-5",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-5",
+    "prompt": "What does an HTML validator primarily help identify?",
+    "choices": [
+      {
+        "id": "325de54f6aa4",
+        "text": "Every server security issue"
+      },
+      {
+        "id": "47bbde984afa",
+        "text": "Markup errors"
+      },
+      {
+        "id": "c6177f8be868",
+        "text": "Every accessibility problem"
+      },
+      {
+        "id": "eab8072c37b5",
+        "text": "Whether students understand a lesson"
+      }
+    ],
+    "correctId": "47bbde984afa",
+    "explanation": "Validation checks markup rules but does not replace interaction or accessibility review.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-6",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-6",
+    "prompt": "Which developer-tools panel is useful when an image request fails?",
+    "choices": [
+      {
+        "id": "425e4d464495",
+        "text": "Only the browser bookmark list"
+      },
+      {
+        "id": "9d2238e8f0dc",
+        "text": "Only the Git staging area"
+      },
+      {
+        "id": "c270cefd1b3d",
+        "text": "Only the font picker"
+      },
+      {
+        "id": "c40285ff7693",
+        "text": "Network"
+      }
+    ],
+    "correctId": "c40285ff7693",
+    "explanation": "The Network panel shows resource requests and their results.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-7",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-7",
+    "prompt": "You add role=\"button\" to a div. What else is still missing if no behavior was added?",
+    "choices": [
+      {
+        "id": "7b0acb92c1bf",
+        "text": "A second doctype"
+      },
+      {
+        "id": "a6dda97fd721",
+        "text": "A required CSS framework"
+      },
+      {
+        "id": "ad6a67a9e41d",
+        "text": "An automatic database"
+      },
+      {
+        "id": "f5a353bd7ea6",
+        "text": "Appropriate keyboard and interaction behavior"
+      }
+    ],
+    "correctId": "f5a353bd7ea6",
+    "explanation": "A role describes semantics; it does not implement the native behavior of a button.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-8",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-8",
+    "prompt": "What should you prefer when native HTML already expresses the needed semantics?",
+    "choices": [
+      {
+        "id": "072e853db543",
+        "text": "Hide all headings"
+      },
+      {
+        "id": "ad8c12d87b51",
+        "text": "Use the native element before adding unnecessary ARIA"
+      },
+      {
+        "id": "b78a6a933461",
+        "text": "Use only aria-label for every paragraph"
+      },
+      {
+        "id": "dc840bb432e8",
+        "text": "Replace all native elements with divs"
+      }
+    ],
+    "correctId": "ad8c12d87b51",
+    "explanation": "Native HTML often supplies semantics and behavior together.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-9",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-9",
+    "prompt": "Which check complements automated tools when reviewing your planner?",
+    "choices": [
+      {
+        "id": "80dced2c8978",
+        "text": "Try keyboard navigation and increased zoom manually"
+      },
+      {
+        "id": "c4b75a0b4e41",
+        "text": "Remove visible labels"
+      },
+      {
+        "id": "d300b4ff09b3",
+        "text": "Check only the homepage screenshot"
+      },
+      {
+        "id": "ecce317fae2e",
+        "text": "Assume a passing tool means perfect accessibility"
+      }
+    ],
+    "correctId": "80dced2c8978",
+    "explanation": "Manual checks reveal interaction and presentation problems that automated checks may miss.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-accessibility-10",
+    "topic": "html-accessibility",
+    "concept": "html-accessibility-10",
+    "prompt": "Why might the Elements panel show different nesting from your source file?",
+    "choices": [
+      {
+        "id": "3a001b14e9dd",
+        "text": "The image dimensions changed the source"
+      },
+      {
+        "id": "cda50fd36dd6",
+        "text": "A caption always creates a new document"
+      },
+      {
+        "id": "d6c3f073f8cc",
+        "text": "Git rewrote every HTML element"
+      },
+      {
+        "id": "e8c2dfb97ced",
+        "text": "The browser repaired invalid markup while building the DOM"
+      }
+    ],
+    "correctId": "e8c2dfb97ced",
+    "explanation": "The rendered DOM can reflect parser recovery, which is why both source and DOM matter during debugging.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-accessibility"
+    }
+  },
+  {
+    "id": "html-v1-html-project-1",
+    "topic": "html-project",
+    "concept": "html-project-1",
+    "prompt": "Which set of pages matches the student-planner project brief?",
+    "choices": [
+      {
+        "id": "4e2371447be9",
+        "text": "A database admin console only"
+      },
+      {
+        "id": "7851dadec36f",
+        "text": "Only a blank index.html"
+      },
+      {
+        "id": "b8e621968f14",
+        "text": "Home, study schedule, and task-entry page"
+      },
+      {
+        "id": "cc56c08fad06",
+        "text": "Three unrelated login screens"
+      }
+    ],
+    "correctId": "b8e621968f14",
+    "explanation": "The brief combines an introduction, tabular schedule, and task-entry structure.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-2",
+    "topic": "html-project",
+    "concept": "html-project-2",
+    "prompt": "What should the first HTML-only planner say about saving task inputs?",
+    "choices": [
+      {
+        "id": "1ad9be02cef9",
+        "text": "That HTML encrypts the database"
+      },
+      {
+        "id": "1f43d0afce53",
+        "text": "That tasks are permanently stored without any implementation"
+      },
+      {
+        "id": "56854c90ee38",
+        "text": "That entering a title creates an account"
+      },
+      {
+        "id": "6cd24021aa37",
+        "text": "That it is a static prototype and inputs are not saved yet"
+      }
+    ],
+    "correctId": "6cd24021aa37",
+    "explanation": "Be clear about capabilities. Form markup alone does not implement storage.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-3",
+    "topic": "html-project",
+    "concept": "html-project-3",
+    "prompt": "Which feature connects the three project pages for learners?",
+    "choices": [
+      {
+        "id": "004e2b3ad115",
+        "text": "Working shared navigation with relative links"
+      },
+      {
+        "id": "b3644209cd4c",
+        "text": "A new database per link"
+      },
+      {
+        "id": "d52dcb38ac5d",
+        "text": "Only a matching background color"
+      },
+      {
+        "id": "e2021898f0b6",
+        "text": "A separate Git account per page"
+      }
+    ],
+    "correctId": "004e2b3ad115",
+    "explanation": "Navigation should connect the pages in both directions using valid destinations.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-4",
+    "topic": "html-project",
+    "concept": "html-project-4",
+    "prompt": "What should the project README explain?",
+    "choices": [
+      {
+        "id": "9b5b216ec156",
+        "text": "How to open the project, key decisions, and current limitations"
+      },
+      {
+        "id": "bc2ab4d11101",
+        "text": "Only the author’s passwords"
+      },
+      {
+        "id": "e278893a9278",
+        "text": "Only a claim that everything is finished"
+      },
+      {
+        "id": "ee403ce8faad",
+        "text": "Only an unrelated quote"
+      }
+    ],
+    "correctId": "9b5b216ec156",
+    "explanation": "A useful README helps another person run and understand the project honestly.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-5",
+    "topic": "html-project",
+    "concept": "html-project-5",
+    "prompt": "Which is a meaningful project milestone to commit?",
+    "choices": [
+      {
+        "id": "3c706495a45a",
+        "text": "An accidental secret file"
+      },
+      {
+        "id": "8b705cbc2905",
+        "text": "A screenshot without the source"
+      },
+      {
+        "id": "918b2e007d2e",
+        "text": "Every individual space as a separate milestone"
+      },
+      {
+        "id": "a3dfdc20aae0",
+        "text": "Add labelled task controls and verify their associations"
+      }
+    ],
+    "correctId": "a3dfdc20aae0",
+    "explanation": "A focused commit records a coherent, understandable change.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-6",
+    "topic": "html-project",
+    "concept": "html-project-6",
+    "prompt": "Which review step checks that navigation works beyond the homepage?",
+    "choices": [
+      {
+        "id": "09435425c712",
+        "text": "Only rename the image folder"
+      },
+      {
+        "id": "943ae2ade413",
+        "text": "Follow links to each page and back again"
+      },
+      {
+        "id": "c3a07ed73cc4",
+        "text": "Only look at index.html in the editor"
+      },
+      {
+        "id": "d6de4dc9e291",
+        "text": "Only count the number of commits"
+      }
+    ],
+    "correctId": "943ae2ade413",
+    "explanation": "Testing both directions catches relative-path errors on nested pages.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-7",
+    "topic": "html-project",
+    "concept": "html-project-7",
+    "prompt": "What does a high MCQ score establish about the capstone by itself?",
+    "choices": [
+      {
+        "id": "3c049b148c35",
+        "text": "It proves the project is deployed"
+      },
+      {
+        "id": "6ce884e331aa",
+        "text": "It guarantees every link is correct"
+      },
+      {
+        "id": "74879a365f0e",
+        "text": "It proves all tasks are stored securely"
+      },
+      {
+        "id": "e5f8261aa8d4",
+        "text": "It checks answered concepts, but does not prove the project works"
+      }
+    ],
+    "correctId": "e5f8261aa8d4",
+    "explanation": "Recall checks and a working implementation provide different evidence of learning.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-8",
+    "topic": "html-project",
+    "concept": "html-project-8",
+    "prompt": "Which belongs in the HTML phase rather than a later backend phase?",
+    "choices": [
+      {
+        "id": "91ec6ee718ca",
+        "text": "A complete task-saving API"
+      },
+      {
+        "id": "b59883ba8148",
+        "text": "Distributed load balancing"
+      },
+      {
+        "id": "ca379c492903",
+        "text": "Semantic page structure and correctly labelled controls"
+      },
+      {
+        "id": "e8d3b63c6731",
+        "text": "A production account database"
+      }
+    ],
+    "correctId": "ca379c492903",
+    "explanation": "The first project establishes content and structure; later courses add behavior and persistence.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-9",
+    "topic": "html-project",
+    "concept": "html-project-9",
+    "prompt": "You used the provided one-page starter. What remains in the project brief?",
+    "choices": [
+      {
+        "id": "a8a54db7cae6",
+        "text": "Split and extend it into the three linked pages and perform the checks"
+      },
+      {
+        "id": "c27f60b91235",
+        "text": "Delete the labels to make it shorter"
+      },
+      {
+        "id": "cd66a225acb5",
+        "text": "Claim automatic storage"
+      },
+      {
+        "id": "fe9fd6401bab",
+        "text": "Nothing; downloading proves completion"
+      }
+    ],
+    "correctId": "a8a54db7cae6",
+    "explanation": "The starter is a scaffold, not a finished submission or an automated assessment.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  },
+  {
+    "id": "html-v1-html-project-10",
+    "topic": "html-project",
+    "concept": "html-project-10",
+    "prompt": "Which explanation best demonstrates ownership of a project decision?",
+    "choices": [
+      {
+        "id": "18021b3c5b6e",
+        "text": "All tags are interchangeable"
+      },
+      {
+        "id": "376bd2ab4ae2",
+        "text": "I copied it and cannot explain any element"
+      },
+      {
+        "id": "44018025bd76",
+        "text": "I used only screenshots because source is unnecessary"
+      },
+      {
+        "id": "e8110a5c04fc",
+        "text": "I used a table because days and topics form row-and-column relationships"
+      }
+    ],
+    "correctId": "e8110a5c04fc",
+    "explanation": "Explaining the relationship between content and markup demonstrates understanding beyond copying.",
+    "source": {
+      "label": "Init HTML revision notebook",
+      "url": "/revision#html-project"
+    }
+  }
+]

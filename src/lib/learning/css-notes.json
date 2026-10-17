@@ -1,0 +1,503 @@
+[
+  {
+    "slug": "css-basics",
+    "title": "CSS foundations",
+    "summary": "Connect a stylesheet, target an element, and inspect the result.",
+    "points": [
+      "HTML describes meaning; CSS changes presentation. Keep headings, labels, and links meaningful.",
+      "Link an external stylesheet from the document head with rel=\"stylesheet\" and the correct href.",
+      "A rule pairs a selector with declarations inside braces. Each declaration has a property, a colon, and a value.",
+      "A class selector starts with a dot; the HTML class attribute contains the name without the dot.",
+      "Check the Network panel for missing stylesheets and the Styles panel for invalid declarations."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          ".card",
+          "Select a class"
+        ],
+        [
+          "h1",
+          "Select an element type"
+        ],
+        [
+          "color",
+          "Set foreground color"
+        ],
+        [
+          "background-color",
+          "Set background color"
+        ]
+      ]
+    },
+    "code": "<!-- In the document head -->\n<link rel=\"stylesheet\" href=\"styles.css\">\n\n/* In styles.css */\n.card {\n  color: #263238;\n  background-color: #fff5fa;\n  padding: 1rem;\n}",
+    "output": "An element with class=\"card\" receives the text color, background, and inner spacing. The link must point to the saved CSS file.",
+    "mistake": "Writing .card in the HTML class attribute creates the wrong class name. Use class=\"card\".",
+    "challenge": "Add styles.css to your HTML planner. Style one heading and one card, then deliberately break and repair the stylesheet path.",
+    "diagram": {
+      "title": "CSS foundations",
+      "steps": [
+        "HTML",
+        "CSS rule",
+        "Rendered page"
+      ],
+      "caption": "Connect a stylesheet, target an element, and inspect the result."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax"
+  },
+  {
+    "slug": "css-cascade",
+    "title": "Selectors & cascade",
+    "summary": "Understand why a declaration wins before adding another override.",
+    "points": [
+      "The cascade considers origin, importance, layers, specificity, and ordering. Specificity is only part of that process.",
+      "Within the same origin, importance, and layer, an ID selector is more specific than a class, which is more specific than an element selector.",
+      "When competing declarations otherwise tie, the later declaration wins. HTML class order does not decide this.",
+      "Some properties such as color inherit; margins do not normally inherit. A declaration on the child can replace an inherited value.",
+      "Use small class selectors and inspect crossed-out declarations. Avoid scattering !important to hide a misunderstanding."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          ".card p",
+          "Descendant paragraphs"
+        ],
+        [
+          ".card > p",
+          "Direct child paragraphs"
+        ],
+        [
+          ".card:hover",
+          "A state on the card"
+        ],
+        [
+          "Inheritance",
+          "Some values flow from parent to child"
+        ]
+      ]
+    },
+    "code": "/* Both are normal author rules in the same layer. */\n.card { color: navy; }\np { color: maroon; }\n/* <p class=\"card\">Study</p> is navy. */",
+    "output": "The class selector beats the element selector despite appearing earlier. This comparison assumes equal origin, importance, and cascade layer.",
+    "mistake": "“The last rule always wins” ignores earlier cascade steps. A higher-specificity rule can beat a later weaker selector.",
+    "challenge": "Inspect a planner paragraph with two competing color rules. Explain which rule wins, then remove the unnecessary override.",
+    "diagram": {
+      "title": "Selectors & cascade",
+      "steps": [
+        "Matching rules",
+        "Cascade",
+        "Winning value"
+      ],
+      "caption": "Understand why a declaration wins before adding another override."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity"
+  },
+  {
+    "slug": "css-box",
+    "title": "Box model & sizing",
+    "summary": "Make space predictable from content through the outer margin.",
+    "points": [
+      "The box model has content, padding, border, and margin. Padding is inside the border; margin separates boxes.",
+      "With content-box, a declared width excludes padding and borders. With border-box, that width includes them.",
+      "Use max-width with a flexible width to constrain reading areas without forcing horizontal overflow.",
+      "Set min-width: 0 when a flex or grid item needs to shrink below its automatic minimum. Long text may also need wrapping.",
+      "Adjacent vertical block margins can collapse in normal flow; margins in flex and grid layouts do not collapse with each other."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "padding",
+          "Space inside the border"
+        ],
+        [
+          "margin",
+          "Space outside the border"
+        ],
+        [
+          "border-box",
+          "Width includes padding and border"
+        ],
+        [
+          "max-width",
+          "An upper size limit"
+        ]
+      ]
+    },
+    "code": "*, *::before, *::after { box-sizing: border-box; }\n.planner {\n  width: min(100%, 68rem);\n  margin-inline: auto;\n  padding: 1rem;\n}\n.card { min-width: 0; overflow-wrap: anywhere; }",
+    "output": "The planner never requests a width larger than its containing block. Padding is included in that width, and the card can wrap long content.",
+    "mistake": "Adding a large fixed width to a card can overflow a phone even if its text size looks reasonable.",
+    "challenge": "Inspect one card in the box-model panel. Compare its size under content-box and border-box, and fix overflow at 320px.",
+    "diagram": {
+      "title": "Box model & sizing",
+      "steps": [
+        "Content",
+        "Padding + border",
+        "Margin"
+      ],
+      "caption": "Make space predictable from content through the outer margin."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"
+  },
+  {
+    "slug": "css-type",
+    "title": "Typography & color",
+    "summary": "Create a readable hierarchy that survives real text and zoom.",
+    "points": [
+      "Use a system font stack as a reliable starting point. Test fallback fonts as well as a preferred font.",
+      "rem relates to the root font size; em can depend on the current or inherited font size. Avoid assuming all users use the same default size.",
+      "A unitless line-height scales with each element’s font size. Keep body paragraphs comfortable to read.",
+      "Use a restrained color palette and check text/background contrast. Color alone must not communicate task status.",
+      "Allow text to wrap, expand, and zoom. Fixed-height text boxes can clip translated or enlarged content."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "font-size",
+          "Size of text"
+        ],
+        [
+          "font-weight",
+          "Weight of glyphs"
+        ],
+        [
+          "line-height",
+          "Height of line boxes"
+        ],
+        [
+          "max-width: 65ch",
+          "Approximate reading measure"
+        ]
+      ]
+    },
+    "code": "body {\n  font-family: system-ui, sans-serif;\n  font-size: 1rem;\n  line-height: 1.6;\n  color: #24313a;\n  background: #fffafc;\n}\np { max-width: 65ch; }\nh1 { font-size: clamp(2rem, 5vw, 3.5rem); }",
+    "output": "The heading grows with the viewport between its minimum and maximum. Body line spacing follows the body text size. The ch unit is based on the font’s zero glyph, not a guaranteed character count.",
+    "mistake": "Light gray text on a pale card can look subtle but be hard to read. Check the actual color pair.",
+    "challenge": "Give your planner a heading, body, and supporting-text scale. Test 200% zoom and convey “overdue” using words as well as color.",
+    "diagram": {
+      "title": "Typography & color",
+      "steps": [
+        "Hierarchy",
+        "Readability",
+        "Zoom check"
+      ],
+      "caption": "Create a readable hierarchy that survives real text and zoom."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/line-height"
+  },
+  {
+    "slug": "css-flex",
+    "title": "Flexbox layouts",
+    "summary": "Arrange one dimension while letting content determine its size.",
+    "points": [
+      "Put display: flex on the container. Its direct children become flex items.",
+      "flex-direction defines the main axis. justify-content works on that axis; align-items works on the cross axis.",
+      "Use gap between items and flex-wrap when items should flow to additional lines.",
+      "flex-grow, flex-shrink, and flex-basis describe how items share available space. min-width can still constrain shrinking.",
+      "Keep source order meaningful. Visual reordering does not reliably change reading or keyboard navigation order."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "flex-direction",
+          "Choose the main axis"
+        ],
+        [
+          "justify-content",
+          "Distribute main-axis space"
+        ],
+        [
+          "align-items",
+          "Align along the cross axis"
+        ],
+        [
+          "flex-wrap",
+          "Permit multiple lines"
+        ]
+      ]
+    },
+    "code": ".toolbar {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  gap: .75rem;\n}\n.toolbar__title { margin-inline-end: auto; }",
+    "output": "The toolbar can wrap when its contents no longer fit. An automatic end margin uses available space before the other controls.",
+    "mistake": "justify-content: center is not always horizontal centering: the main axis changes with flex-direction.",
+    "challenge": "Build a wrapping planner toolbar with a title and navigation links. Test with a long title and preserve the source order.",
+    "diagram": {
+      "title": "Flexbox layouts",
+      "steps": [
+        "Container",
+        "Main axis",
+        "Wrapping items"
+      ],
+      "caption": "Arrange one dimension while letting content determine its size."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/flex"
+  },
+  {
+    "slug": "css-grid",
+    "title": "Grid layouts",
+    "summary": "Use rows and columns to give a page a clear structure.",
+    "points": [
+      "Put display: grid on the container, then define tracks with grid-template-columns or grid-template-rows.",
+      "fr shares remaining space. minmax(0, 1fr) allows a track to shrink below a content-based automatic minimum.",
+      "gap controls gutters without applying outer margins to every item.",
+      "repeat() reduces repetition. auto-fit and minmax() can create adaptable card columns.",
+      "Grid placement changes visual position, not the source reading order. Keep headings and controls logically ordered."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "grid-template-columns",
+          "Column tracks"
+        ],
+        [
+          "gap",
+          "Gutters between tracks"
+        ],
+        [
+          "fr",
+          "Share of remaining track space"
+        ],
+        [
+          "grid-column",
+          "Item column placement"
+        ]
+      ]
+    },
+    "code": ".cards {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: 1rem;\n}\n.card { min-width: 0; overflow-wrap: anywhere; }",
+    "output": "Two tracks share the available width equally after the gap. This snippet is for a wide layout; add the responsive rule from the next chapter for small screens.",
+    "mistake": "A two-column layout at every width may squeeze content. Grid does not automatically make a page usable on a phone.",
+    "challenge": "Arrange planner cards in a grid. Compare 1fr with minmax(0, 1fr) using an unbroken long title.",
+    "diagram": {
+      "title": "Grid layouts",
+      "steps": [
+        "Grid container",
+        "Tracks + gaps",
+        "Placed cards"
+      ],
+      "caption": "Use rows and columns to give a page a clear structure."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns"
+  },
+  {
+    "slug": "css-responsive",
+    "title": "Responsive design",
+    "summary": "Start with small screens and add space when the content needs it.",
+    "points": [
+      "Include the viewport meta tag in HTML so mobile browsers use the device width for layout.",
+      "Write a simple base layout first. Use min-width media queries to enhance it at wider viewport sizes.",
+      "Choose breakpoints because content needs more space, not because one particular phone model exists.",
+      "Images usually need max-width: 100% and height: auto. Wide tables may need their own scroll container.",
+      "Check narrow widths, long content, zoom, and orientation. Do not hide essential content just to make a screenshot fit."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "Base styles",
+          "All viewport sizes"
+        ],
+        [
+          "@media (min-width: 48rem)",
+          "Enhance at wider widths"
+        ],
+        [
+          "max-width: 100%",
+          "Constrain media"
+        ],
+        [
+          "overflow-x: auto",
+          "Local scrolling for wide content"
+        ]
+      ]
+    },
+    "code": ".cards { display: grid; gap: 1rem; }\nimg { max-width: 100%; height: auto; }\n@media (min-width: 48rem) {\n  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }\n}",
+    "output": "Cards stack by default and use two columns from the breakpoint upward. The stylesheet does not need to identify a device model.",
+    "mistake": "Fixed widths and hidden overflow can conceal problems instead of making content responsive.",
+    "challenge": "Test your planner at 320px, 768px, and a wide desktop. Add a long task title, zoom to 200%, and fix any clipped controls.",
+    "diagram": {
+      "title": "Responsive design",
+      "steps": [
+        "Base layout",
+        "Content breakpoint",
+        "Wider layout"
+      ],
+      "caption": "Start with small screens and add space when the content needs it."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries"
+  },
+  {
+    "slug": "css-states",
+    "title": "Focus & motion",
+    "summary": "Make interaction understandable for keyboards and motion preferences.",
+    "points": [
+      "Use :focus-visible to give keyboard navigation a clear visual indicator. Do not remove focus outlines without an equivalent replacement.",
+      "Pair hover feedback with keyboard-visible feedback. Touch devices may not have a persistent hover state.",
+      "Native disabled controls and visual disabled styling have different responsibilities. A gray color alone does not disable an action.",
+      "Limit transition properties and durations to what helps the interaction. Avoid distracting motion on essential controls.",
+      "Use prefers-reduced-motion to reduce nonessential transitions or animations. A preference query does not replace thoughtful defaults."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          ":hover",
+          "Pointer state"
+        ],
+        [
+          ":focus-visible",
+          "Visible focus indication"
+        ],
+        [
+          ":disabled",
+          "Native disabled state"
+        ],
+        [
+          "prefers-reduced-motion",
+          "User motion preference"
+        ]
+      ]
+    },
+    "code": "a:focus-visible, button:focus-visible {\n  outline: 3px solid #145d75;\n  outline-offset: 3px;\n}\n.card { transition: box-shadow 160ms ease; }\n@media (prefers-reduced-motion: reduce) {\n  .card { transition: none; }\n}",
+    "output": "Focused links and buttons have a clear outline. People requesting reduced motion do not get this card transition.",
+    "mistake": "A CSS class named disabled does not prevent clicks or form submission. Use native semantics and appropriate behavior.",
+    "challenge": "Navigate every planner control with Tab and Shift+Tab. Turn on reduced motion in your OS and check that nonessential movement is removed.",
+    "diagram": {
+      "title": "Focus & motion",
+      "steps": [
+        "Input method",
+        "Visible state",
+        "Respect preference"
+      ],
+      "caption": "Make interaction understandable for keyboards and motion preferences."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+  },
+  {
+    "slug": "css-variables",
+    "title": "Custom properties",
+    "summary": "Name repeated decisions so a small theme stays consistent.",
+    "points": [
+      "Custom properties start with -- and are read with var(). They participate in the cascade and normally inherit.",
+      "Define shared values on :root and override them within a component when that component needs a variation.",
+      "Use semantic names such as --surface or --accent to communicate intent. A token is a design decision, not only a shortcut.",
+      "var(--name, fallback) supplies a fallback when the custom property is unavailable or invalid as a variable. It is not a general type checker.",
+      "Organize styles into base rules, layout, components, and states. Keep dependencies easy to inspect."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          ":root",
+          "Shared token scope"
+        ],
+        [
+          "--accent",
+          "A custom property name"
+        ],
+        [
+          "var(--accent)",
+          "Read a token"
+        ],
+        [
+          "Local override",
+          "Change a value for a subtree"
+        ]
+      ]
+    },
+    "code": ":root { --accent: #9d2855; --space: 1rem; }\n.card {\n  border: 2px solid var(--accent);\n  padding: var(--space);\n}\n.card--calm { --accent: #14677b; }",
+    "output": "Cards share spacing and use the pink accent unless a local override supplies the calmer accent. The component rule stays the same.",
+    "mistake": "A variable containing a value unsuitable for a property can invalidate that declaration; a fallback does not repair every bad value.",
+    "challenge": "Extract repeated planner colors and spacing into custom properties. Change one token and inspect all affected components.",
+    "diagram": {
+      "title": "Custom properties",
+      "steps": [
+        "Shared tokens",
+        "Local overrides",
+        "Consistent components"
+      ],
+      "caption": "Name repeated decisions so a small theme stays consistent."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"
+  },
+  {
+    "slug": "css-project",
+    "title": "Style your student planner",
+    "summary": "Combine readable design, responsive layout, and a practical self-review.",
+    "points": [
+      "Keep the HTML course’s semantic structure. Add a linked stylesheet and a small palette, spacing scale, and typography hierarchy.",
+      "Use Flexbox for a toolbar and Grid for cards. Start with one column, then add wider arrangements when there is room.",
+      "Keep schedule tables inside a labelled region that can scroll locally when needed. Do not make the entire page overflow.",
+      "Review keyboard focus, meaningful source order, long task titles, and reduced-motion preferences.",
+      "Record before/after screenshots and meaningful Git commits. Explain two layout decisions in your README.",
+      "This project is static. A polished form is not a working task-saving feature; describe that limitation clearly."
+    ],
+    "table": {
+      "headings": [
+        "Tool or idea",
+        "What it does"
+      ],
+      "rows": [
+        [
+          "Layout review",
+          "320px, tablet, desktop, zoom"
+        ],
+        [
+          "Interaction review",
+          "Keyboard and visible focus"
+        ],
+        [
+          "Content review",
+          "Long titles and clear hierarchy"
+        ],
+        [
+          "Delivery",
+          "HTML, CSS, README, self-review"
+        ]
+      ]
+    },
+    "code": "planner/\n  index.html\n  styles.css\n  README.md\n\n/* Review checklist */\n/* No page-wide horizontal overflow */\n/* Every control has visible focus */\n/* Long text can wrap */\n/* Static limits are visible */",
+    "output": "The supplied starter gives you a working base and labelled exercises. Extend your earlier multi-page planner or start here; the checklist is self-assessed.",
+    "mistake": "A high quiz score does not demonstrate a responsive project. Test the actual pages and explain your choices.",
+    "challenge": "Complete the starter checklist, compare three viewport sizes, and write down one issue found with the keyboard and how you fixed it.",
+    "diagram": {
+      "title": "Style your student planner",
+      "steps": [
+        "Style",
+        "Test",
+        "Explain"
+      ],
+      "caption": "Combine readable design, responsive layout, and a practical self-review."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout"
+  }
+]

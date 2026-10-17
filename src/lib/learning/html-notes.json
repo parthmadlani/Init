@@ -1,0 +1,605 @@
+[
+  {
+    "slug": "html-web",
+    "title": "How the web works",
+    "summary": "A page starts as a request and becomes something a browser can display.",
+    "points": [
+      "A browser is a client. A server responds with resources such as an HTML document; a page may request several more files.",
+      "DNS helps resolve a domain name to an IP address. A URL also describes the scheme and the path of a resource.",
+      "HTML gives content structure, CSS controls presentation, and JavaScript adds programmable behavior.",
+      "HTTP responses have status codes: 200 means success, 404 means the requested resource was not found, and 500 indicates a server error.",
+      "HTTPS protects data in transit using TLS. It does not prove that the content of a site is trustworthy."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "HTML",
+          "Content and meaning"
+        ],
+        [
+          "CSS",
+          "Presentation and layout"
+        ],
+        [
+          "JavaScript",
+          "Behavior and logic"
+        ],
+        [
+          "HTTP",
+          "Requests and responses"
+        ]
+      ]
+    },
+    "code": "https://example.com/study/week-1.html\n│       │           └─ path\n│       └─ domain\n└─ scheme",
+    "output": "The browser requests /study/week-1.html from example.com using HTTPS. The fragment in a URL such as #tasks is handled by the browser and is not sent in the HTTP request.",
+    "mistake": "A domain is not a complete website, and opening a file on your own computer does not publish it.",
+    "challenge": "Open browser developer tools, select Network, then reload a public page. Find the document request, its status, and one image request.",
+    "diagram": {
+      "title": "How the web works",
+      "steps": [
+        "Browser",
+        "Server",
+        "Document"
+      ],
+      "caption": "The browser requests a resource; the response supplies data to render."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+  },
+  {
+    "slug": "html-setup",
+    "title": "Editor & first page",
+    "summary": "Keep a small, understandable project folder and learn the edit–save–refresh loop.",
+    "points": [
+      "Use a plain-text code editor. Save your entry page as index.html, not index.html.txt.",
+      "Create an images folder for assets. Use consistent lowercase file names and match spelling and case in links.",
+      "Open the HTML file in a browser. A local development server is useful later when features need HTTP; a basic static page also opens as a file.",
+      "Save in the editor before refreshing the browser. Developer-tools edits are usually temporary and do not update your source file.",
+      "Terminal commands run relative to your current directory. pwd shows it; ls lists entries; cd changes directory. Windows command syntax can differ."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "index.html",
+          "Entry page"
+        ],
+        [
+          "images/",
+          "Local images"
+        ],
+        [
+          "pwd / ls",
+          "Inspect current location (POSIX shell)"
+        ],
+        [
+          "cd planner",
+          "Enter the planner folder"
+        ]
+      ]
+    },
+    "code": "<!-- Save as index.html -->\n<!doctype html>\n<html lang=\"en\">\n  <head><meta charset=\"utf-8\"><title>My planner</title></head>\n  <body><h1>My study week</h1><p>One small step today.</p></body>\n</html>",
+    "output": "The browser tab says My planner. The page shows a main heading and a paragraph. Edit the paragraph, save, and refresh to see your change.",
+    "mistake": "A rich-text document is not an HTML source file. Check file extensions when the browser displays the source instead of rendering it.",
+    "challenge": "Create a planner folder, save index.html, and change its paragraph twice. Explain which copy is saved on disk and which is displayed in the browser.",
+    "diagram": {
+      "title": "Editor & first page",
+      "steps": [
+        "Edit",
+        "Save",
+        "Refresh"
+      ],
+      "caption": "A saved source file is your durable copy; refresh loads its latest contents."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files"
+  },
+  {
+    "slug": "html-git",
+    "title": "Git & GitHub basics",
+    "summary": "Keep meaningful snapshots locally, then share them through a remote repository.",
+    "points": [
+      "Git is version-control software. GitHub hosts repositories and collaboration tools; a local Git repository works without GitHub.",
+      "git status shows what changed. git diff shows unstaged changes; git diff --staged shows the next proposed snapshot.",
+      "git add stages chosen changes. git commit records the staged snapshot locally; git push sends commits to a configured remote.",
+      "Create a branch for a focused change. A pull request is a review workflow, not the same operation as creating a commit.",
+      "Never commit passwords, tokens, or private configuration. A .gitignore rule does not remove a secret that is already tracked or erase its history."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "git status",
+          "Inspect your working tree"
+        ],
+        [
+          "git add index.html",
+          "Stage a specific file"
+        ],
+        [
+          "git commit -m \"Add planner page\"",
+          "Record the staged snapshot"
+        ],
+        [
+          "git switch -c add-schedule",
+          "Create and switch to a branch"
+        ]
+      ]
+    },
+    "code": "# Run inside your own new planner folder\ngit init\ngit status\ngit add index.html\ngit diff --staged\ngit commit -m \"Add planner page\"\ngit switch -c add-schedule",
+    "output": "After configuring your Git author name/email if requested, the commit records index.html locally. Creating the branch does not publish anything; connecting a remote and pushing is a separate step.",
+    "mistake": "Saving a file, staging it, committing it, and pushing it are four different actions.",
+    "challenge": "Initialize your practice folder, commit the first page, create add-schedule, and commit a heading change. Use git log --oneline to inspect the two snapshots. Publish only your practice files to your own repository.",
+    "diagram": {
+      "title": "Git & GitHub basics",
+      "steps": [
+        "Working tree",
+        "Staging area",
+        "Commit"
+      ],
+      "caption": "Inspect what you stage before you create a snapshot. Push is a separate remote action."
+    },
+    "source": "https://git-scm.com/docs/gittutorial"
+  },
+  {
+    "slug": "html-document",
+    "title": "HTML document structure",
+    "summary": "Separate page metadata from the content people read.",
+    "points": [
+      "<!doctype html> selects standards mode. The html element wraps the document; lang identifies its language.",
+      "The head holds metadata such as title, character encoding, and viewport settings. The body contains page content.",
+      "Elements often have opening and closing tags. Nest them in reverse order: the last element opened is the first one closed.",
+      "Attributes add information to an opening tag. Quote attribute values; keep each id unique within its document.",
+      "Void elements such as img, input, and meta have no closing tag. Use &lt; when you want a literal less-than character in text."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "head",
+          "Metadata"
+        ],
+        [
+          "title",
+          "Browser tab and document title"
+        ],
+        [
+          "body",
+          "Visible document content"
+        ],
+        [
+          "lang=\"en\"",
+          "Identify English content"
+        ]
+      ]
+    },
+    "code": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Study planner</title>\n</head>\n<body>\n  <h1>Study planner</h1>\n  <p>Read &lt;main&gt; as text.</p>\n</body>\n</html>",
+    "output": "The tab title and visible h1 both say Study planner, but they are separate elements. The paragraph displays <main> as text rather than creating an element.",
+    "mistake": "Browser error recovery can hide invalid nesting. A page looking plausible does not prove its HTML is valid.",
+    "challenge": "Add a useful title, language, UTF-8 declaration, and viewport to your planner. Introduce one misnested tag, inspect the DOM, then fix the source.",
+    "diagram": {
+      "title": "HTML document structure",
+      "steps": [
+        "html",
+        "head + body",
+        "Page content"
+      ],
+      "caption": "Metadata and content have different jobs inside one document."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax"
+  },
+  {
+    "slug": "html-text",
+    "title": "Text & lists",
+    "summary": "Use structure to make a page easy to scan and navigate.",
+    "points": [
+      "Use a descriptive h1 for the page’s main heading, then h2 and h3 for nested sections. Choose heading ranks by structure, not visual size.",
+      "p marks a paragraph. Ordinary whitespace is collapsed when rendered; repeated spaces are not a layout tool.",
+      "ul is an unordered list, ol is an ordered list, and li is a list item. Use an ordered list when sequence matters.",
+      "strong expresses importance and em expresses stress emphasis. Styling alone does not communicate the same meaning.",
+      "Use code for code text and pre when preserving spaces and line breaks matters. Escape markup inside code examples."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "h1 / h2 / h3",
+          "Heading hierarchy"
+        ],
+        [
+          "p",
+          "Paragraph"
+        ],
+        [
+          "ol / ul / li",
+          "Ordered or unordered items"
+        ],
+        [
+          "strong / em",
+          "Importance or stress emphasis"
+        ]
+      ]
+    },
+    "code": "<h1>Study planner</h1>\n<h2>Today’s steps</h2>\n<ol>\n  <li>Read one lesson.</li>\n  <li>Build a small example.</li>\n</ol>\n<p><strong>Remember:</strong> save your work.</p>",
+    "output": "The list is numbered because the order matters. Remember has importance; the main title and the section heading have different ranks.",
+    "mistake": "Adding empty paragraphs or many br elements to create spacing makes the structure confusing. Layout belongs in CSS.",
+    "challenge": "Write a course overview with a page heading, two section headings, a three-step ordered list, and an unordered list of supplies.",
+    "diagram": {
+      "title": "Text & lists",
+      "steps": [
+        "Page heading",
+        "Section",
+        "Items"
+      ],
+      "caption": "A clear hierarchy helps both scanning and assistive navigation."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs"
+  },
+  {
+    "slug": "html-links",
+    "title": "Links & paths",
+    "summary": "Connect pages with destinations that remain meaningful when your project moves.",
+    "points": [
+      "An a element with href creates a hyperlink. Link text should explain the destination rather than saying only “click here”.",
+      "A relative path resolves from the current document’s location. ../ moves up one folder; a leading / starts at the website origin’s root.",
+      "An absolute HTTPS URL includes its origin. A fragment such as #tasks targets an element with id=\"tasks\" on the page.",
+      "A file path on your computer is not a public URL. Test links from nested pages and on a case-sensitive host.",
+      "Use a link for navigation and a button for an action. If a new tab is necessary, make it clear; rel=\"noopener\" explicitly separates opener access."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "schedule.html",
+          "Sibling document"
+        ],
+        [
+          "../index.html",
+          "Parent folder’s entry page"
+        ],
+        [
+          "#tasks",
+          "An id in this document"
+        ],
+        [
+          "https://example.com",
+          "Absolute web destination"
+        ]
+      ]
+    },
+    "code": "<nav aria-label=\"Main\">\n  <a href=\"index.html\">Home</a>\n  <a href=\"schedule.html\">Study schedule</a>\n  <a href=\"#tasks\">Today’s tasks</a>\n</nav>\n<section id=\"tasks\"><h2>Today’s tasks</h2></section>",
+    "output": "The first two links navigate to files in the current folder. The third moves to the tasks section in this document.",
+    "mistake": "href=\"#\" is not a substitute for a working destination. It can unexpectedly move the page to the top.",
+    "challenge": "Create schedule.html and link both pages to each other. Move schedule.html into a pages folder, update both relative links, and test again.",
+    "diagram": {
+      "title": "Links & paths",
+      "steps": [
+        "Link text",
+        "href",
+        "Destination"
+      ],
+      "caption": "A useful link explains both where it goes and how to get there."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links"
+  },
+  {
+    "slug": "html-media",
+    "title": "Images & media",
+    "summary": "Include meaningful alternatives so visual and audio content can be understood in different ways.",
+    "points": [
+      "img uses src for the image URL and alt for its text alternative. Describe the image’s purpose in this context, not every pixel.",
+      "Use alt=\"\" for a purely decorative image. Omitting alt is different from deliberately supplying an empty alternative.",
+      "width and height help reserve the image’s layout space. Use appropriately sized files; loading=\"lazy\" suits off-screen images rather than the main above-the-fold image.",
+      "figure can group an image with figcaption. A caption is visible context and does not automatically replace alt.",
+      "audio and video can expose native controls. Provide appropriate captions/transcripts and avoid forcing autoplay. A track element can reference a WebVTT caption file."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "src",
+          "Media source"
+        ],
+        [
+          "alt",
+          "Text alternative for an image"
+        ],
+        [
+          "width / height",
+          "Intrinsic dimensions"
+        ],
+        [
+          "controls / track",
+          "Playback controls / timed text"
+        ]
+      ]
+    },
+    "code": "<figure>\n  <img src=\"images/week.png\"\n       alt=\"Monday: HTML; Tuesday: Git; Wednesday: forms\"\n       width=\"600\" height=\"300\">\n  <figcaption>A three-day learning plan.</figcaption>\n</figure>",
+    "output": "When week.png exists at that path, the image has a visible caption and a separate text alternative. If the file is missing, the alternative still communicates its purpose.",
+    "mistake": "A file name like photo7.png is usually not a useful text alternative. Captions and alternative text serve different needs.",
+    "challenge": "Add one meaningful image and one decorative image to your planner. Write a suitable alternative for each, then inspect the page with images unavailable.",
+    "diagram": {
+      "title": "Images & media",
+      "steps": [
+        "Media",
+        "Alternative",
+        "Meaning"
+      ],
+      "caption": "Make the meaning available even when the media cannot be perceived."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_images"
+  },
+  {
+    "slug": "html-semantics",
+    "title": "Semantic page layout",
+    "summary": "Choose elements for the meaning of the content they contain.",
+    "points": [
+      "header introduces a page or section. nav identifies major navigation; footer contains closing or related information.",
+      "main identifies the dominant content. Keep one visible main area on a typical page.",
+      "article is suitable for self-contained content. section groups a thematic part, normally with a heading; aside holds tangential content.",
+      "div and span are generic containers. Use them when no more meaningful element fits, not as replacements for every element.",
+      "A skip link to the main content lets keyboard users bypass repeated navigation. Keep the reading order logical before adding CSS."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "header / footer",
+          "Introductory / closing content"
+        ],
+        [
+          "nav",
+          "Major navigation"
+        ],
+        [
+          "main",
+          "Dominant page content"
+        ],
+        [
+          "article / section / aside",
+          "Self-contained / thematic / tangential content"
+        ]
+      ]
+    },
+    "code": "<a href=\"#main\">Skip to content</a>\n<header><h1>Study planner</h1></header>\n<nav aria-label=\"Main\"><a href=\"index.html\">Home</a></nav>\n<main id=\"main\">\n  <section><h2>This week</h2><p>Start with HTML.</p></section>\n</main>\n<footer><p>Made for learning.</p></footer>",
+    "output": "The page exposes meaningful regions. The skip link points past the navigation to the main content.",
+    "mistake": "A section is not just a convenient styling box. If it has no thematic meaning, a div may be more appropriate.",
+    "challenge": "Restructure your planner with header, nav, main, and footer. Add a skip link and verify its destination using the keyboard.",
+    "diagram": {
+      "title": "Semantic page layout",
+      "steps": [
+        "Navigation",
+        "Main content",
+        "Related content"
+      ],
+      "caption": "Semantic regions explain the page without relying on its visual layout."
+    },
+    "source": "https://www.w3.org/WAI/tutorials/page-structure/"
+  },
+  {
+    "slug": "html-tables",
+    "title": "Accessible data tables",
+    "summary": "Use tables for relationships between rows and columns, not for page layout.",
+    "points": [
+      "table contains tabular data. A caption names the table; tr creates a row, th a header cell, and td a data cell.",
+      "Use scope=\"col\" for simple column headers and scope=\"row\" for row headers. Complex tables need more careful associations.",
+      "thead and tbody group header rows and data rows. These groups do not replace the need for actual header cells.",
+      "Keep tables simple and readable on small screens. Do not merge cells unnecessarily or rely on color alone.",
+      "Use CSS layout tools for positioning a page. Reserve tables for data such as a study schedule."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "caption",
+          "Name the table"
+        ],
+        [
+          "tr",
+          "Row"
+        ],
+        [
+          "th + scope",
+          "Identify a header’s relationship"
+        ],
+        [
+          "td",
+          "Data cell"
+        ]
+      ]
+    },
+    "code": "<table>\n  <caption>Study schedule</caption>\n  <thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Topic</th></tr></thead>\n  <tbody>\n    <tr><th scope=\"row\">Monday</th><td>HTML</td></tr>\n    <tr><th scope=\"row\">Tuesday</th><td>Git</td></tr>\n  </tbody>\n</table>",
+    "output": "The caption names the schedule. Day and Topic are column headers; Monday and Tuesday are row headers.",
+    "mistake": "Bold text inside td is still a data cell. Use th to communicate the header relationship.",
+    "challenge": "Create a three-day schedule with a caption, column headings, and day names as row headings. Read a cell and identify its two headers.",
+    "diagram": {
+      "title": "Accessible data tables",
+      "steps": [
+        "Caption",
+        "Headers",
+        "Data"
+      ],
+      "caption": "A cell is easier to understand when its table and headers are clear."
+    },
+    "source": "https://www.w3.org/WAI/tutorials/tables/"
+  },
+  {
+    "slug": "html-forms",
+    "title": "Forms & validation",
+    "summary": "Name each control, explain what is required, and understand where submission goes.",
+    "points": [
+      "Connect a visible label’s for attribute to the control’s id. name determines the field key used during submission.",
+      "Choose an appropriate input type such as email, date, or checkbox. Use textarea for multi-line text and select for a list of options.",
+      "Group related choices with fieldset and legend. Radio buttons in the same named group allow one selection; checkboxes allow independent selections.",
+      "required and other constraints provide browser validation. This improves feedback but does not replace server validation or authorization.",
+      "form action is the destination; method controls the submission method. GET puts submitted data in the query string; POST sends a request body. HTTPS is still needed.",
+      "Give buttons explicit types. type=\"button\" performs no form submission by itself; type=\"submit\" submits a form."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "id / for",
+          "Connect a label to a control"
+        ],
+        [
+          "name",
+          "Submitted field key"
+        ],
+        [
+          "required",
+          "Browser constraint"
+        ],
+        [
+          "action / method",
+          "Destination and submission method"
+        ]
+      ]
+    },
+    "code": "<form action=\"/tasks\" method=\"post\">\n  <label for=\"task\">Task title</label>\n  <input id=\"task\" name=\"title\" required>\n  <label for=\"due\">Due date</label>\n  <input id=\"due\" name=\"due\" type=\"date\">\n  <button type=\"submit\">Save task</button>\n</form>",
+    "output": "The browser checks required fields before a normal submission. A real /tasks server endpoint must receive and validate the request; this snippet alone does not store a task.",
+    "mistake": "A placeholder disappears during entry and is not a replacement for a visible label. A POST request is not automatically encrypted.",
+    "challenge": "Add a labelled task-entry form with a required title and a date field. Test an empty title. Keep the local prototype honest: saving needs behavior or a backend added in a later phase.",
+    "diagram": {
+      "title": "Forms & validation",
+      "steps": [
+        "Label",
+        "Input",
+        "Validation"
+      ],
+      "caption": "Explain the field, accept input, and validate again on the server."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_forms"
+  },
+  {
+    "slug": "html-accessibility",
+    "title": "Accessibility & debugging",
+    "summary": "Test whether people can understand and operate the page, not just whether it looks right.",
+    "points": [
+      "Navigate with Tab and Shift+Tab. Native links and buttons support keyboard interaction; do not replace them with clickable div elements.",
+      "Keep a visible focus indicator and a logical source order. Avoid positive tabindex values that create a surprising navigation order.",
+      "Inspect headings, landmarks, control names, and image alternatives. Prefer native HTML semantics before adding ARIA.",
+      "Use developer tools to inspect the DOM and failed network requests. Browser-repaired markup can differ from your source.",
+      "Validate markup, but also perform manual keyboard and zoom checks. Automated tools cannot establish complete accessibility.",
+      "aria-label supplies an accessible name when appropriate. It does not turn an otherwise inert element into a functioning button."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Keyboard check",
+          "Can I reach and operate controls?"
+        ],
+        [
+          "Accessible name",
+          "What does this control do?"
+        ],
+        [
+          "HTML validator",
+          "Detect markup errors"
+        ],
+        [
+          "Network panel",
+          "Find failed resource requests"
+        ]
+      ]
+    },
+    "code": "<a href=\"#content\">Skip to content</a>\n<main id=\"content\">\n  <h1>Study tasks</h1>\n  <button type=\"button\">Add a task</button>\n  <p>This static prototype has no task-saving behavior yet.</p>\n</main>",
+    "output": "The native button can receive keyboard focus. It does not add a task until behavior is implemented; clear prototype copy prevents a false expectation.",
+    "mistake": "An ARIA role does not implement keyboard events. An HTML validator passing does not prove the whole experience is accessible.",
+    "challenge": "Check your planner with only the keyboard, at 200% zoom, and with a narrow viewport. Fix at least one issue and explain why the change helps.",
+    "diagram": {
+      "title": "Accessibility & debugging",
+      "steps": [
+        "Inspect",
+        "Operate",
+        "Improve"
+      ],
+      "caption": "Combine markup checks with real interaction checks."
+    },
+    "source": "https://www.w3.org/WAI/tutorials/"
+  },
+  {
+    "slug": "html-project",
+    "title": "Build a student planner",
+    "summary": "Combine the course into a small website that you can explain and extend.",
+    "points": [
+      "Create index.html, schedule.html, and tasks.html with descriptive titles, a language, a main heading, and shared navigation.",
+      "Use semantic regions on each page, real relative links, a captioned schedule table, and visibly labelled task controls.",
+      "Keep this version static. Do not claim tasks are saved or accounts are protected before those capabilities exist.",
+      "Use small Git commits to record meaningful milestones: structure, schedule, forms, and fixes. Add a README explaining how to open the pages.",
+      "Self-review: follow every link in both directions, test keyboard navigation and image alternatives, check nesting, and inspect at narrow widths.",
+      "Explain one design decision aloud. Your MCQ score checks recall; a working project and your explanation demonstrate different skills."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Home page",
+          "Explain the planner and link its pages"
+        ],
+        [
+          "Schedule page",
+          "Present a simple accessible table"
+        ],
+        [
+          "Task page",
+          "Collect inputs with honest prototype limits"
+        ],
+        [
+          "README + Git",
+          "Document setup and meaningful changes"
+        ]
+      ]
+    },
+    "code": "planner/\n  index.html\n  schedule.html\n  tasks.html\n  images/\n  README.md\n\n# Suggested milestones\n# 1. Add semantic page structure\n# 2. Connect the schedule and task pages\n# 3. Review labels, links, and keyboard navigation",
+    "output": "Completion means your three pages work together and pass your self-review. The supplied starter is one page; split and extend it yourself. CSS, interaction, storage, accounts, and deployment come later.",
+    "mistake": "Copying a finished page without explaining its structure hides gaps. Start from the brief and use the starter only when helpful.",
+    "challenge": "Finish the three pages. In your README, describe two decisions, one issue you fixed, and one limitation left for the next course. Self-check the brief before marking this topic complete.",
+    "diagram": {
+      "title": "Build a student planner",
+      "steps": [
+        "Build",
+        "Check",
+        "Explain"
+      ],
+      "caption": "A small, honest project is a foundation you can keep improving."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content"
+  }
+]

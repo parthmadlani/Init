@@ -93,3 +93,9 @@ The professional layout now uses the playful pink/cyan palette. Python paths inc
 The transcript panel and administrator publishing workflow are implemented. Current real videos still require permission-backed, reviewed transcript packs before their transcripts and video-specific quizzes become available. Notebook questions are clearly labelled separately. Lesson quiz length respects the daily time budget.
 
 See [the deployment and content guide](docs/lesson-materials.md) for the required database migration, content import schema, current limits, and verification instructions.
+
+## Full Stack Development — Phase 0–2 (development branch only)
+
+The `codex/full-stack-foundations` branch adds a shared course library, the Full Stack Development collection, and HTML/web foundations with twelve chapters, original notes, editable diagrams, 120 notebook questions, and a student-planner project. It retains Python and uses the same learner progress from standalone and collection entry points. Automatic deployments are disabled for this branch; it must not be merged or released until approved. See [the phase plan and local verification guide](docs/full-stack-phases.md).
+
+Phase 2 adds standalone CSS and Tailwind CSS v4 courses: ten chapters, 100 questions, and ten editable diagrams each. Both continue the student-planner project with downloadable starters and self-review checklists. Tailwind includes a verified compiled stylesheet and a reproducible CLI build. See the phase guide for content limits and local checks.

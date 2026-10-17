@@ -1,10 +1,11 @@
+import { AVAILABLE_COURSE_SLUGS } from "@/lib/courses/catalog";
 import { prisma } from "@/lib/prisma";
 import { BackToHomeLink } from "@/components/back-to-home-link";
 import { WizardForm } from "./wizard-form";
 
 export default async function WizardPage({ searchParams }: { searchParams: Promise<{ subject?: string }> }) {
   const { subject } = await searchParams;
-  const subjects = await prisma.subject.findMany({
+  const subjects = await prisma.subject.findMany({ where: { slug: { in: AVAILABLE_COURSE_SLUGS } },
     select: { id: true, name: true, _count: { select: { topics: true } } },
     orderBy: { name: "asc" },
   });

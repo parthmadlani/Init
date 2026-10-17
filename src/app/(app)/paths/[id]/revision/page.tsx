@@ -4,7 +4,7 @@ import { NotebookPen, Sparkles, ArrowUpRight, Download } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { getPathDetail } from "@/lib/services/path-service";
-import { PYTHON_NOTES, PYTHON_QUESTIONS } from "@/lib/learning/python-content";
+import { getCourseContent } from "@/lib/learning/course-content";
 import { BackLink } from "@/components/back-to-home-link";
 import { StartQuiz } from "@/components/learning/start-quiz";
 import { ConceptSketch } from "@/components/learning/concept-sketch";
@@ -13,8 +13,9 @@ export default async function RevisionPage({ params }: { params: Promise<{ id: s
   const session = await auth();
   const path = await getPathDetail((await params).id, session!.user.id);
   if (!path) notFound();
-  const notes = path.subject.slug === "python" ? PYTHON_NOTES.filter(n => path.topics.some(t => t.slug === n.slug)) : [];
-  const bankSize = PYTHON_QUESTIONS.filter(q => notes.some(n => n.slug === q.topic)).length;
+  const content = getCourseContent(path.subject.slug);
+  const notes = content?.notes.filter(n => path.topics.some(t => t.slug === n.slug)) ?? [];
+  const bankSize = content?.questions.filter(q => notes.some(n => n.slug === q.topic)).length ?? 0;
   const attempts = await prisma.quizAttempt.findMany({ where: { userId: session!.user.id, pathId: path.id }, orderBy: { createdAt: "desc" }, take: 12, select: { id: true, title: true, completedAt: true, score: true, questions: true } });
   return <main className="page-shell">
     <BackLink href={`/paths/${path.id}`}>Back to {path.subject.name}</BackLink>
@@ -25,13 +26,13 @@ export default async function RevisionPage({ params }: { params: Promise<{ id: s
         <nav aria-label="Revision topics" className="mb-6 flex flex-wrap gap-2">{notes.map((n,i) => <a href={`#${n.slug}`} key={n.slug} className="rounded-full border border-brand-pink/15 bg-white px-3 py-2 text-xs text-black/70 transition hover:bg-brand-pink-light/40">{i+1}. {n.title}</a>)}</nav>
         <div className="space-y-7">{notes.map((note,i) => <article id={note.slug} key={note.slug} className="surface scroll-mt-6 overflow-hidden">
           <div className="border-b border-brand-pink/10 bg-brand-pink-light/25 p-5 sm:p-7"><p className="eyebrow text-brand-pink">Chapter {String(i+1).padStart(2,"0")}</p><h2 className="mt-3 font-serif text-2xl font-medium">{note.title}</h2><p className="mt-3 text-sm leading-relaxed text-black/65">{note.summary}</p></div>
-          <div className="space-y-6 p-5 sm:p-7"><ConceptSketch diagram={note.diagram} /><a href={`/revision-diagrams/${note.slug}.excalidraw`} download className="inline-flex min-h-9 items-center gap-2 text-xs text-brand-pink underline"><Download size={13} />Edit this diagram in Excalidraw</a>
+          <div className="space-y-6 p-5 sm:p-7"><ConceptSketch diagram={note.diagram} /><a href={`${content!.diagramDirectory}/${note.slug}.excalidraw`} download className="inline-flex min-h-9 items-center gap-2 text-xs text-brand-pink underline"><Download size={13} />Edit this diagram in Excalidraw</a>
             <ul className="space-y-3">{note.points.map(point => <li key={point} className="flex gap-3 text-sm leading-relaxed text-black/75"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-cyan" />{point}</li>)}</ul>
             <div className="overflow-x-auto rounded-xl border border-black/10"><table className="w-full min-w-[270px] text-left text-xs"><caption className="sr-only">{note.title} quick reference</caption><thead className="bg-brand-cyan-light/45"><tr>{note.table.headings.map(h => <th scope="col" key={h} className="px-4 py-3 font-semibold">{h}</th>)}</tr></thead><tbody>{note.table.rows.map((row,j) => <tr key={j} className="border-t border-black/[0.06]">{row.map((cell,k) => <td key={k} className="px-4 py-3 leading-relaxed">{cell}</td>)}</tr>)}</tbody></table></div>
-            <div><h3 className="section-title mb-3">Read it. Predict it. Run it.</h3><pre className="overflow-x-auto rounded-xl bg-[#f5f7fa] p-4 text-xs leading-relaxed"><code>{note.code}</code></pre><details className="mt-2"><summary className="min-h-11 py-3 text-xs font-medium text-brand-cyan">Reveal the output</summary><pre className="overflow-auto rounded-xl bg-brand-cyan-light/40 p-4 text-xs">{note.output}</pre></details></div>
+            <div><h3 className="section-title mb-3">{path.subject.slug !== "python" ? "Read it. Try it. Explain it." : "Read it. Predict it. Run it."}</h3><pre className="overflow-x-auto rounded-xl bg-[#f5f7fa] p-4 text-xs leading-relaxed"><code>{note.code}</code></pre><details className="mt-2"><summary className="min-h-11 py-3 text-xs font-medium text-brand-cyan">{path.subject.slug !== "python" ? "Reveal the explanation" : "Reveal the output"}</summary><pre className="overflow-auto rounded-xl bg-brand-cyan-light/40 p-4 text-xs">{note.output}</pre></details></div>
             <div className="rounded-xl bg-brand-pink-light/35 p-4"><h3 className="text-xs font-semibold text-brand-pink">Watch out for this</h3><p className="mt-2 text-sm leading-relaxed text-black/70">{note.mistake}</p></div>
             <div><h3 className="section-title">Try it yourself</h3><p className="mt-2 text-sm leading-relaxed text-black/65">{note.challenge}</p></div>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-black/10 pt-5"><StartQuiz compact pathId={path.id} kind="revision" topicId={path.topics.find(t => t.slug === note.slug)!.id} label="10-question topic check" /><a href={note.source} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-brand-cyan">Python reference <ArrowUpRight size={13} /></a></div>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-black/10 pt-5"><StartQuiz compact pathId={path.id} kind="revision" topicId={path.topics.find(t => t.slug === note.slug)!.id} label="10-question topic check" /><a href={note.source} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-xs font-medium text-brand-cyan">{content!.referenceLabel} <ArrowUpRight size={13} /></a></div>
             {note.slug === "apis" && <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-cyan underline">HTTP status reference — MDN</a>}
           </div></article>)}</div>
       </div>
