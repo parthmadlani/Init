@@ -76,7 +76,7 @@ node scripts/check-courses-local.mjs
 
 The integration check refuses non-local URLs, creates its own disposable users, and cleans up only those users. It checks authentication, ownership, canonical progress, seed idempotence with retained progress, rebuild/resume, course video matching, notebook questions, scoring, shuffled retakes, unseen final questions, missing-transcript behavior, and Python notebook/quiz regression. A cold cache requires a valid YouTube API key and consumes search quota; video availability may change.
 
-Before the eventual release, run migrations and the idempotent curriculum seed against the intended production database under the user's release authorization. Building alone does not seed HTML. Verify existing learner progress, both course entry points, video availability, and mobile layouts before promotion. Never copy local demo accounts or credentials to production.
+The Phase 0–2 release was authorized on October 17, 2026. Vercel's build command now runs migrations and the idempotent curriculum seed before building the app, so a release also adds its available courses to the configured database. The seed only upserts curriculum records; it does not create demo accounts or delete learner records. `npm run build` alone still does not seed courses. Future development must use a separate branch with deployments disabled or an isolated preview database. Verify existing learner progress, both course entry points, video availability, and mobile layouts before promotion. Never copy local demo accounts or credentials to production.
 
 ## Subsequent phases (not included in the Phase 0–2 delivery)
 
