@@ -94,8 +94,10 @@ The transcript panel and administrator publishing workflow are implemented. Curr
 
 See [the deployment and content guide](docs/lesson-materials.md) for the required database migration, content import schema, current limits, and verification instructions.
 
-## Full Stack Development — Phase 0–2 (development branch only)
+## Full Stack Development
 
-The `codex/full-stack-foundations` branch adds a shared course library, the Full Stack Development collection, and HTML/web foundations with twelve chapters, original notes, editable diagrams, 120 notebook questions, and a student-planner project. It retains Python and uses the same learner progress from standalone and collection entry points. Automatic deployments are disabled for this branch; it must not be merged or released until approved. See [the phase plan and local verification guide](docs/full-stack-phases.md).
+Phases 0–2 were merged and deployed with approval: the shared course library, Full Stack Development collection, HTML/web foundations, CSS, and Tailwind CSS v4. Standalone and collection entry points share learner progress. Each course includes original notes, editable diagrams, notebook questions, a final review, and a downloadable planner starter.
 
-Phase 2 adds standalone CSS and Tailwind CSS v4 courses: ten chapters, 100 questions, and ten editable diagrams each. Both continue the student-planner project with downloadable starters and self-review checklists. Tailwind includes a verified compiled stylesheet and a reproducible CLI build. See the phase guide for content limits and local checks.
+**Phase 3 is on `codex/javascript-foundations` only, pending approval.** It adds JavaScript/browser interaction: twelve chapters, 120 authored notebook questions, twelve editable diagrams, ten-question topic checks, a resumable 69-question final review, and a working browser-based planner. Automatic deployments are disabled for this branch. Do not merge or deploy it until approved.
+
+See [the phase plan and local verification guide](docs/full-stack-phases.md) for curriculum, content limitations, and checks.

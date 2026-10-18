@@ -1,0 +1,3482 @@
+[
+  {
+    "id": "javascript-v1-javascript-setup-01",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-01",
+    "prompt": "Which responsibility belongs to JavaScript in a student planner?",
+    "choices": [
+      {
+        "id": "cec3c322a454",
+        "text": "Choosing the semantic heading rank by CSS alone"
+      },
+      {
+        "id": "b1d49ccee755",
+        "text": "Assigning DNS names"
+      },
+      {
+        "id": "4715621158f4",
+        "text": "Responding to task actions"
+      },
+      {
+        "id": "164c73858b0d",
+        "text": "Declaring document language metadata"
+      }
+    ],
+    "correctId": "4715621158f4",
+    "explanation": "JavaScript implements behavior such as responding to actions and updating task data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-02",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-02",
+    "prompt": "When does an external classic script with defer execute?",
+    "choices": [
+      {
+        "id": "af871b52cf3b",
+        "text": "Only when every image has loaded"
+      },
+      {
+        "id": "e24919e317cc",
+        "text": "Before any HTML is parsed"
+      },
+      {
+        "id": "5af52349655a",
+        "text": "Only after its first click event"
+      },
+      {
+        "id": "457bc6b46c31",
+        "text": "After the HTML has been parsed"
+      }
+    ],
+    "correctId": "457bc6b46c31",
+    "explanation": "defer delays execution of an external classic script until parsing has finished.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-03",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-03",
+    "prompt": "Which tool pauses your code at a chosen line?",
+    "choices": [
+      {
+        "id": "1f8505839879",
+        "text": "A breakpoint in Sources"
+      },
+      {
+        "id": "51b1899751da",
+        "text": "A browser bookmark"
+      },
+      {
+        "id": "12d934eaa741",
+        "text": "A CSS media query"
+      },
+      {
+        "id": "039d1bbfa669",
+        "text": "A Network cache filter"
+      }
+    ],
+    "correctId": "1f8505839879",
+    "explanation": "A breakpoint lets you inspect variables before continuing execution step by step.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-04",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-04",
+    "prompt": "Where should you first look when app.js returns 404?",
+    "choices": [
+      {
+        "id": "101d1bdf1857",
+        "text": "The font weight"
+      },
+      {
+        "id": "2ab4728277b6",
+        "text": "The task array length"
+      },
+      {
+        "id": "8fda9b0860cc",
+        "text": "The variable scope inside a function that never loaded"
+      },
+      {
+        "id": "f58fb8cdb13c",
+        "text": "The Network panel and script path"
+      }
+    ],
+    "correctId": "f58fb8cdb13c",
+    "explanation": "A failed script request is a file-loading problem; inspect the requested URL and response.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-05",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-05",
+    "prompt": "What does console.log(\"Ready\") do?",
+    "choices": [
+      {
+        "id": "af74d716af0d",
+        "text": "Saves Ready to browser storage"
+      },
+      {
+        "id": "4610f35b6581",
+        "text": "Returns Ready from the surrounding function"
+      },
+      {
+        "id": "3831b75336ea",
+        "text": "Displays Ready in the console"
+      },
+      {
+        "id": "27f69fa3be12",
+        "text": "Adds Ready to every paragraph"
+      }
+    ],
+    "correctId": "3831b75336ea",
+    "explanation": "Logging helps inspect execution; it does not itself render, persist, or return the value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-06",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-06",
+    "prompt": "What happens if code declares task but later reads Task with no such binding?",
+    "choices": [
+      {
+        "id": "422d30985191",
+        "text": "Both names refer to the same binding"
+      },
+      {
+        "id": "04cc25c33741",
+        "text": "The browser creates Task from task"
+      },
+      {
+        "id": "8141c9376c75",
+        "text": "The text is converted to uppercase"
+      },
+      {
+        "id": "df46725c3c65",
+        "text": "A ReferenceError occurs"
+      }
+    ],
+    "correctId": "df46725c3c65",
+    "explanation": "JavaScript names are case-sensitive, so an undeclared differently capitalized name is not found.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-07",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-07",
+    "prompt": "You edit app.js but the page still shows the old behavior. What is a useful first check?",
+    "choices": [
+      {
+        "id": "52cd0e7a6d5e",
+        "text": "Save the file and refresh the correct page"
+      },
+      {
+        "id": "d6f5d4819655",
+        "text": "Rewrite the document in a framework"
+      },
+      {
+        "id": "885c7576547e",
+        "text": "Delete every browser storage key"
+      },
+      {
+        "id": "63b74d9a6a4b",
+        "text": "Rename every variable"
+      }
+    ],
+    "correctId": "52cd0e7a6d5e",
+    "explanation": "The browser must receive the updated saved script before its behavior can change.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-08",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-08",
+    "prompt": "Which part of an error helps locate the failing statement?",
+    "choices": [
+      {
+        "id": "99a70ef18e34",
+        "text": "The browser window width"
+      },
+      {
+        "id": "dd6034133edf",
+        "text": "The number of installed fonts"
+      },
+      {
+        "id": "929dd9c9ffb5",
+        "text": "The page background color"
+      },
+      {
+        "id": "2d8aba3e3802",
+        "text": "Its source file and line number"
+      }
+    ],
+    "correctId": "2d8aba3e3802",
+    "explanation": "The file and line in an error or stack trace point toward the statement to inspect.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-09",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-09",
+    "prompt": "What does stepping through code help you observe?",
+    "choices": [
+      {
+        "id": "7c99029855a6",
+        "text": "How values change between statements"
+      },
+      {
+        "id": "cf81e58e5b81",
+        "text": "The popularity of a video"
+      },
+      {
+        "id": "d083eb1acd14",
+        "text": "All possible inputs automatically"
+      },
+      {
+        "id": "4d7b5608f1b7",
+        "text": "Whether a domain will renew"
+      }
+    ],
+    "correctId": "7c99029855a6",
+    "explanation": "Stepping exposes the current execution path and values, making assumptions easier to check.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-setup-10",
+    "topic": "javascript-setup",
+    "concept": "javascript-setup-10",
+    "prompt": "A script contains a syntax error. What should you do first?",
+    "choices": [
+      {
+        "id": "2f5df8004dea",
+        "text": "Fix the syntax at the reported location"
+      },
+      {
+        "id": "13263387ec13",
+        "text": "Wait for localStorage to synchronize"
+      },
+      {
+        "id": "7d6d9c2365b8",
+        "text": "Change the stylesheet path"
+      },
+      {
+        "id": "c5af7bc2c781",
+        "text": "Add more click listeners"
+      }
+    ],
+    "correctId": "2f5df8004dea",
+    "explanation": "A syntax error prevents that script from being parsed successfully; later logic cannot fix it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-01",
+    "topic": "javascript-values",
+    "concept": "javascript-values-01",
+    "prompt": "Which declaration is best for a binding that you plan to reassign?",
+    "choices": [
+      {
+        "id": "d3fe1c655c3d",
+        "text": "return"
+      },
+      {
+        "id": "83fa80115929",
+        "text": "import"
+      },
+      {
+        "id": "78a0ef3b627a",
+        "text": "let"
+      },
+      {
+        "id": "23f48bb76230",
+        "text": "const"
+      }
+    ],
+    "correctId": "78a0ef3b627a",
+    "explanation": "let allows reassignment; const and imported bindings cannot be reassigned by the same code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-02",
+    "topic": "javascript-values",
+    "concept": "javascript-values-02",
+    "prompt": "Does const task = {done: false} prevent task.done = true?",
+    "choices": [
+      {
+        "id": "b8e3eeece60e",
+        "text": "Only if the object has a title"
+      },
+      {
+        "id": "94debaa2763f",
+        "text": "Yes, all nested values are frozen"
+      },
+      {
+        "id": "c39561f07ae2",
+        "text": "Yes, because booleans are immutable bindings"
+      },
+      {
+        "id": "55232157b5c6",
+        "text": "No, the property can still change"
+      }
+    ],
+    "correctId": "55232157b5c6",
+    "explanation": "const protects the binding from reassignment; it does not freeze the referenced object.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-03",
+    "topic": "javascript-values",
+    "concept": "javascript-values-03",
+    "prompt": "What is the result of \"25\" + 5?",
+    "choices": [
+      {
+        "id": "0621b95cab1a",
+        "text": "The string \"255\""
+      },
+      {
+        "id": "4890944689d3",
+        "text": "The number 255"
+      },
+      {
+        "id": "3708c1042c9e",
+        "text": "A syntax error"
+      },
+      {
+        "id": "8b25afd0c52c",
+        "text": "The number 30"
+      }
+    ],
+    "correctId": "0621b95cab1a",
+    "explanation": "With a string operand, this use of + concatenates rather than performing numeric addition.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-04",
+    "topic": "javascript-values",
+    "concept": "javascript-values-04",
+    "prompt": "What does 25 === \"25\" evaluate to?",
+    "choices": [
+      {
+        "id": "2f534f73fdff",
+        "text": "\"true\""
+      },
+      {
+        "id": "2bc1a5570dfe",
+        "text": "undefined"
+      },
+      {
+        "id": "f08ff5db4532",
+        "text": "true"
+      },
+      {
+        "id": "269575d72ffb",
+        "text": "false"
+      }
+    ],
+    "correctId": "269575d72ffb",
+    "explanation": "Strict equality compares without converting the string to a number, so these types differ.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-05",
+    "topic": "javascript-values",
+    "concept": "javascript-values-05",
+    "prompt": "What type does a text input’s value property provide?",
+    "choices": [
+      {
+        "id": "a73085baa067",
+        "text": "Array"
+      },
+      {
+        "id": "9a6d5260bff7",
+        "text": "String"
+      },
+      {
+        "id": "aaab8db92fed",
+        "text": "Boolean"
+      },
+      {
+        "id": "d697677aee3e",
+        "text": "Number whenever it contains digits"
+      }
+    ],
+    "correctId": "9a6d5260bff7",
+    "explanation": "Input values are text; numeric calculations require deliberate conversion and validation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-06",
+    "topic": "javascript-values",
+    "concept": "javascript-values-06",
+    "prompt": "Why should blank numeric input be checked before Number(raw)?",
+    "choices": [
+      {
+        "id": "53a4cd43beb3",
+        "text": "Number silently requests a default from the server"
+      },
+      {
+        "id": "8a1f58df109e",
+        "text": "Number returns an empty array"
+      },
+      {
+        "id": "a1f5c0ac914b",
+        "text": "An empty string converts to zero"
+      },
+      {
+        "id": "07fc87aa77ff",
+        "text": "An empty string always throws"
+      }
+    ],
+    "correctId": "a1f5c0ac914b",
+    "explanation": "Blank input and an intentional zero can otherwise become indistinguishable after conversion.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-07",
+    "topic": "javascript-values",
+    "concept": "javascript-values-07",
+    "prompt": "Which check rejects both NaN and Infinity after numeric conversion?",
+    "choices": [
+      {
+        "id": "8f084a637044",
+        "text": "String(value).length > 0"
+      },
+      {
+        "id": "1cab68f7abc5",
+        "text": "Number.isFinite(value)"
+      },
+      {
+        "id": "3c68ec78cf58",
+        "text": "typeof value === \"number\""
+      },
+      {
+        "id": "f7cd908e09d5",
+        "text": "value !== null"
+      }
+    ],
+    "correctId": "1cab68f7abc5",
+    "explanation": "NaN and Infinity have type number, but Number.isFinite returns false for both.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-08",
+    "topic": "javascript-values",
+    "concept": "javascript-values-08",
+    "prompt": "What does = do in remaining = 20?",
+    "choices": [
+      {
+        "id": "d267320602d8",
+        "text": "Compares remaining with 20"
+      },
+      {
+        "id": "dc44658c589a",
+        "text": "Creates a boolean result without assignment"
+      },
+      {
+        "id": "b04129b219f3",
+        "text": "Assigns 20 to remaining"
+      },
+      {
+        "id": "41a32f84fdcb",
+        "text": "Freezes remaining"
+      }
+    ],
+    "correctId": "b04129b219f3",
+    "explanation": "A single equals sign performs assignment; use a comparison operator for an equality test.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-09",
+    "topic": "javascript-values",
+    "concept": "javascript-values-09",
+    "prompt": "Which notation interpolates count in a template literal?",
+    "choices": [
+      {
+        "id": "7f3b7bcc43c5",
+        "text": "\"${count} tasks\""
+      },
+      {
+        "id": "73d3a852bde8",
+        "text": "`${count} tasks`"
+      },
+      {
+        "id": "b3dc42cf6752",
+        "text": "'${count} tasks'"
+      },
+      {
+        "id": "5dc210f242bb",
+        "text": "`{count} tasks`"
+      }
+    ],
+    "correctId": "73d3a852bde8",
+    "explanation": "Template interpolation requires backticks and the dollar-brace expression syntax.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-values-10",
+    "topic": "javascript-values",
+    "concept": "javascript-values-10",
+    "prompt": "Which value commonly represents an intentionally empty selection?",
+    "choices": [
+      {
+        "id": "47a5744d055b",
+        "text": "An undeclared variable"
+      },
+      {
+        "id": "ce6ccb4267d1",
+        "text": "null"
+      },
+      {
+        "id": "ccb6a9da9b69",
+        "text": "NaN"
+      },
+      {
+        "id": "06d73ec5cfd2",
+        "text": "The string \"null\""
+      }
+    ],
+    "correctId": "ce6ccb4267d1",
+    "explanation": "null can explicitly represent absence, while the string is ordinary text and NaN is a numeric failure value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-01",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-01",
+    "prompt": "What does an if statement do when its condition is falsy?",
+    "choices": [
+      {
+        "id": "cae3cec0c0cd",
+        "text": "Always runs its block once"
+      },
+      {
+        "id": "94eab05e99a8",
+        "text": "Skips its block"
+      },
+      {
+        "id": "49d7d9a8b620",
+        "text": "Repeats until the value is truthy"
+      },
+      {
+        "id": "f7981a6f64bc",
+        "text": "Throws a syntax error"
+      }
+    ],
+    "correctId": "94eab05e99a8",
+    "explanation": "An if block executes only for a truthy condition; an else branch can handle the alternative.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-02",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-02",
+    "prompt": "Which of these values is truthy?",
+    "choices": [
+      {
+        "id": "540d4555fcdc",
+        "text": "0"
+      },
+      {
+        "id": "30e0ce8c7631",
+        "text": "\"\""
+      },
+      {
+        "id": "3011745a61a1",
+        "text": "[]"
+      },
+      {
+        "id": "0cee4221e9c1",
+        "text": "null"
+      }
+    ],
+    "correctId": "3011745a61a1",
+    "explanation": "An empty array is still an object and is truthy, even though it contains no elements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-03",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-03",
+    "prompt": "Which loop directly visits values in an array?",
+    "choices": [
+      {
+        "id": "b93d2921aeaa",
+        "text": "for...of"
+      },
+      {
+        "id": "e69bcf5558f5",
+        "text": "if...else"
+      },
+      {
+        "id": "be29c952132c",
+        "text": "for...in"
+      },
+      {
+        "id": "2e3cd0d9f7a0",
+        "text": "try...catch"
+      }
+    ],
+    "correctId": "b93d2921aeaa",
+    "explanation": "for...of visits iterable values; for...in visits enumerable property keys.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-04",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-04",
+    "prompt": "What is a typical danger of a while loop with an unchanging true condition?",
+    "choices": [
+      {
+        "id": "048d9e60881d",
+        "text": "It may never finish"
+      },
+      {
+        "id": "537f4b8136b8",
+        "text": "It automatically becomes asynchronous"
+      },
+      {
+        "id": "4b4de276fd7d",
+        "text": "It exits after ten iterations"
+      },
+      {
+        "id": "f0eac6178f31",
+        "text": "It always skips its body"
+      }
+    ],
+    "correctId": "048d9e60881d",
+    "explanation": "The loop needs a condition change or a break; otherwise it can run indefinitely.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-05",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-05",
+    "prompt": "What does break do inside a simple loop?",
+    "choices": [
+      {
+        "id": "acfb0d59e253",
+        "text": "Converts the condition to a string"
+      },
+      {
+        "id": "ab0338ccd182",
+        "text": "Exits that loop"
+      },
+      {
+        "id": "cbfc6c87763e",
+        "text": "Skips only the next expression"
+      },
+      {
+        "id": "608d9712d7ca",
+        "text": "Restarts the program"
+      }
+    ],
+    "correctId": "ab0338ccd182",
+    "explanation": "break stops the current loop and execution continues after it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-06",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-06",
+    "prompt": "What does continue do inside a loop?",
+    "choices": [
+      {
+        "id": "fac6bff63ded",
+        "text": "Skips the rest of the current iteration"
+      },
+      {
+        "id": "1a3b218a0819",
+        "text": "Deletes the current array value"
+      },
+      {
+        "id": "1d1be6bcf1db",
+        "text": "Repeats the current statement forever"
+      },
+      {
+        "id": "989b0a0c02a2",
+        "text": "Exits the entire function"
+      }
+    ],
+    "correctId": "fac6bff63ded",
+    "explanation": "continue advances the loop to its next iteration without running the remaining body statements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-07",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-07",
+    "prompt": "An array has length 3. Which indexes contain its three ordinary elements?",
+    "choices": [
+      {
+        "id": "1a1c33f09760",
+        "text": "1, 2, 3"
+      },
+      {
+        "id": "28ecdae719ce",
+        "text": "0, 1, 2"
+      },
+      {
+        "id": "8a2989cb5066",
+        "text": "Only index 3"
+      },
+      {
+        "id": "9c6f74f543bd",
+        "text": "0, 1, 2, 3"
+      }
+    ],
+    "correctId": "28ecdae719ce",
+    "explanation": "Array indexing starts at zero, so the last of three sequential elements has index two.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-08",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-08",
+    "prompt": "Which index-loop condition avoids stepping past an array’s end?",
+    "choices": [
+      {
+        "id": "f247905181c3",
+        "text": "i > items.length"
+      },
+      {
+        "id": "8cb3affbc37f",
+        "text": "i <= items.length"
+      },
+      {
+        "id": "1cd40ea98062",
+        "text": "i < items.length"
+      },
+      {
+        "id": "0cbc96054d77",
+        "text": "i === items.length + 1"
+      }
+    ],
+    "correctId": "1cd40ea98062",
+    "explanation": "The largest valid sequential index is length minus one, so use a strict less-than comparison.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-09",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-09",
+    "prompt": "A loop adds only positive values from [10, 0, 20]. What total results?",
+    "choices": [
+      {
+        "id": "57d65329748b",
+        "text": "1020"
+      },
+      {
+        "id": "50f91a592594",
+        "text": "3"
+      },
+      {
+        "id": "9b1b5095924c",
+        "text": "30"
+      },
+      {
+        "id": "1d684661d719",
+        "text": "0"
+      }
+    ],
+    "correctId": "9b1b5095924c",
+    "explanation": "Zero contributes nothing, and numeric addition of ten and twenty gives thirty.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-flow-10",
+    "topic": "javascript-flow",
+    "concept": "javascript-flow-10",
+    "prompt": "Why is for...in usually unsuitable when you want array values?",
+    "choices": [
+      {
+        "id": "7cc9d5981913",
+        "text": "It always reverses the array"
+      },
+      {
+        "id": "a9a5574bd183",
+        "text": "It removes duplicate values"
+      },
+      {
+        "id": "f4bddbcdbf5e",
+        "text": "It visits property keys rather than values"
+      },
+      {
+        "id": "8b35a447184a",
+        "text": "It accepts only booleans"
+      }
+    ],
+    "correctId": "f4bddbcdbf5e",
+    "explanation": "Property enumeration is different from value iteration; use for...of for array values.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-01",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-01",
+    "prompt": "In function label(count), what is count called?",
+    "choices": [
+      {
+        "id": "cc3b3cf84127",
+        "text": "A return statement"
+      },
+      {
+        "id": "0b3f07ac632e",
+        "text": "An import path"
+      },
+      {
+        "id": "880127deeb06",
+        "text": "An argument value already supplied"
+      },
+      {
+        "id": "e42506edd06b",
+        "text": "A parameter"
+      }
+    ],
+    "correctId": "e42506edd06b",
+    "explanation": "A parameter is the name in the function definition that receives an argument at a call.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-02",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-02",
+    "prompt": "In label(3), what is 3 called?",
+    "choices": [
+      {
+        "id": "173374ff9c93",
+        "text": "A function scope"
+      },
+      {
+        "id": "ecf34ec3a185",
+        "text": "A parameter declaration"
+      },
+      {
+        "id": "c1c9e08778bc",
+        "text": "A closure"
+      },
+      {
+        "id": "9767121b2416",
+        "text": "An argument"
+      }
+    ],
+    "correctId": "9767121b2416",
+    "explanation": "Arguments are the actual values provided when invoking a function.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-03",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-03",
+    "prompt": "What does a function return if it ends without a return value?",
+    "choices": [
+      {
+        "id": "1ccd75e32850",
+        "text": "Its last console message"
+      },
+      {
+        "id": "fd4b504e4cf0",
+        "text": "undefined"
+      },
+      {
+        "id": "815958467ba5",
+        "text": "null"
+      },
+      {
+        "id": "71190ac50a45",
+        "text": "false"
+      }
+    ],
+    "correctId": "fd4b504e4cf0",
+    "explanation": "Without an explicit returned value, an ordinary function call evaluates to undefined.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-04",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-04",
+    "prompt": "What happens to ordinary statements after return in the same function block?",
+    "choices": [
+      {
+        "id": "c9bacdc68fa4",
+        "text": "They run twice"
+      },
+      {
+        "id": "ee795c5e41e7",
+        "text": "They are not reached on that path"
+      },
+      {
+        "id": "24cb92a1ae72",
+        "text": "They run before return"
+      },
+      {
+        "id": "3a5a7380c61f",
+        "text": "They become event handlers"
+      }
+    ],
+    "correctId": "ee795c5e41e7",
+    "explanation": "return ends the current invocation, so subsequent ordinary statements on that path are skipped.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-05",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-05",
+    "prompt": "Where is a let binding declared inside an if block available?",
+    "choices": [
+      {
+        "id": "9853ba43303a",
+        "text": "Only inside the console"
+      },
+      {
+        "id": "c705d7b9ef7c",
+        "text": "Automatically on window"
+      },
+      {
+        "id": "62e3166dd3ef",
+        "text": "Inside that block and its nested scopes"
+      },
+      {
+        "id": "927c4fff43e2",
+        "text": "Everywhere in every module"
+      }
+    ],
+    "correctId": "62e3166dd3ef",
+    "explanation": "let is block-scoped; a nested scope can access it, but code outside the block cannot.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-06",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-06",
+    "prompt": "Which arrow function returns the sum?",
+    "choices": [
+      {
+        "id": "8826c268eff2",
+        "text": "(a, b) => { console.log(a + b); }"
+      },
+      {
+        "id": "5fab01914a7d",
+        "text": "(a, b) => { a + b; }"
+      },
+      {
+        "id": "2fe55f55c6b6",
+        "text": "(a, b) => { const sum = a + b; }"
+      },
+      {
+        "id": "671527ab5784",
+        "text": "(a, b) => a + b"
+      }
+    ],
+    "correctId": "671527ab5784",
+    "explanation": "An expression-bodied arrow implicitly returns its expression; a block body needs an explicit return.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-07",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-07",
+    "prompt": "Why is console.log(result) insufficient when a caller needs result?",
+    "choices": [
+      {
+        "id": "e62a3dfd6eeb",
+        "text": "Logging does not return result to the caller"
+      },
+      {
+        "id": "7b9cda82fa34",
+        "text": "Logging converts the function to a promise"
+      },
+      {
+        "id": "edd2099e1fd5",
+        "text": "Logging always deletes result"
+      },
+      {
+        "id": "1fb6e8053c5a",
+        "text": "Logging is available only in CSS"
+      }
+    ],
+    "correctId": "e62a3dfd6eeb",
+    "explanation": "A function must return a value for another expression to use it; displaying it is a separate effect.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-08",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-08",
+    "prompt": "What can a closure retain access to?",
+    "choices": [
+      {
+        "id": "f885e0428c58",
+        "text": "All deleted browser storage"
+      },
+      {
+        "id": "71e1451df377",
+        "text": "Bindings from its surrounding lexical scope"
+      },
+      {
+        "id": "91f943560dd9",
+        "text": "Only global CSS properties"
+      },
+      {
+        "id": "8973711f595d",
+        "text": "Every variable in unrelated modules"
+      }
+    ],
+    "correctId": "71e1451df377",
+    "explanation": "A closure preserves access to the lexical environment in which the function was created.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-09",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-09",
+    "prompt": "What does remaining(5, 2) return if its body is return Math.max(0, total - completed)?",
+    "choices": [
+      {
+        "id": "d6f6817c3ef0",
+        "text": "7"
+      },
+      {
+        "id": "9ef4886e6053",
+        "text": "3"
+      },
+      {
+        "id": "122ad3b3157a",
+        "text": "0"
+      },
+      {
+        "id": "6a56693f6385",
+        "text": "undefined"
+      }
+    ],
+    "correctId": "9ef4886e6053",
+    "explanation": "Five minus two is three, which is greater than the zero lower bound.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-functions-10",
+    "topic": "javascript-functions",
+    "concept": "javascript-functions-10",
+    "prompt": "Why pass task data as a parameter instead of reading hidden changing state?",
+    "choices": [
+      {
+        "id": "839862a4e3e2",
+        "text": "It disables all runtime errors"
+      },
+      {
+        "id": "e31b47120341",
+        "text": "It makes inputs clearer and tests easier"
+      },
+      {
+        "id": "42b235eca27c",
+        "text": "It automatically persists the task"
+      },
+      {
+        "id": "c105da6be9a6",
+        "text": "It makes every function asynchronous"
+      }
+    ],
+    "correctId": "e31b47120341",
+    "explanation": "Explicit inputs clarify dependencies and let the same logic be checked with different values.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-01",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-01",
+    "prompt": "What does tasks.length describe?",
+    "choices": [
+      {
+        "id": "348ab6be26f4",
+        "text": "The number of completed tasks automatically"
+      },
+      {
+        "id": "c996d50e9a4a",
+        "text": "The number of object properties on the first task"
+      },
+      {
+        "id": "72904aa034cd",
+        "text": "The final valid index"
+      },
+      {
+        "id": "791252b65d9d",
+        "text": "The number of elements"
+      }
+    ],
+    "correctId": "791252b65d9d",
+    "explanation": "length counts array slots; for a dense array the last element is at length minus one.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-02",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-02",
+    "prompt": "Which access reads a key whose name is held in field?",
+    "choices": [
+      {
+        "id": "551523839157",
+        "text": "task.field"
+      },
+      {
+        "id": "190decc1f62e",
+        "text": "task(\"field\")"
+      },
+      {
+        "id": "4fd4b5828d91",
+        "text": "task->field"
+      },
+      {
+        "id": "dd4b5769baa7",
+        "text": "task[field]"
+      }
+    ],
+    "correctId": "dd4b5769baa7",
+    "explanation": "Bracket notation evaluates the field variable, while dot notation uses the literal property name.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-03",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-03",
+    "prompt": "Which array method creates a new transformed array?",
+    "choices": [
+      {
+        "id": "aa650b69352a",
+        "text": "push"
+      },
+      {
+        "id": "9abd66cf7c97",
+        "text": "map"
+      },
+      {
+        "id": "acc07fe6957e",
+        "text": "forEach"
+      },
+      {
+        "id": "4a54bbb1fb83",
+        "text": "find"
+      }
+    ],
+    "correctId": "9abd66cf7c97",
+    "explanation": "map returns one transformed result for each input element in a new array.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-04",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-04",
+    "prompt": "Which method keeps tasks that pass a predicate?",
+    "choices": [
+      {
+        "id": "9967b5d2cca2",
+        "text": "join"
+      },
+      {
+        "id": "b04fdec54d99",
+        "text": "push"
+      },
+      {
+        "id": "ac987a499d6d",
+        "text": "filter"
+      },
+      {
+        "id": "93f534f74322",
+        "text": "map"
+      }
+    ],
+    "correctId": "ac987a499d6d",
+    "explanation": "filter builds a new array containing only elements whose predicate result is truthy.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-05",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-05",
+    "prompt": "What does find return when no element matches?",
+    "choices": [
+      {
+        "id": "2f28c9ad6d50",
+        "text": "false always"
+      },
+      {
+        "id": "0e2bf8a3c583",
+        "text": "undefined"
+      },
+      {
+        "id": "e50eebff4a8b",
+        "text": "The last element"
+      },
+      {
+        "id": "3232524f4f8b",
+        "text": "An empty array"
+      }
+    ],
+    "correctId": "0e2bf8a3c583",
+    "explanation": "find returns the first matching element or undefined if no match exists.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-06",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-06",
+    "prompt": "Which operation mutates an existing array?",
+    "choices": [
+      {
+        "id": "d9a717c2201b",
+        "text": "[...tasks]"
+      },
+      {
+        "id": "537c59fcd3fd",
+        "text": "tasks.map(task => task.title)"
+      },
+      {
+        "id": "6ada423fb497",
+        "text": "tasks.filter(task => !task.done)"
+      },
+      {
+        "id": "b11bf21790fc",
+        "text": "tasks.push(newTask)"
+      }
+    ],
+    "correctId": "b11bf21790fc",
+    "explanation": "push appends to the existing array; the other operations shown create new arrays.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-07",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-07",
+    "prompt": "Does [...tasks] deeply clone every task object?",
+    "choices": [
+      {
+        "id": "c5fe59af7fb3",
+        "text": "No, it copies the outer array only"
+      },
+      {
+        "id": "b820e30632ae",
+        "text": "Yes, every nested value is copied"
+      },
+      {
+        "id": "97fea53e02f0",
+        "text": "No, it returns the exact same array"
+      },
+      {
+        "id": "49bc848fa2dc",
+        "text": "Yes, but only when tasks are completed"
+      }
+    ],
+    "correctId": "c5fe59af7fb3",
+    "explanation": "Spread makes a shallow array copy, so object elements still refer to the same objects.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-08",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-08",
+    "prompt": "Why should task IDs be stable instead of using array indexes?",
+    "choices": [
+      {
+        "id": "81adbe947302",
+        "text": "Filtering or deletion can change indexes"
+      },
+      {
+        "id": "81d802aa95f5",
+        "text": "Every index is globally unique"
+      },
+      {
+        "id": "de341c5d1c9f",
+        "text": "Indexes are never numbers"
+      },
+      {
+        "id": "5193b01bddd5",
+        "text": "Stable IDs automatically encrypt titles"
+      }
+    ],
+    "correctId": "81adbe947302",
+    "explanation": "A stable ID keeps an action attached to its intended task even when list positions change.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-09",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-09",
+    "prompt": "What does tasks.filter(task => !task.done) select?",
+    "choices": [
+      {
+        "id": "1fbb2f186d11",
+        "text": "Only the first task"
+      },
+      {
+        "id": "50d67b35da72",
+        "text": "Every completed task"
+      },
+      {
+        "id": "86dd1c55f96e",
+        "text": "Tasks whose done value is falsy"
+      },
+      {
+        "id": "bd2fb4f98a2c",
+        "text": "Task titles as strings"
+      }
+    ],
+    "correctId": "86dd1c55f96e",
+    "explanation": "The negated done value keeps unfinished tasks in the new filtered array.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-collections-10",
+    "topic": "javascript-collections",
+    "concept": "javascript-collections-10",
+    "prompt": "How can you update one task by ID while creating a new array and changed object?",
+    "choices": [
+      {
+        "id": "6c78a2944e54",
+        "text": "Use join to rebuild objects"
+      },
+      {
+        "id": "e1e966f9bc55",
+        "text": "Use find without changing its result"
+      },
+      {
+        "id": "91518d4c71a8",
+        "text": "Change the displayed title and assume state follows"
+      },
+      {
+        "id": "e726832aa667",
+        "text": "Use map with an ID check and object spread"
+      }
+    ],
+    "correctId": "e726832aa667",
+    "explanation": "map can retain unaffected objects and return a copied, updated object for the selected ID.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-01",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-01",
+    "prompt": "What is the DOM?",
+    "choices": [
+      {
+        "id": "d127d56ab72a",
+        "text": "A Git branch"
+      },
+      {
+        "id": "c010c95c9682",
+        "text": "A stylesheet compiler"
+      },
+      {
+        "id": "2365586e1d53",
+        "text": "An object representation of the document"
+      },
+      {
+        "id": "6f7f5d3a4d9c",
+        "text": "A database of all users"
+      }
+    ],
+    "correctId": "2365586e1d53",
+    "explanation": "The browser exposes document structure as objects that JavaScript can inspect and update.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-02",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-02",
+    "prompt": "What does querySelector return if nothing matches?",
+    "choices": [
+      {
+        "id": "0e52a1abd7f1",
+        "text": "null"
+      },
+      {
+        "id": "4f4377335015",
+        "text": "An empty array"
+      },
+      {
+        "id": "f5492c4d75ea",
+        "text": "The body element"
+      },
+      {
+        "id": "20508779e500",
+        "text": "An empty element"
+      }
+    ],
+    "correctId": "0e52a1abd7f1",
+    "explanation": "A missing match returns null, so code should handle the absence before using the result.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-03",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-03",
+    "prompt": "Which method creates a new li element?",
+    "choices": [
+      {
+        "id": "395f26d0e56b",
+        "text": "document.querySelector(\"new li\")"
+      },
+      {
+        "id": "ab3da06a8c97",
+        "text": "document.append(\"li\")"
+      },
+      {
+        "id": "dc11b8c2a564",
+        "text": "document.createTextNode(\"<li>\")"
+      },
+      {
+        "id": "f78197c65fc5",
+        "text": "document.createElement(\"li\")"
+      }
+    ],
+    "correctId": "f78197c65fc5",
+    "explanation": "createElement constructs an element node; a text node containing markup remains plain text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-04",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-04",
+    "prompt": "Which property should receive a learner’s plain task title?",
+    "choices": [
+      {
+        "id": "a6ec01f08049",
+        "text": "textContent"
+      },
+      {
+        "id": "e8b8f7a7b41f",
+        "text": "srcdoc"
+      },
+      {
+        "id": "a4b8c756bd0e",
+        "text": "innerHTML"
+      },
+      {
+        "id": "5db516d45c17",
+        "text": "outerHTML"
+      }
+    ],
+    "correctId": "a6ec01f08049",
+    "explanation": "textContent treats the title as text rather than parsing it into potentially active markup.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-05",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-05",
+    "prompt": "What happens when textContent is set to \"<b>Study</b>\"?",
+    "choices": [
+      {
+        "id": "043f2637dd84",
+        "text": "The angle-bracket text is displayed literally"
+      },
+      {
+        "id": "952da75c803c",
+        "text": "A b element is created"
+      },
+      {
+        "id": "fc76e807f240",
+        "text": "The browser executes it as JavaScript"
+      },
+      {
+        "id": "fd9bc14984d8",
+        "text": "Study becomes bold because of the b tag"
+      }
+    ],
+    "correctId": "043f2637dd84",
+    "explanation": "textContent does not parse tags, so the string remains literal text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-06",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-06",
+    "prompt": "Which method places a new node at the end of a list?",
+    "choices": [
+      {
+        "id": "52d7d1f0edba",
+        "text": "list.querySelector(item)"
+      },
+      {
+        "id": "637c352163e1",
+        "text": "list.append(item)"
+      },
+      {
+        "id": "82583f181c10",
+        "text": "list.matches(item)"
+      },
+      {
+        "id": "6421a68e42d6",
+        "text": "list.getAttribute(item)"
+      }
+    ],
+    "correctId": "637c352163e1",
+    "explanation": "append inserts the node as a child, after existing children of the selected list.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-07",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-07",
+    "prompt": "What does classList help manage?",
+    "choices": [
+      {
+        "id": "7c52fdd2b804",
+        "text": "All user accounts"
+      },
+      {
+        "id": "ac4c7d99b1fb",
+        "text": "All JavaScript variable declarations"
+      },
+      {
+        "id": "a5a799612973",
+        "text": "An element’s CSS classes"
+      },
+      {
+        "id": "337f0a97a019",
+        "text": "A JSON response schema"
+      }
+    ],
+    "correctId": "a5a799612973",
+    "explanation": "classList provides methods to change class tokens without manually rebuilding the whole class string.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-08",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-08",
+    "prompt": "Why keep task data separately from rendered DOM text?",
+    "choices": [
+      {
+        "id": "7fcea22aec93",
+        "text": "It removes the need for event handlers"
+      },
+      {
+        "id": "4a0ce4b3e9ad",
+        "text": "The UI can be derived consistently from state"
+      },
+      {
+        "id": "eb4f32d23030",
+        "text": "The DOM cannot display strings"
+      },
+      {
+        "id": "6e0fc7e7e3c4",
+        "text": "Arrays automatically update every element"
+      }
+    ],
+    "correctId": "4a0ce4b3e9ad",
+    "explanation": "Separate state lets rendering, filters, and saving share one consistent collection of tasks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-09",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-09",
+    "prompt": "After a DOM update, which concern still matters?",
+    "choices": [
+      {
+        "id": "5f7a41c133ba",
+        "text": "Only pointer hover styling"
+      },
+      {
+        "id": "22c7e308a2a7",
+        "text": "Meaningful elements and keyboard access"
+      },
+      {
+        "id": "460a9cf6e38a",
+        "text": "Whether every class name is one letter"
+      },
+      {
+        "id": "3f14438ed2cc",
+        "text": "Only how many divs were created"
+      }
+    ],
+    "correctId": "22c7e308a2a7",
+    "explanation": "Interactive content must remain usable with the keyboard and understandable through its semantics.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-dom-10",
+    "topic": "javascript-dom",
+    "concept": "javascript-dom-10",
+    "prompt": "Why is user-controlled innerHTML risky?",
+    "choices": [
+      {
+        "id": "7be3f7e054b0",
+        "text": "The string is interpreted as markup"
+      },
+      {
+        "id": "6d607cda1272",
+        "text": "It automatically sanitizes every script"
+      },
+      {
+        "id": "709bae4959aa",
+        "text": "It always throws on whitespace"
+      },
+      {
+        "id": "34b7193ce35b",
+        "text": "It can only display numbers"
+      }
+    ],
+    "correctId": "7be3f7e054b0",
+    "explanation": "Markup interpretation can turn untrusted input into unsafe page content; render plain titles as text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-01",
+    "topic": "javascript-events",
+    "concept": "javascript-events-01",
+    "prompt": "Which registration waits for a click before invoking handleClick?",
+    "choices": [
+      {
+        "id": "4965ab2c58fb",
+        "text": "button.addEventListener(\"click\", handleClick)"
+      },
+      {
+        "id": "f9aabaf66362",
+        "text": "handleClick(\"click\", button)"
+      },
+      {
+        "id": "e33bd84bba70",
+        "text": "button.click = handleClick()"
+      },
+      {
+        "id": "5abedd99fb6e",
+        "text": "button.addEventListener(\"click\", handleClick())"
+      }
+    ],
+    "correctId": "4965ab2c58fb",
+    "explanation": "Pass the callback function itself; parentheses would invoke it during registration.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-02",
+    "topic": "javascript-events",
+    "concept": "javascript-events-02",
+    "prompt": "Which event should handle both Enter and clicking a form’s submit button?",
+    "choices": [
+      {
+        "id": "cde502812eba",
+        "text": "keydown on the body only"
+      },
+      {
+        "id": "c7dbb0748be2",
+        "text": "mouseover on the button"
+      },
+      {
+        "id": "17e3da1407e0",
+        "text": "load on the input"
+      },
+      {
+        "id": "ea182307256e",
+        "text": "submit on the form"
+      }
+    ],
+    "correctId": "ea182307256e",
+    "explanation": "The form submit event unifies normal keyboard and pointer submission paths.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-03",
+    "topic": "javascript-events",
+    "concept": "javascript-events-03",
+    "prompt": "What does preventDefault do for a cancelable submit event?",
+    "choices": [
+      {
+        "id": "807f1248207e",
+        "text": "Disables every future submit event"
+      },
+      {
+        "id": "7e89255261c2",
+        "text": "Deletes the form data"
+      },
+      {
+        "id": "953188cbc6e2",
+        "text": "Cancels its default submission behavior"
+      },
+      {
+        "id": "c0f5fbbcc6a3",
+        "text": "Stops all event propagation automatically"
+      }
+    ],
+    "correctId": "953188cbc6e2",
+    "explanation": "preventDefault cancels the default action; propagation is a separate event mechanism.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-04",
+    "topic": "javascript-events",
+    "concept": "javascript-events-04",
+    "prompt": "What is event.currentTarget inside a listener?",
+    "choices": [
+      {
+        "id": "63446f1feb2f",
+        "text": "Always the deepest child clicked"
+      },
+      {
+        "id": "6093516291a7",
+        "text": "The element whose listener is running"
+      },
+      {
+        "id": "9e77f1b4cc6a",
+        "text": "The next element in tab order"
+      },
+      {
+        "id": "e00e14709251",
+        "text": "Always document.body"
+      }
+    ],
+    "correctId": "6093516291a7",
+    "explanation": "currentTarget identifies the listener’s element, which can differ from the original target.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-05",
+    "topic": "javascript-events",
+    "concept": "javascript-events-05",
+    "prompt": "What is event.target?",
+    "choices": [
+      {
+        "id": "2c48eec7fff8",
+        "text": "The element that will be created next"
+      },
+      {
+        "id": "7ef912b13926",
+        "text": "The function registered as the handler"
+      },
+      {
+        "id": "6a449f2d315b",
+        "text": "Always the form"
+      },
+      {
+        "id": "9726f22293d3",
+        "text": "The element where the event originated"
+      }
+    ],
+    "correctId": "9726f22293d3",
+    "explanation": "target identifies the event’s origin; a child can be the target when a parent handles it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-06",
+    "topic": "javascript-events",
+    "concept": "javascript-events-06",
+    "prompt": "Which property gives a checkbox’s current boolean state?",
+    "choices": [
+      {
+        "id": "1e959ad82d1d",
+        "text": "textContent"
+      },
+      {
+        "id": "9260bbf32c92",
+        "text": "name"
+      },
+      {
+        "id": "28775f794aa9",
+        "text": "value always"
+      },
+      {
+        "id": "08e147d866a1",
+        "text": "checked"
+      }
+    ],
+    "correctId": "08e147d866a1",
+    "explanation": "checked is a boolean describing whether the checkbox is selected.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-07",
+    "topic": "javascript-events",
+    "concept": "javascript-events-07",
+    "prompt": "What should happen to a title containing only spaces?",
+    "choices": [
+      {
+        "id": "4ffe96f63575",
+        "text": "Use its spaces as an ID"
+      },
+      {
+        "id": "f68cac7343d6",
+        "text": "Convert it to the number zero"
+      },
+      {
+        "id": "4ddd2d537ff3",
+        "text": "Reject it after trimming"
+      },
+      {
+        "id": "28a7a9f6338b",
+        "text": "Save it as a meaningful task"
+      }
+    ],
+    "correctId": "4ddd2d537ff3",
+    "explanation": "Trimming exposes an empty title so the form can give a useful validation message.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-08",
+    "topic": "javascript-events",
+    "concept": "javascript-events-08",
+    "prompt": "Why use a real button instead of a clickable decorative div?",
+    "choices": [
+      {
+        "id": "b8919767a4a5",
+        "text": "A div cannot contain text"
+      },
+      {
+        "id": "5ed15f31c63a",
+        "text": "A button always saves to a database"
+      },
+      {
+        "id": "be88a685fe69",
+        "text": "A button provides native keyboard behavior"
+      },
+      {
+        "id": "ab8c8b69ee28",
+        "text": "Buttons never need labels"
+      }
+    ],
+    "correctId": "be88a685fe69",
+    "explanation": "Native buttons support standard activation and semantics, reducing custom keyboard code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-09",
+    "topic": "javascript-events",
+    "concept": "javascript-events-09",
+    "prompt": "Does browser form validation replace server validation?",
+    "choices": [
+      {
+        "id": "a91328af6dc3",
+        "text": "Yes, when the label is visible"
+      },
+      {
+        "id": "0c65c88b9ff3",
+        "text": "No, the server must validate independently"
+      },
+      {
+        "id": "a95b852416c9",
+        "text": "Yes, because HTML is immutable"
+      },
+      {
+        "id": "46230e8d16c3",
+        "text": "Only for users on phones"
+      }
+    ],
+    "correctId": "0c65c88b9ff3",
+    "explanation": "Client checks improve feedback but can be bypassed, so a future server must enforce its own rules.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-events-10",
+    "topic": "javascript-events",
+    "concept": "javascript-events-10",
+    "prompt": "After adding a task, what is a useful focus destination?",
+    "choices": [
+      {
+        "id": "9682cb658525",
+        "text": "The title input for the next task"
+      },
+      {
+        "id": "2b472d1588bd",
+        "text": "A hidden decorative icon"
+      },
+      {
+        "id": "36739fcb31ae",
+        "text": "An element that was just removed"
+      },
+      {
+        "id": "d6948000bee0",
+        "text": "The browser address bar"
+      }
+    ],
+    "correctId": "9682cb658525",
+    "explanation": "Returning focus to the task field supports repeated entry and keyboard continuity.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-01",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-01",
+    "prompt": "Which keyword exposes a function from a JavaScript module?",
+    "choices": [
+      {
+        "id": "150b3e429717",
+        "text": "export"
+      },
+      {
+        "id": "e37829aacae5",
+        "text": "requirement"
+      },
+      {
+        "id": "3088ff6b0f31",
+        "text": "defer"
+      },
+      {
+        "id": "65142854055e",
+        "text": "publicly"
+      }
+    ],
+    "correctId": "150b3e429717",
+    "explanation": "export makes a binding available for other modules to import.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-02",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-02",
+    "prompt": "Which HTML script attribute enables native browser module syntax?",
+    "choices": [
+      {
+        "id": "ced6876df03a",
+        "text": "rel=\"module\""
+      },
+      {
+        "id": "b84aa834b81c",
+        "text": "type=\"module\""
+      },
+      {
+        "id": "e48349fcc93a",
+        "text": "type=\"json\""
+      },
+      {
+        "id": "8dad2d02732b",
+        "text": "async=\"module\""
+      }
+    ],
+    "correctId": "b84aa834b81c",
+    "explanation": "The module type tells the browser to load the file and its imports as JavaScript modules.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-03",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-03",
+    "prompt": "Which browser import path explicitly refers to tasks.js in the same folder?",
+    "choices": [
+      {
+        "id": "0c9ba3f3b417",
+        "text": "\"../tasks.css\""
+      },
+      {
+        "id": "61bf2024f172",
+        "text": "\"./tasks.js\""
+      },
+      {
+        "id": "b939201cb6c8",
+        "text": "\"#tasks.js\""
+      },
+      {
+        "id": "5f5761f6d75a",
+        "text": "\"tasks\" without a mapping"
+      }
+    ],
+    "correctId": "61bf2024f172",
+    "explanation": "The relative path identifies the neighboring JavaScript module without requiring an import map.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-04",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-04",
+    "prompt": "Why serve a module project over HTTP during development?",
+    "choices": [
+      {
+        "id": "48ebca59d031",
+        "text": "file:// loading can fail because of module security rules"
+      },
+      {
+        "id": "6ee24dd21fe2",
+        "text": "It automatically uploads tasks to the cloud"
+      },
+      {
+        "id": "d6c3a0723d79",
+        "text": "HTTP turns all functions into promises"
+      },
+      {
+        "id": "e7d824ea86b0",
+        "text": "Modules cannot use local files on a server"
+      }
+    ],
+    "correctId": "48ebca59d031",
+    "explanation": "A local HTTP server gives module requests the origin and content handling browsers expect.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-05",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-05",
+    "prompt": "How are module scripts scheduled by default?",
+    "choices": [
+      {
+        "id": "95aac0d92f85",
+        "text": "They always run before parsing starts"
+      },
+      {
+        "id": "f195342cf810",
+        "text": "They run only after a click"
+      },
+      {
+        "id": "78a7b6588a5e",
+        "text": "They are deferred"
+      },
+      {
+        "id": "bee78d0dfa56",
+        "text": "They require a setTimeout wrapper"
+      }
+    ],
+    "correctId": "78a7b6588a5e",
+    "explanation": "Module scripts defer execution by default, allowing document parsing to finish first.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-06",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-06",
+    "prompt": "Can importing code reassign an imported binding?",
+    "choices": [
+      {
+        "id": "2ef2e23c7221",
+        "text": "Yes, if its name is lowercase"
+      },
+      {
+        "id": "d0a100262337",
+        "text": "Yes, using let on the same import"
+      },
+      {
+        "id": "83dd93fea07d",
+        "text": "No"
+      },
+      {
+        "id": "6c4dd45e74df",
+        "text": "Only after logging it"
+      }
+    ],
+    "correctId": "83dd93fea07d",
+    "explanation": "Imports are read-only bindings from the importing module’s perspective.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-07",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-07",
+    "prompt": "Where do module-level declarations normally live?",
+    "choices": [
+      {
+        "id": "558d4da731eb",
+        "text": "Inside localStorage"
+      },
+      {
+        "id": "3a4ab5b59ace",
+        "text": "Automatically on window"
+      },
+      {
+        "id": "7bebbca8b2cb",
+        "text": "The module’s own scope"
+      },
+      {
+        "id": "8670bac6e6e3",
+        "text": "Inside every other module"
+      }
+    ],
+    "correctId": "7bebbca8b2cb",
+    "explanation": "Modules have their own scope instead of placing every declaration in the global scope.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-08",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-08",
+    "prompt": "A named import says normalizeTitle, but the file exports cleanTitle. What needs fixing?",
+    "choices": [
+      {
+        "id": "0c66c5d9d1e1",
+        "text": "Add more CSS classes"
+      },
+      {
+        "id": "6a478f6453f3",
+        "text": "Wrap the import in console.log"
+      },
+      {
+        "id": "1863504741c5",
+        "text": "Clear every stored task"
+      },
+      {
+        "id": "d1e13a60c9f4",
+        "text": "Match the exported name or use an explicit alias"
+      }
+    ],
+    "correctId": "d1e13a60c9f4",
+    "explanation": "Named imports must correspond to actual exports, with aliases used deliberately when desired.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-09",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-09",
+    "prompt": "A browser refuses a module because it received HTML. Where should you inspect?",
+    "choices": [
+      {
+        "id": "60ce7b86bd2c",
+        "text": "The request URL, status, and content type in Network"
+      },
+      {
+        "id": "14799412a906",
+        "text": "Only the font file"
+      },
+      {
+        "id": "917f4c77e077",
+        "text": "The task checkbox color"
+      },
+      {
+        "id": "fa1c0310e6da",
+        "text": "The number of quiz attempts"
+      }
+    ],
+    "correctId": "60ce7b86bd2c",
+    "explanation": "A wrong path or server response can return HTML instead of JavaScript, causing module loading to fail.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-modules-10",
+    "topic": "javascript-modules",
+    "concept": "javascript-modules-10",
+    "prompt": "How does separating validation into a module help?",
+    "choices": [
+      {
+        "id": "352bda9528c7",
+        "text": "It creates a production database"
+      },
+      {
+        "id": "bb013f137ab6",
+        "text": "It automatically prevents every invalid input"
+      },
+      {
+        "id": "cd210b895906",
+        "text": "It can be reused and checked independently of rendering"
+      },
+      {
+        "id": "a0d9b468e1d2",
+        "text": "It makes error messages unnecessary"
+      }
+    ],
+    "correctId": "cd210b895906",
+    "explanation": "A focused module exposes a small responsibility that can be tested without the page interface.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-01",
+    "topic": "javascript-async",
+    "concept": "javascript-async-01",
+    "prompt": "What does a promise represent?",
+    "choices": [
+      {
+        "id": "3b3c685db5dd",
+        "text": "A permanently paused thread"
+      },
+      {
+        "id": "636edf975ef3",
+        "text": "A browser storage key"
+      },
+      {
+        "id": "a152c2785f8e",
+        "text": "A result that must already be available"
+      },
+      {
+        "id": "a5a515ef1846",
+        "text": "An eventual fulfillment or rejection"
+      }
+    ],
+    "correctId": "a5a515ef1846",
+    "explanation": "A promise tracks an asynchronous outcome rather than being the completed value itself.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-02",
+    "topic": "javascript-async",
+    "concept": "javascript-async-02",
+    "prompt": "What does calling an async function return?",
+    "choices": [
+      {
+        "id": "69f83e984db8",
+        "text": "A DOM element"
+      },
+      {
+        "id": "833ccbad3c80",
+        "text": "Always a string"
+      },
+      {
+        "id": "5bb00375dbea",
+        "text": "Always undefined"
+      },
+      {
+        "id": "462c5452bc84",
+        "text": "A promise"
+      }
+    ],
+    "correctId": "462c5452bc84",
+    "explanation": "An async function wraps its eventual return value or thrown error in a promise.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-03",
+    "topic": "javascript-async",
+    "concept": "javascript-async-03",
+    "prompt": "What does await pause?",
+    "choices": [
+      {
+        "id": "0100b62defd7",
+        "text": "The network connection itself"
+      },
+      {
+        "id": "93a7913cc89c",
+        "text": "The surrounding async function’s execution"
+      },
+      {
+        "id": "ace59d5494b9",
+        "text": "All browser events permanently"
+      },
+      {
+        "id": "3e28b6c008f9",
+        "text": "Every JavaScript program on every tab"
+      }
+    ],
+    "correctId": "93a7913cc89c",
+    "explanation": "await suspends that async flow while other browser work can continue.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-04",
+    "topic": "javascript-async",
+    "concept": "javascript-async-04",
+    "prompt": "How should a rejected awaited operation be handled locally?",
+    "choices": [
+      {
+        "id": "290915a289e4",
+        "text": "Place a catch keyword in CSS"
+      },
+      {
+        "id": "4708f740136a",
+        "text": "Use try/catch around the await"
+      },
+      {
+        "id": "9249a4106731",
+        "text": "Ignore it because await guarantees success"
+      },
+      {
+        "id": "497a2633c568",
+        "text": "Log the promise without handling rejection"
+      }
+    ],
+    "correctId": "4708f740136a",
+    "explanation": "A rejection at await acts like a thrown error and can be caught by the enclosing try/catch.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-05",
+    "topic": "javascript-async",
+    "concept": "javascript-async-05",
+    "prompt": "What is finally useful for after success or failure?",
+    "choices": [
+      {
+        "id": "0b4a393fa3ae",
+        "text": "Restoring a loading control"
+      },
+      {
+        "id": "c11ac07d857e",
+        "text": "Suppressing all future errors"
+      },
+      {
+        "id": "44ff32cd179f",
+        "text": "Converting every response to JSON"
+      },
+      {
+        "id": "f9f156fea662",
+        "text": "Running only on successful results"
+      }
+    ],
+    "correctId": "0b4a393fa3ae",
+    "explanation": "finally runs cleanup whether the try succeeds or throws, such as resetting a disabled button.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-06",
+    "topic": "javascript-async",
+    "concept": "javascript-async-06",
+    "prompt": "Which logs first: synchronous code after an async call, or code after its first pending await?",
+    "choices": [
+      {
+        "id": "ea3fdba9c39d",
+        "text": "The code after the await"
+      },
+      {
+        "id": "f0381f00b035",
+        "text": "The synchronous code after the call"
+      },
+      {
+        "id": "7beeb8fc4adb",
+        "text": "They must log at exactly the same instant"
+      },
+      {
+        "id": "77dcedac1411",
+        "text": "Neither can log"
+      }
+    ],
+    "correctId": "f0381f00b035",
+    "explanation": "The async function yields at await, allowing the current synchronous work to finish first.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-07",
+    "topic": "javascript-async",
+    "concept": "javascript-async-07",
+    "prompt": "Does try/catch catch a later rejected promise if it is not awaited or handled?",
+    "choices": [
+      {
+        "id": "f1fc018df817",
+        "text": "Always"
+      },
+      {
+        "id": "59e5df018c48",
+        "text": "Not simply because it was created inside try"
+      },
+      {
+        "id": "4bb558fc325b",
+        "text": "Only on mobile browsers"
+      },
+      {
+        "id": "60d56ea28497",
+        "text": "Only when its name contains async"
+      }
+    ],
+    "correctId": "59e5df018c48",
+    "explanation": "An unhandled later rejection is outside that synchronous try path; await it or attach rejection handling.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-08",
+    "topic": "javascript-async",
+    "concept": "javascript-async-08",
+    "prompt": "What does Promise.all do with independent promises?",
+    "choices": [
+      {
+        "id": "e4afdb5562ef",
+        "text": "Ignores rejected inputs"
+      },
+      {
+        "id": "b89f7a7a5289",
+        "text": "Runs only the last promise"
+      },
+      {
+        "id": "8c4d46266bb5",
+        "text": "Forces every operation to finish before starting the next"
+      },
+      {
+        "id": "7bff68abd73b",
+        "text": "Waits for all to fulfill and rejects if an input rejects"
+      }
+    ],
+    "correctId": "7bff68abd73b",
+    "explanation": "Promise.all combines outcomes and rejects on a rejection; it does not silently discard failures.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-09",
+    "topic": "javascript-async",
+    "concept": "javascript-async-09",
+    "prompt": "What is missing from a UI that shows only the happy path of a request?",
+    "choices": [
+      {
+        "id": "bdfd1fd0ff5d",
+        "text": "A larger array index"
+      },
+      {
+        "id": "e01a49cb56c2",
+        "text": "Loading and failure feedback"
+      },
+      {
+        "id": "def12637d964",
+        "text": "Another global variable with the same name"
+      },
+      {
+        "id": "c1350bf42473",
+        "text": "A second logo"
+      }
+    ],
+    "correctId": "e01a49cb56c2",
+    "explanation": "An asynchronous UI should explain pending work and provide recovery when it fails.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-async-10",
+    "topic": "javascript-async",
+    "concept": "javascript-async-10",
+    "prompt": "What does awaiting Promise.resolve(\"Practice\") produce?",
+    "choices": [
+      {
+        "id": "8267bbe2e7c3",
+        "text": "An array containing \"Practice\""
+      },
+      {
+        "id": "e1056ea02a25",
+        "text": "A Response object"
+      },
+      {
+        "id": "f8bc3db3eada",
+        "text": "The word \"Promise\""
+      },
+      {
+        "id": "d220c4b636af",
+        "text": "The string \"Practice\""
+      }
+    ],
+    "correctId": "d220c4b636af",
+    "explanation": "Await unwraps the fulfilled promise’s value, which is the supplied string.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-01",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-01",
+    "prompt": "What does a successful fetch call initially resolve to?",
+    "choices": [
+      {
+        "id": "0872d91959ee",
+        "text": "A Response object"
+      },
+      {
+        "id": "8c12b9433da5",
+        "text": "A saved task array automatically"
+      },
+      {
+        "id": "a26148a4db5f",
+        "text": "A DOM list"
+      },
+      {
+        "id": "4f23530c78e8",
+        "text": "Parsed JSON automatically"
+      }
+    ],
+    "correctId": "0872d91959ee",
+    "explanation": "The response provides status and body-reading methods; parsing its body is a separate step.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-02",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-02",
+    "prompt": "Does fetch automatically reject for every HTTP 404 response?",
+    "choices": [
+      {
+        "id": "4b70b7270328",
+        "text": "Only when the request uses GET"
+      },
+      {
+        "id": "8ee1279faf5d",
+        "text": "No, check response.ok"
+      },
+      {
+        "id": "31256a908aba",
+        "text": "Only when the body is JSON"
+      },
+      {
+        "id": "de54b2aa12d7",
+        "text": "Yes, before returning any Response"
+      }
+    ],
+    "correctId": "8ee1279faf5d",
+    "explanation": "HTTP error statuses can still produce fulfilled fetch promises, so check the status explicitly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-03",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-03",
+    "prompt": "Which status range makes response.ok true?",
+    "choices": [
+      {
+        "id": "182b6b436985",
+        "text": "300–399"
+      },
+      {
+        "id": "7af62ad9ade6",
+        "text": "400–599"
+      },
+      {
+        "id": "202e89432827",
+        "text": "100–199"
+      },
+      {
+        "id": "27061b9ff4e1",
+        "text": "200–299"
+      }
+    ],
+    "correctId": "27061b9ff4e1",
+    "explanation": "The ok property identifies successful HTTP response statuses in the 200 range.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-04",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-04",
+    "prompt": "What does response.json() return?",
+    "choices": [
+      {
+        "id": "4a38eb507cf0",
+        "text": "A guarantee of the expected data schema"
+      },
+      {
+        "id": "449ace413a72",
+        "text": "An already rendered table"
+      },
+      {
+        "id": "20e02f495b67",
+        "text": "A promise for the parsed body"
+      },
+      {
+        "id": "40984f76d31d",
+        "text": "The request URL"
+      }
+    ],
+    "correctId": "20e02f495b67",
+    "explanation": "Body parsing is asynchronous and can fail; the parsed value still needs shape validation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-05",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-05",
+    "prompt": "Why check Array.isArray(data) before treating JSON as a task list?",
+    "choices": [
+      {
+        "id": "cac7b42c944d",
+        "text": "Every JSON value is always an array"
+      },
+      {
+        "id": "15e818cc56e4",
+        "text": "It checks the HTTP certificate"
+      },
+      {
+        "id": "9ca83820b741",
+        "text": "It automatically validates every task title"
+      },
+      {
+        "id": "328ae5503a10",
+        "text": "Valid JSON may have a different shape"
+      }
+    ],
+    "correctId": "328ae5503a10",
+    "explanation": "JSON syntax validity does not prove the data is an array or that its entries meet your requirements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-06",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-06",
+    "prompt": "Which source makes the starter’s ideas exercise reproducible without a third-party API?",
+    "choices": [
+      {
+        "id": "1019da2f7ed1",
+        "text": "A bundled sample.json file"
+      },
+      {
+        "id": "1792685ab745",
+        "text": "An invented production endpoint"
+      },
+      {
+        "id": "08a1ba19f8e2",
+        "text": "A private token embedded in the page"
+      },
+      {
+        "id": "b5ed6723f80d",
+        "text": "An undocumented external URL"
+      }
+    ],
+    "correctId": "1019da2f7ed1",
+    "explanation": "A local sample file can exercise requests and failures without external credentials or service availability.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-07",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-07",
+    "prompt": "What should the UI show when a request fails?",
+    "choices": [
+      {
+        "id": "afc7dc780662",
+        "text": "A clear failure message and a retry path"
+      },
+      {
+        "id": "4134a1b8edd3",
+        "text": "An endless loading label"
+      },
+      {
+        "id": "177e274c9482",
+        "text": "A fake successful task list"
+      },
+      {
+        "id": "c5838cd3b97f",
+        "text": "Only the previous success message"
+      }
+    ],
+    "correctId": "afc7dc780662",
+    "explanation": "Honest error feedback distinguishes failure from success and gives the learner a way to recover.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-08",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-08",
+    "prompt": "Where does permission for reading a cross-origin API response come from?",
+    "choices": [
+      {
+        "id": "fab84279433f",
+        "text": "Setting no-cors to unlock JSON"
+      },
+      {
+        "id": "295e79eb8257",
+        "text": "The server’s CORS policy"
+      },
+      {
+        "id": "c130d5320fa1",
+        "text": "Changing the CSS origin color"
+      },
+      {
+        "id": "dc9f892007cb",
+        "text": "Renaming the fetch variable"
+      }
+    ],
+    "correctId": "295e79eb8257",
+    "explanation": "CORS is enforced using server-provided permission; client renaming or no-cors cannot grant readable access.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-09",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-09",
+    "prompt": "Why is no-cors not a fix for reading a blocked JSON API?",
+    "choices": [
+      {
+        "id": "b58a632af91e",
+        "text": "It can give an opaque response that code cannot read"
+      },
+      {
+        "id": "ab1f24fe8094",
+        "text": "It grants all origin permissions"
+      },
+      {
+        "id": "4621eb1dccc2",
+        "text": "It disables the network"
+      },
+      {
+        "id": "909e375852d0",
+        "text": "It converts JSON into an array"
+      }
+    ],
+    "correctId": "b58a632af91e",
+    "explanation": "An opaque response does not expose its body as readable JSON to the requesting code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-fetch-10",
+    "topic": "javascript-fetch",
+    "concept": "javascript-fetch-10",
+    "prompt": "A request returns status 200 but malformed JSON. What can fail next?",
+    "choices": [
+      {
+        "id": "928e4d5cb54b",
+        "text": "The already completed HTTP status check"
+      },
+      {
+        "id": "2407adfb879a",
+        "text": "Only the CSS parser"
+      },
+      {
+        "id": "672189fed13d",
+        "text": "The form’s label association"
+      },
+      {
+        "id": "3e8624f812aa",
+        "text": "The response.json() parsing step"
+      }
+    ],
+    "correctId": "3e8624f812aa",
+    "explanation": "A successful HTTP response does not guarantee valid JSON; the parsing promise may reject.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-01",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-01",
+    "prompt": "What value type does localStorage store?",
+    "choices": [
+      {
+        "id": "fec4d1eb658f",
+        "text": "Strings"
+      },
+      {
+        "id": "9899949fe918",
+        "text": "Functions with their closures"
+      },
+      {
+        "id": "f98c34c52713",
+        "text": "Live JavaScript objects"
+      },
+      {
+        "id": "633a7216c560",
+        "text": "DOM elements"
+      }
+    ],
+    "correctId": "fec4d1eb658f",
+    "explanation": "Structured data must be encoded to strings and decoded when it is read back.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-02",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-02",
+    "prompt": "Which operation encodes an ordinary task array for storage?",
+    "choices": [
+      {
+        "id": "992cfaec3517",
+        "text": "localStorage.toArray(tasks)"
+      },
+      {
+        "id": "3e35d16a4a87",
+        "text": "tasks.querySelector()"
+      },
+      {
+        "id": "82fbd6c805b9",
+        "text": "JSON.parse(tasks)"
+      },
+      {
+        "id": "088eab783c4a",
+        "text": "JSON.stringify(tasks)"
+      }
+    ],
+    "correctId": "088eab783c4a",
+    "explanation": "JSON.stringify serializes supported data into JSON text that storage can hold.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-03",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-03",
+    "prompt": "What does getItem return when its key is absent?",
+    "choices": [
+      {
+        "id": "1e07d5de98b5",
+        "text": "null"
+      },
+      {
+        "id": "92fb1eaa1024",
+        "text": "An empty array"
+      },
+      {
+        "id": "c2db9d11c64a",
+        "text": "false"
+      },
+      {
+        "id": "5da8b8a1f213",
+        "text": "An empty object"
+      }
+    ],
+    "correctId": "1e07d5de98b5",
+    "explanation": "A missing key returns null, which should be handled before decoding expected data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-04",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-04",
+    "prompt": "Which operation removes only the planner’s dedicated key?",
+    "choices": [
+      {
+        "id": "044c9b6ba54b",
+        "text": "localStorage.removeItem(key)"
+      },
+      {
+        "id": "0c253b6aa656",
+        "text": "delete tasks.length"
+      },
+      {
+        "id": "c4376b439adc",
+        "text": "localStorage.clear()"
+      },
+      {
+        "id": "988642291484",
+        "text": "JSON.parse(key)"
+      }
+    ],
+    "correctId": "044c9b6ba54b",
+    "explanation": "removeItem targets one named key; clear affects all storage entries for the origin.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-05",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-05",
+    "prompt": "Why avoid localStorage.clear() in a single feature’s reset button?",
+    "choices": [
+      {
+        "id": "5d5d2f92f3f6",
+        "text": "It cannot remove any data"
+      },
+      {
+        "id": "25759a88f9d6",
+        "text": "It may erase unrelated features’ data on the same origin"
+      },
+      {
+        "id": "8a5140a85f2f",
+        "text": "It only removes CSS"
+      },
+      {
+        "id": "e6ab0350ac4a",
+        "text": "It permanently deletes the browser"
+      }
+    ],
+    "correctId": "25759a88f9d6",
+    "explanation": "The storage area is shared by an origin, so clearing it is broader than resetting one planner.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-06",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-06",
+    "prompt": "Does browser local storage automatically sync tasks across devices?",
+    "choices": [
+      {
+        "id": "500508b9acf4",
+        "text": "No"
+      },
+      {
+        "id": "7c436c9127f3",
+        "text": "Yes, for every signed-in website"
+      },
+      {
+        "id": "313149ed293c",
+        "text": "Only when the title is short"
+      },
+      {
+        "id": "d64c136e97cc",
+        "text": "Yes, if the key contains cloud"
+      }
+    ],
+    "correctId": "500508b9acf4",
+    "explanation": "Local storage is browser storage, not a backend account or cross-device synchronization system.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-07",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-07",
+    "prompt": "Why catch errors around setItem?",
+    "choices": [
+      {
+        "id": "b6461f6c454c",
+        "text": "setItem always requires a server account"
+      },
+      {
+        "id": "174bb604b2b9",
+        "text": "It can only store even numbers"
+      },
+      {
+        "id": "d127ca8a13d3",
+        "text": "Storage may be blocked or full"
+      },
+      {
+        "id": "ca63265d8a5b",
+        "text": "The method returns a promise that must always resolve"
+      }
+    ],
+    "correctId": "d127ca8a13d3",
+    "explanation": "Writing can throw when storage is unavailable or its limits are reached, so report that failure honestly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-08",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-08",
+    "prompt": "Why validate data after JSON.parse succeeds?",
+    "choices": [
+      {
+        "id": "f8401c958950",
+        "text": "Parsing guarantees all expected fields"
+      },
+      {
+        "id": "7170e3f96d44",
+        "text": "The values become trusted HTML"
+      },
+      {
+        "id": "263fb3828bcf",
+        "text": "Parsing always returns strings"
+      },
+      {
+        "id": "32012e0b820e",
+        "text": "The parsed value might not match the current task schema"
+      }
+    ],
+    "correctId": "32012e0b820e",
+    "explanation": "Syntactically valid JSON can contain unexpected objects, types, or obsolete fields.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-09",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-09",
+    "prompt": "Which item should not be placed in this learning planner’s local storage?",
+    "choices": [
+      {
+        "id": "2814130df3ff",
+        "text": "A private authentication token"
+      },
+      {
+        "id": "e7af12cc6fe8",
+        "text": "A task completion boolean encoded as JSON"
+      },
+      {
+        "id": "07441d6d2c50",
+        "text": "A version number"
+      },
+      {
+        "id": "9dec289e8d5b",
+        "text": "A public sample task title"
+      }
+    ],
+    "correctId": "2814130df3ff",
+    "explanation": "Browser-accessible storage is not a secure vault for private credentials.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-storage-10",
+    "topic": "javascript-storage",
+    "concept": "javascript-storage-10",
+    "prompt": "What is a useful response to unreadable saved task data?",
+    "choices": [
+      {
+        "id": "e5266909ef8b",
+        "text": "Explain the problem and offer an explicit recovery action"
+      },
+      {
+        "id": "59347e9146e8",
+        "text": "Clear every origin key on page load"
+      },
+      {
+        "id": "6dc6ea149b9b",
+        "text": "Claim all tasks loaded successfully"
+      },
+      {
+        "id": "8163f12beed4",
+        "text": "Silently overwrite it immediately"
+      }
+    ],
+    "correctId": "e5266909ef8b",
+    "explanation": "An explicit recovery choice avoids silently destroying data that might still be recoverable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-01",
+    "topic": "javascript-project",
+    "concept": "javascript-project-01",
+    "prompt": "What should be the planner’s source of truth?",
+    "choices": [
+      {
+        "id": "9b5487785b2b",
+        "text": "The current CSS class order"
+      },
+      {
+        "id": "024fbf14b2c8",
+        "text": "The complete task array"
+      },
+      {
+        "id": "c758d7fbb1db",
+        "text": "Only the text currently visible in the list"
+      },
+      {
+        "id": "aa0b11125f66",
+        "text": "The last alert message"
+      }
+    ],
+    "correctId": "024fbf14b2c8",
+    "explanation": "Rendering and persistence should derive from the full task state so they remain consistent.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-02",
+    "topic": "javascript-project",
+    "concept": "javascript-project-02",
+    "prompt": "When a completed-only filter is active, what should be saved?",
+    "choices": [
+      {
+        "id": "fb1d09972480",
+        "text": "Only the visible item count"
+      },
+      {
+        "id": "7350aa3c915d",
+        "text": "An empty array until all tasks are complete"
+      },
+      {
+        "id": "49686df81cee",
+        "text": "Only completed tasks"
+      },
+      {
+        "id": "81f822642700",
+        "text": "The complete task array"
+      }
+    ],
+    "correctId": "81f822642700",
+    "explanation": "A filter changes the view; persisting only visible tasks would lose hidden records.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-03",
+    "topic": "javascript-project",
+    "concept": "javascript-project-03",
+    "prompt": "Which ID should a delete action use?",
+    "choices": [
+      {
+        "id": "f21f2101c0c0",
+        "text": "The first visible label"
+      },
+      {
+        "id": "27a8aa3dbb2a",
+        "text": "Its current filtered list index"
+      },
+      {
+        "id": "b665e61bb663",
+        "text": "The number of remaining tasks"
+      },
+      {
+        "id": "8a322b61f4d3",
+        "text": "The task’s stable ID"
+      }
+    ],
+    "correctId": "8a322b61f4d3",
+    "explanation": "Stable IDs prevent filtering or reordering from redirecting actions to a different task.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-04",
+    "topic": "javascript-project",
+    "concept": "javascript-project-04",
+    "prompt": "What should happen after a successful state change?",
+    "choices": [
+      {
+        "id": "677de21452a5",
+        "text": "Forget all hidden tasks"
+      },
+      {
+        "id": "f2d18355b28b",
+        "text": "Declare success before changing anything"
+      },
+      {
+        "id": "d50b56b4121f",
+        "text": "Render the new state and attempt to persist it"
+      },
+      {
+        "id": "fa65993013ec",
+        "text": "Update only the button color"
+      }
+    ],
+    "correctId": "d50b56b4121f",
+    "explanation": "State, its visible representation, and saved data need to follow the same successful action.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-05",
+    "topic": "javascript-project",
+    "concept": "javascript-project-05",
+    "prompt": "Which behavior belongs in the working JavaScript starter?",
+    "choices": [
+      {
+        "id": "d043696a1d78",
+        "text": "Adding and completing tasks in the browser"
+      },
+      {
+        "id": "4ff0f79991c9",
+        "text": "Server-enforced permissions"
+      },
+      {
+        "id": "f8b70d4f9f5c",
+        "text": "Shared accounts across devices"
+      },
+      {
+        "id": "55746beca097",
+        "text": "A production payment flow"
+      }
+    ],
+    "correctId": "d043696a1d78",
+    "explanation": "This phase implements browser interaction and storage; accounts and backend permissions are later work.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-06",
+    "topic": "javascript-project",
+    "concept": "javascript-project-06",
+    "prompt": "Why test a title containing HTML-looking text?",
+    "choices": [
+      {
+        "id": "e14388bd0dd5",
+        "text": "To ensure it is displayed as text rather than parsed markup"
+      },
+      {
+        "id": "884fef6c9b61",
+        "text": "To remove every angle bracket from the browser"
+      },
+      {
+        "id": "aa7042890ffd",
+        "text": "To enable script execution in task names"
+      },
+      {
+        "id": "466d6e87ff74",
+        "text": "To ensure it becomes bold automatically"
+      }
+    ],
+    "correctId": "e14388bd0dd5",
+    "explanation": "Testing markup-like text checks the safe-rendering path used for user-controlled titles.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-07",
+    "topic": "javascript-project",
+    "concept": "javascript-project-07",
+    "prompt": "A deletion removes the focused control. What should the interface do?",
+    "choices": [
+      {
+        "id": "6f1f53887bf2",
+        "text": "Reload the entire account"
+      },
+      {
+        "id": "09d39dea68d2",
+        "text": "Move focus to a useful remaining control"
+      },
+      {
+        "id": "c27efaec21c0",
+        "text": "Leave focus in a removed node deliberately"
+      },
+      {
+        "id": "f4d94900e0e4",
+        "text": "Disable keyboard navigation"
+      }
+    ],
+    "correctId": "09d39dea68d2",
+    "explanation": "Restoring meaningful focus preserves keyboard continuity after an element disappears.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-08",
+    "topic": "javascript-project",
+    "concept": "javascript-project-08",
+    "prompt": "Which task is an extension exercise beyond the supplied starter?",
+    "choices": [
+      {
+        "id": "3ad3811b4029",
+        "text": "Add editing and due dates"
+      },
+      {
+        "id": "55eb3e33112a",
+        "text": "Replace the whole app with a screenshot"
+      },
+      {
+        "id": "31bcc40d93ef",
+        "text": "Remove all keyboard support"
+      },
+      {
+        "id": "67c9dc03aaa1",
+        "text": "Implement a paid database before trying any code"
+      }
+    ],
+    "correctId": "3ad3811b4029",
+    "explanation": "Editing and due dates extend the working add, complete, filter, delete, and storage features.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-09",
+    "topic": "javascript-project",
+    "concept": "javascript-project-09",
+    "prompt": "What does the starter’s bundled ideas request demonstrate?",
+    "choices": [
+      {
+        "id": "427ec0ac21bc",
+        "text": "Fetching local JSON with loading and failure handling"
+      },
+      {
+        "id": "776559e61db6",
+        "text": "Automatic grading of projects"
+      },
+      {
+        "id": "645d58595987",
+        "text": "A synchronized classroom backend"
+      },
+      {
+        "id": "31cfd3950c75",
+        "text": "A live AI recommendation service"
+      }
+    ],
+    "correctId": "427ec0ac21bc",
+    "explanation": "The local JSON request teaches asynchronous UI behavior without pretending to provide an external service.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "javascript-v1-javascript-project-10",
+    "topic": "javascript-project",
+    "concept": "javascript-project-10",
+    "prompt": "Which self-review checks this planner beyond its happy path?",
+    "choices": [
+      {
+        "id": "606c993791be",
+        "text": "Only opening a screenshot"
+      },
+      {
+        "id": "c784f79c9cce",
+        "text": "Only counting lines of JavaScript"
+      },
+      {
+        "id": "c9b690991636",
+        "text": "Reload, keyboard use, long titles, failed requests, and unavailable storage"
+      },
+      {
+        "id": "719aba20cae4",
+        "text": "Only one mouse click on a populated list"
+      }
+    ],
+    "correctId": "c9b690991636",
+    "explanation": "A meaningful self-review exercises persistence, accessibility, layout, and recovery as well as normal actions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  }
+]

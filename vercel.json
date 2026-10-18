@@ -3,7 +3,8 @@
   "buildCommand": "npm run db:migrate:deploy && npm run db:seed && npm run build",
   "git": {
     "deploymentEnabled": {
-      "codex/full-stack-foundations": false
+      "codex/full-stack-foundations": false,
+      "codex/javascript-foundations": false
     }
   }
 }

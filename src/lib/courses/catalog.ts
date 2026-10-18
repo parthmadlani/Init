@@ -122,11 +122,75 @@ const tailwindOutline = [
   ]
 ];
 export const TAILWIND_TOPICS: CourseTopic[] = tailwindOutline.map(([slug, name, query], i) => ({ slug, name, query, prerequisites: i ? [tailwindOutline[i - 1][0]] : [] }));
+const javascriptOutline = [
+  [
+    "javascript-setup",
+    "JavaScript in the browser",
+    "JavaScript first script console tutorial beginners"
+  ],
+  [
+    "javascript-values",
+    "Values, variables & operators",
+    "JavaScript variables data types operators tutorial"
+  ],
+  [
+    "javascript-flow",
+    "Conditions & loops",
+    "JavaScript if else loops control flow tutorial"
+  ],
+  [
+    "javascript-functions",
+    "Functions & scope",
+    "JavaScript functions scope return arrow functions tutorial"
+  ],
+  [
+    "javascript-collections",
+    "Arrays & objects",
+    "JavaScript arrays objects map filter tutorial"
+  ],
+  [
+    "javascript-dom",
+    "DOM & safe rendering",
+    "JavaScript DOM manipulation textContent createElement tutorial"
+  ],
+  [
+    "javascript-events",
+    "Events & forms",
+    "JavaScript form submit event preventDefault validation tutorial"
+  ],
+  [
+    "javascript-modules",
+    "Modules & debugging",
+    "JavaScript ES6 modules import export browser tutorial"
+  ],
+  [
+    "javascript-async",
+    "Promises & async/await",
+    "JavaScript promises async await try catch tutorial"
+  ],
+  [
+    "javascript-fetch",
+    "Fetch, JSON & failures",
+    "JavaScript fetch API response ok JSON error handling tutorial"
+  ],
+  [
+    "javascript-storage",
+    "Local storage & recovery",
+    "JavaScript localStorage JSON stringify parse tutorial"
+  ],
+  [
+    "javascript-project",
+    "Build an interactive planner",
+    "JavaScript todo list project localStorage tutorial"
+  ]
+];
+export const JAVASCRIPT_TOPICS: CourseTopic[] = javascriptOutline.map(([slug, name, query], i) => ({ slug, name, query, prerequisites: i ? [javascriptOutline[i - 1][0]] : [] }));
 export const COURSES: Course[] = [
   { slug: "python", name: "Python", category: "Programming", description: "Build a foundation in programming, one small problem at a time.", outcome: "Write Python programs with functions, data structures, files, and APIs.", prerequisites: [], topics: [] },
   { slug: "html", name: "HTML", category: "Web foundations", description: "From your first page to an accessible student planner. Includes the web, your editor, and Git basics.", outcome: "Build and version a semantic, accessible multi-page website.", prerequisites: [], topics: HTML_TOPICS },
   { slug: "css", name: "CSS", category: "Visual foundations", headline: ". Give your ideas room to breathe.", description: "Turn your HTML planner into a responsive, readable interface. Learn layout, typography, and accessible interaction styles.", outcome: "Style a responsive student planner with Flexbox, Grid, reusable tokens, and visible keyboard focus.", prerequisites: ["html"], topics: CSS_TOPICS, project: { title: "Your planner, styled with purpose.", description: "Add a flexible layout, a consistent type and spacing scale, readable colors, and keyboard focus to your HTML planner. Test narrow screens and zoom. Tasks remain a static prototype.", download: "/course-projects/css/student-planner.zip", downloadLabel: "Download the CSS starter" } },
   { slug: "tailwind", name: "Tailwind CSS", category: "Utility-first styling", headline: ". Build on what CSS taught you.", description: "Rebuild the planner with utilities, responsive variants, and a small theme. Includes the Tailwind CSS v4 build workflow.", outcome: "Build and compile a responsive Tailwind v4 interface, with accessible states and a consistent theme.", prerequisites: ["html", "css"], topics: TAILWIND_TOPICS, project: { title: "The same planner. A new styling workflow.", description: "Rebuild your CSS planner using Tailwind v4. Preserve semantic HTML, keyboard access, responsive behavior, and honest prototype limits. Compare the two approaches in your README.", download: "/course-projects/tailwind/student-planner.zip", downloadLabel: "Download the Tailwind v4 starter" } },
+  {"slug": "javascript", "name": "JavaScript", "category": "Interactive web", "headline": ". Bring your pages to life.", "description": "Learn the language, connect browser events, and build a planner that remembers your tasks. Includes modules, APIs, and recovery from errors.", "outcome": "Build an accessible interactive planner with safe DOM updates, validated forms, JSON requests, and browser storage.", "prerequisites": ["html", "css"], "topics": JAVASCRIPT_TOPICS, "project": {"title": "Your planner, ready for real interaction.", "description": "Add, complete, filter, and remove tasks. Keep them across reloads in this browser, and load ideas from a local JSON file. Extend the working starter with editing and due dates.", "download": "/course-projects/javascript/student-planner.zip", "downloadLabel": "Download the JavaScript starter"}},
 ];
 export const getCourse = (slug: string) => COURSES.find(course => course.slug === slug);
 export const AVAILABLE_COURSE_SLUGS = COURSES.map(course => course.slug);

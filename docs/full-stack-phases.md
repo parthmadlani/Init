@@ -2,9 +2,9 @@
 
 ## Branch and release boundary
 
-Development branch: `codex/full-stack-foundations`, based on production commit `701f371`.
+Phases 0–2 were approved, merged, and deployed at `ff521fb`. Active development is on `codex/javascript-foundations`, based on that production commit.
 
-Do not merge into `main` or deploy until the user approves the completed phases. `vercel.json` disables automatic Git deployments for this exact development branch. The current production build includes database migrations, so even a preview must not be allowed to use production data accidentally. All interactive QA uses an isolated localhost database.
+Do not merge this branch into `main` or deploy until the user approves. `vercel.json` disables automatic Git deployments for this exact branch. Builds run migrations and curriculum seeding, so previews must not use production data. All Phase 3 interactive QA uses an isolated localhost database.
 
 ## Phase 0: reusable course foundation
 
@@ -56,7 +56,7 @@ Two standalone courses also available through the Full Stack collection. Recomme
 
 Run the local integration script separately for `INIT_QA_COURSE=html`, `css`, and `tailwind` using the same explicit localhost settings below. Run one course at a time against the PGlite local preview: overlapping independent suites produced transient HTTP 500 responses in this preview, while separate runs passed. Each suite still checks parallel starts of one quiz. These checks are not production load testing; concurrency/load verification requires a real isolated PostgreSQL instance.
 
-The curriculum seed now upserts HTML, CSS, Tailwind, and Python without deleting learner records. Production still requires the approved curriculum seed at the eventual release; no production database changes are made by this phase.
+The curriculum seed upserts available course records without deleting learner records. The Phase 0–2 production release applied those courses; Phase 3 seeding remains local until approved.
 
 ## Local setup and verification
 
@@ -78,9 +78,24 @@ The integration check refuses non-local URLs, creates its own disposable users, 
 
 The Phase 0–2 release was authorized on October 17, 2026. Vercel's build command now runs migrations and the idempotent curriculum seed before building the app, so a release also adds its available courses to the configured database. The seed only upserts curriculum records; it does not create demo accounts or delete learner records. `npm run build` alone still does not seed courses. Future development must use a separate branch with deployments disabled or an isolated preview database. Verify existing learner progress, both course entry points, video availability, and mobile layouts before promotion. Never copy local demo accounts or credentials to production.
 
-## Subsequent phases (not included in the Phase 0–2 delivery)
+## Phase 3: JavaScript and browser interaction (branch only)
 
-- Phase 3: JavaScript and browser interaction.
+Standalone JavaScript and the Full Stack collection share the same course and learner history. HTML and CSS are recommended prerequisites; Tailwind and Python are not required.
+
+Twelve chapters cover browser setup, values/operators, conditions/loops, functions/scope, arrays/objects, safe DOM rendering, events/forms, modules/debugging, promises/async, fetch/JSON/failures, browser storage/recovery, and the interactive planner project.
+
+- Twelve original revision chapters include comparison tables, runnable or contextual examples, explanations, common mistakes, exercises, linked MDN references, and twelve editable Excalidraw diagrams.
+- 120 authored notebook MCQs (ten per chapter) use unique course-scoped IDs. Topic checks, mixed practice, and the resumable 69-question final review use the existing unseen-first selection and shuffled review. Mistakes/confidence can influence topic weighting; pauses are not treated as evidence of difficulty.
+- Video queries and title matching require browser JavaScript and the relevant topic, excluding explicit frameworks, TypeScript, and backend prerequisites. Existing duration-aware scheduling is preserved. Real API results matched all twelve topics in the local test. Results still include different languages, and title matching does not verify complete teaching coverage. Language preference and editorial review remain pre-release content follow-ups.
+- No transcripts are invented or bundled. Reviewed, permitted transcript packs remain required for video-specific quizzes. These notebook questions explicitly cover the notebook and can cover more than a matched video.
+- The downloadable `public/course-projects/javascript/student-planner.zip` contains a working, dependency-free planner and versioned source files alongside it. Run through a local HTTP server for ES modules and fetch. It supports task addition/completion/deletion, filtered views, complete-list persistence, and bundled JSON practice ideas with loading/error feedback.
+- Storage is browser-local, single-tab, and capped at 1,000 tasks. Invalid saved data is preserved; a temporary-list recovery option avoids overwriting it. Save errors show a warning and retry on the next change. It is a learning project with self-review exercises, not an account-backed or automatically graded application.
+- No schema migration is added. Seeding adds JavaScript and its topics idempotently while retaining existing course IDs, progress, and quiz history.
+
+Verification: 65 automated tests passed; type checking and production build passed; lint has only the two existing avatar-image warnings. Content checks validated 20 HTML examples/documents and 53 Python examples. The local JavaScript integration suite passed auth/ownership, shared progress, real video matching, rebuild/resume, quiz autosave/scoring/retakes, final review, transcript gating, seed idempotence, and Python regression. Browser checks covered course discovery, the beginner/30-minute wizard, revision layout at 320px, and planner keyboard input, safe text rendering, completion/filtering, reload persistence, deletion, and JSON idea loading. Run integration with `INIT_QA_COURSE=javascript` and the explicit localhost settings above.
+
+## Subsequent phases
+
 - Phase 4: TypeScript and React.
 - Phase 5: Node.js/Express and SQL/PostgreSQL.
 - Phase 6: Authentication, authorization, security, and integration testing.

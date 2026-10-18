@@ -14,9 +14,9 @@ await db.connect();
 const run=randomUUID(), uid=`courses-qa-${run}`, other=`courses-other-${run}`;
 const password=randomUUID();
 const courseSlug=process.env.INIT_QA_COURSE ?? 'html';
-if(!['html','css','tailwind'].includes(courseSlug)) throw new Error('Unsupported QA course');
-const topicCount=courseSlug==='html'?12:10;
-const courseName={html:'HTML',css:'CSS',tailwind:'Tailwind CSS'}[courseSlug];
+if(!['html','css','tailwind','javascript'].includes(courseSlug)) throw new Error('Unsupported QA course');
+const topicCount=['html','javascript'].includes(courseSlug)?12:10;
+const courseName={html:'HTML',css:'CSS',tailwind:'Tailwind CSS',javascript:'JavaScript'}[courseSlug];
 const bank=JSON.parse(readFileSync(new URL(`../src/lib/learning/${courseSlug}-bank.json`,import.meta.url),'utf8'));
 function client(){const jar=new Map();return async(path,options={})=>{const r=await fetch(base+path,{...options,signal:AbortSignal.timeout(60000),redirect:'manual',headers:{...options.headers,cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}});for(const c of r.headers.getSetCookie()){const [pair]=c.split(';');const i=pair.indexOf('=');jar.set(pair.slice(0,i),pair.slice(i+1));}return r;};}
 const json=(body,method='POST')=>({method,headers:{'content-type':'application/json'},body:JSON.stringify(body)});

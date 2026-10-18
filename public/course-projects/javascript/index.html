@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A little progress · JavaScript planner</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to planner</a>
+  <header class="masthead"><span class="brand">init<span class="dot">.</span></span><span>JavaScript project / 03</span></header>
+  <main id="main">
+    <section class="intro" aria-labelledby="title-heading"><p class="eyebrow">Make a little room</p><h1 id="title-heading">Small steps.<br><em>Real progress.</em></h1><p>Your next idea deserves a place to start. A working planner built with browser JavaScript.</p></section>
+    <div class="layout">
+      <section class="surface" aria-labelledby="planner-heading">
+        <div class="section-heading"><h2 id="planner-heading">Your study list</h2><span class="pill">One thing at a time</span></div>
+        <form id="task-form">
+          <label for="title">What would you like to work on?</label>
+          <div class="entry"><input id="title" name="title" required maxlength="120" autocomplete="off" placeholder="e.g. Practice JavaScript functions" aria-describedby="title-hint"><button type="submit">Add task <span aria-hidden="true">↗</span></button></div>
+          <p id="title-hint" class="hint">Keep it specific. Up to 120 characters.</p>
+        </form>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div class="toolbar"><p id="summary">0 active · 0 completed</p><div><label for="filter">Show</label> <select id="filter"><option value="all">All tasks</option><option value="active">Active</option><option value="done">Completed</option></select></div></div>
+        <ul id="task-list" aria-label="Study tasks"></ul>
+        <p id="storage-message" class="storage" role="status" aria-live="polite"></p>
+        <button id="continue-temporary" type="button" hidden>Use an empty list for now</button>
+      </section>
+      <aside aria-labelledby="ideas-heading"><section class="ideas"><p class="eyebrow">A nudge to begin</p><h2 id="ideas-heading">Not sure what’s next?</h2><p>Try a small practice idea. These examples come from a bundled JSON file.</p><button id="load-ideas" type="button">Load practice ideas</button><p id="ideas-status" class="hint" role="status" aria-live="polite"></p><ul id="ideas-list" aria-label="Practice ideas"></ul></section><section class="challenge"><p class="eyebrow">Make it yours</p><h2>Now, build on it.</h2><p>Add task editing and due dates. Keep keyboard access, filters, and saved data working as the planner grows.</p><a href="README.md">Open the project guide ↗</a></section></aside>
+    </div>
+    <noscript>This planner needs JavaScript for task controls. Enable it to try the exercise.</noscript>
+  </main>
+  <footer>A learning project by Init · Browser storage only · Self-review, not automatic grading</footer>
+</body>
+</html>

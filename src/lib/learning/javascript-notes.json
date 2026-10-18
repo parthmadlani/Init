@@ -1,0 +1,602 @@
+[
+  {
+    "slug": "javascript-setup",
+    "title": "JavaScript in the browser",
+    "summary": "Run a small script and trace what the browser actually does.",
+    "points": [
+      "HTML gives a page meaning, CSS styles it, and JavaScript responds to data and actions.",
+      "Create app.js and connect it with <script src=\"app.js\" defer></script>. A deferred external classic script runs after HTML parsing.",
+      "Use console.log to inspect a value. A breakpoint pauses at a line so you can inspect variables and step through execution.",
+      "Identifiers are case-sensitive: task and Task are different names.",
+      "Read the first error and its file/line number. Use the Network panel when a script fails to load. Fix syntax errors before debugging later behavior."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Console",
+          "Inspect values and errors"
+        ],
+        [
+          "Sources",
+          "Set breakpoints and step"
+        ],
+        [
+          "Network",
+          "Check requested files"
+        ],
+        [
+          "defer",
+          "Run an external classic script after parsing"
+        ]
+      ]
+    },
+    "code": "const course = \"JavaScript\";\nconsole.log(`Ready to learn ${course}`);\n// Save this as app.js, connect it to HTML, then refresh.",
+    "output": "Ready to learn JavaScript",
+    "mistake": "Editing a file without saving or refreshing does not update the page you are testing.",
+    "challenge": "Connect app.js to your planner, log its title, set a breakpoint, and inspect course. Then misspell its name and locate the error.",
+    "diagram": {
+      "title": "JavaScript in the browser",
+      "steps": [
+        "Load script",
+        "Run a line",
+        "Inspect result"
+      ],
+      "caption": "Run a small script and trace what the browser actually does."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript"
+  },
+  {
+    "slug": "javascript-values",
+    "title": "Values, variables & operators",
+    "summary": "Represent a task using values with clear types.",
+    "points": [
+      "Use const when a binding will not be reassigned and let when it will. const does not freeze an object.",
+      "Strings hold text; numbers support arithmetic; booleans are true or false. null is an intentional empty value; undefined often means no value was provided.",
+      "Prefer === for equality without type conversion. Assignment with = changes a binding instead of comparing it.",
+      "Form input values are strings. Convert deliberately with Number and check Number.isFinite; a blank string converts to zero, so check blank input separately.",
+      "Template literals use backticks and ${...} for expressions. + joins strings when an operand is a string; it is not always addition."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "const",
+          "Stable binding"
+        ],
+        [
+          "let",
+          "Reassignable binding"
+        ],
+        [
+          "===",
+          "Compare without coercion"
+        ],
+        [
+          "Number.isFinite",
+          "Reject NaN and infinities"
+        ]
+      ]
+    },
+    "code": "const raw = \"25\";\nconst minutes = Number(raw);\nlet remaining = minutes;\nremaining -= 5;\nconsole.log(`${remaining} minutes`);\nconsole.log(minutes === \"25\");",
+    "output": "20 minutes\nfalse",
+    "mistake": "\"25\" + 5 produces \"255\". Convert the input before doing arithmetic.",
+    "challenge": "Read a duration string, reject blank or nonpositive input, convert it, and print a sentence using a template literal.",
+    "diagram": {
+      "title": "Values, variables & operators",
+      "steps": [
+        "Input text",
+        "Convert + check",
+        "Useful value"
+      ],
+      "caption": "Represent a task using values with clear types."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types"
+  },
+  {
+    "slug": "javascript-flow",
+    "title": "Conditions & loops",
+    "summary": "Choose a path and repeat work without losing control.",
+    "points": [
+      "An if statement runs its block only when its condition is truthy; else supplies the alternative.",
+      "false, 0, an empty string, null, undefined, and NaN are falsy. Empty arrays and objects are truthy.",
+      "Use for...of for values in an iterable such as an array. for...in visits enumerable property keys and is usually the wrong choice for array values.",
+      "A while loop must eventually change the condition or break. Check the stopping rule before running it.",
+      "break exits the current loop; continue skips to its next iteration. Keep each branch small enough to trace."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "if / else",
+          "Choose between paths"
+        ],
+        [
+          "for...of",
+          "Visit array values"
+        ],
+        [
+          "break",
+          "Exit a loop"
+        ],
+        [
+          "continue",
+          "Skip one iteration"
+        ]
+      ]
+    },
+    "code": "const sessions = [10, 0, 20];\nlet total = 0;\nfor (const minutes of sessions) {\n  if (minutes <= 0) continue;\n  total += minutes;\n}\nconsole.log(total);",
+    "output": "30",
+    "mistake": "Using <= array.length in an index loop visits one index past the last element.",
+    "challenge": "Loop over study durations, ignore zero or negative entries, and count how many sessions meet a 20-minute target.",
+    "diagram": {
+      "title": "Conditions & loops",
+      "steps": [
+        "Check condition",
+        "Do one step",
+        "Check again"
+      ],
+      "caption": "Choose a path and repeat work without losing control."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration"
+  },
+  {
+    "slug": "javascript-functions",
+    "title": "Functions & scope",
+    "summary": "Give repeated logic a name and a clear contract.",
+    "points": [
+      "A function takes parameters and can return a value. Arguments are the actual values supplied at a call.",
+      "return ends that invocation. A function without an explicit returned value evaluates to undefined.",
+      "let and const are block-scoped. A name declared inside a function is not automatically available outside it.",
+      "Arrow functions can return one expression implicitly. A body in braces needs return when a result is required.",
+      "A closure can retain access to its surrounding lexical variables. For beginner code, prefer explicit parameters over hidden changing state."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Parameter",
+          "Name in a function definition"
+        ],
+        [
+          "Argument",
+          "Value passed at a call"
+        ],
+        [
+          "return",
+          "Send a result back"
+        ],
+        [
+          "Scope",
+          "Where a binding is accessible"
+        ]
+      ]
+    },
+    "code": "function remaining(total, completed) {\n  return Math.max(0, total - completed);\n}\nconst label = count => `${count} left`;\nconsole.log(label(remaining(5, 2)));",
+    "output": "3 left",
+    "mistake": "console.log displays a value but does not replace returning it to the caller.",
+    "challenge": "Write a function that accepts a task title, trims it, and returns whether it contains 1–120 characters. Try valid, blank, and long values.",
+    "diagram": {
+      "title": "Functions & scope",
+      "steps": [
+        "Arguments",
+        "Function body",
+        "Return value"
+      ],
+      "caption": "Give repeated logic a name and a clear contract."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+  },
+  {
+    "slug": "javascript-collections",
+    "title": "Arrays & objects",
+    "summary": "Keep task data separate from how it appears on screen.",
+    "points": [
+      "An array holds an ordered sequence. Its first index is zero; length counts elements, not the final index.",
+      "An object groups named properties. Access a fixed key with dot notation or a computed key with brackets.",
+      "map transforms each element into a new array. filter keeps elements that pass a predicate; find returns the first match or undefined.",
+      "push mutates an array; spread creates a new outer array. Object spread is shallow, so nested objects can still be shared.",
+      "Give tasks stable IDs. Array indexes change after filtering or deletion and should not identify a task permanently."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "map",
+          "Transform elements"
+        ],
+        [
+          "filter",
+          "Keep matching elements"
+        ],
+        [
+          "find",
+          "Find the first match"
+        ],
+        [
+          "...spread",
+          "Make a shallow copy"
+        ]
+      ]
+    },
+    "code": "const tasks = [\n  { id: \"a\", title: \"Read\", done: true },\n  { id: \"b\", title: \"Practice\", done: false }\n];\nconst titles = tasks.filter(task => !task.done)\n  .map(task => task.title);\nconsole.log(titles.join(\", \"));",
+    "output": "Practice",
+    "mistake": "Changing a nested object inside a shallow copy can also change the original nested object.",
+    "challenge": "Create three tasks, derive unfinished titles, and toggle one task by its ID using map and object spread.",
+    "diagram": {
+      "title": "Arrays & objects",
+      "steps": [
+        "Task objects",
+        "Filter + map",
+        "Derived list"
+      ],
+      "caption": "Keep task data separate from how it appears on screen."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects"
+  },
+  {
+    "slug": "javascript-dom",
+    "title": "DOM & safe rendering",
+    "summary": "Turn data into accessible page content.",
+    "points": [
+      "The DOM is the browser’s object representation of a document. querySelector returns the first match or null.",
+      "Use createElement to construct an element and append to place it in the document.",
+      "Use textContent for task titles and other plain user text. innerHTML interprets markup and must not receive untrusted text.",
+      "Change classes with classList rather than rebuilding a whole class string unnecessarily.",
+      "Preserve meaningful HTML and keyboard access while updating a page. Keep application state separate from DOM text."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "querySelector",
+          "Find an element"
+        ],
+        [
+          "createElement",
+          "Create a node"
+        ],
+        [
+          "textContent",
+          "Set plain text"
+        ],
+        [
+          "classList",
+          "Change CSS classes"
+        ]
+      ]
+    },
+    "code": "// Run after the page contains <ul id=\"tasks\"></ul>.\nconst list = document.querySelector(\"#tasks\");\nif (list) {\n  const item = document.createElement(\"li\");\n  item.textContent = \"Review <functions>\";\n  list.append(item);\n}",
+    "output": "The list gains one item displaying Review <functions> literally, including its angle brackets.",
+    "mistake": "Injecting a task title through innerHTML can turn learner text into active markup.",
+    "challenge": "Render two task titles, including <b>hello</b>, as plain text. Inspect the DOM to confirm no b element was created from the title.",
+    "diagram": {
+      "title": "DOM & safe rendering",
+      "steps": [
+        "State",
+        "Create safe nodes",
+        "Visible list"
+      ],
+      "caption": "Turn data into accessible page content."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction"
+  },
+  {
+    "slug": "javascript-events",
+    "title": "Events & forms",
+    "summary": "Respond to keyboard and pointer actions through the same form.",
+    "points": [
+      "addEventListener registers a callback for an event. Pass the function; do not call it while registering.",
+      "Listen to submit on the form so pressing Enter and clicking its submit button use the same logic.",
+      "preventDefault cancels the default action when the event is cancelable; it does not stop propagation.",
+      "event.target is where an event originated. event.currentTarget is the element whose listener is running.",
+      "Read .value for text inputs and .checked for checkboxes. Trim and validate input; keep labels, focus, and understandable feedback. Browser validation does not replace server validation."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "submit",
+          "Handle form submission"
+        ],
+        [
+          "preventDefault",
+          "Cancel a default action"
+        ],
+        [
+          "currentTarget",
+          "Element handling the event"
+        ],
+        [
+          "checked",
+          "Checkbox boolean state"
+        ]
+      ]
+    },
+    "code": "// Requires a form#task-form containing input[name=\"title\"].\nconst form = document.querySelector(\"#task-form\");\nform.addEventListener(\"submit\", event => {\n  event.preventDefault();\n  const title = new FormData(form).get(\"title\").trim();\n  if (!title) return;\n  console.log(title);\n});",
+    "output": "Submitting a nonblank title logs its trimmed text without navigating away. This example only logs; adding and saving tasks are later steps.",
+    "mistake": "A click listener on a decorative div does not provide native button keyboard behavior.",
+    "challenge": "Add a labelled title field and submit button. Test Enter, whitespace-only text, and moving focus back to the field after success.",
+    "diagram": {
+      "title": "Events & forms",
+      "steps": [
+        "User action",
+        "Validate input",
+        "Update state"
+      ],
+      "caption": "Respond to keyboard and pointer actions through the same form."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events"
+  },
+  {
+    "slug": "javascript-modules",
+    "title": "Modules & debugging",
+    "summary": "Split responsibilities and find errors at their source.",
+    "points": [
+      "export exposes a value from a module; import names the exported value and its source file.",
+      "Load the entry file using <script type=\"module\" src=\"app.js\"></script>. Module scripts are deferred by default.",
+      "In a browser, use explicit relative paths such as ./tasks.js. Serve the project over HTTP; opening file:// URLs can fail for modules.",
+      "Modules have their own scope and run in strict mode. Imported bindings cannot be reassigned by the importing module.",
+      "Use the first stack-trace location in your code and a breakpoint to find a failed assumption. Check file paths and response MIME types when an import fails."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "export",
+          "Expose a module value"
+        ],
+        [
+          "import",
+          "Use an exported value"
+        ],
+        [
+          "./tasks.js",
+          "Relative module path"
+        ],
+        [
+          "Breakpoint",
+          "Pause to inspect execution"
+        ]
+      ]
+    },
+    "code": "// tasks.js\nexport const normalizeTitle = text => text.trim();\n\n// app.js (a separate file)\nimport { normalizeTitle } from \"./tasks.js\";\nconsole.log(normalizeTitle(\"  Learn modules  \"));",
+    "output": "Learn modules\nThese are two separate files. Serve their folder over HTTP and load app.js as a module.",
+    "mistake": "The import path and exported name must match exactly; browser file paths can be case-sensitive.",
+    "challenge": "Move your title validation into tasks.js and import it from app.js. Break the filename once and diagnose the failed request.",
+    "diagram": {
+      "title": "Modules & debugging",
+      "steps": [
+        "Export logic",
+        "Import entry",
+        "Debug together"
+      ],
+      "caption": "Split responsibilities and find errors at their source."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+  },
+  {
+    "slug": "javascript-async",
+    "title": "Promises & async/await",
+    "summary": "Wait for work while keeping failure and cleanup visible.",
+    "points": [
+      "A promise represents eventual fulfillment or rejection. It is not the completed result itself.",
+      "An async function always returns a promise. await pauses that function until the promise settles, without blocking all browser activity.",
+      "Use try/catch around awaited work that can reject. finally is useful for cleanup such as restoring a disabled control.",
+      "Ordinary statements run synchronously. Promise callbacks run after the current synchronous work; await does not make every operation parallel.",
+      "Handle success, loading, and failure explicitly. For independent requests Promise.all can wait for them together, but rejects when an input promise rejects."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Promise",
+          "An eventual result"
+        ],
+        [
+          "await",
+          "Wait inside an async context"
+        ],
+        [
+          "catch",
+          "Handle a thrown error"
+        ],
+        [
+          "finally",
+          "Run cleanup either way"
+        ]
+      ]
+    },
+    "code": "async function describe() {\n  try {\n    const title = await Promise.resolve(\"Practice\");\n    console.log(title);\n  } finally {\n    console.log(\"Finished\");\n  }\n}\ndescribe();\nconsole.log(\"Started\");",
+    "output": "Started\nPractice\nFinished",
+    "mistake": "A try/catch does not catch a later rejection from a promise you neither await nor otherwise handle.",
+    "challenge": "Write an async function using Promise.reject, show a friendly failure message in catch, and reset a loading flag in finally.",
+    "diagram": {
+      "title": "Promises & async/await",
+      "steps": [
+        "Pending",
+        "Resolve or reject",
+        "Handle + clean up"
+      ],
+      "caption": "Wait for work while keeping failure and cleanup visible."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises"
+  },
+  {
+    "slug": "javascript-fetch",
+    "title": "Fetch, JSON & failures",
+    "summary": "Read data with honest loading and failure states.",
+    "points": [
+      "fetch starts an HTTP request and resolves to a Response when a response is available.",
+      "Check response.ok before reading the body. HTTP errors such as 404 do not automatically reject the fetch promise.",
+      "response.json() is asynchronous. JSON parsing can fail, and valid JSON can still have the wrong shape.",
+      "Validate the data your UI needs. For a same-origin learning example, fetch a local sample.json file rather than depending on a third-party service.",
+      "A network failure or blocked cross-origin request needs a recovery message. CORS permission comes from the server; no-cors does not make a readable JSON API response."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "response.ok",
+          "HTTP status is 200–299"
+        ],
+        [
+          "response.json()",
+          "Parse a JSON body"
+        ],
+        [
+          "Array.isArray",
+          "Check an array shape"
+        ],
+        [
+          "catch",
+          "Report request or parse failure"
+        ]
+      ]
+    },
+    "code": "async function loadIdeas() {\n  try {\n    const response = await fetch(\"./sample.json\");\n    if (!response.ok) throw new Error(\"Request failed\");\n    const data = await response.json();\n    if (!Array.isArray(data)) throw new Error(\"Expected a list\");\n    console.log(data.length);\n  } catch {\n    console.log(\"Could not load ideas. Try again.\");\n  }\n}\nloadIdeas();",
+    "output": "With a sample.json body of [\"Read\", \"Practice\"], logs 2. Failed requests, invalid JSON, or non-array data show the recovery message.",
+    "mistake": "A 404 response can reach the success path unless you explicitly check response.ok.",
+    "challenge": "Load a local JSON list with a loading indicator. Test an empty list, malformed JSON, and a missing file; restore the button in finally.",
+    "diagram": {
+      "title": "Fetch, JSON & failures",
+      "steps": [
+        "Request",
+        "Check + parse",
+        "Render or retry"
+      ],
+      "caption": "Read data with honest loading and failure states."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+  },
+  {
+    "slug": "javascript-storage",
+    "title": "Local storage & recovery",
+    "summary": "Remember small amounts of task data without promising cloud sync.",
+    "points": [
+      "localStorage stores strings for an origin. Use JSON.stringify and JSON.parse for structured data.",
+      "Data can survive reloads on the same browser profile, but storage can be blocked, cleared, or unavailable. Catch read and write errors.",
+      "Validate parsed data before using it. Old or edited stored values can have an unexpected shape.",
+      "Use a namespaced, versioned key. removeItem deletes that key; clear removes all keys for the origin and may erase unrelated app data.",
+      "Local storage is neither an account nor a secure vault. Do not put passwords or private tokens in a learning planner. Data does not sync across devices."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "setItem",
+          "Write a string"
+        ],
+        [
+          "getItem",
+          "Read a string or null"
+        ],
+        [
+          "JSON.parse",
+          "Decode JSON text"
+        ],
+        [
+          "removeItem",
+          "Remove one named key"
+        ]
+      ]
+    },
+    "code": "const key = \"init-learning-example-v1\";\ntry {\n  localStorage.setItem(key, JSON.stringify([\"Review\"]));\n  const titles = JSON.parse(localStorage.getItem(key) ?? \"[]\");\n  if (!Array.isArray(titles)) throw new Error(\"Bad data\");\n  console.log(titles[0]);\n} catch {\n  console.log(\"Browser storage is unavailable or invalid.\");\n}",
+    "output": "Review, when storage is available. Otherwise the message explains that storage could not be used. This example writes only its dedicated learning key.",
+    "mistake": "Calling localStorage.clear() to reset one feature can remove data belonging to other features on the same origin.",
+    "challenge": "Save a small task array using a dedicated key. Reload, try malformed stored JSON, and show an explicit recovery option rather than silently overwriting it.",
+    "diagram": {
+      "title": "Local storage & recovery",
+      "steps": [
+        "Tasks",
+        "JSON string",
+        "Browser storage"
+      ],
+      "caption": "Remember small amounts of task data without promising cloud sync."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+  },
+  {
+    "slug": "javascript-project",
+    "title": "Build an interactive planner",
+    "summary": "Connect state, rendering, and persistence in a useful small app.",
+    "points": [
+      "Keep the task array as the source of truth. Render from it after successful add, complete, undo, and delete actions.",
+      "Validate titles and assign stable IDs before adding a task. Treat stored and fetched text as untrusted input when rendering.",
+      "Keep filters as views: showing only completed tasks must not discard unfinished tasks from the saved array.",
+      "Announce outcomes and preserve useful keyboard focus after a task disappears. Test empty, long-text, filtered, and error states.",
+      "The downloadable starter has working add, complete, delete, filters, reload persistence, and a local JSON ideas request. Extend it with editing and a due-date feature; document the browser-only storage limit."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "State",
+          "The complete task collection"
+        ],
+        [
+          "Render",
+          "Display a view of state"
+        ],
+        [
+          "Persist",
+          "Save the whole state"
+        ],
+        [
+          "Self-review",
+          "Exercise normal and failure paths"
+        ]
+      ]
+    },
+    "code": "const tasks = [\n  { id: \"a\", title: \"Read\", done: false },\n  { id: \"b\", title: \"Practice\", done: true }\n];\nconst active = tasks.filter(task => !task.done);\nconsole.log(active.length, tasks.length);\n// Render active, but persist tasks: the full collection.",
+    "output": "1 2\nFiltering computes a view without discarding the completed task.",
+    "mistake": "Saving only the visible filtered tasks loses the tasks hidden by the filter.",
+    "challenge": "Extend the starter with an edit action and due dates. Check reload, keyboard-only use, text that looks like HTML, a missing ideas file, and unavailable storage.",
+    "diagram": {
+      "title": "Build an interactive planner",
+      "steps": [
+        "Action",
+        "Update state",
+        "Render + save"
+      ],
+      "caption": "Connect state, rendering, and persistence in a useful small app."
+    },
+    "source": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting"
+  }
+]

@@ -5,9 +5,9 @@ from html.parser import HTMLParser
 root = Path(__file__).resolve().parents[1]
 void = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 class CheckHTML(HTMLParser):
-    def __init__(self):
+    def __init__(self, allow_module=False):
         super().__init__(convert_charrefs=True)
-        self.stack=[]; self.ids=set(); self.labels=[]; self.fragments=[]
+        self.stack=[]; self.ids=set(); self.labels=[]; self.fragments=[]; self.allow_module=allow_module
     def handle_starttag(self, tag, attrs):
         attrs=dict(attrs)
         if 'id' in attrs:
@@ -18,7 +18,8 @@ class CheckHTML(HTMLParser):
         if tag=='img':assert 'alt' in attrs, 'Missing image alternative'
         if tag=='th':assert attrs.get('scope') in {'row','col'}, 'Missing simple-table header scope'
         if tag=='button':assert attrs.get('type') in {'button','submit','reset'}, 'Explicit button type required'
-        assert tag!='script', 'These are static HTML examples, not executable JavaScript'
+        if tag=='script':
+            assert self.allow_module and attrs=={'type':'module','src':'app.js'}, 'Only the reviewed JavaScript starter module is allowed'
         if tag not in void:self.stack.append(tag)
     def handle_endtag(self, tag):
         assert self.stack and self.stack[-1]==tag, f'Misnested closing {tag}'
@@ -32,6 +33,6 @@ examples=[(n['slug'],n['code']) for n in notes if n['code'].startswith('<')]
 examples.extend((str(p.relative_to(root)), p.read_text()) for p in (root/'public/course-projects').rglob('*.html'))
 for name, source in examples:
     try:
-        parser=CheckHTML();parser.feed(source);parser.close();parser.finish()
+        parser=CheckHTML(allow_module=name=='public/course-projects/javascript/index.html');parser.feed(source);parser.close();parser.finish()
     except AssertionError as exc:raise AssertionError(f'{name}: {exc}') from exc
 print(f'Validated {len(examples)} authored HTML examples and starter documents.')

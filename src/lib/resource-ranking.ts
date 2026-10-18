@@ -54,10 +54,31 @@ const TAILWIND_TOPIC_PATTERNS: Record<string, RegExp> = {
   "Rebuild your planner": /project|dashboard|build.*website|responsive.*website/,
 };
 
+const JAVASCRIPT_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "JavaScript in the browser": /first script|console|basics|introduction|getting started|debug/,
+  "Values, variables & operators": /variables?|data types?|operators?/,
+  "Conditions & loops": /conditions?|conditionals?|if else|loops?|control flow/,
+  "Functions & scope": /functions?|scope|closures?/,
+  "Arrays & objects": /arrays?|objects?|map.*filter|filter.*map/,
+  "DOM & safe rendering": /\bdom\b|textcontent|createelement/,
+  "Events & forms": /events?|forms?|validation/,
+  "Modules & debugging": /modules?|import.*export|export.*import/,
+  "Promises & async/await": /promises?|async|await/,
+  "Fetch, JSON & failures": /\bfetch\b/,
+  "Local storage & recovery": /local ?storage/,
+  "Build an interactive planner": /to ?do|task (?:list|manager)|planner/,
+};
+
 /** Conservative title matching, not a claim to have verified a video's contents. */
 export function matchesTopic(title: string, topicName: string, subjectName = ""): boolean {
   const normalized = title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const subject = subjectName.toLowerCase();
+  if (subject === "javascript") {
+    // This track teaches browser JavaScript before frameworks or backend runtimes.
+    if (!/\bjavascript\b|\bjs\b/.test(normalized)) return false;
+    if (/\b(?:react(?:js)?|next(?:js)?|vue|angular|svelte|jquery|typescript|node(?:js)?|express|python|java)\b/.test(normalized)) return false;
+    return !!JAVASCRIPT_TOPIC_PATTERNS[topicName]?.test(normalized);
+  }
   if (subject === "css") {
     return /\bcss3?\b/.test(normalized) && !/\btailwind\b|\bbootstrap\b/.test(normalized)
       && !!CSS_TOPIC_PATTERNS[topicName]?.test(normalized);
