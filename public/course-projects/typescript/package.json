@@ -1,0 +1,22 @@
+{
+  "name": "init-typescript-planner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/model.test.ts",
+    "build": "npm run typecheck && npm test && vite build --base=./",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "tsx": "4.23.12",
+    "@types/node": "^22"
+  }
+}

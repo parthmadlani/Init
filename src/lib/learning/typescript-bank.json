@@ -1,0 +1,2902 @@
+[
+  {
+    "id": "typescript-v1-setup-01",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-01",
+    "prompt": "What normally reaches a browser after a TypeScript build?",
+    "choices": [
+      {
+        "id": "c0aaa8f26bd5",
+        "text": "The compiler's type checker"
+      },
+      {
+        "id": "81eb0bf3ccd7",
+        "text": "JavaScript with type annotations removed"
+      },
+      {
+        "id": "ea78a7f5248a",
+        "text": "Only a tsconfig file"
+      },
+      {
+        "id": "7f13190cea71",
+        "text": "TypeScript interfaces as runtime objects"
+      }
+    ],
+    "correctId": "81eb0bf3ccd7",
+    "explanation": "The build removes static annotations and produces JavaScript that the browser can execute.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-02",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-02",
+    "prompt": "Which command checks a TypeScript project without generating output files?",
+    "choices": [
+      {
+        "id": "8464410b5a40",
+        "text": "tsc --watchOnly"
+      },
+      {
+        "id": "5b4356da1bd4",
+        "text": "node tsconfig.json"
+      },
+      {
+        "id": "a0c6630a83e0",
+        "text": "tsc --noEmit"
+      },
+      {
+        "id": "2dd2329e3925",
+        "text": "npm start --noTypes"
+      }
+    ],
+    "correctId": "a0c6630a83e0",
+    "explanation": "The noEmit option runs checking while suppressing generated output files.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-03",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-03",
+    "prompt": "A Vite bundle succeeds but tsc reports an incompatible assignment. Is the project type-correct?",
+    "choices": [
+      {
+        "id": "946e31063d7c",
+        "text": "Yes; browsers check assignments"
+      },
+      {
+        "id": "90131f402b8b",
+        "text": "Yes; bundling proves every type"
+      },
+      {
+        "id": "917740dc76e0",
+        "text": "Only after refreshing twice"
+      },
+      {
+        "id": "4bc24da51ca9",
+        "text": "No; bundling and type checking are separate checks"
+      }
+    ],
+    "correctId": "4bc24da51ca9",
+    "explanation": "Transformation can remove types without performing the project's full type check.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-04",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-04",
+    "prompt": "Where should shared compiler settings live?",
+    "choices": [
+      {
+        "id": "85fafae2cdd9",
+        "text": "tsconfig.json"
+      },
+      {
+        "id": "56f22e08fcd4",
+        "text": "A CSS custom property"
+      },
+      {
+        "id": "eff6d4327a19",
+        "text": "A browser cookie"
+      },
+      {
+        "id": "d138698400ff",
+        "text": "An HTML title attribute"
+      }
+    ],
+    "correctId": "85fafae2cdd9",
+    "explanation": "The compiler reads project settings such as strict checking from tsconfig.json.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-05",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-05",
+    "prompt": "Does a number annotation reject a string sent over the network at runtime?",
+    "choices": [
+      {
+        "id": "ee995a61f88a",
+        "text": "Yes; the browser enforces annotations"
+      },
+      {
+        "id": "831fc1710330",
+        "text": "Yes; interfaces intercept requests"
+      },
+      {
+        "id": "88cf4854c07e",
+        "text": "Only when the server uses JSON"
+      },
+      {
+        "id": "1fd5ba80593a",
+        "text": "No; boundary data still needs runtime checks"
+      }
+    ],
+    "correctId": "1fd5ba80593a",
+    "explanation": "Type annotations are erased; they do not inspect the contents of a network response.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-06",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-06",
+    "prompt": "Why enable strict checking in a learning project?",
+    "choices": [
+      {
+        "id": "a1cb85d753b1",
+        "text": "To encrypt source files"
+      },
+      {
+        "id": "f47f090b8ac3",
+        "text": "To make every variable immutable"
+      },
+      {
+        "id": "df150675f04a",
+        "text": "To avoid all runtime tests"
+      },
+      {
+        "id": "18b082beda60",
+        "text": "To reveal more unsafe assumptions before running"
+      }
+    ],
+    "correctId": "18b082beda60",
+    "explanation": "Strict options make the checker catch more issues, including unsafe missing-value assumptions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-07",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-07",
+    "prompt": "After the compiler reports several cascading errors, what is a useful first step?",
+    "choices": [
+      {
+        "id": "fcc1aa528c1a",
+        "text": "Replace all types with any"
+      },
+      {
+        "id": "16439f974c74",
+        "text": "Delete tsconfig.json"
+      },
+      {
+        "id": "b2c18cfb9395",
+        "text": "Ignore every diagnostic"
+      },
+      {
+        "id": "73f25f6c1c69",
+        "text": "Inspect and fix the earliest underlying error"
+      }
+    ],
+    "correctId": "73f25f6c1c69",
+    "explanation": "One incorrect declaration can cause many later errors, so fixing the cause often clears several messages.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-08",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-08",
+    "prompt": "What remains unchanged when adding a type annotation to a valid calculation?",
+    "choices": [
+      {
+        "id": "7cf2f2c5e296",
+        "text": "The browser's font size"
+      },
+      {
+        "id": "3594c956ace4",
+        "text": "Every dependency version"
+      },
+      {
+        "id": "2e5930c2c639",
+        "text": "The compiler's diagnostic count"
+      },
+      {
+        "id": "4fe7293b70b7",
+        "text": "JavaScript's runtime arithmetic rules"
+      }
+    ],
+    "correctId": "4fe7293b70b7",
+    "explanation": "Annotations describe values statically; the emitted expression still follows JavaScript semantics.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-09",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-09",
+    "prompt": "Why is serving a raw .ts file with annotations as a browser script unreliable?",
+    "choices": [
+      {
+        "id": "027d5a337692",
+        "text": "Browsers generally expect JavaScript syntax"
+      },
+      {
+        "id": "b5302421e94c",
+        "text": "Only servers can use variables"
+      },
+      {
+        "id": "5f5327e67ddd",
+        "text": "TypeScript requires a database"
+      },
+      {
+        "id": "2c180c762177",
+        "text": "Browsers cannot load external files"
+      }
+    ],
+    "correctId": "027d5a337692",
+    "explanation": "Use the project's build or development server to transform typed source into browser JavaScript.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-setup-10",
+    "topic": "typescript-setup",
+    "concept": "typescript-setup-10",
+    "prompt": "Which check complements type checking for an add-task form?",
+    "choices": [
+      {
+        "id": "fa9acce00474",
+        "text": "Rename every file to .js"
+      },
+      {
+        "id": "31fa6169f46b",
+        "text": "Remove the submit button"
+      },
+      {
+        "id": "8db8f23f9e03",
+        "text": "Try keyboard submission and validation in the browser"
+      },
+      {
+        "id": "03cb5cbe78ad",
+        "text": "Hide all compiler warnings"
+      }
+    ],
+    "correctId": "8db8f23f9e03",
+    "explanation": "Static types cannot prove the complete user interaction works, so exercise real form behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-01",
+    "topic": "typescript-values",
+    "concept": "typescript-values-01",
+    "prompt": "What type does TypeScript usually infer for let count = 0?",
+    "choices": [
+      {
+        "id": "cd44cc784e45",
+        "text": "boolean"
+      },
+      {
+        "id": "4499ba4e49c8",
+        "text": "the string \"0\""
+      },
+      {
+        "id": "6ac4df8ead3f",
+        "text": "unknown[]"
+      },
+      {
+        "id": "6f022922d3f0",
+        "text": "number"
+      }
+    ],
+    "correctId": "6f022922d3f0",
+    "explanation": "A mutable numeric initializer normally gives the variable the number type.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-02",
+    "topic": "typescript-values",
+    "concept": "typescript-values-02",
+    "prompt": "Which type describes an array containing only title strings?",
+    "choices": [
+      {
+        "id": "fdd2db8b9d3f",
+        "text": "string"
+      },
+      {
+        "id": "cdcdb8260568",
+        "text": "number[]"
+      },
+      {
+        "id": "c6a70f1dbb30",
+        "text": "boolean[]"
+      },
+      {
+        "id": "03ed48497399",
+        "text": "string[]"
+      }
+    ],
+    "correctId": "03ed48497399",
+    "explanation": "The array suffix means each element is expected to satisfy the string type.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-03",
+    "topic": "typescript-values",
+    "concept": "typescript-values-03",
+    "prompt": "A view should allow only all, active, and completed. Which design is most precise?",
+    "choices": [
+      {
+        "id": "370f763a0017",
+        "text": "A union of those three string literals"
+      },
+      {
+        "id": "6630b449f9af",
+        "text": "any"
+      },
+      {
+        "id": "291bffc74cdf",
+        "text": "An array of numbers"
+      },
+      {
+        "id": "16e62f901610",
+        "text": "The unrestricted string type"
+      }
+    ],
+    "correctId": "370f763a0017",
+    "explanation": "Literal alternatives catch misspellings while expressing the finite set of supported views.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-04",
+    "topic": "typescript-values",
+    "concept": "typescript-values-04",
+    "prompt": "What must happen before calling a string method on an unknown value?",
+    "choices": [
+      {
+        "id": "4a6999eb68a8",
+        "text": "Store it in localStorage"
+      },
+      {
+        "id": "6a0558b6925d",
+        "text": "Narrow it to a string"
+      },
+      {
+        "id": "5c7c4fdf95b8",
+        "text": "Add it to an array"
+      },
+      {
+        "id": "9694c5648a95",
+        "text": "Rename it to text"
+      }
+    ],
+    "correctId": "6a0558b6925d",
+    "explanation": "Unknown values require a check such as typeof before string-specific operations are safe.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-05",
+    "topic": "typescript-values",
+    "concept": "typescript-values-05",
+    "prompt": "What is a risk of using any for task data?",
+    "choices": [
+      {
+        "id": "f0011f10c215",
+        "text": "It validates every task at runtime"
+      },
+      {
+        "id": "01d780182420",
+        "text": "It bypasses checks that would catch unsafe operations"
+      },
+      {
+        "id": "3173b2eba8cb",
+        "text": "It rejects malformed JSON automatically"
+      },
+      {
+        "id": "4e0847ee5caf",
+        "text": "It freezes each object"
+      }
+    ],
+    "correctId": "01d780182420",
+    "explanation": "Any removes useful checking and can allow incorrect assumptions to spread through the code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-06",
+    "topic": "typescript-values",
+    "concept": "typescript-values-06",
+    "prompt": "Does raw as number turn the string \"20\" into a number?",
+    "choices": [
+      {
+        "id": "3be52af9b28b",
+        "text": "No; use a real conversion and validate it"
+      },
+      {
+        "id": "1617e0be169f",
+        "text": "Yes; assertions parse text"
+      },
+      {
+        "id": "f8b87f788d79",
+        "text": "Yes; if raw is const"
+      },
+      {
+        "id": "896c1f4e692a",
+        "text": "Only when strict is enabled"
+      }
+    ],
+    "correctId": "3be52af9b28b",
+    "explanation": "A type assertion changes the checker's view, not the actual runtime value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-07",
+    "topic": "typescript-values",
+    "concept": "typescript-values-07",
+    "prompt": "Under strict null checking, can a possibly undefined title be used as a definite string immediately?",
+    "choices": [
+      {
+        "id": "1dc21017c8f2",
+        "text": "Yes; optional properties always exist"
+      },
+      {
+        "id": "d48cdcfad8dc",
+        "text": "Yes; undefined becomes empty text"
+      },
+      {
+        "id": "e959707b758d",
+        "text": "Only with a shorter variable name"
+      },
+      {
+        "id": "3363d5bd291a",
+        "text": "No; handle the missing case first"
+      }
+    ],
+    "correctId": "3363d5bd291a",
+    "explanation": "A missing value must be narrowed or given a suitable fallback before definite-string use.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-08",
+    "topic": "typescript-values",
+    "concept": "typescript-values-08",
+    "prompt": "Which annotation uses the ordinary primitive text type?",
+    "choices": [
+      {
+        "id": "58400a27551a",
+        "text": "String[]"
+      },
+      {
+        "id": "4c3f78518a57",
+        "text": "string"
+      },
+      {
+        "id": "e7aee259ca80",
+        "text": "object"
+      },
+      {
+        "id": "5731a042225b",
+        "text": "number"
+      }
+    ],
+    "correctId": "4c3f78518a57",
+    "explanation": "Lowercase string describes primitive text values; wrapper-object types are unnecessary here.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-09",
+    "topic": "typescript-values",
+    "concept": "typescript-values-09",
+    "prompt": "Why might an empty task array need an explicit Task[] annotation?",
+    "choices": [
+      {
+        "id": "8bdbc3805eb2",
+        "text": "Arrays cannot contain objects"
+      },
+      {
+        "id": "5d2178bf96d5",
+        "text": "Annotations allocate database rows"
+      },
+      {
+        "id": "62020ac21950",
+        "text": "The intended element shape is not present in the initializer"
+      },
+      {
+        "id": "15a5da2b03bf",
+        "text": "Empty arrays cannot grow"
+      }
+    ],
+    "correctId": "62020ac21950",
+    "explanation": "An annotation supplies the intended contract when there are no initial elements to infer from.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-values-10",
+    "topic": "typescript-values",
+    "concept": "typescript-values-10",
+    "prompt": "When is an explicit parameter annotation especially useful?",
+    "choices": [
+      {
+        "id": "224a328111b1",
+        "text": "At a function boundary without a contextual type"
+      },
+      {
+        "id": "180c760d003b",
+        "text": "Only in CSS files"
+      },
+      {
+        "id": "0b4f0fc98f56",
+        "text": "After every punctuation mark"
+      },
+      {
+        "id": "89978b853760",
+        "text": "Only after a runtime crash"
+      }
+    ],
+    "correctId": "224a328111b1",
+    "explanation": "Boundary annotations make the accepted input clear and prevent an untyped parameter from hiding mistakes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-01",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-01",
+    "prompt": "What does a due?: string property allow?",
+    "choices": [
+      {
+        "id": "3a3c894c820b",
+        "text": "The property can only be a number"
+      },
+      {
+        "id": "eb563fac4d27",
+        "text": "The property must always contain a date object"
+      },
+      {
+        "id": "1834e83b103d",
+        "text": "The whole task must be null"
+      },
+      {
+        "id": "861584c79350",
+        "text": "The due property may be absent"
+      }
+    ],
+    "correctId": "861584c79350",
+    "explanation": "The question mark makes that property optional, so consumers must handle absence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-02",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-02",
+    "prompt": "Does readonly id prevent JavaScript code from mutating the object at runtime?",
+    "choices": [
+      {
+        "id": "1b9d4f89943c",
+        "text": "No; it is a static write restriction"
+      },
+      {
+        "id": "f8461455dd97",
+        "text": "Yes; it calls Object.freeze"
+      },
+      {
+        "id": "16ad8a153151",
+        "text": "Only after serialization"
+      },
+      {
+        "id": "5ca1abc7bccd",
+        "text": "Yes; it encrypts the ID"
+      }
+    ],
+    "correctId": "1b9d4f89943c",
+    "explanation": "Readonly restricts writes through a type; it does not change the runtime object automatically.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-03",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-03",
+    "prompt": "Two interfaces have the same required properties. What generally determines compatibility?",
+    "choices": [
+      {
+        "id": "fd627ee82c56",
+        "text": "Their structural shape"
+      },
+      {
+        "id": "b160b6f9da3b",
+        "text": "Their declaration line numbers"
+      },
+      {
+        "id": "fae0ff3a4ff4",
+        "text": "Their source file names"
+      },
+      {
+        "id": "6538e1723a06",
+        "text": "Their exact interface names"
+      }
+    ],
+    "correctId": "fd627ee82c56",
+    "explanation": "TypeScript largely compares the required structure rather than requiring identical interface names.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-04",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-04",
+    "prompt": "What does an intersection of two object types require?",
+    "choices": [
+      {
+        "id": "bb7cdd35390d",
+        "text": "Exactly one randomly chosen type"
+      },
+      {
+        "id": "c96a6314166b",
+        "text": "Both sets of required properties"
+      },
+      {
+        "id": "fb1e752b9346",
+        "text": "Only the shorter type"
+      },
+      {
+        "id": "7ac09f343a58",
+        "text": "Neither type's properties"
+      }
+    ],
+    "correctId": "c96a6314166b",
+    "explanation": "An intersection combines requirements, unlike a union which permits alternatives.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-05",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-05",
+    "prompt": "What does { ...task, done: true } do to a flat task object?",
+    "choices": [
+      {
+        "id": "d5b24ee3f185",
+        "text": "Deletes the task's ID"
+      },
+      {
+        "id": "a91ab8d30a90",
+        "text": "Creates a new object with done replaced"
+      },
+      {
+        "id": "7ba8a9627c89",
+        "text": "Changes every task in memory"
+      },
+      {
+        "id": "51d40d2141e8",
+        "text": "Freezes the old object"
+      }
+    ],
+    "correctId": "a91ab8d30a90",
+    "explanation": "Object spread copies properties into a new object and the later done property overrides its value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-06",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-06",
+    "prompt": "Does spreading an object deeply clone its nested objects?",
+    "choices": [
+      {
+        "id": "7f49f9be7ec4",
+        "text": "Only with an interface annotation"
+      },
+      {
+        "id": "68d44dfe9ad1",
+        "text": "No; nested references remain shared"
+      },
+      {
+        "id": "3db91e0d09ee",
+        "text": "Only if the outer binding is const"
+      },
+      {
+        "id": "f72f3c0de0c3",
+        "text": "Yes; every nested level is cloned"
+      }
+    ],
+    "correctId": "68d44dfe9ad1",
+    "explanation": "Object spread is shallow, so deeper updates need their own deliberate copies.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-07",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-07",
+    "prompt": "Which fallback handles an absent optional due string?",
+    "choices": [
+      {
+        "id": "738c6506cc33",
+        "text": "Cast every task to any"
+      },
+      {
+        "id": "c724fdef2aec",
+        "text": "task.due.toUpperCase() without a check"
+      },
+      {
+        "id": "a8a611bfd24b",
+        "text": "task.due ?? \"No date\""
+      },
+      {
+        "id": "1e0379b76f45",
+        "text": "Delete the entire task"
+      }
+    ],
+    "correctId": "a8a611bfd24b",
+    "explanation": "Nullish coalescing supplies a value when the optional property is null or undefined.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-08",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-08",
+    "prompt": "A Task requires id, title, and done. Which value violates that shape?",
+    "choices": [
+      {
+        "id": "d0d846dcc9a6",
+        "text": "An object missing done"
+      },
+      {
+        "id": "1f2f9934379b",
+        "text": "An object whose done is false"
+      },
+      {
+        "id": "c51f3b9542d6",
+        "text": "An object with all three correct properties"
+      },
+      {
+        "id": "4c282de7e9b1",
+        "text": "An object whose title is an empty string"
+      }
+    ],
+    "correctId": "d0d846dcc9a6",
+    "explanation": "A required boolean property must exist; constraints like nonblank titles need separate runtime rules.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-09",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-09",
+    "prompt": "Can an interface alone guarantee a title is nonblank?",
+    "choices": [
+      {
+        "id": "5e6fa233914f",
+        "text": "Yes; every string is nonblank"
+      },
+      {
+        "id": "2e0ee9598379",
+        "text": "Only when the field is readonly"
+      },
+      {
+        "id": "8223c218e1ef",
+        "text": "Yes; when its name is Task"
+      },
+      {
+        "id": "cbe428b48732",
+        "text": "No; string permits blank text"
+      }
+    ],
+    "correctId": "cbe428b48732",
+    "explanation": "The string type includes empty and whitespace strings, so validate domain-specific restrictions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-objects-10",
+    "topic": "typescript-objects",
+    "concept": "typescript-objects-10",
+    "prompt": "Why give a task shape a reusable name?",
+    "choices": [
+      {
+        "id": "319365a912ef",
+        "text": "To make all properties optional"
+      },
+      {
+        "id": "607d17d6cd1b",
+        "text": "To avoid every runtime check"
+      },
+      {
+        "id": "6f8061aafd70",
+        "text": "To create a runtime constructor automatically"
+      },
+      {
+        "id": "8f3ec30a0dff",
+        "text": "To keep contracts consistent across functions"
+      }
+    ],
+    "correctId": "8f3ec30a0dff",
+    "explanation": "A named interface or alias can be reused at boundaries without duplicating the same shape.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-01",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-01",
+    "prompt": "What does (id: string) => void describe?",
+    "choices": [
+      {
+        "id": "3af898156bd7",
+        "text": "A function accepting no arguments"
+      },
+      {
+        "id": "a533b286f049",
+        "text": "A string array"
+      },
+      {
+        "id": "37590be5634d",
+        "text": "A promise of a number"
+      },
+      {
+        "id": "39a51cbedd77",
+        "text": "A callback accepting a string whose result callers should not rely on"
+      }
+    ],
+    "correctId": "39a51cbedd77",
+    "explanation": "This function type states its parameter and communicates that the call is used for an action, not a returned result.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-02",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-02",
+    "prompt": "A function parameter is optional. What must its implementation consider?",
+    "choices": [
+      {
+        "id": "302312426a14",
+        "text": "It may receive undefined"
+      },
+      {
+        "id": "bcdd63ae9bc8",
+        "text": "It always receives null"
+      },
+      {
+        "id": "7460c943ed21",
+        "text": "It is never passed by callers"
+      },
+      {
+        "id": "8d1cf583b665",
+        "text": "It always receives zero"
+      }
+    ],
+    "correctId": "302312426a14",
+    "explanation": "Optional parameters can be omitted, so their implementation must account for a missing argument.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-03",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-03",
+    "prompt": "When does a default parameter value apply?",
+    "choices": [
+      {
+        "id": "70d360cab5bd",
+        "text": "When the argument is missing or undefined"
+      },
+      {
+        "id": "3c2f45ed2810",
+        "text": "Whenever it is false"
+      },
+      {
+        "id": "be8dc457caeb",
+        "text": "Only when it is null"
+      },
+      {
+        "id": "3bcea32a6c5e",
+        "text": "Whenever it is an empty string"
+      }
+    ],
+    "correctId": "70d360cab5bd",
+    "explanation": "JavaScript default parameters apply to undefined, not all falsy values.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-04",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-04",
+    "prompt": "An async function returns a number after awaiting work. Which return type describes it?",
+    "choices": [
+      {
+        "id": "4d57f8527c69",
+        "text": "string"
+      },
+      {
+        "id": "c621709964b9",
+        "text": "Promise<number>"
+      },
+      {
+        "id": "2fc63b4ca6f1",
+        "text": "void[]"
+      },
+      {
+        "id": "9c8fd6e6c756",
+        "text": "number[]"
+      }
+    ],
+    "correctId": "c621709964b9",
+    "explanation": "Calling an async function returns a promise whose eventual successful value has the given type.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-05",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-05",
+    "prompt": "Does writing a string return annotation convert a returned number to text?",
+    "choices": [
+      {
+        "id": "a043b061c74e",
+        "text": "No; it reports an incompatible return"
+      },
+      {
+        "id": "1b1113f439c9",
+        "text": "Only in development"
+      },
+      {
+        "id": "f6bedc0b7f9c",
+        "text": "Yes; the compiler inserts String"
+      },
+      {
+        "id": "a5d0c68f5466",
+        "text": "Only in callbacks"
+      }
+    ],
+    "correctId": "a043b061c74e",
+    "explanation": "An annotation checks the implementation contract; it does not silently transform the value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-06",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-06",
+    "prompt": "A callback is always called with a task ID. Should its ID parameter be optional?",
+    "choices": [
+      {
+        "id": "3206380434d1",
+        "text": "Only when the ID is long"
+      },
+      {
+        "id": "bed43eb313fa",
+        "text": "Yes; optional makes it faster"
+      },
+      {
+        "id": "3bbdc9eae007",
+        "text": "Yes; every callback parameter is optional"
+      },
+      {
+        "id": "569535382f8a",
+        "text": "No; its contract should require the ID"
+      }
+    ],
+    "correctId": "569535382f8a",
+    "explanation": "Optional parameters advertise that callers may omit the value, which is inaccurate here.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-07",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-07",
+    "prompt": "Why explicitly annotate a public helper's return type?",
+    "choices": [
+      {
+        "id": "7714dd0b0c39",
+        "text": "To make unintended return changes visible"
+      },
+      {
+        "id": "5f324448f278",
+        "text": "To skip tests"
+      },
+      {
+        "id": "9d6b17ff8e70",
+        "text": "To prevent network failures"
+      },
+      {
+        "id": "1dd53d43071f",
+        "text": "To serialize the return automatically"
+      }
+    ],
+    "correctId": "7714dd0b0c39",
+    "explanation": "An explicit return contract helps the checker flag accidental changes to the helper's result.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-08",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-08",
+    "prompt": "Which call violates remaining(total: number, done: number)?",
+    "choices": [
+      {
+        "id": "916445576c9e",
+        "text": "remaining(10, 3)"
+      },
+      {
+        "id": "51f24f7cb2a8",
+        "text": "remaining(0, 0)"
+      },
+      {
+        "id": "db47bd09c6fe",
+        "text": "remaining(\"5\", 2)"
+      },
+      {
+        "id": "c6a6d4a3fda4",
+        "text": "remaining(5, 2)"
+      }
+    ],
+    "correctId": "db47bd09c6fe",
+    "explanation": "A string does not satisfy the numeric parameter contract without a deliberate conversion.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-09",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-09",
+    "prompt": "What should a caller use when it needs the result of a calculation?",
+    "choices": [
+      {
+        "id": "3cb2e52884b7",
+        "text": "A void callback with an ignored result"
+      },
+      {
+        "id": "abf4abe21572",
+        "text": "A function that returns the result"
+      },
+      {
+        "id": "90a35dd31a02",
+        "text": "Only console.log output"
+      },
+      {
+        "id": "ff61a26de5f0",
+        "text": "A CSS class"
+      }
+    ],
+    "correctId": "abf4abe21572",
+    "explanation": "Returning a value makes it available to the caller; displaying it in the console is not the same contract.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-functions-10",
+    "topic": "typescript-functions",
+    "concept": "typescript-functions-10",
+    "prompt": "Why keep an onRemove callback separate from a task object?",
+    "choices": [
+      {
+        "id": "725160f2e543",
+        "text": "It separates an action contract from data"
+      },
+      {
+        "id": "d4e7a6088723",
+        "text": "It automatically saves to a server"
+      },
+      {
+        "id": "ade9b2870ce4",
+        "text": "It removes the need for task IDs"
+      },
+      {
+        "id": "f86e3acaa147",
+        "text": "It disables TypeScript inference"
+      }
+    ],
+    "correctId": "725160f2e543",
+    "explanation": "Typed callbacks describe what another part of the program can request while task objects describe stored data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-01",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-01",
+    "prompt": "A value is string or number. What safely enables toUpperCase?",
+    "choices": [
+      {
+        "id": "6ceb5165eb12",
+        "text": "Check typeof value === \"string\" first"
+      },
+      {
+        "id": "a1f2c9027e8e",
+        "text": "Call the method unconditionally"
+      },
+      {
+        "id": "88f2081a7ede",
+        "text": "Cast it to any"
+      },
+      {
+        "id": "3e3a85cc91b2",
+        "text": "Rename the value to title"
+      }
+    ],
+    "correctId": "6ceb5165eb12",
+    "explanation": "The runtime check narrows the union to the branch where string methods apply.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-02",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-02",
+    "prompt": "Why is typeof value === \"object\" insufficient to exclude null?",
+    "choices": [
+      {
+        "id": "fdcb8411b4f0",
+        "text": "TypeScript removes null at runtime"
+      },
+      {
+        "id": "f82f2a6f7c7c",
+        "text": "typeof null is \"object\""
+      },
+      {
+        "id": "25d4f9454139",
+        "text": "Objects cannot have properties"
+      },
+      {
+        "id": "9deb412cf128",
+        "text": "Null is always an array"
+      }
+    ],
+    "correctId": "f82f2a6f7c7c",
+    "explanation": "A non-null object guard needs an explicit null check because of JavaScript's typeof behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-03",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-03",
+    "prompt": "What makes status useful in a discriminated union?",
+    "choices": [
+      {
+        "id": "db95f66ea0a8",
+        "text": "Each variant has a distinct literal status"
+      },
+      {
+        "id": "ccc004402f1e",
+        "text": "Status contains the whole JSON payload"
+      },
+      {
+        "id": "865f1c939235",
+        "text": "Status is always a number"
+      },
+      {
+        "id": "4289ca59a449",
+        "text": "Every variant has an arbitrary string"
+      }
+    ],
+    "correctId": "db95f66ea0a8",
+    "explanation": "A shared field with distinct literal values lets checking select the correct object shape.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-04",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-04",
+    "prompt": "For {status:\"ok\", count:number} or {status:\"error\", message:string}, when is count safely available?",
+    "choices": [
+      {
+        "id": "d014f7763e9f",
+        "text": "Inside the status === \"ok\" branch"
+      },
+      {
+        "id": "7ad61b39b94e",
+        "text": "Only after casting to any"
+      },
+      {
+        "id": "e32530326491",
+        "text": "In every branch"
+      },
+      {
+        "id": "4c2a2eca12b7",
+        "text": "Only after converting status to a number"
+      }
+    ],
+    "correctId": "d014f7763e9f",
+    "explanation": "The discriminant establishes that the current variant contains count.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-05",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-05",
+    "prompt": "What can an exhaustive never check reveal?",
+    "choices": [
+      {
+        "id": "4d4cc4d92e75",
+        "text": "A missing stylesheet"
+      },
+      {
+        "id": "0cee16a02b2b",
+        "text": "A newly added union case that was not handled"
+      },
+      {
+        "id": "cfc872fa4492",
+        "text": "A slow internet connection"
+      },
+      {
+        "id": "8c5c3971ae50",
+        "text": "An expired browser session"
+      }
+    ],
+    "correctId": "0cee16a02b2b",
+    "explanation": "After all known cases are handled no value should remain; a new variant breaks that assumption at compile time.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-06",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-06",
+    "prompt": "A duration may legitimately be zero. Why can if (duration) be wrong?",
+    "choices": [
+      {
+        "id": "f2b90ec7b633",
+        "text": "It converts zero to one"
+      },
+      {
+        "id": "192f11f94ede",
+        "text": "It always throws on numbers"
+      },
+      {
+        "id": "83d46a7d9f06",
+        "text": "It freezes duration"
+      },
+      {
+        "id": "5d7df56311cb",
+        "text": "It excludes zero as falsy"
+      }
+    ],
+    "correctId": "5d7df56311cb",
+    "explanation": "Truthiness combines several cases, so use an explicit missing-value check when zero is valid.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-07",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-07",
+    "prompt": "What does optional chaining do for a nullish receiver?",
+    "choices": [
+      {
+        "id": "585ac83cca82",
+        "text": "Returns a required string"
+      },
+      {
+        "id": "a42ae49067de",
+        "text": "Creates the missing object"
+      },
+      {
+        "id": "bd4f0d0a48b5",
+        "text": "Short-circuits to undefined"
+      },
+      {
+        "id": "6b46e4599255",
+        "text": "Validates its JSON schema"
+      }
+    ],
+    "correctId": "bd4f0d0a48b5",
+    "explanation": "Optional chaining avoids access through null or undefined but does not validate arbitrary shapes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-08",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-08",
+    "prompt": "Does a non-null assertion prove a DOM element exists?",
+    "choices": [
+      {
+        "id": "361ee6759748",
+        "text": "Yes; it creates the element"
+      },
+      {
+        "id": "2a2ab7de2f4d",
+        "text": "Yes; it waits for rendering"
+      },
+      {
+        "id": "bf686866922d",
+        "text": "No; it suppresses a static missing-value concern"
+      },
+      {
+        "id": "a3cdd1e15676",
+        "text": "Only if the element has a label"
+      }
+    ],
+    "correctId": "bf686866922d",
+    "explanation": "The assertion supplies no runtime guard, so an incorrect assumption can still fail.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-09",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-09",
+    "prompt": "Why use a union of request variants instead of unrelated boolean flags?",
+    "choices": [
+      {
+        "id": "98df10d8bbba",
+        "text": "It removes every error case"
+      },
+      {
+        "id": "cc64ab246272",
+        "text": "It makes requests synchronous"
+      },
+      {
+        "id": "561f48c45c48",
+        "text": "It can exclude contradictory combinations"
+      },
+      {
+        "id": "70a7ae5d3648",
+        "text": "It guarantees valid server data"
+      }
+    ],
+    "correctId": "561f48c45c48",
+    "explanation": "A union can model one meaningful state at a time instead of allowing loading and success to contradict each other.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-narrowing-10",
+    "topic": "typescript-narrowing",
+    "concept": "typescript-narrowing-10",
+    "prompt": "After an early return handles a non-string value, what can the remaining code often do?",
+    "choices": [
+      {
+        "id": "88259ca1aead",
+        "text": "Skip checking every other input"
+      },
+      {
+        "id": "ff297809dc73",
+        "text": "Assume all objects are strings"
+      },
+      {
+        "id": "d7abee2f07dd",
+        "text": "Use the narrowed string type"
+      },
+      {
+        "id": "ad20121bc967",
+        "text": "Change the value's runtime type"
+      }
+    ],
+    "correctId": "d7abee2f07dd",
+    "explanation": "Control-flow analysis follows branches and returns to determine which types can remain.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-01",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-01",
+    "prompt": "What is the main purpose of a generic first<T> helper?",
+    "choices": [
+      {
+        "id": "ab6aaf60eb1c",
+        "text": "Make every value any"
+      },
+      {
+        "id": "7715e3f3c4c1",
+        "text": "Preserve the relationship between an array element and the return type"
+      },
+      {
+        "id": "553eb53f62a7",
+        "text": "Convert all values to strings"
+      },
+      {
+        "id": "763e79a8ed97",
+        "text": "Create a database table"
+      }
+    ],
+    "correctId": "7715e3f3c4c1",
+    "explanation": "A generic captures the caller's element type and relates it to the returned element.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-02",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-02",
+    "prompt": "Why should first<T>(items) return T or undefined?",
+    "choices": [
+      {
+        "id": "62940c683143",
+        "text": "All arrays contain null"
+      },
+      {
+        "id": "a06e8189e2d1",
+        "text": "Undefined is always the first item"
+      },
+      {
+        "id": "488ccb21e0af",
+        "text": "Generics cannot return T"
+      },
+      {
+        "id": "4857a2aefed3",
+        "text": "The array may be empty"
+      }
+    ],
+    "correctId": "4857a2aefed3",
+    "explanation": "An empty array has no first element, so the contract must account for absence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-03",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-03",
+    "prompt": "What does T extends { id: string } require?",
+    "choices": [
+      {
+        "id": "8252e842342b",
+        "text": "T can have no other properties"
+      },
+      {
+        "id": "ff794dbfa871",
+        "text": "T must equal string exactly"
+      },
+      {
+        "id": "b46486c5961f",
+        "text": "Every id is runtime-unique"
+      },
+      {
+        "id": "e1676d7fd3a9",
+        "text": "Each accepted type has a string id"
+      }
+    ],
+    "correctId": "e1676d7fd3a9",
+    "explanation": "The constraint describes the minimum structure needed by the generic operation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-04",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-04",
+    "prompt": "What does keyof Task represent?",
+    "choices": [
+      {
+        "id": "9cfe4363eca7",
+        "text": "Every task value"
+      },
+      {
+        "id": "20cf40073889",
+        "text": "A runtime list of task IDs"
+      },
+      {
+        "id": "f356cf8a7231",
+        "text": "The property keys of Task"
+      },
+      {
+        "id": "abca7e4aff89",
+        "text": "The number of properties"
+      }
+    ],
+    "correctId": "f356cf8a7231",
+    "explanation": "Keyof produces a type of keys, not a runtime enumeration of objects.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-05",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-05",
+    "prompt": "What does Task[\"title\"] describe?",
+    "choices": [
+      {
+        "id": "f5708ce270f4",
+        "text": "The type of Task's title property"
+      },
+      {
+        "id": "ad881766e8fe",
+        "text": "A new Task array"
+      },
+      {
+        "id": "bb72238cdfa0",
+        "text": "The first task title at runtime"
+      },
+      {
+        "id": "c8c656bda4a6",
+        "text": "A JSON parser"
+      }
+    ],
+    "correctId": "f5708ce270f4",
+    "explanation": "Indexed access obtains a property's static value type from another type.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-06",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-06",
+    "prompt": "What does Pick<Task, \"id\"> create?",
+    "choices": [
+      {
+        "id": "0c72ca176a62",
+        "text": "A list of all IDs"
+      },
+      {
+        "id": "528eb3f1b40c",
+        "text": "A validation function"
+      },
+      {
+        "id": "7183c202f42b",
+        "text": "A type selecting the id property"
+      },
+      {
+        "id": "f8e26ec897f2",
+        "text": "A runtime object with fields removed"
+      }
+    ],
+    "correctId": "7183c202f42b",
+    "explanation": "Pick changes a type description; actual object transformation requires runtime code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-07",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-07",
+    "prompt": "What does Partial<Task> change?",
+    "choices": [
+      {
+        "id": "752668e08332",
+        "text": "It makes Task's properties optional"
+      },
+      {
+        "id": "7f0d44ed7dbf",
+        "text": "It deep-clones the task"
+      },
+      {
+        "id": "3b43ebe7edac",
+        "text": "It removes its runtime fields"
+      },
+      {
+        "id": "794d41b8bf82",
+        "text": "It makes every task invalid"
+      }
+    ],
+    "correctId": "752668e08332",
+    "explanation": "Partial is useful for patch-shaped types but does not apply or validate a patch by itself.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-08",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-08",
+    "prompt": "Can Readonly<Task> guarantee a remote caller cannot change task data?",
+    "choices": [
+      {
+        "id": "f2dec779aab5",
+        "text": "Yes; it adds authentication"
+      },
+      {
+        "id": "f1534157f1d3",
+        "text": "No; it is a static contract"
+      },
+      {
+        "id": "84dafcf98bb6",
+        "text": "Only if sent as JSON"
+      },
+      {
+        "id": "bfda2579b6ce",
+        "text": "Yes; it encrypts the data"
+      }
+    ],
+    "correctId": "f1534157f1d3",
+    "explanation": "Security and runtime data protection are not supplied by compile-time utility types.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-09",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-09",
+    "prompt": "A byId helper cannot find a match. Which result keeps its contract honest?",
+    "choices": [
+      {
+        "id": "bef76757373e",
+        "text": "undefined in its declared return union"
+      },
+      {
+        "id": "aae3abc1b785",
+        "text": "A fabricated task"
+      },
+      {
+        "id": "e4112bb84c25",
+        "text": "An asserted T with no object"
+      },
+      {
+        "id": "80c6be3e1b72",
+        "text": "The input ID cast to T"
+      }
+    ],
+    "correctId": "bef76757373e",
+    "explanation": "Missing matches must be represented rather than hidden behind an unsafe assertion.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-generics-10",
+    "topic": "typescript-generics",
+    "concept": "typescript-generics-10",
+    "prompt": "When is a generic more useful than unrelated any parameters and results?",
+    "choices": [
+      {
+        "id": "ce65c5e30355",
+        "text": "Only when rendering HTML"
+      },
+      {
+        "id": "fc8167f8f28d",
+        "text": "When checks should be disabled"
+      },
+      {
+        "id": "dae89ac9f203",
+        "text": "When input and output types must remain connected"
+      },
+      {
+        "id": "bc968c8ca428",
+        "text": "When a function has no data relationship"
+      }
+    ],
+    "correctId": "dae89ac9f203",
+    "explanation": "A generic communicates a relationship that any would erase.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-01",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-01",
+    "prompt": "Why check a querySelector result before reading value?",
+    "choices": [
+      {
+        "id": "68d954f270de",
+        "text": "Every element has a value property"
+      },
+      {
+        "id": "d66a486b927e",
+        "text": "TypeScript automatically creates missing elements"
+      },
+      {
+        "id": "45b0a5d3f604",
+        "text": "The query may return null"
+      },
+      {
+        "id": "4d33816ae9e2",
+        "text": "Queries always return arrays"
+      }
+    ],
+    "correctId": "45b0a5d3f604",
+    "explanation": "A selector can match nothing, so existence must be handled before element access.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-02",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-02",
+    "prompt": "Which check verifies that a queried element really is an input?",
+    "choices": [
+      {
+        "id": "4b17221f0d9c",
+        "text": "element instanceof HTMLInputElement"
+      },
+      {
+        "id": "98493b1e333b",
+        "text": "Adding a TypeScript comment"
+      },
+      {
+        "id": "86281020ca3c",
+        "text": "element as HTMLInputElement alone"
+      },
+      {
+        "id": "8ad21c7dbb87",
+        "text": "Renaming it to input"
+      }
+    ],
+    "correctId": "4b17221f0d9c",
+    "explanation": "Instanceof performs a runtime class check and also narrows the static type.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-03",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-03",
+    "prompt": "Does querySelector<HTMLInputElement> verify the matched tag at runtime?",
+    "choices": [
+      {
+        "id": "052d7f682254",
+        "text": "No; it supplies a static expectation"
+      },
+      {
+        "id": "e7987e62f033",
+        "text": "Yes; it inserts validation code"
+      },
+      {
+        "id": "3592a9cef0b1",
+        "text": "Only in strict mode"
+      },
+      {
+        "id": "8a23fe704034",
+        "text": "Yes; it replaces other tags with inputs"
+      }
+    ],
+    "correctId": "052d7f682254",
+    "explanation": "A generic type argument does not add a runtime tag check to the DOM query.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-04",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-04",
+    "prompt": "What is the type of a text input's value?",
+    "choices": [
+      {
+        "id": "0631fb26802f",
+        "text": "number regardless of content"
+      },
+      {
+        "id": "aa245108c47e",
+        "text": "string"
+      },
+      {
+        "id": "8a42a46bd85d",
+        "text": "boolean"
+      },
+      {
+        "id": "dc51bfe967b5",
+        "text": "Task"
+      }
+    ],
+    "correctId": "aa245108c47e",
+    "explanation": "Even numeric-looking input is read as text and needs deliberate conversion for arithmetic.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-05",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-05",
+    "prompt": "Which property tells whether a checkbox is selected?",
+    "choices": [
+      {
+        "id": "c663ad15a4ad",
+        "text": "checked"
+      },
+      {
+        "id": "0170a1e39b30",
+        "text": "className"
+      },
+      {
+        "id": "5048e43e3f83",
+        "text": "title"
+      },
+      {
+        "id": "52874ed97331",
+        "text": "value.length"
+      }
+    ],
+    "correctId": "c663ad15a4ad",
+    "explanation": "Checked is the boolean selection state; value serves a different form-data purpose.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-06",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-06",
+    "prompt": "Why listen to form submit rather than only a button click?",
+    "choices": [
+      {
+        "id": "7b65c21e0d6f",
+        "text": "It also supports keyboard submission"
+      },
+      {
+        "id": "ad9958ffd710",
+        "text": "It bypasses validation"
+      },
+      {
+        "id": "0f87ee2a9924",
+        "text": "It prevents every event"
+      },
+      {
+        "id": "af0fdbc6560f",
+        "text": "It automatically saves to the database"
+      }
+    ],
+    "correctId": "7b65c21e0d6f",
+    "explanation": "A form's submission event gives keyboard and button interactions one shared path.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-07",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-07",
+    "prompt": "What does preventDefault do in a submit handler?",
+    "choices": [
+      {
+        "id": "bea40f71950d",
+        "text": "Makes the input readonly"
+      },
+      {
+        "id": "24624b27c70d",
+        "text": "Stops all JavaScript execution"
+      },
+      {
+        "id": "914b5319cb6d",
+        "text": "Stops the normal browser submission action"
+      },
+      {
+        "id": "61f545ed0eb5",
+        "text": "Deletes the form"
+      }
+    ],
+    "correctId": "914b5319cb6d",
+    "explanation": "It prevents the browser's default submission so the application can handle the form.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-08",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-08",
+    "prompt": "A numeric field contains only spaces. What should precede Number conversion?",
+    "choices": [
+      {
+        "id": "e903cabcad28",
+        "text": "Multiplication by zero"
+      },
+      {
+        "id": "c764734a9596",
+        "text": "Removing strict mode"
+      },
+      {
+        "id": "8c674e32358f",
+        "text": "An explicit blank-input check"
+      },
+      {
+        "id": "93db83f48af4",
+        "text": "A cast to number"
+      }
+    ],
+    "correctId": "8c674e32358f",
+    "explanation": "Blank text converts to zero, which can hide an absent value unless checked separately.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-09",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-09",
+    "prompt": "A selector matches a div but the code asserts HTMLInputElement. What is the problem?",
+    "choices": [
+      {
+        "id": "7c9675e2bc79",
+        "text": "The browser replaces the div"
+      },
+      {
+        "id": "2544daecb40e",
+        "text": "The div gains a checked property automatically"
+      },
+      {
+        "id": "6d1a78ea560c",
+        "text": "The type checker validates the actual page"
+      },
+      {
+        "id": "0d0f5aaae6f2",
+        "text": "The assertion does not make it an input"
+      }
+    ],
+    "correctId": "0d0f5aaae6f2",
+    "explanation": "Static assertions cannot change the DOM node's actual class or behavior.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-dom-10",
+    "topic": "typescript-dom",
+    "concept": "typescript-dom-10",
+    "prompt": "Which feedback makes a failed form easier to recover from?",
+    "choices": [
+      {
+        "id": "ccf139e74a0f",
+        "text": "A silent return with no explanation"
+      },
+      {
+        "id": "22f6201f8d2a",
+        "text": "A visible message and useful focus"
+      },
+      {
+        "id": "fb10c4d938a1",
+        "text": "Removing the form"
+      },
+      {
+        "id": "e005f20f0ed8",
+        "text": "Only a console error"
+      }
+    ],
+    "correctId": "22f6201f8d2a",
+    "explanation": "Users need understandable feedback and a clear next action, including keyboard users.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-01",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-01",
+    "prompt": "Why assign parsed external JSON to unknown before using it?",
+    "choices": [
+      {
+        "id": "df556f0c0434",
+        "text": "To convert every property to text"
+      },
+      {
+        "id": "2332ce2b6d9a",
+        "text": "To skip parsing errors"
+      },
+      {
+        "id": "060adb90e459",
+        "text": "To require inspection before trusting its shape"
+      },
+      {
+        "id": "9250628f3b1a",
+        "text": "To encrypt the payload"
+      }
+    ],
+    "correctId": "060adb90e459",
+    "explanation": "Unknown forces boundary checks rather than letting an unchecked value masquerade as a domain object.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-02",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-02",
+    "prompt": "Does JSON.parse(raw) as Task[] validate the task array?",
+    "choices": [
+      {
+        "id": "8e2f45caa4a2",
+        "text": "No; it only asserts a type"
+      },
+      {
+        "id": "a3e8966ed350",
+        "text": "Yes; it checks every property"
+      },
+      {
+        "id": "bf2ccc09b2f6",
+        "text": "Only if the JSON is valid syntax"
+      },
+      {
+        "id": "65499caa0d94",
+        "text": "Yes; it removes duplicate IDs"
+      }
+    ],
+    "correctId": "8e2f45caa4a2",
+    "explanation": "Valid JSON syntax and a type assertion do not establish the expected application schema.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-03",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-03",
+    "prompt": "Which task payload should a boolean done validator reject?",
+    "choices": [
+      {
+        "id": "4363a46a46c5",
+        "text": "{id:\"c\", title:\"Test\", done:false}"
+      },
+      {
+        "id": "ce4448518abc",
+        "text": "{id:\"a\", title:\"Read\", done:false}"
+      },
+      {
+        "id": "f55d1b3a5c73",
+        "text": "{id:\"b\", title:\"Build\", done:true}"
+      },
+      {
+        "id": "4bc7811bdc3c",
+        "text": "{id:\"a\", title:\"Read\", done:\"false\"}"
+      }
+    ],
+    "correctId": "4bc7811bdc3c",
+    "explanation": "The text \"false\" is a string, not the boolean false required by the contract.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-04",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-04",
+    "prompt": "Why check duplicate task IDs during loading?",
+    "choices": [
+      {
+        "id": "0370a6a5d30e",
+        "text": "Stable identity must remain unambiguous"
+      },
+      {
+        "id": "de51c0214895",
+        "text": "To sort by network speed"
+      },
+      {
+        "id": "2b12a2445925",
+        "text": "To make all titles equal"
+      },
+      {
+        "id": "ec7bec31d738",
+        "text": "To avoid parsing JSON"
+      }
+    ],
+    "correctId": "0370a6a5d30e",
+    "explanation": "Repeated IDs can make updates target multiple tasks and undermine list identity.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-05",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-05",
+    "prompt": "An HTTP request returns status 404 but fetch resolves. What should code check?",
+    "choices": [
+      {
+        "id": "9783ff61f199",
+        "text": "Only whether fetch returned a promise"
+      },
+      {
+        "id": "2becfa260b1a",
+        "text": "The length of the URL"
+      },
+      {
+        "id": "d9c5b5e6b68a",
+        "text": "response.ok before trusting the body"
+      },
+      {
+        "id": "8fb186b4b604",
+        "text": "Whether the title contains JSON"
+      }
+    ],
+    "correctId": "d9c5b5e6b68a",
+    "explanation": "Fetch does not reject merely because the server returned an HTTP error status.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-06",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-06",
+    "prompt": "What risk comes from an incorrect type predicate?",
+    "choices": [
+      {
+        "id": "9a411eb09b6c",
+        "text": "The checker trusts a false claim about the value"
+      },
+      {
+        "id": "9199ae6ebfa4",
+        "text": "It cannot compile under any settings"
+      },
+      {
+        "id": "cfff6a9d8296",
+        "text": "It always returns unknown"
+      },
+      {
+        "id": "240126f1d695",
+        "text": "The browser automatically repairs it"
+      }
+    ],
+    "correctId": "9a411eb09b6c",
+    "explanation": "A predicate is a promise made by the implementation, so its runtime checks must be complete enough.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-07",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-07",
+    "prompt": "Saved task JSON is malformed. What protects user data?",
+    "choices": [
+      {
+        "id": "74b36ddf3d6e",
+        "text": "Call localStorage.clear()"
+      },
+      {
+        "id": "b6549e1cb7c3",
+        "text": "Immediately save an empty array over it"
+      },
+      {
+        "id": "488a9b57da48",
+        "text": "Show recovery without overwriting the original value"
+      },
+      {
+        "id": "235e286f640c",
+        "text": "Ignore the error and report saved"
+      }
+    ],
+    "correctId": "488a9b57da48",
+    "explanation": "Preserving the original text allows recovery instead of silently destroying unreadable data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-08",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-08",
+    "prompt": "A response is valid JSON but has an object where an array is expected. What is this?",
+    "choices": [
+      {
+        "id": "e975d977f022",
+        "text": "A CSS error"
+      },
+      {
+        "id": "e6417af1515d",
+        "text": "A TypeScript conversion"
+      },
+      {
+        "id": "a69ff590fd43",
+        "text": "A schema validation failure"
+      },
+      {
+        "id": "bed70b598130",
+        "text": "A guaranteed successful task list"
+      }
+    ],
+    "correctId": "a69ff590fd43",
+    "explanation": "Parsing establishes JSON syntax, while schema validation checks the application's expected shape.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-09",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-09",
+    "prompt": "Why validate bounds such as title length and task count?",
+    "choices": [
+      {
+        "id": "e0af14fa5c77",
+        "text": "To replace authentication"
+      },
+      {
+        "id": "2cd545057b51",
+        "text": "To make all requests succeed"
+      },
+      {
+        "id": "c551f29e53e9",
+        "text": "Because string types already enforce them"
+      },
+      {
+        "id": "a0523fa629b7",
+        "text": "To enforce usable domain limits at runtime"
+      }
+    ],
+    "correctId": "a0523fa629b7",
+    "explanation": "Static primitive types do not express or enforce these runtime input limits by themselves.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-boundaries-10",
+    "topic": "typescript-boundaries",
+    "concept": "typescript-boundaries-10",
+    "prompt": "Where should validation occur for browser storage?",
+    "choices": [
+      {
+        "id": "9c4a49d3b183",
+        "text": "Never, because storage is always trusted"
+      },
+      {
+        "id": "819af2e3bb6d",
+        "text": "Only when naming the file"
+      },
+      {
+        "id": "fd54d9d5cc1a",
+        "text": "When loading data before treating it as Task[]"
+      },
+      {
+        "id": "492b1fccf694",
+        "text": "Only during npm install"
+      }
+    ],
+    "correctId": "fd54d9d5cc1a",
+    "explanation": "Stored data may be old, malformed, or changed, so each boundary load must validate it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-01",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-01",
+    "prompt": "What is import type used for?",
+    "choices": [
+      {
+        "id": "38c00f76fa4d",
+        "text": "Fetching JSON from a server"
+      },
+      {
+        "id": "d0e01c716adc",
+        "text": "Creating a runtime object"
+      },
+      {
+        "id": "13d427e2a881",
+        "text": "Importing a contract used only for type checking"
+      },
+      {
+        "id": "a8091a46c6a1",
+        "text": "Adding a CSS class"
+      }
+    ],
+    "correctId": "13d427e2a881",
+    "explanation": "A type-only import describes a static dependency that does not need a runtime value import.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-02",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-02",
+    "prompt": "Why put pure task transformations in model.ts?",
+    "choices": [
+      {
+        "id": "255258cb9e5c",
+        "text": "They can be checked separately from DOM wiring"
+      },
+      {
+        "id": "0812a210682b",
+        "text": "It makes all data persistent"
+      },
+      {
+        "id": "d540bb07438d",
+        "text": "It automatically deploys them"
+      },
+      {
+        "id": "28bd647c2788",
+        "text": "It stops every runtime exception"
+      }
+    ],
+    "correctId": "255258cb9e5c",
+    "explanation": "Separating domain operations allows focused tests without requiring browser elements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-03",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-03",
+    "prompt": "Which tool's role includes serving and bundling the starter?",
+    "choices": [
+      {
+        "id": "2e53fb8ec616",
+        "text": "localStorage"
+      },
+      {
+        "id": "9f17d80f8aae",
+        "text": "A React key"
+      },
+      {
+        "id": "4dafb05cf869",
+        "text": "A TypeScript interface"
+      },
+      {
+        "id": "8c615e04c5a0",
+        "text": "Vite"
+      }
+    ],
+    "correctId": "8c615e04c5a0",
+    "explanation": "Vite handles the development/build workflow; static type checking remains a separate step.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-04",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-04",
+    "prompt": "Why commit the starter's package lock?",
+    "choices": [
+      {
+        "id": "803000a33fd3",
+        "text": "To store user task data"
+      },
+      {
+        "id": "b282eff1a5c6",
+        "text": "To hide compiler errors"
+      },
+      {
+        "id": "867415413b5b",
+        "text": "To record resolved dependencies for reproducible installs"
+      },
+      {
+        "id": "464cd186697e",
+        "text": "To prevent all future package updates"
+      }
+    ],
+    "correctId": "867415413b5b",
+    "explanation": "A lockfile captures dependency resolution so installs do not float unpredictably.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-05",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-05",
+    "prompt": "What should happen when npm ci finds a manifest and lockfile mismatch?",
+    "choices": [
+      {
+        "id": "fc8a61180ada",
+        "text": "It should deploy anyway"
+      },
+      {
+        "id": "ea79c8d50811",
+        "text": "It should delete all source files"
+      },
+      {
+        "id": "fa45f48e329a",
+        "text": "It should ignore the manifest"
+      },
+      {
+        "id": "bd1abef33ca8",
+        "text": "It should fail rather than silently rewriting the lock"
+      }
+    ],
+    "correctId": "bd1abef33ca8",
+    "explanation": "A locked install refuses inconsistent dependency declarations and requires an intentional update.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-06",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-06",
+    "prompt": "A helper exports only a type. Can that type act as a runtime validator?",
+    "choices": [
+      {
+        "id": "df242737a5dd",
+        "text": "No; a real function must perform validation"
+      },
+      {
+        "id": "e906a9524500",
+        "text": "Yes; all exported types become functions"
+      },
+      {
+        "id": "150c9561edb3",
+        "text": "Only when imported twice"
+      },
+      {
+        "id": "040475e03ee9",
+        "text": "Only in production mode"
+      }
+    ],
+    "correctId": "df242737a5dd",
+    "explanation": "Types are static descriptions and cannot inspect data at runtime.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-07",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-07",
+    "prompt": "Which verification order catches issues before sharing a starter?",
+    "choices": [
+      {
+        "id": "7fb3384a3b5c",
+        "text": "Run only the CSS formatter"
+      },
+      {
+        "id": "c876c601d280",
+        "text": "Zip node_modules and skip checks"
+      },
+      {
+        "id": "caf9f572cbfa",
+        "text": "Type-check, test behavior, then build"
+      },
+      {
+        "id": "7246e4bbd8dc",
+        "text": "Rename failing files"
+      }
+    ],
+    "correctId": "caf9f572cbfa",
+    "explanation": "Each check covers a different risk, from contracts to domain behavior to the final build output.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-08",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-08",
+    "prompt": "Can a successful type check prove that a remote service is available?",
+    "choices": [
+      {
+        "id": "605d5facd24d",
+        "text": "Only when strict is enabled"
+      },
+      {
+        "id": "1efb3a3921dc",
+        "text": "Only with type-only imports"
+      },
+      {
+        "id": "7f99a7f4442e",
+        "text": "No; availability is a runtime concern"
+      },
+      {
+        "id": "ce21ca0d4bb3",
+        "text": "Yes; Promise types guarantee success"
+      }
+    ],
+    "correctId": "7f99a7f4442e",
+    "explanation": "The checker cannot guarantee that a future external request will succeed.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-09",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-09",
+    "prompt": "Which module should normally query DOM controls?",
+    "choices": [
+      {
+        "id": "e0c446595122",
+        "text": "The package lock"
+      },
+      {
+        "id": "510fee825496",
+        "text": "A pure arithmetic helper"
+      },
+      {
+        "id": "daf3f1cf08f0",
+        "text": "A type alias declaration"
+      },
+      {
+        "id": "18c96c21705f",
+        "text": "The UI wiring module"
+      }
+    ],
+    "correctId": "18c96c21705f",
+    "explanation": "Keeping element access in the UI layer helps pure model code remain independent and testable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-modules-10",
+    "topic": "typescript-modules",
+    "concept": "typescript-modules-10",
+    "prompt": "Why avoid importing an unused runtime value merely to reference its type?",
+    "choices": [
+      {
+        "id": "f606ab02e281",
+        "text": "It prevents every module cycle"
+      },
+      {
+        "id": "988d86c35c39",
+        "text": "It automatically validates inputs"
+      },
+      {
+        "id": "ce8bf8e7269e",
+        "text": "It makes the browser run TypeScript"
+      },
+      {
+        "id": "76f0870e56c4",
+        "text": "A type-only import makes the dependency's purpose explicit"
+      }
+    ],
+    "correctId": "76f0870e56c4",
+    "explanation": "Explicit type-only imports separate static contracts from code needed during execution.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-01",
+    "topic": "typescript-project",
+    "concept": "typescript-project-01",
+    "prompt": "What should the typed planner save when the Active filter is selected?",
+    "choices": [
+      {
+        "id": "26b29e91df7c",
+        "text": "The complete task array"
+      },
+      {
+        "id": "34de709193be",
+        "text": "Only the visible task count"
+      },
+      {
+        "id": "8409478af9df",
+        "text": "Only active tasks"
+      },
+      {
+        "id": "75fcf850743b",
+        "text": "Only the filter label"
+      }
+    ],
+    "correctId": "26b29e91df7c",
+    "explanation": "Filters are views; persisting only visible items would lose hidden tasks.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-02",
+    "topic": "typescript-project",
+    "concept": "typescript-project-02",
+    "prompt": "Why use a finite View union in the planner?",
+    "choices": [
+      {
+        "id": "f92fc6f93675",
+        "text": "To avoid all runtime inputs"
+      },
+      {
+        "id": "4e04f72dd446",
+        "text": "To hide completed tasks permanently"
+      },
+      {
+        "id": "db3c8367ed32",
+        "text": "To reject unsupported filter names during checking"
+      },
+      {
+        "id": "fae26f193242",
+        "text": "To create a new browser tab"
+      }
+    ],
+    "correctId": "db3c8367ed32",
+    "explanation": "A literal union documents supported views and catches invalid values in typed code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-03",
+    "topic": "typescript-project",
+    "concept": "typescript-project-03",
+    "prompt": "What should happen when browser storage cannot be read?",
+    "choices": [
+      {
+        "id": "25a5f4a5bc37",
+        "text": "Clear every storage key"
+      },
+      {
+        "id": "e0db0762a37b",
+        "text": "Offer a temporary list while preserving the old data"
+      },
+      {
+        "id": "1ac12737fa02",
+        "text": "Replace stored text without asking"
+      },
+      {
+        "id": "2147bfa910df",
+        "text": "Claim that data was restored"
+      }
+    ],
+    "correctId": "e0db0762a37b",
+    "explanation": "An explicit temporary mode supports continued use without destroying unreadable saved data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-04",
+    "topic": "typescript-project",
+    "concept": "typescript-project-04",
+    "prompt": "A save fails after adding a task. What is honest feedback?",
+    "choices": [
+      {
+        "id": "6da6ef57f7c5",
+        "text": "The in-memory change exists but may be lost on reload"
+      },
+      {
+        "id": "6e06527d1e74",
+        "text": "The task is safely synced to every device"
+      },
+      {
+        "id": "d77c7111859a",
+        "text": "No warning is necessary"
+      },
+      {
+        "id": "5591a8121a39",
+        "text": "The database is updated"
+      }
+    ],
+    "correctId": "6da6ef57f7c5",
+    "explanation": "The UI must distinguish a working in-memory update from successful persistence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-05",
+    "topic": "typescript-project",
+    "concept": "typescript-project-05",
+    "prompt": "What needs updating when adding optional due dates to saved tasks?",
+    "choices": [
+      {
+        "id": "6f0e98b738de",
+        "text": "The type, validation, and old-data handling"
+      },
+      {
+        "id": "3cd292183a76",
+        "text": "Only the ZIP filename"
+      },
+      {
+        "id": "d7d888b8806f",
+        "text": "Only the page heading"
+      },
+      {
+        "id": "3a816d7936f6",
+        "text": "Only the task count"
+      }
+    ],
+    "correctId": "6f0e98b738de",
+    "explanation": "Persisted schema changes affect both static contracts and data loaded from older versions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-06",
+    "topic": "typescript-project",
+    "concept": "typescript-project-06",
+    "prompt": "Which update preserves the original task array?",
+    "choices": [
+      {
+        "id": "4fe8e5043e27",
+        "text": "map to a new array and copy the changed task"
+      },
+      {
+        "id": "a1db06d8ce1a",
+        "text": "Change readonly to any"
+      },
+      {
+        "id": "3a99641f7be8",
+        "text": "Splice the only saved array and reuse it"
+      },
+      {
+        "id": "4da6ef981be9",
+        "text": "Assign directly to tasks[0].done"
+      }
+    ],
+    "correctId": "4fe8e5043e27",
+    "explanation": "Immutable transformations make changes explicit and avoid altering the previous collection.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-07",
+    "topic": "typescript-project",
+    "concept": "typescript-project-07",
+    "prompt": "Can a Task type guarantee two open tabs cannot overwrite each other's changes?",
+    "choices": [
+      {
+        "id": "606594bcd133",
+        "text": "Yes; interfaces lock storage"
+      },
+      {
+        "id": "393b38261dfc",
+        "text": "Only with strictNullChecks"
+      },
+      {
+        "id": "94a51d262966",
+        "text": "Yes; readonly prevents races"
+      },
+      {
+        "id": "086565aa5212",
+        "text": "No; cross-tab coordination needs runtime design"
+      }
+    ],
+    "correctId": "086565aa5212",
+    "explanation": "Static types do not coordinate independent browser tabs or their storage writes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-08",
+    "topic": "typescript-project",
+    "concept": "typescript-project-08",
+    "prompt": "Why render a task title with textContent?",
+    "choices": [
+      {
+        "id": "553d3da497dc",
+        "text": "To execute formatting tags"
+      },
+      {
+        "id": "5ffffadc3004",
+        "text": "To make every title a URL"
+      },
+      {
+        "id": "f2dcf5939639",
+        "text": "To display user text without interpreting it as HTML"
+      },
+      {
+        "id": "4d941dd2457f",
+        "text": "To bypass validation"
+      }
+    ],
+    "correctId": "f2dcf5939639",
+    "explanation": "Safe text rendering keeps markup-looking input as text instead of creating elements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-09",
+    "topic": "typescript-project",
+    "concept": "typescript-project-09",
+    "prompt": "What does the starter's self-review checklist add beyond compilation?",
+    "choices": [
+      {
+        "id": "c640a5ba78bd",
+        "text": "Automatic project grading"
+      },
+      {
+        "id": "a0e295d3117c",
+        "text": "Checks for reload, failure recovery, filters, and keyboard use"
+      },
+      {
+        "id": "8b6578676460",
+        "text": "A certification of mastery"
+      },
+      {
+        "id": "3fd9dda49091",
+        "text": "Guaranteed production availability"
+      }
+    ],
+    "correctId": "a0e295d3117c",
+    "explanation": "The checklist exercises observable behavior that compilation alone cannot establish.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "typescript-v1-project-10",
+    "topic": "typescript-project",
+    "concept": "typescript-project-10",
+    "prompt": "What is the intended next step after opening the working typed starter?",
+    "choices": [
+      {
+        "id": "cc59dd0aa583",
+        "text": "Remove its validation"
+      },
+      {
+        "id": "d67a73f6aff3",
+        "text": "Assume types replace all testing"
+      },
+      {
+        "id": "6bde9a2419c2",
+        "text": "Extend it and verify the changes"
+      },
+      {
+        "id": "3f5493f02f04",
+        "text": "Add secrets to browser storage"
+      }
+    ],
+    "correctId": "6bde9a2419c2",
+    "explanation": "The starter demonstrates a foundation; extending and testing it develops understanding of the design.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  }
+]

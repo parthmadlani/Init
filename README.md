@@ -101,3 +101,7 @@ Phases 0–2 were merged and deployed with approval: the shared course library, 
 **Phase 3 is on `codex/javascript-foundations` only, pending approval.** It adds JavaScript/browser interaction: twelve chapters, 120 authored notebook questions, twelve editable diagrams, ten-question topic checks, a resumable 69-question final review, and a working browser-based planner. Automatic deployments are disabled for this branch. Do not merge or deploy it until approved.
 
 See [the phase plan and local verification guide](docs/full-stack-phases.md) for curriculum, content limitations, and checks.
+
+**Phase 4 is on `codex/typescript-react`, based on the unmerged Phase 3 branch.** It adds standalone TypeScript and React courses to the same Full Stack collection. Each has ten chapters, 100 authored notebook questions, ten diagrams, topic checks, a 69-question final review, and a runnable planner ZIP with locked dependencies and model tests. Automatic deployment is disabled; no merge or production release is authorized.
+
+Phase 4 checks also include `node scripts/check-phase4-content.mjs` and a separate `npm ci && npm run build` inside each extracted starter. Starter source is excluded from the main Next.js type-check because each package has its own compiler settings and dependencies.

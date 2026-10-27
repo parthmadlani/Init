@@ -1,0 +1,2902 @@
+[
+  {
+    "id": "react-v1-components-01",
+    "topic": "react-components",
+    "concept": "react-components-01",
+    "prompt": "How should a React component function be named for JSX use?",
+    "choices": [
+      {
+        "id": "ab9f7538a521",
+        "text": "Start its name with a capital letter"
+      },
+      {
+        "id": "d1baaf6de7a8",
+        "text": "Use its CSS class as the name"
+      },
+      {
+        "id": "f1406e1b41ba",
+        "text": "Use only lowercase letters"
+      },
+      {
+        "id": "3ac8872a3bf0",
+        "text": "Start with a number"
+      }
+    ],
+    "correctId": "ab9f7538a521",
+    "explanation": "Capitalized JSX names refer to components, while lowercase names refer to built-in elements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-02",
+    "topic": "react-components",
+    "concept": "react-components-02",
+    "prompt": "What should a component's render avoid?",
+    "choices": [
+      {
+        "id": "7ac913fbd91e",
+        "text": "Calculating a label from props"
+      },
+      {
+        "id": "3a9724f002b9",
+        "text": "Mapping an array to elements"
+      },
+      {
+        "id": "e2580a43c6e7",
+        "text": "Returning JSX"
+      },
+      {
+        "id": "4f4341c9aa7a",
+        "text": "Writing to browser storage as a side effect"
+      }
+    ],
+    "correctId": "4f4341c9aa7a",
+    "explanation": "Rendering should stay pure; synchronize external systems separately from producing UI.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-03",
+    "topic": "react-components",
+    "concept": "react-components-03",
+    "prompt": "Which JSX attribute applies a CSS class?",
+    "choices": [
+      {
+        "id": "ff734e340f22",
+        "text": "className"
+      },
+      {
+        "id": "53cc82127b36",
+        "text": "classListName"
+      },
+      {
+        "id": "fa6f9103934c",
+        "text": "styleName"
+      },
+      {
+        "id": "f42342d64277",
+        "text": "cssClass"
+      }
+    ],
+    "correctId": "ff734e340f22",
+    "explanation": "JSX uses className for the element's CSS class attribute.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-04",
+    "topic": "react-components",
+    "concept": "react-components-04",
+    "prompt": "Which JSX attribute connects a label to an input ID?",
+    "choices": [
+      {
+        "id": "a6d0862caf16",
+        "text": "forInput"
+      },
+      {
+        "id": "383c5cd8ce8f",
+        "text": "htmlFor"
+      },
+      {
+        "id": "a82728e02d13",
+        "text": "inputName"
+      },
+      {
+        "id": "19e83cf62a95",
+        "text": "labelId"
+      }
+    ],
+    "correctId": "383c5cd8ce8f",
+    "explanation": "HtmlFor expresses the label's for attribute in JSX.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-05",
+    "topic": "react-components",
+    "concept": "react-components-05",
+    "prompt": "Why use a fragment around two sibling elements?",
+    "choices": [
+      {
+        "id": "ba37b4bac946",
+        "text": "To return one group without adding a wrapper element"
+      },
+      {
+        "id": "faba2ad129b1",
+        "text": "To store both in localStorage"
+      },
+      {
+        "id": "583dab4e5001",
+        "text": "To skip rendering their text"
+      },
+      {
+        "id": "4de689ebe2ce",
+        "text": "To give both the same ID"
+      }
+    ],
+    "correctId": "ba37b4bac946",
+    "explanation": "Fragments group siblings in JSX without adding another DOM container.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-06",
+    "topic": "react-components",
+    "concept": "react-components-06",
+    "prompt": "What do braces inside JSX usually contain?",
+    "choices": [
+      {
+        "id": "e56142aab42e",
+        "text": "A package manifest"
+      },
+      {
+        "id": "7183cb835637",
+        "text": "A JavaScript expression"
+      },
+      {
+        "id": "5a148222b242",
+        "text": "Only CSS declarations"
+      },
+      {
+        "id": "b0293dac6484",
+        "text": "A separate HTML document"
+      }
+    ],
+    "correctId": "7183cb835637",
+    "explanation": "Braces allow values and expressions to be embedded within the JSX description.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-07",
+    "topic": "react-components",
+    "concept": "react-components-07",
+    "prompt": "What does an unconditional setter call during render risk?",
+    "choices": [
+      {
+        "id": "36affd0e7b97",
+        "text": "An automatic network retry"
+      },
+      {
+        "id": "54cb58f17e87",
+        "text": "A repeated render loop"
+      },
+      {
+        "id": "16969ec483ba",
+        "text": "A guaranteed one-time update"
+      },
+      {
+        "id": "cb8a89f221e1",
+        "text": "A static HTML export"
+      }
+    ],
+    "correctId": "54cb58f17e87",
+    "explanation": "Updating state on every render can immediately request another render indefinitely.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-08",
+    "topic": "react-components",
+    "concept": "react-components-08",
+    "prompt": "What is a sensible reason to extract a component?",
+    "choices": [
+      {
+        "id": "27f12c0cc9fa",
+        "text": "Its name needs to match a database table"
+      },
+      {
+        "id": "9d478810f0b4",
+        "text": "Every line must have its own component"
+      },
+      {
+        "id": "b04625b1c9a7",
+        "text": "It represents a coherent UI responsibility"
+      },
+      {
+        "id": "be4f240d4b99",
+        "text": "To avoid passing any data"
+      }
+    ],
+    "correctId": "b04625b1c9a7",
+    "explanation": "Components are useful boundaries for meaningful responsibilities and reuse, not arbitrary line splitting.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-09",
+    "topic": "react-components",
+    "concept": "react-components-09",
+    "prompt": "Does the Vite React starter provide user accounts by itself?",
+    "choices": [
+      {
+        "id": "8560040912f2",
+        "text": "No; it is a client-side learning project"
+      },
+      {
+        "id": "36a45dbac15c",
+        "text": "Yes; React creates a database"
+      },
+      {
+        "id": "c04dcb8252f8",
+        "text": "Yes; JSX enables authentication"
+      },
+      {
+        "id": "5342d7ab471b",
+        "text": "Only after adding a key prop"
+      }
+    ],
+    "correctId": "8560040912f2",
+    "explanation": "A browser UI framework and build tool do not supply an account backend automatically.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-components-10",
+    "topic": "react-components",
+    "concept": "react-components-10",
+    "prompt": "What does returning JSX from a component describe?",
+    "choices": [
+      {
+        "id": "0d48cc599106",
+        "text": "A database query"
+      },
+      {
+        "id": "c8c3e42d88c9",
+        "text": "A saved screenshot"
+      },
+      {
+        "id": "626a3130719e",
+        "text": "A command to mutate every DOM node immediately"
+      },
+      {
+        "id": "5d22aa23bdd5",
+        "text": "The UI for that render"
+      }
+    ],
+    "correctId": "5d22aa23bdd5",
+    "explanation": "React uses the element description to work out the resulting interface.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-01",
+    "topic": "react-props",
+    "concept": "react-props-01",
+    "prompt": "Who supplies a component's props?",
+    "choices": [
+      {
+        "id": "2b91ea4582b8",
+        "text": "Only the database"
+      },
+      {
+        "id": "2773012ed811",
+        "text": "The CSS file"
+      },
+      {
+        "id": "909469ee4649",
+        "text": "Its parent"
+      },
+      {
+        "id": "f2abd98b4cf5",
+        "text": "The package lock"
+      }
+    ],
+    "correctId": "909469ee4649",
+    "explanation": "Props carry inputs from the component that renders the child.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-02",
+    "topic": "react-props",
+    "concept": "react-props-02",
+    "prompt": "How should a child treat an array received through props?",
+    "choices": [
+      {
+        "id": "63eb63fd9a20",
+        "text": "Sort it in place to update the parent"
+      },
+      {
+        "id": "b922adc15c10",
+        "text": "As read-only input"
+      },
+      {
+        "id": "5957cfb2be21",
+        "text": "Clear it after each render"
+      },
+      {
+        "id": "fc31ab74283d",
+        "text": "Push into it during render"
+      }
+    ],
+    "correctId": "b922adc15c10",
+    "explanation": "Mutating a prop bypasses its owner's update flow and breaks predictable rendering.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-03",
+    "topic": "react-props",
+    "concept": "react-props-03",
+    "prompt": "How can a TaskRow request that its parent toggle a task?",
+    "choices": [
+      {
+        "id": "cbae361d374a",
+        "text": "Mutate the parent's variable directly"
+      },
+      {
+        "id": "9db33be2548a",
+        "text": "Change the task's DOM ID"
+      },
+      {
+        "id": "799d723eaca0",
+        "text": "Call an onToggle callback prop with its ID"
+      },
+      {
+        "id": "00d62bddb404",
+        "text": "Rename the component"
+      }
+    ],
+    "correctId": "799d723eaca0",
+    "explanation": "Callback props let children communicate actions while the parent owns the actual state change.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-04",
+    "topic": "react-props",
+    "concept": "react-props-04",
+    "prompt": "A Badge type requires count: number. What happens when typed code omits count?",
+    "choices": [
+      {
+        "id": "778a22834223",
+        "text": "The browser fetches a count"
+      },
+      {
+        "id": "3fe027fd89c7",
+        "text": "The prop becomes readonly text"
+      },
+      {
+        "id": "437884149f58",
+        "text": "The type checker reports the missing prop"
+      },
+      {
+        "id": "a5e8e59b4fea",
+        "text": "React silently creates count = 1"
+      }
+    ],
+    "correctId": "437884149f58",
+    "explanation": "Required props form part of the component's static contract.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-05",
+    "topic": "react-props",
+    "concept": "react-props-05",
+    "prompt": "What is children commonly used for?",
+    "choices": [
+      {
+        "id": "6e2cb89f5c80",
+        "text": "Listing every descendant DOM node"
+      },
+      {
+        "id": "4ab88949007c",
+        "text": "Tracking all event listeners"
+      },
+      {
+        "id": "1662eb3bcfca",
+        "text": "Passing nested renderable content to a wrapper"
+      },
+      {
+        "id": "b6774b12bc00",
+        "text": "Storing database rows"
+      }
+    ],
+    "correctId": "1662eb3bcfca",
+    "explanation": "Children supports composition by letting a wrapper display content supplied by its caller.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-06",
+    "topic": "react-props",
+    "concept": "react-props-06",
+    "prompt": "Which type can describe text or elements passed as children?",
+    "choices": [
+      {
+        "id": "652191ba38cb",
+        "text": "Promise<number> only"
+      },
+      {
+        "id": "5295c57cf59b",
+        "text": "string[] only"
+      },
+      {
+        "id": "48adbe4564f4",
+        "text": "ReactNode"
+      },
+      {
+        "id": "40b795c643fa",
+        "text": "HTMLInputElement"
+      }
+    ],
+    "correctId": "48adbe4564f4",
+    "explanation": "ReactNode covers many renderable values beyond plain strings or one element shape.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-07",
+    "topic": "react-props",
+    "concept": "react-props-07",
+    "prompt": "What does a default value in destructured props do?",
+    "choices": [
+      {
+        "id": "0dbd074df591",
+        "text": "Makes all props optional"
+      },
+      {
+        "id": "1a59c1c978a6",
+        "text": "Validates network data"
+      },
+      {
+        "id": "2bd858f51ce7",
+        "text": "Prevents every rerender"
+      },
+      {
+        "id": "f01d97f4f705",
+        "text": "Supplies a value when that prop is undefined"
+      }
+    ],
+    "correctId": "f01d97f4f705",
+    "explanation": "A destructuring default handles a missing or undefined prop without changing unrelated contracts.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-08",
+    "topic": "react-props",
+    "concept": "react-props-08",
+    "prompt": "Where should state used by two sibling components usually live?",
+    "choices": [
+      {
+        "id": "3f0c52143d58",
+        "text": "In two independent unsynchronized copies"
+      },
+      {
+        "id": "01cd9640b102",
+        "text": "Their nearest coordinating common parent"
+      },
+      {
+        "id": "716b39fb630e",
+        "text": "Inside a CSS file"
+      },
+      {
+        "id": "4ab589634c41",
+        "text": "In the key attribute"
+      }
+    ],
+    "correctId": "01cd9640b102",
+    "explanation": "A common owner can pass consistent data and callbacks to both siblings.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-09",
+    "topic": "react-props",
+    "concept": "react-props-09",
+    "prompt": "Why type callback props explicitly?",
+    "choices": [
+      {
+        "id": "0b7d37eea6fb",
+        "text": "To state the inputs the parent action expects"
+      },
+      {
+        "id": "4bad8e040302",
+        "text": "To remove event handling"
+      },
+      {
+        "id": "a5aeffff69b7",
+        "text": "To serialize them to JSON"
+      },
+      {
+        "id": "5397abb47e52",
+        "text": "To make callbacks run during render"
+      }
+    ],
+    "correctId": "0b7d37eea6fb",
+    "explanation": "The function type documents and checks how a child may request an action.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-props-10",
+    "topic": "react-props",
+    "concept": "react-props-10",
+    "prompt": "What is a sign of a clear component contract?",
+    "choices": [
+      {
+        "id": "d3950f85d111",
+        "text": "It secretly mutates globals"
+      },
+      {
+        "id": "c5d61008197b",
+        "text": "Its required data and requested actions are explicit"
+      },
+      {
+        "id": "7c4f486a81ee",
+        "text": "It reads arbitrary DOM nodes everywhere"
+      },
+      {
+        "id": "59c0d0acb155",
+        "text": "It assumes every prop exists without checks"
+      }
+    ],
+    "correctId": "c5d61008197b",
+    "explanation": "Explicit data and action boundaries make the component easier to reuse and reason about.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-01",
+    "topic": "react-lists",
+    "concept": "react-lists-01",
+    "prompt": "Which method commonly turns task data into JSX list items?",
+    "choices": [
+      {
+        "id": "15c2a477da35",
+        "text": "JSON.parse"
+      },
+      {
+        "id": "8604fcefe5a5",
+        "text": "localStorage.clear"
+      },
+      {
+        "id": "3c60ce5af4fd",
+        "text": "map"
+      },
+      {
+        "id": "eda71331f3e4",
+        "text": "setTimeout"
+      }
+    ],
+    "correctId": "3c60ce5af4fd",
+    "explanation": "Map produces an element description for each item in the source array.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-02",
+    "topic": "react-lists",
+    "concept": "react-lists-02",
+    "prompt": "Which key best identifies a task that may move or be removed?",
+    "choices": [
+      {
+        "id": "89375e300efa",
+        "text": "Its stable task ID"
+      },
+      {
+        "id": "a5fc0d628b9c",
+        "text": "Its current visible position"
+      },
+      {
+        "id": "d904ef293c30",
+        "text": "Its current array index"
+      },
+      {
+        "id": "146de83572e0",
+        "text": "A new random number on each render"
+      }
+    ],
+    "correctId": "89375e300efa",
+    "explanation": "Stable IDs preserve identity when ordering or membership changes.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-03",
+    "topic": "react-lists",
+    "concept": "react-lists-03",
+    "prompt": "Why can an array-index key be risky in an editable task list?",
+    "choices": [
+      {
+        "id": "08971a56d300",
+        "text": "It prevents CSS styling"
+      },
+      {
+        "id": "fe921b4ccf42",
+        "text": "Removing an earlier item can associate state with a different task"
+      },
+      {
+        "id": "abda722e7b99",
+        "text": "It always makes lists empty"
+      },
+      {
+        "id": "9dd48e429c71",
+        "text": "React rejects all numeric keys"
+      }
+    ],
+    "correctId": "fe921b4ccf42",
+    "explanation": "Positions can change while the underlying tasks remain, so indexes may identify the wrong item across renders.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-04",
+    "topic": "react-lists",
+    "concept": "react-lists-04",
+    "prompt": "Does React pass key to a child as an ordinary prop?",
+    "choices": [
+      {
+        "id": "1b4ea2fa5f39",
+        "text": "Yes; it is always props.key"
+      },
+      {
+        "id": "ee0c22dc6586",
+        "text": "No; pass an ID prop separately if needed"
+      },
+      {
+        "id": "ecc3ce546455",
+        "text": "Only for the first child"
+      },
+      {
+        "id": "28f66af92147",
+        "text": "Only if the key is numeric"
+      }
+    ],
+    "correctId": "ee0c22dc6586",
+    "explanation": "Key is used by React for identity and is not forwarded as an ordinary component prop.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-05",
+    "topic": "react-lists",
+    "concept": "react-lists-05",
+    "prompt": "What can count && <List /> show when count is zero?",
+    "choices": [
+      {
+        "id": "21f6728957c9",
+        "text": "Always an empty string"
+      },
+      {
+        "id": "7c2c4a969173",
+        "text": "The complete list"
+      },
+      {
+        "id": "61416d32966e",
+        "text": "The number 0"
+      },
+      {
+        "id": "72fb16015923",
+        "text": "An automatic error dialog"
+      }
+    ],
+    "correctId": "61416d32966e",
+    "explanation": "Zero is a renderable result of the expression; use an explicit positive-count check or branch.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-06",
+    "topic": "react-lists",
+    "concept": "react-lists-06",
+    "prompt": "What should an empty filtered view explain?",
+    "choices": [
+      {
+        "id": "aec63c1c0523",
+        "text": "The course is complete"
+      },
+      {
+        "id": "8b1dd657d04e",
+        "text": "The server is offline regardless of status"
+      },
+      {
+        "id": "f53e204a932e",
+        "text": "No tasks match this view"
+      },
+      {
+        "id": "c58b68af2803",
+        "text": "Every saved task was deleted"
+      }
+    ],
+    "correctId": "f53e204a932e",
+    "explanation": "A filtered-empty state is different from a completely empty source list or a request failure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-07",
+    "topic": "react-lists",
+    "concept": "react-lists-07",
+    "prompt": "What happens if keys are regenerated randomly on every render?",
+    "choices": [
+      {
+        "id": "1a1c77d82cf9",
+        "text": "The list becomes a database"
+      },
+      {
+        "id": "c9a5c913e138",
+        "text": "Items lose stable identity and may be recreated"
+      },
+      {
+        "id": "f9d65847c883",
+        "text": "Items are guaranteed faster updates"
+      },
+      {
+        "id": "0f9e63ce32dc",
+        "text": "State automatically syncs across tabs"
+      }
+    ],
+    "correctId": "c9a5c913e138",
+    "explanation": "Changing keys tells React those are different items, which can reset state and focus unexpectedly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-08",
+    "topic": "react-lists",
+    "concept": "react-lists-08",
+    "prompt": "Should applying a filter replace the complete saved task array?",
+    "choices": [
+      {
+        "id": "60396a90bd73",
+        "text": "Yes; hidden items are unnecessary"
+      },
+      {
+        "id": "0c9f0be84f8b",
+        "text": "No; derive a view while retaining the source"
+      },
+      {
+        "id": "bb540570777d",
+        "text": "Only on mobile"
+      },
+      {
+        "id": "80ad82fd4669",
+        "text": "Only when there are ten tasks"
+      }
+    ],
+    "correctId": "0c9f0be84f8b",
+    "explanation": "A filtered view should not destroy the data needed by other views or persistence.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-09",
+    "topic": "react-lists",
+    "concept": "react-lists-09",
+    "prompt": "Where should the key go when mapping to a TaskRow component?",
+    "choices": [
+      {
+        "id": "7e6360da40fc",
+        "text": "Only on an inner span"
+      },
+      {
+        "id": "0e7b806c555b",
+        "text": "On the TaskRow element returned directly by map"
+      },
+      {
+        "id": "70763843a30b",
+        "text": "Only in the CSS rule"
+      },
+      {
+        "id": "8bbc05df6c2d",
+        "text": "Inside the task title string"
+      }
+    ],
+    "correctId": "0e7b806c555b",
+    "explanation": "The siblings produced by the map need keys at their returned element level.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-lists-10",
+    "topic": "react-lists",
+    "concept": "react-lists-10",
+    "prompt": "What is a useful empty state for a brand-new task list?",
+    "choices": [
+      {
+        "id": "dd62470c8a5c",
+        "text": "A short explanation and a way to add a task"
+      },
+      {
+        "id": "e0feef29afe3",
+        "text": "A hidden add form"
+      },
+      {
+        "id": "7b8359116cd8",
+        "text": "A blank region with no context"
+      },
+      {
+        "id": "9538f70e4fb6",
+        "text": "A false network error"
+      }
+    ],
+    "correctId": "dd62470c8a5c",
+    "explanation": "An empty state should explain the situation and point toward a useful next action.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-01",
+    "topic": "react-state",
+    "concept": "react-state-01",
+    "prompt": "What does a useState call provide?",
+    "choices": [
+      {
+        "id": "1ccbb87d34d8",
+        "text": "Only an HTML element"
+      },
+      {
+        "id": "b8567ce6fe11",
+        "text": "The current state and a setter"
+      },
+      {
+        "id": "c93827df96e6",
+        "text": "A mutable browser event"
+      },
+      {
+        "id": "56d102ac146b",
+        "text": "A direct database connection"
+      }
+    ],
+    "correctId": "b8567ce6fe11",
+    "explanation": "State and its setter let a component retain data and request a future render.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-02",
+    "topic": "react-state",
+    "concept": "react-state-02",
+    "prompt": "What does an event handler see when reading state?",
+    "choices": [
+      {
+        "id": "85fefa2c948d",
+        "text": "Every future state instantly"
+      },
+      {
+        "id": "86ef65366aa7",
+        "text": "The snapshot from its render"
+      },
+      {
+        "id": "b4a9ef3a0868",
+        "text": "Only the initial state forever"
+      },
+      {
+        "id": "186558a567d4",
+        "text": "The raw database transaction"
+      }
+    ],
+    "correctId": "86ef65366aa7",
+    "explanation": "Each render creates handlers associated with that render's state values.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-03",
+    "topic": "react-state",
+    "concept": "react-state-03",
+    "prompt": "What happens immediately to the local count variable after setCount(count + 1)?",
+    "choices": [
+      {
+        "id": "e7bbdc649bfb",
+        "text": "It remains that render's snapshot"
+      },
+      {
+        "id": "baaf52ed5efa",
+        "text": "It becomes a promise"
+      },
+      {
+        "id": "83f892497ca0",
+        "text": "It becomes undefined"
+      },
+      {
+        "id": "92e84846af1c",
+        "text": "It is synchronously reassigned by the setter"
+      }
+    ],
+    "correctId": "e7bbdc649bfb",
+    "explanation": "The setter requests another render; it does not rewrite the already-running handler's variable.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-04",
+    "topic": "react-state",
+    "concept": "react-state-04",
+    "prompt": "Which update is appropriate when incrementing from the pending count?",
+    "choices": [
+      {
+        "id": "c4a498b810e9",
+        "text": "localStorage.count++"
+      },
+      {
+        "id": "0f00141631ca",
+        "text": "count++ during render"
+      },
+      {
+        "id": "0d9da2631269",
+        "text": "setCount(c => c + 1)"
+      },
+      {
+        "id": "f8934e5cf4e0",
+        "text": "setCount = count + 1"
+      }
+    ],
+    "correctId": "0d9da2631269",
+    "explanation": "A functional updater calculates the next value from the pending state value.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-05",
+    "topic": "react-state",
+    "concept": "react-state-05",
+    "prompt": "Two setCount(c => c + 1) calls start from zero in one event. What is the next count?",
+    "choices": [
+      {
+        "id": "85902124f501",
+        "text": "0"
+      },
+      {
+        "id": "8dbed9bd4753",
+        "text": "2"
+      },
+      {
+        "id": "35c750752a99",
+        "text": "undefined"
+      },
+      {
+        "id": "898cefeb0c95",
+        "text": "1"
+      }
+    ],
+    "correctId": "8dbed9bd4753",
+    "explanation": "Both updaters are applied in sequence to the pending value, producing two increments.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-06",
+    "topic": "react-state",
+    "concept": "react-state-06",
+    "prompt": "Two setCount(count + 1) calls use a snapshot of zero. What replacement value do both request?",
+    "choices": [
+      {
+        "id": "c557c6835960",
+        "text": "3"
+      },
+      {
+        "id": "5564ac89c483",
+        "text": "2"
+      },
+      {
+        "id": "485170d61946",
+        "text": "A different random value"
+      },
+      {
+        "id": "5b62a7d13ad2",
+        "text": "1"
+      }
+    ],
+    "correctId": "5b62a7d13ad2",
+    "explanation": "Both expressions evaluate using the same snapshot, so both request the value one.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-07",
+    "topic": "react-state",
+    "concept": "react-state-07",
+    "prompt": "How should an object in a state array be changed?",
+    "choices": [
+      {
+        "id": "41ffb3ad8589",
+        "text": "Rewrite a DOM checkbox only"
+      },
+      {
+        "id": "a956196698fb",
+        "text": "Create a new array and copy the changed object"
+      },
+      {
+        "id": "1ea8e6c79c05",
+        "text": "Change its key randomly"
+      },
+      {
+        "id": "2dcf5678fbb9",
+        "text": "Mutate it and keep the same array reference"
+      }
+    ],
+    "correctId": "a956196698fb",
+    "explanation": "Immutable updates make the new state explicit and preserve the previous snapshot.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-08",
+    "topic": "react-state",
+    "concept": "react-state-08",
+    "prompt": "Which onClick value waits for a click to call save?",
+    "choices": [
+      {
+        "id": "995193339fae",
+        "text": "save()"
+      },
+      {
+        "id": "0df5e3e31e46",
+        "text": "() => save()"
+      },
+      {
+        "id": "facf0d113e38",
+        "text": "The result of save()"
+      },
+      {
+        "id": "2c226434e852",
+        "text": "JSON.stringify(save())"
+      }
+    ],
+    "correctId": "0df5e3e31e46",
+    "explanation": "Passing a function defers execution until the event; invoking it in the JSX runs it during render.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-09",
+    "topic": "react-state",
+    "concept": "react-state-09",
+    "prompt": "Where may a normal useState hook call go?",
+    "choices": [
+      {
+        "id": "51d6cf99a033",
+        "text": "At the top level of a component or custom hook"
+      },
+      {
+        "id": "ff890bfc62da",
+        "text": "Inside a loop over tasks"
+      },
+      {
+        "id": "ee7a952fc4b8",
+        "text": "Inside a click handler"
+      },
+      {
+        "id": "3af60db62628",
+        "text": "Only after a conditional return"
+      }
+    ],
+    "correctId": "51d6cf99a033",
+    "explanation": "Stable top-level hook order allows React to associate state with the correct hook call.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-state-10",
+    "topic": "react-state",
+    "concept": "react-state-10",
+    "prompt": "Why should a state updater be pure?",
+    "choices": [
+      {
+        "id": "d707751231a3",
+        "text": "It must fetch a new ID on every run"
+      },
+      {
+        "id": "ecfc2b9334f4",
+        "text": "It should write storage twice"
+      },
+      {
+        "id": "141dd8359522",
+        "text": "React may call it again while checking behavior"
+      },
+      {
+        "id": "7983aa5025d2",
+        "text": "It should mutate its argument"
+      }
+    ],
+    "correctId": "141dd8359522",
+    "explanation": "A repeatable updater computes new state without external effects or mutations.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-01",
+    "topic": "react-forms",
+    "concept": "react-forms-01",
+    "prompt": "What pair makes a text input controlled?",
+    "choices": [
+      {
+        "id": "7057577355ad",
+        "text": "value and an updating onChange handler"
+      },
+      {
+        "id": "8881fb0a78bf",
+        "text": "key and title"
+      },
+      {
+        "id": "2011f67d17e6",
+        "text": "checked and className"
+      },
+      {
+        "id": "18dae57b4c7f",
+        "text": "defaultValue and no handler"
+      }
+    ],
+    "correctId": "7057577355ad",
+    "explanation": "A controlled input displays state and reports edits so the state can be updated.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-02",
+    "topic": "react-forms",
+    "concept": "react-forms-02",
+    "prompt": "What initial value avoids switching a controlled text input from undefined to text?",
+    "choices": [
+      {
+        "id": "970f0657b178",
+        "text": "null"
+      },
+      {
+        "id": "b239bd6fca70",
+        "text": "undefined"
+      },
+      {
+        "id": "55ff47f638b6",
+        "text": "A DOM element"
+      },
+      {
+        "id": "20c3dda4e1b2",
+        "text": "An empty string"
+      }
+    ],
+    "correctId": "20c3dda4e1b2",
+    "explanation": "Keeping the value a string from the first render avoids an uncontrolled-to-controlled transition.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-03",
+    "topic": "react-forms",
+    "concept": "react-forms-03",
+    "prompt": "Which property controls a checkbox's selection?",
+    "choices": [
+      {
+        "id": "4031da3f2d31",
+        "text": "placeholder"
+      },
+      {
+        "id": "6d658d3f8293",
+        "text": "checked"
+      },
+      {
+        "id": "76f84494549c",
+        "text": "htmlFor"
+      },
+      {
+        "id": "04a94c506fe6",
+        "text": "value as a title string"
+      }
+    ],
+    "correctId": "6d658d3f8293",
+    "explanation": "Checkbox selection is boolean and belongs in checked, with changes handled explicitly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-04",
+    "topic": "react-forms",
+    "concept": "react-forms-04",
+    "prompt": "Why place add-task logic in form onSubmit?",
+    "choices": [
+      {
+        "id": "ac0fe862eca0",
+        "text": "Enter and the submit button can use the same behavior"
+      },
+      {
+        "id": "b86d9fac255d",
+        "text": "It removes the need for labels"
+      },
+      {
+        "id": "1905bed985af",
+        "text": "It automatically authenticates users"
+      },
+      {
+        "id": "c420fd5a5f21",
+        "text": "It runs on every render"
+      }
+    ],
+    "correctId": "ac0fe862eca0",
+    "explanation": "A form submission handler supports keyboard submission as well as button activation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-05",
+    "topic": "react-forms",
+    "concept": "react-forms-05",
+    "prompt": "What does preventDefault prevent in this form flow?",
+    "choices": [
+      {
+        "id": "1feabd19c0da",
+        "text": "Every input change"
+      },
+      {
+        "id": "4af7f0cbf828",
+        "text": "Every validation message"
+      },
+      {
+        "id": "eccda092cfbb",
+        "text": "All state updates"
+      },
+      {
+        "id": "e5dea6fc08ca",
+        "text": "The browser's normal form navigation/submission"
+      }
+    ],
+    "correctId": "e5dea6fc08ca",
+    "explanation": "The app handles the submission itself instead of allowing the default browser navigation.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-06",
+    "topic": "react-forms",
+    "concept": "react-forms-06",
+    "prompt": "Why validate title.trim() even with a required attribute?",
+    "choices": [
+      {
+        "id": "5f6e121c18fd",
+        "text": "Labels cannot contain spaces"
+      },
+      {
+        "id": "e191d68c180f",
+        "text": "Trimming is a type annotation"
+      },
+      {
+        "id": "fc4cd9b4e1ea",
+        "text": "Required automatically trims text"
+      },
+      {
+        "id": "60b0f9d38d04",
+        "text": "Whitespace-only input can still be nonempty"
+      }
+    ],
+    "correctId": "60b0f9d38d04",
+    "explanation": "Native required checks do not enforce the application's nonblank-after-trimming rule.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-07",
+    "topic": "react-forms",
+    "concept": "react-forms-07",
+    "prompt": "What helps a screen-reader user hear that a task was added?",
+    "choices": [
+      {
+        "id": "c98450daa97e",
+        "text": "A visible role=status message"
+      },
+      {
+        "id": "b3f227f18700",
+        "text": "Only a color change"
+      },
+      {
+        "id": "31c5dfbf75ff",
+        "text": "A hidden unlabeled image"
+      },
+      {
+        "id": "1623833d92f1",
+        "text": "A console.log call"
+      }
+    ],
+    "correctId": "c98450daa97e",
+    "explanation": "A status region announces an outcome without forcing focus away from the task.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-08",
+    "topic": "react-forms",
+    "concept": "react-forms-08",
+    "prompt": "How should a visible label be associated with a separate input?",
+    "choices": [
+      {
+        "id": "7ec0644ca53a",
+        "text": "Place both in different forms"
+      },
+      {
+        "id": "d5cabb8357ac",
+        "text": "Use the same CSS color"
+      },
+      {
+        "id": "9fdee3414047",
+        "text": "Match htmlFor to the input's id"
+      },
+      {
+        "id": "7867a4bb8464",
+        "text": "Use a placeholder alone"
+      }
+    ],
+    "correctId": "9fdee3414047",
+    "explanation": "The explicit association gives the control an accessible name and a larger label activation target.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-09",
+    "topic": "react-forms",
+    "concept": "react-forms-09",
+    "prompt": "In a text input change handler, which value contains the new text?",
+    "choices": [
+      {
+        "id": "c78dd6c529f5",
+        "text": "event.currentTarget.value"
+      },
+      {
+        "id": "d9d0b2d9037f",
+        "text": "event.key"
+      },
+      {
+        "id": "4d62ffe91331",
+        "text": "event.type alone"
+      },
+      {
+        "id": "102bffd381dc",
+        "text": "event.currentTarget.checked"
+      }
+    ],
+    "correctId": "c78dd6c529f5",
+    "explanation": "CurrentTarget is the input handling the event, and its value contains the text.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-forms-10",
+    "topic": "react-forms",
+    "concept": "react-forms-10",
+    "prompt": "What should remain usable after a validation error?",
+    "choices": [
+      {
+        "id": "fd949ba917ac",
+        "text": "The field, feedback, and a clear retry path"
+      },
+      {
+        "id": "b56718311021",
+        "text": "Only the console"
+      },
+      {
+        "id": "cfca2c9cedd9",
+        "text": "A permanently disabled form"
+      },
+      {
+        "id": "0d80b6c66b8a",
+        "text": "A blank page"
+      }
+    ],
+    "correctId": "fd949ba917ac",
+    "explanation": "Validation should help users correct input and continue rather than trap them.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-01",
+    "topic": "react-sharing",
+    "concept": "react-sharing-01",
+    "prompt": "Two sibling components need the same selected view. What avoids divergent copies?",
+    "choices": [
+      {
+        "id": "63f444427757",
+        "text": "Give each an unrelated useState value"
+      },
+      {
+        "id": "cb5326ad3a62",
+        "text": "Store the view in CSS"
+      },
+      {
+        "id": "e2729d75988a",
+        "text": "Read their text from the DOM"
+      },
+      {
+        "id": "33ed4a12b759",
+        "text": "Lift that state to their common parent"
+      }
+    ],
+    "correctId": "33ed4a12b759",
+    "explanation": "One owner can pass the same selection and an update callback to both components.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-02",
+    "topic": "react-sharing",
+    "concept": "react-sharing-02",
+    "prompt": "Should activeCount usually be separate state when tasks already exist?",
+    "choices": [
+      {
+        "id": "2bdd9e450e6c",
+        "text": "Yes; store a second task array"
+      },
+      {
+        "id": "fadc9c961141",
+        "text": "No; derive it from tasks during render"
+      },
+      {
+        "id": "ed3a85438b77",
+        "text": "Yes; update it with an unrelated timer"
+      },
+      {
+        "id": "01bd38b6c6a5",
+        "text": "Only if there are fewer than five tasks"
+      }
+    ],
+    "correctId": "fadc9c961141",
+    "explanation": "Derived values avoid synchronization bugs between duplicate representations of the same information.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-03",
+    "topic": "react-sharing",
+    "concept": "react-sharing-03",
+    "prompt": "What can happen when a component's key changes?",
+    "choices": [
+      {
+        "id": "4e6fd484d94e",
+        "text": "Its local state can reset as a new identity"
+      },
+      {
+        "id": "94207e24a3b3",
+        "text": "All sibling data is encrypted"
+      },
+      {
+        "id": "0f80defdf513",
+        "text": "Every network request succeeds"
+      },
+      {
+        "id": "1d880d4982b6",
+        "text": "Its props become immutable strings"
+      }
+    ],
+    "correctId": "4e6fd484d94e",
+    "explanation": "A key participates in component identity, so changing it can intentionally recreate state.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-04",
+    "topic": "react-sharing",
+    "concept": "react-sharing-04",
+    "prompt": "Is passing a prop through one intermediate component always a problem?",
+    "choices": [
+      {
+        "id": "807d78b0a507",
+        "text": "Only in TypeScript"
+      },
+      {
+        "id": "8c4bf084d6e0",
+        "text": "Yes; use a global variable instead"
+      },
+      {
+        "id": "4630223233b8",
+        "text": "No; simple prop passing can be appropriate"
+      },
+      {
+        "id": "d4e799b5899f",
+        "text": "Yes; context is mandatory"
+      }
+    ],
+    "correctId": "4630223233b8",
+    "explanation": "Use the simplest clear ownership flow; context is a tool for suitable shared consumers, not a requirement.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-05",
+    "topic": "react-sharing",
+    "concept": "react-sharing-05",
+    "prompt": "When can a reducer be useful?",
+    "choices": [
+      {
+        "id": "d04de565e5fe",
+        "text": "Whenever one label is rendered"
+      },
+      {
+        "id": "abdb36a7c8cd",
+        "text": "Several related actions update the same state"
+      },
+      {
+        "id": "5415569eed48",
+        "text": "Only for network requests"
+      },
+      {
+        "id": "8ccd0863d470",
+        "text": "Only for server components"
+      }
+    ],
+    "correctId": "abdb36a7c8cd",
+    "explanation": "A reducer centralizes related transitions so their rules can be reviewed together.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-06",
+    "topic": "react-sharing",
+    "concept": "react-sharing-06",
+    "prompt": "What should a reducer return?",
+    "choices": [
+      {
+        "id": "7b2d0803bf6a",
+        "text": "Only console output"
+      },
+      {
+        "id": "3284e32e8637",
+        "text": "A database connection"
+      },
+      {
+        "id": "a354b647673b",
+        "text": "A direct DOM mutation"
+      },
+      {
+        "id": "6152cf13fd66",
+        "text": "New state computed without external side effects"
+      }
+    ],
+    "correctId": "6152cf13fd66",
+    "explanation": "Reducers are pure state transitions and should not mutate inputs or perform synchronization.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-07",
+    "topic": "react-sharing",
+    "concept": "react-sharing-07",
+    "prompt": "Which data should a summary and task list derive from?",
+    "choices": [
+      {
+        "id": "656f0d63d745",
+        "text": "Separate random IDs"
+      },
+      {
+        "id": "3c32a08e132f",
+        "text": "The last rendered text nodes"
+      },
+      {
+        "id": "f5c57f692e34",
+        "text": "Two independently edited arrays"
+      },
+      {
+        "id": "9e030ad5ae9e",
+        "text": "The same complete task array"
+      }
+    ],
+    "correctId": "9e030ad5ae9e",
+    "explanation": "A shared source keeps counts and visible tasks consistent after updates.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-08",
+    "topic": "react-sharing",
+    "concept": "react-sharing-08",
+    "prompt": "Why not use an effect merely to synchronize a filtered array into state?",
+    "choices": [
+      {
+        "id": "00384668db2f",
+        "text": "It duplicates information already calculable during render"
+      },
+      {
+        "id": "a04a8afd24a4",
+        "text": "React cannot filter without a server"
+      },
+      {
+        "id": "159e26327e16",
+        "text": "It disables TypeScript"
+      },
+      {
+        "id": "2c56a9ea00e3",
+        "text": "Effects cannot read arrays"
+      }
+    ],
+    "correctId": "00384668db2f",
+    "explanation": "Calculating the view directly is simpler and avoids a redundant render and stale copy.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-09",
+    "topic": "react-sharing",
+    "concept": "react-sharing-09",
+    "prompt": "A Completed filter hides active tasks. What should persistence retain?",
+    "choices": [
+      {
+        "id": "9e72a9dafc1c",
+        "text": "Nothing until all tasks are completed"
+      },
+      {
+        "id": "1e4934d3a1b5",
+        "text": "Only completed tasks"
+      },
+      {
+        "id": "ade98143d11b",
+        "text": "Only the filter string"
+      },
+      {
+        "id": "7139e6e0c4b2",
+        "text": "Both completed and active tasks"
+      }
+    ],
+    "correctId": "7139e6e0c4b2",
+    "explanation": "The filter selects presentation; it does not change the underlying task collection.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-sharing-10",
+    "topic": "react-sharing",
+    "concept": "react-sharing-10",
+    "prompt": "Does calling a custom stateful hook twice automatically share one state instance?",
+    "choices": [
+      {
+        "id": "e3d36224fc8a",
+        "text": "Only if the return types match"
+      },
+      {
+        "id": "c7f84a3aa742",
+        "text": "Only under StrictMode"
+      },
+      {
+        "id": "a63f3f3a5f1c",
+        "text": "No; each call has its own state"
+      },
+      {
+        "id": "81e1bbac411c",
+        "text": "Yes; the hook name makes it global"
+      }
+    ],
+    "correctId": "a63f3f3a5f1c",
+    "explanation": "Sharing hook logic is distinct from sharing state ownership.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-01",
+    "topic": "react-effects",
+    "concept": "react-effects-01",
+    "prompt": "Which task is a good use for an effect?",
+    "choices": [
+      {
+        "id": "e0ccc0ec6477",
+        "text": "Formatting a count label"
+      },
+      {
+        "id": "629a058e28e5",
+        "text": "Calculating a filtered array from props"
+      },
+      {
+        "id": "a2ed3e843eb7",
+        "text": "Synchronizing a browser subscription with the component"
+      },
+      {
+        "id": "58f4c0463a21",
+        "text": "Choosing a class from a boolean"
+      }
+    ],
+    "correctId": "a2ed3e843eb7",
+    "explanation": "Effects synchronize with external systems; ordinary render calculations do not need them.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-02",
+    "topic": "react-effects",
+    "concept": "react-effects-02",
+    "prompt": "What belongs in an effect's dependency list?",
+    "choices": [
+      {
+        "id": "27b25280a9e8",
+        "text": "Every global constant in the app"
+      },
+      {
+        "id": "944aaf55cf89",
+        "text": "The reactive values its setup reads"
+      },
+      {
+        "id": "465ed37bf85f",
+        "text": "Nothing, to avoid all reruns"
+      },
+      {
+        "id": "6790223d7927",
+        "text": "Only values that rarely change"
+      }
+    ],
+    "correctId": "944aaf55cf89",
+    "explanation": "Dependencies keep synchronization aligned with the values used by that effect.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-03",
+    "topic": "react-effects",
+    "concept": "react-effects-03",
+    "prompt": "What should an effect return to remove an event listener?",
+    "choices": [
+      {
+        "id": "b4def298a5c2",
+        "text": "The event listener's text"
+      },
+      {
+        "id": "fbd9feb35f8e",
+        "text": "A boolean success flag"
+      },
+      {
+        "id": "5d615e147dc2",
+        "text": "A cleanup function"
+      },
+      {
+        "id": "d059324b4e71",
+        "text": "A second JSX tree"
+      }
+    ],
+    "correctId": "5d615e147dc2",
+    "explanation": "React can call cleanup before replacing the setup or when the component unmounts.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-04",
+    "topic": "react-effects",
+    "concept": "react-effects-04",
+    "prompt": "Why can development StrictMode run an extra effect cycle?",
+    "choices": [
+      {
+        "id": "484f95a41fc5",
+        "text": "To deploy twice"
+      },
+      {
+        "id": "bab1be8f9462",
+        "text": "To expose missing cleanup and unsafe assumptions"
+      },
+      {
+        "id": "607d0403c12c",
+        "text": "To double-charge all requests intentionally"
+      },
+      {
+        "id": "572682c167df",
+        "text": "To disable type checking"
+      }
+    ],
+    "correctId": "bab1be8f9462",
+    "explanation": "The extra development checks help reveal effects that are not safe to set up and clean up again.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-05",
+    "topic": "react-effects",
+    "concept": "react-effects-05",
+    "prompt": "What is risky about suppressing a missing-dependency warning without fixing the design?",
+    "choices": [
+      {
+        "id": "8f443c0aa86d",
+        "text": "It removes every rerender"
+      },
+      {
+        "id": "eb244e2dcc10",
+        "text": "It makes all values immutable"
+      },
+      {
+        "id": "c26cf4f19e07",
+        "text": "The effect can keep stale values"
+      },
+      {
+        "id": "bb10f33e7fd3",
+        "text": "It validates storage"
+      }
+    ],
+    "correctId": "c26cf4f19e07",
+    "explanation": "Missing dependencies can leave synchronization tied to an outdated render's values.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-06",
+    "topic": "react-effects",
+    "concept": "react-effects-06",
+    "prompt": "A user clicks Load ideas. Where can that specific request normally start?",
+    "choices": [
+      {
+        "id": "7954f1285be1",
+        "text": "Unconditionally during render"
+      },
+      {
+        "id": "0a32466ac663",
+        "text": "Inside every list key"
+      },
+      {
+        "id": "b178ef670d61",
+        "text": "In the click handler"
+      },
+      {
+        "id": "eb8827589a96",
+        "text": "In the component's type alias"
+      }
+    ],
+    "correctId": "b178ef670d61",
+    "explanation": "User-triggered work belongs with the action that caused it instead of running merely because rendering happened.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-07",
+    "topic": "react-effects",
+    "concept": "react-effects-07",
+    "prompt": "An effect updates a value that is also its dependency every time. What can happen?",
+    "choices": [
+      {
+        "id": "5727b1662e66",
+        "text": "A static page export"
+      },
+      {
+        "id": "f4ecff103708",
+        "text": "Automatic schema validation"
+      },
+      {
+        "id": "f3322095bd84",
+        "text": "Guaranteed one-time execution"
+      },
+      {
+        "id": "c371c087083e",
+        "text": "A repeated synchronization loop"
+      }
+    ],
+    "correctId": "c371c087083e",
+    "explanation": "Updating a dependency can trigger the effect again, so unconditional feedback loops must be avoided.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-08",
+    "topic": "react-effects",
+    "concept": "react-effects-08",
+    "prompt": "When does cleanup run relative to a replacement effect setup?",
+    "choices": [
+      {
+        "id": "93b873d2b693",
+        "text": "During JSX parsing"
+      },
+      {
+        "id": "45fb28e6820f",
+        "text": "Before the replacement setup"
+      },
+      {
+        "id": "54e97c02fc65",
+        "text": "Only after the browser closes"
+      },
+      {
+        "id": "9f553510fe48",
+        "text": "Never when dependencies change"
+      }
+    ],
+    "correctId": "45fb28e6820f",
+    "explanation": "React cleans up the previous synchronization before establishing the new one.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-09",
+    "topic": "react-effects",
+    "concept": "react-effects-09",
+    "prompt": "Does adding an empty dependency array justify ignoring a changing prop used inside an effect?",
+    "choices": [
+      {
+        "id": "0c692a43e966",
+        "text": "Yes; it freezes the prop correctly"
+      },
+      {
+        "id": "bc0c458b050a",
+        "text": "Only if the prop is numeric"
+      },
+      {
+        "id": "861bbb66c3cb",
+        "text": "Yes; it makes the prop global"
+      },
+      {
+        "id": "8b4c0058edfe",
+        "text": "No; it can leave synchronization stale"
+      }
+    ],
+    "correctId": "8b4c0058edfe",
+    "explanation": "The dependency list must reflect reactive reads rather than being used to hide them.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-effects-10",
+    "topic": "react-effects",
+    "concept": "react-effects-10",
+    "prompt": "Why keep storage synchronization safe to repeat?",
+    "choices": [
+      {
+        "id": "6b9c024a21c1",
+        "text": "Storage needs two writes to be valid"
+      },
+      {
+        "id": "8050b1bf5f6a",
+        "text": "Types erase duplicate calls"
+      },
+      {
+        "id": "e0165b14caca",
+        "text": "Repeated writes always merge tabs"
+      },
+      {
+        "id": "a9258c68a8f8",
+        "text": "Development checks or later updates can run it again"
+      }
+    ],
+    "correctId": "a9258c68a8f8",
+    "explanation": "An effect should have predictable repeated behavior and explicit failure handling.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-01",
+    "topic": "react-async",
+    "concept": "react-async-01",
+    "prompt": "Why distinguish loading from an empty successful result?",
+    "choices": [
+      {
+        "id": "8f33e741e6b0",
+        "text": "Both always indicate failure"
+      },
+      {
+        "id": "bc60a1661f1c",
+        "text": "It makes fetch synchronous"
+      },
+      {
+        "id": "abf2ac5066ef",
+        "text": "They mean different things to the learner"
+      },
+      {
+        "id": "2a2784bdccbf",
+        "text": "It removes the need for retry"
+      }
+    ],
+    "correctId": "abf2ac5066ef",
+    "explanation": "A pending request needs progress feedback; an empty success means the request completed with no items.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-02",
+    "topic": "react-async",
+    "concept": "react-async-02",
+    "prompt": "Does a fulfilled fetch promise guarantee HTTP success?",
+    "choices": [
+      {
+        "id": "d621fe2dd720",
+        "text": "Only under React StrictMode"
+      },
+      {
+        "id": "6cc8ecf6b135",
+        "text": "Only when JSON is expected"
+      },
+      {
+        "id": "b7a24edaf133",
+        "text": "Yes; all statuses reject otherwise"
+      },
+      {
+        "id": "a989719e93fe",
+        "text": "No; check response.ok"
+      }
+    ],
+    "correctId": "a989719e93fe",
+    "explanation": "Fetch can resolve for HTTP error responses, so status handling remains explicit.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-03",
+    "topic": "react-async",
+    "concept": "react-async-03",
+    "prompt": "Does Promise<string[]> validate the server's response at runtime?",
+    "choices": [
+      {
+        "id": "9d73ed0ffdb8",
+        "text": "Only in production"
+      },
+      {
+        "id": "0603ab522f8c",
+        "text": "No; parsed data still needs validation"
+      },
+      {
+        "id": "ce83b2f1edfe",
+        "text": "Yes; it rewrites invalid JSON"
+      },
+      {
+        "id": "eb5a948e5959",
+        "text": "Yes; React checks every string"
+      }
+    ],
+    "correctId": "0603ab522f8c",
+    "explanation": "A return annotation is static and cannot guarantee the shape of remote data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-04",
+    "topic": "react-async",
+    "concept": "react-async-04",
+    "prompt": "How can a button avoid duplicate requests while loading?",
+    "choices": [
+      {
+        "id": "22001e3f0aff",
+        "text": "Change its key randomly"
+      },
+      {
+        "id": "d50db9091648",
+        "text": "Change its color only"
+      },
+      {
+        "id": "4118b14caeaf",
+        "text": "Disable it and guard the pending state"
+      },
+      {
+        "id": "a67e8aa4ce8b",
+        "text": "Reload the page on every click"
+      }
+    ],
+    "correctId": "4118b14caeaf",
+    "explanation": "Both user-facing disabled feedback and an action guard help prevent overlapping submissions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-05",
+    "topic": "react-async",
+    "concept": "react-async-05",
+    "prompt": "A response for an old selection arrives after a newer response. What should happen?",
+    "choices": [
+      {
+        "id": "ae88a88229da",
+        "text": "Always let the old result overwrite the new one"
+      },
+      {
+        "id": "94bafe135960",
+        "text": "Clear every task"
+      },
+      {
+        "id": "1ce81948d830",
+        "text": "Convert both responses to strings"
+      },
+      {
+        "id": "c04fbcc5a05e",
+        "text": "Ignore or cancel the stale result"
+      }
+    ],
+    "correctId": "c04fbcc5a05e",
+    "explanation": "Results must still belong to the current request context before they update the UI.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-06",
+    "topic": "react-async",
+    "concept": "react-async-06",
+    "prompt": "What can AbortController help an effect do?",
+    "choices": [
+      {
+        "id": "310f94b67ce4",
+        "text": "Make every request succeed"
+      },
+      {
+        "id": "62989b652ef8",
+        "text": "Cancel an obsolete fetch during cleanup"
+      },
+      {
+        "id": "a5c1a86ac57d",
+        "text": "Validate the JSON schema"
+      },
+      {
+        "id": "80640ea2d91e",
+        "text": "Convert HTTP errors into success"
+      }
+    ],
+    "correctId": "62989b652ef8",
+    "explanation": "Aborting stops no-longer-needed work; shape and status handling are still separate responsibilities.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-07",
+    "topic": "react-async",
+    "concept": "react-async-07",
+    "prompt": "A request returns [] successfully. What should the UI show?",
+    "choices": [
+      {
+        "id": "28d9d433d983",
+        "text": "An endless loading indicator"
+      },
+      {
+        "id": "63dd1d35a160",
+        "text": "A fabricated network error"
+      },
+      {
+        "id": "915490b3385b",
+        "text": "An empty-success message"
+      },
+      {
+        "id": "3a6bba5014ed",
+        "text": "Random replacement content"
+      }
+    ],
+    "correctId": "915490b3385b",
+    "explanation": "An empty valid result is a completed state and should be explained honestly.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-08",
+    "topic": "react-async",
+    "concept": "react-async-08",
+    "prompt": "After a request failure, what supports recovery?",
+    "choices": [
+      {
+        "id": "e5e219f0ee13",
+        "text": "An error message and retry action"
+      },
+      {
+        "id": "4a4a9b12e65d",
+        "text": "Deleting saved tasks"
+      },
+      {
+        "id": "a431c88dc55c",
+        "text": "A permanently disabled button"
+      },
+      {
+        "id": "3d83eb8e26b1",
+        "text": "A success message"
+      }
+    ],
+    "correctId": "e5e219f0ee13",
+    "explanation": "Explicit failure and retry let the learner understand and recover from the problem.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-09",
+    "topic": "react-async",
+    "concept": "react-async-09",
+    "prompt": "Why preserve existing user tasks when ideas fail to load?",
+    "choices": [
+      {
+        "id": "c9706bbd71cc",
+        "text": "A failed request proves tasks are invalid"
+      },
+      {
+        "id": "6fb8baa1bfb6",
+        "text": "React requires every array to clear"
+      },
+      {
+        "id": "80d8f3518010",
+        "text": "JSON errors must reset storage"
+      },
+      {
+        "id": "e11362e92bb3",
+        "text": "Those tasks are independent useful data"
+      }
+    ],
+    "correctId": "e11362e92bb3",
+    "explanation": "Failure in one auxiliary request should not destroy unrelated user work.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-async-10",
+    "topic": "react-async",
+    "concept": "react-async-10",
+    "prompt": "What does a loading/success/error union help express?",
+    "choices": [
+      {
+        "id": "b7109a3273f8",
+        "text": "A CSS breakpoint"
+      },
+      {
+        "id": "8b1649839049",
+        "text": "A database migration"
+      },
+      {
+        "id": "0232b5ba9ea3",
+        "text": "A guarantee of internet access"
+      },
+      {
+        "id": "5b6c87f4f6b3",
+        "text": "Which request state and data belong together"
+      }
+    ],
+    "correctId": "5b6c87f4f6b3",
+    "explanation": "A discriminated union can keep request states from contradicting their associated data.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-01",
+    "topic": "react-refs",
+    "concept": "react-refs-01",
+    "prompt": "What does changing ref.current do by itself?",
+    "choices": [
+      {
+        "id": "748d74a1f657",
+        "text": "It changes all props"
+      },
+      {
+        "id": "9ecd046d417b",
+        "text": "It automatically saves state"
+      },
+      {
+        "id": "17fe1e9f0963",
+        "text": "It does not request a render"
+      },
+      {
+        "id": "a5d010e63f83",
+        "text": "It always rerenders every child"
+      }
+    ],
+    "correctId": "17fe1e9f0963",
+    "explanation": "Refs hold mutable values without notifying React to render again.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-02",
+    "topic": "react-refs",
+    "concept": "react-refs-02",
+    "prompt": "Which is appropriate for a count shown on screen?",
+    "choices": [
+      {
+        "id": "1badcd258132",
+        "text": "Only a mutable ref"
+      },
+      {
+        "id": "af0505bffc56",
+        "text": "State, rather than only a ref"
+      },
+      {
+        "id": "ba9b84eb601a",
+        "text": "A module filename"
+      },
+      {
+        "id": "836aa55c29dd",
+        "text": "A CSS comment"
+      }
+    ],
+    "correctId": "af0505bffc56",
+    "explanation": "Visible changing information needs an update mechanism that schedules rendering.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-03",
+    "topic": "react-refs",
+    "concept": "react-refs-03",
+    "prompt": "Why null-check an input ref before focusing it?",
+    "choices": [
+      {
+        "id": "0e60eed57941",
+        "text": "TypeScript creates the element later"
+      },
+      {
+        "id": "f18264a97393",
+        "text": "Focus requires a database"
+      },
+      {
+        "id": "2e40073a38ae",
+        "text": "The element may not be mounted"
+      },
+      {
+        "id": "7ce7c67370ec",
+        "text": "Refs always point to numbers"
+      }
+    ],
+    "correctId": "2e40073a38ae",
+    "explanation": "A DOM ref can be null before mounting or after removal, so access must account for that.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-04",
+    "topic": "react-refs",
+    "concept": "react-refs-04",
+    "prompt": "What is an appropriate use of a DOM ref?",
+    "choices": [
+      {
+        "id": "f8b6a3edf588",
+        "text": "Replacing every render with manual DOM edits"
+      },
+      {
+        "id": "c7f460cf9676",
+        "text": "Storing all task titles in attributes"
+      },
+      {
+        "id": "8e58061131f3",
+        "text": "Generating random list keys"
+      },
+      {
+        "id": "8aa34c7618d7",
+        "text": "Moving focus to a useful control after an action"
+      }
+    ],
+    "correctId": "8aa34c7618d7",
+    "explanation": "Refs allow targeted imperative interactions such as focus while React owns the rendered structure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-05",
+    "topic": "react-refs",
+    "concept": "react-refs-05",
+    "prompt": "How should a custom hook be named?",
+    "choices": [
+      {
+        "id": "18457cb8fff4",
+        "text": "With a random uppercase acronym only"
+      },
+      {
+        "id": "324a1598a660",
+        "text": "With a use prefix such as usePlanner"
+      },
+      {
+        "id": "8705335d57e4",
+        "text": "With the same name as a CSS class"
+      },
+      {
+        "id": "11d90f2f38a4",
+        "text": "With a .json suffix"
+      }
+    ],
+    "correctId": "324a1598a660",
+    "explanation": "The use naming convention signals a function that composes hooks and follows their rules.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-06",
+    "topic": "react-refs",
+    "concept": "react-refs-06",
+    "prompt": "Does reusing a custom hook mean its callers share all state?",
+    "choices": [
+      {
+        "id": "7bdb48d928a0",
+        "text": "Only when called from siblings"
+      },
+      {
+        "id": "01a1110ca3e7",
+        "text": "Yes; all hooks are global singletons"
+      },
+      {
+        "id": "7956c51d42e0",
+        "text": "Only when it returns an array"
+      },
+      {
+        "id": "0bf763ce1590",
+        "text": "No; each call normally has independent state"
+      }
+    ],
+    "correctId": "0bf763ce1590",
+    "explanation": "Hooks share behavior; sharing data requires an explicit owner or shared external source.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-07",
+    "topic": "react-refs",
+    "concept": "react-refs-07",
+    "prompt": "Why avoid hooks inside a conditional branch?",
+    "choices": [
+      {
+        "id": "2a8503de910d",
+        "text": "Hooks require a network request"
+      },
+      {
+        "id": "df2c0155f06a",
+        "text": "Conditions cannot exist in React"
+      },
+      {
+        "id": "d1d330e81c61",
+        "text": "The hook call order can change between renders"
+      },
+      {
+        "id": "e1847589fd37",
+        "text": "TypeScript forbids all branches"
+      }
+    ],
+    "correctId": "d1d330e81c61",
+    "explanation": "React relies on a stable order of hook calls for component state association.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-08",
+    "topic": "react-refs",
+    "concept": "react-refs-08",
+    "prompt": "Where is calling useRef inappropriate?",
+    "choices": [
+      {
+        "id": "f33cffdd1aa3",
+        "text": "At a component's top level"
+      },
+      {
+        "id": "9c9acadc533a",
+        "text": "Before returning JSX"
+      },
+      {
+        "id": "d376b35a54aa",
+        "text": "Inside a custom hook's top level"
+      },
+      {
+        "id": "c01b0e60abda",
+        "text": "Inside a click handler"
+      }
+    ],
+    "correctId": "c01b0e60abda",
+    "explanation": "Event handlers should use an existing ref rather than introducing new hook calls.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-09",
+    "topic": "react-refs",
+    "concept": "react-refs-09",
+    "prompt": "A focused task is deleted. What is a useful focus strategy?",
+    "choices": [
+      {
+        "id": "837a24b0f8dd",
+        "text": "Focus an unrelated hidden element"
+      },
+      {
+        "id": "f8986ce8fa4f",
+        "text": "Always reload the page"
+      },
+      {
+        "id": "65563b80a38a",
+        "text": "Leave the user without an obvious focus target"
+      },
+      {
+        "id": "c2c723e07bd5",
+        "text": "Move focus to a sensible remaining control"
+      }
+    ],
+    "correctId": "c2c723e07bd5",
+    "explanation": "Intentional focus restoration preserves keyboard continuity when the active element disappears.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-refs-10",
+    "topic": "react-refs",
+    "concept": "react-refs-10",
+    "prompt": "When should behavior be extracted into a custom hook?",
+    "choices": [
+      {
+        "id": "0eed38333f8b",
+        "text": "After every single state declaration"
+      },
+      {
+        "id": "a15db5f0b202",
+        "text": "When it has a clear reusable responsibility"
+      },
+      {
+        "id": "0f435c26c281",
+        "text": "To avoid returning values"
+      },
+      {
+        "id": "4391324842f3",
+        "text": "To hide every dependency warning"
+      }
+    ],
+    "correctId": "a15db5f0b202",
+    "explanation": "A custom hook should clarify behavior and contracts rather than obscure simple local code.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-01",
+    "topic": "react-project",
+    "concept": "react-project-01",
+    "prompt": "Which component should own tasks used by the form, summary, and list?",
+    "choices": [
+      {
+        "id": "6144877e3927",
+        "text": "The CSS stylesheet"
+      },
+      {
+        "id": "58388ea49145",
+        "text": "Their coordinating parent"
+      },
+      {
+        "id": "876027f11a1d",
+        "text": "The browser's page title"
+      },
+      {
+        "id": "439ba8acda51",
+        "text": "Three unrelated independent children"
+      }
+    ],
+    "correctId": "58388ea49145",
+    "explanation": "One owner keeps changes consistent and lets children receive typed data and actions.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-02",
+    "topic": "react-project",
+    "concept": "react-project-02",
+    "prompt": "What should a TaskRow receive to request an update?",
+    "choices": [
+      {
+        "id": "3ec8fcf71816",
+        "text": "The entire browser storage object"
+      },
+      {
+        "id": "765d6559cb0f",
+        "text": "Permission to mutate parent props"
+      },
+      {
+        "id": "f4c1700673d6",
+        "text": "A callback accepting its stable ID"
+      },
+      {
+        "id": "4ab1dec6424b",
+        "text": "A random key generator"
+      }
+    ],
+    "correctId": "f4c1700673d6",
+    "explanation": "An action callback keeps state ownership clear and identifies the intended task reliably.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-03",
+    "topic": "react-project",
+    "concept": "react-project-03",
+    "prompt": "Why keep task titles as plain JSX text?",
+    "choices": [
+      {
+        "id": "07642ba1a6bd",
+        "text": "To execute user scripts safely"
+      },
+      {
+        "id": "2a18ebd04849",
+        "text": "To avoid interpreting user input as HTML"
+      },
+      {
+        "id": "bcf162f8455f",
+        "text": "To replace validation with markup"
+      },
+      {
+        "id": "80141889c1ef",
+        "text": "To make every title bold"
+      }
+    ],
+    "correctId": "2a18ebd04849",
+    "explanation": "Text interpolation displays markup-looking input as text instead of injecting elements.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-04",
+    "topic": "react-project",
+    "concept": "react-project-04",
+    "prompt": "When stored JSON cannot be validated, what should the React starter avoid?",
+    "choices": [
+      {
+        "id": "536c3b5c4a75",
+        "text": "Showing an error"
+      },
+      {
+        "id": "67927b17c85f",
+        "text": "Keeping the original text"
+      },
+      {
+        "id": "481edb49525e",
+        "text": "Overwriting it automatically with an empty array"
+      },
+      {
+        "id": "640b58784e64",
+        "text": "Offering temporary mode"
+      }
+    ],
+    "correctId": "481edb49525e",
+    "explanation": "Storage synchronization must not destroy unreadable data merely because initialization failed.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-05",
+    "topic": "react-project",
+    "concept": "react-project-05",
+    "prompt": "What should happen to tasks hidden by a filter after reloading?",
+    "choices": [
+      {
+        "id": "a912a44e68ca",
+        "text": "They should be deleted"
+      },
+      {
+        "id": "bb43f0dad2dd",
+        "text": "They should still exist in saved state"
+      },
+      {
+        "id": "7c0e0c1dc991",
+        "text": "They should become errors"
+      },
+      {
+        "id": "4ac49c981d29",
+        "text": "They should lose stable IDs"
+      }
+    ],
+    "correctId": "bb43f0dad2dd",
+    "explanation": "Filtering changes the view, while persistence retains the complete collection.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-06",
+    "topic": "react-project",
+    "concept": "react-project-06",
+    "prompt": "Does the bundled ideas file provide personalized live recommendations?",
+    "choices": [
+      {
+        "id": "cc008fdabba7",
+        "text": "No; it is a local teaching fixture"
+      },
+      {
+        "id": "5a54cd05beb0",
+        "text": "Yes; TypeScript predicts interests"
+      },
+      {
+        "id": "7fc6898e274c",
+        "text": "Only after a reload"
+      },
+      {
+        "id": "3b9dce1deb32",
+        "text": "Yes; React trains a model"
+      }
+    ],
+    "correctId": "cc008fdabba7",
+    "explanation": "The sample JSON demonstrates request states without claiming a real recommendation service.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-07",
+    "topic": "react-project",
+    "concept": "react-project-07",
+    "prompt": "Which checks complement the starter's model tests?",
+    "choices": [
+      {
+        "id": "253de10c3591",
+        "text": "Only renaming the app"
+      },
+      {
+        "id": "5ef8498ff58d",
+        "text": "Only counting components"
+      },
+      {
+        "id": "6d00ef2a67d2",
+        "text": "Keyboard, narrow-screen, reload, and failure checks"
+      },
+      {
+        "id": "f9ad5950ff13",
+        "text": "Only changing the logo"
+      }
+    ],
+    "correctId": "6d00ef2a67d2",
+    "explanation": "Pure model tests do not cover every rendered interaction or environmental failure.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-08",
+    "topic": "react-project",
+    "concept": "react-project-08",
+    "prompt": "What must change together when extending task storage with due dates?",
+    "choices": [
+      {
+        "id": "84552a9188d7",
+        "text": "Only the heading"
+      },
+      {
+        "id": "b0669946972c",
+        "text": "Types, validation, rendering, and old-data handling"
+      },
+      {
+        "id": "e88a0ac54639",
+        "text": "Only the number of components"
+      },
+      {
+        "id": "36f9eb51b801",
+        "text": "Only the install command"
+      }
+    ],
+    "correctId": "b0669946972c",
+    "explanation": "A persisted field affects both existing stored data and how the application understands and displays it.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-09",
+    "topic": "react-project",
+    "concept": "react-project-09",
+    "prompt": "What does the project's self-review status mean?",
+    "choices": [
+      {
+        "id": "75d4c053785d",
+        "text": "Every download is automatically graded"
+      },
+      {
+        "id": "0adb56a60c2a",
+        "text": "Learners check their implementation; quizzes do not certify it"
+      },
+      {
+        "id": "f58d391a8b05",
+        "text": "The app has production accounts"
+      },
+      {
+        "id": "f889a6d547ef",
+        "text": "Passing a quiz proves all UI behavior"
+      }
+    ],
+    "correctId": "0adb56a60c2a",
+    "explanation": "Concept quizzes and a project checklist serve different purposes and should not imply automatic certification.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  },
+  {
+    "id": "react-v1-project-10",
+    "topic": "react-project",
+    "concept": "react-project-10",
+    "prompt": "Before adding accounts and a server, what is this phase's focus?",
+    "choices": [
+      {
+        "id": "0c3707f78b0a",
+        "text": "Cloud scaling and billing"
+      },
+      {
+        "id": "7d6f483d2f7c",
+        "text": "A dependable typed client interface with explicit storage limits"
+      },
+      {
+        "id": "befeabf4b472",
+        "text": "Database replication"
+      },
+      {
+        "id": "2d897a788aa2",
+        "text": "Production authentication policies"
+      }
+    ],
+    "correctId": "7d6f483d2f7c",
+    "explanation": "This phase develops frontend behavior; account-backed persistence belongs to later backend work.",
+    "source": {
+      "label": "Init revision notebook"
+    }
+  }
+]

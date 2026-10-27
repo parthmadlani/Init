@@ -1,0 +1,502 @@
+[
+  {
+    "slug": "react-components",
+    "title": "Components & JSX",
+    "summary": "Describe a screen as small reusable pieces.",
+    "points": [
+      "A React component is a capitalized function that returns renderable UI. Keep rendering pure: do not save data or mutate outside state during render.",
+      "JSX describes elements. Use braces for JavaScript expressions, className for CSS classes, and htmlFor to connect a label.",
+      "Return one root element or a fragment. Close tags, including self-closing inputs.",
+      "The starter uses a Vite browser app with a React root and TypeScript. It is an exercise in client UI, not a server or account system.",
+      "Function components compose other components. Extract a component around a coherent responsibility rather than every line of markup."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Component",
+          "Reusable UI function"
+        ],
+        [
+          "JSX",
+          "Element description"
+        ],
+        [
+          "Fragment",
+          "Group without extra wrapper"
+        ],
+        [
+          "Pure render",
+          "Same inputs, same output"
+        ]
+      ]
+    },
+    "code": "export function Welcome() {\n  const subject = \"React\";\n  return <section><h1>Learn {subject}</h1><p>One small step.</p></section>;\n}",
+    "output": "Rendering <Welcome /> shows a heading Learn React and a paragraph One small step.",
+    "mistake": "Calling a state setter unconditionally while rendering can create a render loop.",
+    "challenge": "Build a PlannerHeader component with a heading and a short description. Check the heading order.",
+    "diagram": {
+      "title": "Components & JSX",
+      "steps": [
+        "Props + state",
+        "Render component",
+        "UI description"
+      ],
+      "caption": "Describe a screen as small reusable pieces."
+    },
+    "source": "https://react.dev/learn/your-first-component"
+  },
+  {
+    "slug": "react-props",
+    "title": "Props, composition & types",
+    "summary": "Pass information down and actions back up.",
+    "points": [
+      "Props are inputs from a parent. Treat them as read-only; do not mutate a prop object or array.",
+      "TypeScript props types describe required and optional inputs. Destructure props in the component parameter.",
+      "Pass callback props to ask the parent to update shared data. Calling a callback is different from mutating a prop.",
+      "children lets a component wrap other content. ReactNode describes many renderable values, including text and elements.",
+      "A component should have a clear contract. Keep state ownership in the nearest component that must coordinate it."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Props",
+          "Parent-provided inputs"
+        ],
+        [
+          "Callback prop",
+          "Request a parent action"
+        ],
+        [
+          "children",
+          "Nested renderable content"
+        ],
+        [
+          "ReactNode",
+          "Type for renderable content"
+        ]
+      ]
+    },
+    "code": "type BadgeProps = { count: number; label?: string };\nexport function Badge({ count, label = \"tasks\" }: BadgeProps) {\n  return <p>{count} {label}</p>;\n}",
+    "output": "<Badge count={3} /> renders 3 tasks. Omitting count is a TypeScript error.",
+    "mistake": "Mutating a prop bypasses the owner’s update flow and can make renders inconsistent.",
+    "challenge": "Create a typed TaskRow with task and onToggle props. Let its parent own the task array.",
+    "diagram": {
+      "title": "Props, composition & types",
+      "steps": [
+        "Parent",
+        "Props down",
+        "Callback up"
+      ],
+      "caption": "Pass information down and actions back up."
+    },
+    "source": "https://react.dev/learn/passing-props-to-a-component"
+  },
+  {
+    "slug": "react-lists",
+    "title": "Lists, keys & conditional UI",
+    "summary": "Make empty, filtered, and changing lists predictable.",
+    "points": [
+      "Use map to render a list and filter to derive a view. Keep the complete source array intact.",
+      "Keys identify siblings across renders. Use a stable task ID rather than an array index when items can move or disappear.",
+      "A key is used by React; it is not passed through as an ordinary prop. Pass an id prop separately if the child needs it.",
+      "Render an explicit empty state. A ternary can choose between an empty message and the task list.",
+      "Be careful with count && <List /> because zero can render as 0. Use count > 0 or an explicit branch."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "map",
+          "Render each item"
+        ],
+        [
+          "filter",
+          "Derive a visible subset"
+        ],
+        [
+          "Stable key",
+          "Preserve item identity"
+        ],
+        [
+          "Empty state",
+          "Explain a list with no items"
+        ]
+      ]
+    },
+    "code": "type Task = { id: string; title: string };\nexport function Titles({ tasks }: { tasks: Task[] }) {\n  return tasks.length === 0 ? <p>No tasks yet.</p> : (\n    <ul>{tasks.map(task => <li key={task.id}>{task.title}</li>)}</ul>\n  );\n}",
+    "output": "An empty tasks array shows No tasks yet. Otherwise each task title appears in a list.",
+    "mistake": "Generating a random key while rendering causes items to be recreated instead of preserving identity.",
+    "challenge": "Render two tasks, remove the first, and confirm the second keeps its identity. Add a distinct message for an empty filtered view.",
+    "diagram": {
+      "title": "Lists, keys & conditional UI",
+      "steps": [
+        "Source list",
+        "Filter + map",
+        "Stable keys"
+      ],
+      "caption": "Make empty, filtered, and changing lists predictable."
+    },
+    "source": "https://react.dev/learn/rendering-lists"
+  },
+  {
+    "slug": "react-state",
+    "title": "State, events & update queues",
+    "summary": "Change the next render without mutating the current one.",
+    "points": [
+      "useState stores component state and gives you a setter. Call hooks at the top level of a component or custom hook.",
+      "An event handler sees the state snapshot for its render. Calling a setter requests a future render; it does not rewrite that local snapshot.",
+      "When the next value depends on the previous value, use a functional updater such as setCount(c => c + 1).",
+      "Copy arrays and objects when updating. Use map, filter, and spread instead of changing the current state in place.",
+      "Pass a function to onClick. Writing onClick={save()} calls save during render instead of waiting for a click."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "useState",
+          "State plus setter"
+        ],
+        [
+          "Snapshot",
+          "Values seen by one render"
+        ],
+        [
+          "Functional updater",
+          "Calculate from pending state"
+        ],
+        [
+          "Immutable update",
+          "New array or object"
+        ]
+      ]
+    },
+    "code": "import { useState } from \"react\";\nexport function Counter() {\n  const [count, setCount] = useState(0);\n  return <button type=\"button\" onClick={() => { setCount(c => c + 1); setCount(c => c + 1); }}>{count}</button>;\n}",
+    "output": "Starts at 0. Each click adds 2 because both updaters use the pending value.",
+    "mistake": "Calling setCount(count + 1) twice in one handler usually requests the same replacement value twice.",
+    "challenge": "Add a completion toggle using map and a functional updater. Verify the old task object remains unchanged.",
+    "diagram": {
+      "title": "State, events & update queues",
+      "steps": [
+        "Event",
+        "Queue update",
+        "Next render"
+      ],
+      "caption": "Change the next render without mutating the current one."
+    },
+    "source": "https://react.dev/learn/queueing-a-series-of-state-updates"
+  },
+  {
+    "slug": "react-forms",
+    "title": "Controlled forms & accessibility",
+    "summary": "Make typing, submission, and feedback work together.",
+    "points": [
+      "A controlled text input receives value and an onChange handler that updates it. Keep its value a string from the first render.",
+      "Use checked and onChange for a controlled checkbox. Its text value is not the checked state.",
+      "Handle form onSubmit and preventDefault so Enter and the submit button share one path.",
+      "Associate labels with controls and announce outcomes using a status region. Native required and maxLength help, but validate trimmed input too.",
+      "Keep event types appropriate: React form events and DOM events are different types. Extract currentTarget values while handling the event."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "value",
+          "Controlled text"
+        ],
+        [
+          "checked",
+          "Controlled checkbox"
+        ],
+        [
+          "onSubmit",
+          "One submission path"
+        ],
+        [
+          "role=status",
+          "Announce feedback"
+        ]
+      ]
+    },
+    "code": "import { useState } from \"react\";\nexport function TitleForm() {\n  const [title, setTitle] = useState(\"\");\n  const [message, setMessage] = useState(\"\");\n  return <form onSubmit={e => { e.preventDefault(); setMessage(title.trim() ? \"Ready\" : \"Enter a title\"); }}>\n    <label htmlFor=\"title\">Task title</label>\n    <input id=\"title\" value={title} onChange={e => setTitle(e.currentTarget.value)} />\n    <button type=\"submit\">Check</button><p role=\"status\">{message}</p>\n  </form>;\n}",
+    "output": "Typing updates title. Submitting spaces shows Enter a title; a nonblank title shows Ready.",
+    "mistake": "Starting an input value as undefined and later supplying a string switches between uncontrolled and controlled behavior.",
+    "challenge": "Build an add-task form with a visible label, trimmed validation, and an announced success message. Test Enter.",
+    "diagram": {
+      "title": "Controlled forms & accessibility",
+      "steps": [
+        "Input event",
+        "Controlled state",
+        "Submit + feedback"
+      ],
+      "caption": "Make typing, submission, and feedback work together."
+    },
+    "source": "https://react.dev/reference/react-dom/components/input"
+  },
+  {
+    "slug": "react-sharing",
+    "title": "Shared state & derived views",
+    "summary": "Keep one source of truth for components that agree.",
+    "points": [
+      "Lift shared state to the nearest common parent. Pass data and callbacks to children.",
+      "Compute counts and filtered tasks from the task array during render instead of synchronizing duplicate state with an effect.",
+      "A component’s state is tied to its place and identity in the tree. A changed key can intentionally reset that state.",
+      "Prop drilling is sometimes simple and appropriate. Context is useful for genuinely shared distant consumers, not mandatory for every prop.",
+      "A reducer can centralize related transitions when many handlers update the same data. Keep reducers pure and return new state."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Lift state",
+          "Coordinate siblings"
+        ],
+        [
+          "Derived value",
+          "Calculate from existing state"
+        ],
+        [
+          "Key change",
+          "Reset component identity"
+        ],
+        [
+          "Reducer",
+          "Centralize pure transitions"
+        ]
+      ]
+    },
+    "code": "// Inside a planner component after its state declarations:\nconst active = tasks.filter(task => !task.done);\nconst shown = view === \"active\" ? active : tasks;\n// Pass shown to TaskList and active.length to Summary.\n// Keep tasks as the complete source of truth.",
+    "output": "Counts and the visible list update together whenever tasks or view changes. This is a contextual fragment, not a standalone program.",
+    "mistake": "Saving only shown tasks would discard tasks hidden by the current filter.",
+    "challenge": "Give a summary, filters, and list one shared task array. Remove any state that can be calculated from it.",
+    "diagram": {
+      "title": "Shared state & derived views",
+      "steps": [
+        "Shared parent",
+        "Derived views",
+        "Consistent children"
+      ],
+      "caption": "Keep one source of truth for components that agree."
+    },
+    "source": "https://react.dev/learn/sharing-state-between-components"
+  },
+  {
+    "slug": "react-effects",
+    "title": "Effects, cleanup & browser sync",
+    "summary": "Synchronize external systems only when needed.",
+    "points": [
+      "Effects connect a committed UI to an external system such as storage or a subscription. Calculating a filtered array does not require an effect.",
+      "List every reactive value used by the effect in its dependencies. Do not suppress the dependency rule to hide stale data.",
+      "Return cleanup to undo a subscription, listener, or other ongoing operation before it is replaced or unmounted.",
+      "Development StrictMode can run an extra setup/cleanup cycle. Make synchronization safe to repeat and do not disable checks to hide a bug.",
+      "Separate user actions from synchronization. Sending a request because a user clicked a button normally belongs in that handler."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "useEffect",
+          "Synchronize after commit"
+        ],
+        [
+          "Dependencies",
+          "Reactive values used"
+        ],
+        [
+          "Cleanup",
+          "Undo ongoing work"
+        ],
+        [
+          "StrictMode",
+          "Expose unsafe assumptions"
+        ]
+      ]
+    },
+    "code": "import { useEffect } from \"react\";\nexport function PageTitle({ count }: { count: number }) {\n  useEffect(() => {\n    const previous = document.title;\n    document.title = `${count} tasks`;\n    return () => { document.title = previous; };\n  }, [count]);\n  return null;\n}",
+    "output": "After commit, the browser title reflects count. Cleanup restores the previous title before a replacement setup or unmount.",
+    "mistake": "An effect that changes a dependency unconditionally can keep triggering itself.",
+    "challenge": "Synchronize a task count into the document title and verify cleanup. Keep filtering outside effects.",
+    "diagram": {
+      "title": "Effects, cleanup & browser sync",
+      "steps": [
+        "Commit",
+        "Setup external sync",
+        "Cleanup"
+      ],
+      "caption": "Synchronize external systems only when needed."
+    },
+    "source": "https://react.dev/reference/react/useEffect"
+  },
+  {
+    "slug": "react-async",
+    "title": "Async data & request states",
+    "summary": "Make loading, errors, and retry visible.",
+    "points": [
+      "Represent idle, loading, success, and error explicitly. A single empty array cannot explain whether a request failed or has not started.",
+      "Check HTTP status and validate parsed data. TypeScript annotations do not guarantee a remote JSON shape.",
+      "For interaction-triggered loading, use the event handler and disable repeat submission while a request is pending.",
+      "For effects that fetch on changing inputs, abort or ignore stale responses during cleanup so old results cannot overwrite newer ones.",
+      "Show empty success separately from failure, provide retry, and preserve useful existing user data when requests fail."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Loading",
+          "Request in progress"
+        ],
+        [
+          "Empty success",
+          "Valid response with no items"
+        ],
+        [
+          "Error",
+          "Failure with recovery"
+        ],
+        [
+          "Stale response",
+          "Result no longer relevant"
+        ]
+      ]
+    },
+    "code": "// A typed request helper; call it from a handler or a managed effect.\nexport async function readIdeas(signal?: AbortSignal): Promise<string[]> {\n  const response = await fetch(\"./sample.json\", { signal });\n  if (!response.ok) throw new Error(\"Request failed\");\n  const data: unknown = await response.json();\n  if (!Array.isArray(data) || !data.every(item => typeof item === \"string\")) throw new Error(\"Invalid ideas\");\n  return data;\n}",
+    "output": "Resolves to an array of strings for valid JSON. Rejects on network, HTTP, parse, or shape failures.",
+    "mistake": "A late response for an old selection must not overwrite the latest selection’s results.",
+    "challenge": "Implement idle/loading/success/error views for practice ideas. Test a missing file, invalid JSON, empty array, and retry.",
+    "diagram": {
+      "title": "Async data & request states",
+      "steps": [
+        "Request",
+        "Validate response",
+        "Render its state"
+      ],
+      "caption": "Make loading, errors, and retry visible."
+    },
+    "source": "https://react.dev/learn/synchronizing-with-effects"
+  },
+  {
+    "slug": "react-refs",
+    "title": "Refs, focus & custom hooks",
+    "summary": "Reuse behavior while keeping the screen accessible.",
+    "points": [
+      "useRef stores a mutable value between renders without requesting a new render when it changes.",
+      "Attach a ref to an input and focus it after an event when appropriate. Null-check current because the element can be absent.",
+      "Use state for values that affect the visible UI. A ref alone will not update a displayed counter.",
+      "A custom hook is a function named useSomething that composes hooks. Each call has its own state; sharing logic does not automatically share data.",
+      "Call hooks in a stable order at the top level. Avoid calling them inside loops, event handlers, conditions, or after conditional early returns."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "useRef",
+          "Persistent mutable reference"
+        ],
+        [
+          "ref.current",
+          "Current element or value"
+        ],
+        [
+          "State",
+          "Values that affect rendering"
+        ],
+        [
+          "Custom hook",
+          "Reusable hook-based behavior"
+        ]
+      ]
+    },
+    "code": "import { useRef } from \"react\";\nexport function FocusExample() {\n  const input = useRef<HTMLInputElement>(null);\n  return <><label htmlFor=\"practice\">Practice</label><input id=\"practice\" ref={input} />\n    <button type=\"button\" onClick={() => input.current?.focus()}>Focus input</button></>;\n}",
+    "output": "Clicking Focus input moves keyboard focus to the labelled input.",
+    "mistake": "Changing ref.current does not schedule a render, so it cannot replace state for visible task counts.",
+    "challenge": "After deleting a focused task, move focus to a useful remaining control. Extract reusable behavior only when it has a clear contract.",
+    "diagram": {
+      "title": "Refs, focus & custom hooks",
+      "steps": [
+        "Ref",
+        "Mounted element",
+        "Intentional focus"
+      ],
+      "caption": "Reuse behavior while keeping the screen accessible."
+    },
+    "source": "https://react.dev/learn/manipulating-the-dom-with-refs"
+  },
+  {
+    "slug": "react-project",
+    "title": "Build a component planner",
+    "summary": "Bring typed state, components, and recovery together.",
+    "points": [
+      "The starter splits the header, form, task list, and ideas panel into typed components. The parent owns the task array.",
+      "Tasks use stable IDs, immutable changes, derived filters, safe text interpolation, and labelled native controls.",
+      "A guarded storage initializer validates existing data. Synchronization skips unreadable storage until the user chooses a temporary list.",
+      "Practice ideas load from a bundled JSON file. Loading, empty, failure, and retry are visible; this is not a live recommendation service.",
+      "Type checks, model tests, keyboard checks, and a production build complement each other. Extend the project with editing and due dates before considering accounts or a backend."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Parent state",
+          "One task source"
+        ],
+        [
+          "Typed children",
+          "Clear UI contracts"
+        ],
+        [
+          "Storage guard",
+          "Preserve invalid saved data"
+        ],
+        [
+          "Self-review",
+          "Test the complete experience"
+        ]
+      ]
+    },
+    "code": "// Task-row component excerpt:\ntype RowProps = { task: { id: string; title: string; done: boolean }; onToggle: (id: string) => void };\nexport function TaskRow({ task, onToggle }: RowProps) {\n  return <li><label><input type=\"checkbox\" checked={task.done}\n    onChange={() => onToggle(task.id)} />{task.title}</label></li>;\n}",
+    "output": "The checkbox reflects its task and requests an update by stable ID. The parent supplies the actual update.",
+    "mistake": "Do not use dangerouslySetInnerHTML for task titles. Plain JSX text safely displays text that looks like markup.",
+    "challenge": "Extend the React starter with editing and due dates. Verify reload, filtering, failure recovery, keyboard use, and narrow screens.",
+    "diagram": {
+      "title": "Build a component planner",
+      "steps": [
+        "Components",
+        "Typed state flow",
+        "Working planner"
+      ],
+      "caption": "Bring typed state, components, and recovery together."
+    },
+    "source": "https://react.dev/learn/thinking-in-react"
+  }
+]

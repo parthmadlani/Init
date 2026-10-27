@@ -185,12 +185,120 @@ const javascriptOutline = [
   ]
 ];
 export const JAVASCRIPT_TOPICS: CourseTopic[] = javascriptOutline.map(([slug, name, query], i) => ({ slug, name, query, prerequisites: i ? [javascriptOutline[i - 1][0]] : [] }));
+const typescriptOutline = [
+  [
+    "typescript-setup",
+    "TypeScript & the build loop",
+    "TypeScript setup tsconfig compiler beginners tutorial"
+  ],
+  [
+    "typescript-values",
+    "Inference & everyday types",
+    "TypeScript type inference primitive types union unknown tutorial"
+  ],
+  [
+    "typescript-objects",
+    "Objects, interfaces & readonly",
+    "TypeScript interfaces object types optional readonly properties tutorial"
+  ],
+  [
+    "typescript-functions",
+    "Typed functions & callbacks",
+    "TypeScript function types parameters callbacks return tutorial"
+  ],
+  [
+    "typescript-narrowing",
+    "Unions & narrowing",
+    "TypeScript discriminated unions narrowing type guards tutorial"
+  ],
+  [
+    "typescript-generics",
+    "Generics & useful type tools",
+    "TypeScript generics constraints keyof utility types tutorial"
+  ],
+  [
+    "typescript-dom",
+    "Typed DOM & form events",
+    "TypeScript DOM manipulation tutorial"
+  ],
+  [
+    "typescript-boundaries",
+    "Unknown data & validation",
+    "TypeScript type guards unknown tutorial"
+  ],
+  [
+    "typescript-modules",
+    "Modules & project checks",
+    "TypeScript modules import type tsconfig project tutorial"
+  ],
+  [
+    "typescript-project",
+    "Build a typed planner",
+    "TypeScript todo app project localStorage tutorial"
+  ]
+];
+export const TYPESCRIPT_TOPICS: CourseTopic[] = typescriptOutline.map(([slug, name, query], i) => ({ slug, name, query, prerequisites: i ? [typescriptOutline[i - 1][0]] : [] }));
+const reactOutline = [
+  [
+    "react-components",
+    "Components & JSX",
+    "React components JSX beginners tutorial"
+  ],
+  [
+    "react-props",
+    "Props, composition & types",
+    "React props children composition TypeScript tutorial"
+  ],
+  [
+    "react-lists",
+    "Lists, keys & conditional UI",
+    "React lists keys conditional rendering tutorial"
+  ],
+  [
+    "react-state",
+    "State, events & update queues",
+    "React useState functional updates events tutorial"
+  ],
+  [
+    "react-forms",
+    "Controlled forms & accessibility",
+    "React controlled forms inputs validation accessibility tutorial"
+  ],
+  [
+    "react-sharing",
+    "Shared state & derived views",
+    "React lifting state derived state tutorial"
+  ],
+  [
+    "react-effects",
+    "Effects, cleanup & browser sync",
+    "React useEffect dependencies cleanup StrictMode tutorial"
+  ],
+  [
+    "react-async",
+    "Async data & request states",
+    "React fetch loading error useEffect cleanup race condition tutorial"
+  ],
+  [
+    "react-refs",
+    "Refs, focus & custom hooks",
+    "React useRef focus custom hooks tutorial"
+  ],
+  [
+    "react-project",
+    "Build a component planner",
+    "React TypeScript todo app localStorage project tutorial"
+  ]
+];
+export const REACT_TOPICS: CourseTopic[] = reactOutline.map(([slug, name, query], i) => ({ slug, name, query, prerequisites: i ? [reactOutline[i - 1][0]] : [] }));
 export const COURSES: Course[] = [
   { slug: "python", name: "Python", category: "Programming", description: "Build a foundation in programming, one small problem at a time.", outcome: "Write Python programs with functions, data structures, files, and APIs.", prerequisites: [], topics: [] },
   { slug: "html", name: "HTML", category: "Web foundations", description: "From your first page to an accessible student planner. Includes the web, your editor, and Git basics.", outcome: "Build and version a semantic, accessible multi-page website.", prerequisites: [], topics: HTML_TOPICS },
   { slug: "css", name: "CSS", category: "Visual foundations", headline: ". Give your ideas room to breathe.", description: "Turn your HTML planner into a responsive, readable interface. Learn layout, typography, and accessible interaction styles.", outcome: "Style a responsive student planner with Flexbox, Grid, reusable tokens, and visible keyboard focus.", prerequisites: ["html"], topics: CSS_TOPICS, project: { title: "Your planner, styled with purpose.", description: "Add a flexible layout, a consistent type and spacing scale, readable colors, and keyboard focus to your HTML planner. Test narrow screens and zoom. Tasks remain a static prototype.", download: "/course-projects/css/student-planner.zip", downloadLabel: "Download the CSS starter" } },
   { slug: "tailwind", name: "Tailwind CSS", category: "Utility-first styling", headline: ". Build on what CSS taught you.", description: "Rebuild the planner with utilities, responsive variants, and a small theme. Includes the Tailwind CSS v4 build workflow.", outcome: "Build and compile a responsive Tailwind v4 interface, with accessible states and a consistent theme.", prerequisites: ["html", "css"], topics: TAILWIND_TOPICS, project: { title: "The same planner. A new styling workflow.", description: "Rebuild your CSS planner using Tailwind v4. Preserve semantic HTML, keyboard access, responsive behavior, and honest prototype limits. Compare the two approaches in your README.", download: "/course-projects/tailwind/student-planner.zip", downloadLabel: "Download the Tailwind v4 starter" } },
   {"slug": "javascript", "name": "JavaScript", "category": "Interactive web", "headline": ". Bring your pages to life.", "description": "Learn the language, connect browser events, and build a planner that remembers your tasks. Includes modules, APIs, and recovery from errors.", "outcome": "Build an accessible interactive planner with safe DOM updates, validated forms, JSON requests, and browser storage.", "prerequisites": ["html", "css"], "topics": JAVASCRIPT_TOPICS, "project": {"title": "Your planner, ready for real interaction.", "description": "Add, complete, filter, and remove tasks. Keep them across reloads in this browser, and load ideas from a local JSON file. Extend the working starter with editing and due dates.", "download": "/course-projects/javascript/student-planner.zip", "downloadLabel": "Download the JavaScript starter"}},
+  {"slug": "typescript", "name": "TypeScript", "category": "Typed foundations", "headline": ". Make your intentions clear.", "description": "Give your JavaScript planner clear contracts. Learn inference, narrowing, generics, and runtime validation at data boundaries.", "outcome": "Build and check a typed browser planner with safe DOM access, reusable models, and validated storage.", "prerequisites": ["javascript"], "project": {"title": "Your planner, with clearer contracts.", "description": "Port the working planner to strict TypeScript. Keep forms, filters, JSON ideas, and storage recovery working; then extend its task model with editing and due dates.", "download": "/course-projects/typescript/student-planner.zip", "downloadLabel": "Download the TypeScript starter"}, "topics": TYPESCRIPT_TOPICS},
+  {"slug": "react", "name": "React", "category": "Component-based interfaces", "headline": ". Build an interface that responds.", "description": "Turn your typed planner into reusable components. Learn state, forms, effects, request states, and accessible interaction.", "outcome": "Build a typed React planner with shared state, derived views, browser persistence, and clear loading and error states.", "prerequisites": ["javascript", "typescript"], "project": {"title": "One planner. Thoughtful components.", "description": "Build on the working React starter: typed components, task state, filters, storage recovery, and practice ideas. Extend it with editing and due dates while preserving keyboard access.", "download": "/course-projects/react/student-planner.zip", "downloadLabel": "Download the React starter"}, "topics": REACT_TOPICS},
 ];
 export const getCourse = (slug: string) => COURSES.find(course => course.slug === slug);
 export const AVAILABLE_COURSE_SLUGS = COURSES.map(course => course.slug);

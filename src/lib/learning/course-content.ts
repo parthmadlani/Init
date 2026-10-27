@@ -8,10 +8,16 @@ import tailwindNotes from "./tailwind-notes.json";
 import tailwindQuestions from "./tailwind-bank.json";
 import javascriptNotes from "./javascript-notes.json";
 import javascriptQuestions from "./javascript-bank.json";
+import typescriptNotes from "./typescript-notes.json";
+import typescriptQuestions from "./typescript-bank.json";
+import reactNotes from "./react-notes.json";
+import reactQuestions from "./react-bank.json";
 import type { Question, RevisionNote } from "./types";
 
 type CourseContent = { notes: RevisionNote[]; questions: Question[]; referenceLabel: string; diagramDirectory: string };
 const content: Record<string, CourseContent> = {
+  react: { notes: reactNotes, questions: reactQuestions, referenceLabel: "Read the React reference", diagramDirectory: "/revision-diagrams/react" },
+  typescript: { notes: typescriptNotes, questions: typescriptQuestions, referenceLabel: "Read the TypeScript reference", diagramDirectory: "/revision-diagrams/typescript" },
   javascript: { notes: javascriptNotes, questions: javascriptQuestions, referenceLabel: "Read the JavaScript reference", diagramDirectory: "/revision-diagrams/javascript" },
   css: { notes: cssNotes, questions: cssQuestions, referenceLabel: "Read the CSS reference", diagramDirectory: "/revision-diagrams/css" },
   tailwind: { notes: tailwindNotes, questions: tailwindQuestions, referenceLabel: "Read the Tailwind reference", diagramDirectory: "/revision-diagrams/tailwind" },

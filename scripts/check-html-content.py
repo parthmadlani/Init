@@ -5,9 +5,9 @@ from html.parser import HTMLParser
 root = Path(__file__).resolve().parents[1]
 void = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 class CheckHTML(HTMLParser):
-    def __init__(self, allow_module=False):
+    def __init__(self, module_src=None):
         super().__init__(convert_charrefs=True)
-        self.stack=[]; self.ids=set(); self.labels=[]; self.fragments=[]; self.allow_module=allow_module
+        self.stack=[]; self.ids=set(); self.labels=[]; self.fragments=[]; self.module_src=module_src
     def handle_starttag(self, tag, attrs):
         attrs=dict(attrs)
         if 'id' in attrs:
@@ -19,7 +19,7 @@ class CheckHTML(HTMLParser):
         if tag=='th':assert attrs.get('scope') in {'row','col'}, 'Missing simple-table header scope'
         if tag=='button':assert attrs.get('type') in {'button','submit','reset'}, 'Explicit button type required'
         if tag=='script':
-            assert self.allow_module and attrs=={'type':'module','src':'app.js'}, 'Only the reviewed JavaScript starter module is allowed'
+            assert self.module_src and attrs=={'type':'module','src':self.module_src}, 'Only a reviewed starter entry module is allowed'
         if tag not in void:self.stack.append(tag)
     def handle_endtag(self, tag):
         assert self.stack and self.stack[-1]==tag, f'Misnested closing {tag}'
@@ -30,9 +30,10 @@ class CheckHTML(HTMLParser):
         assert all(x in self.ids for x in self.fragments), 'Fragment references missing target'
 notes=[n for course in ['html','css','tailwind'] for n in json.loads((root/f'src/lib/learning/{course}-notes.json').read_text())]
 examples=[(n['slug'],n['code']) for n in notes if n['code'].startswith('<')]
-examples.extend((str(p.relative_to(root)), p.read_text()) for p in (root/'public/course-projects').rglob('*.html'))
+examples.extend((str(p.relative_to(root)), p.read_text()) for p in (root/'public/course-projects').rglob('*.html') if not {'node_modules','dist'}.intersection(p.parts))
 for name, source in examples:
     try:
-        parser=CheckHTML(allow_module=name=='public/course-projects/javascript/index.html');parser.feed(source);parser.close();parser.finish()
+        modules={'public/course-projects/javascript/index.html':'app.js','public/course-projects/typescript/index.html':'/src/app.ts','public/course-projects/react/index.html':'/src/main.tsx'}
+        parser=CheckHTML(module_src=modules.get(name));parser.feed(source);parser.close();parser.finish()
     except AssertionError as exc:raise AssertionError(f'{name}: {exc}') from exc
 print(f'Validated {len(examples)} authored HTML examples and starter documents.')

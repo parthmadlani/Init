@@ -2,9 +2,9 @@
 
 ## Branch and release boundary
 
-Phases 0–2 were approved, merged, and deployed at `ff521fb`. Active development is on `codex/javascript-foundations`, based on that production commit.
+Phases 0–2 were approved, merged, and deployed at `ff521fb`. Phase 3 is saved on `codex/javascript-foundations` at `028ea41`, without merging. Active Phase 4 development is on `codex/typescript-react`, based on that Phase 3 commit.
 
-Do not merge this branch into `main` or deploy until the user approves. `vercel.json` disables automatic Git deployments for this exact branch. Builds run migrations and curriculum seeding, so previews must not use production data. All Phase 3 interactive QA uses an isolated localhost database.
+Do not merge this branch into `main` or deploy until the user approves. `vercel.json` disables automatic Git deployments for this exact branch. Builds run migrations and curriculum seeding, so previews must not use production data. All Phase 3–4 interactive QA uses an isolated localhost database.
 
 ## Phase 0: reusable course foundation
 
@@ -94,9 +94,25 @@ Twelve chapters cover browser setup, values/operators, conditions/loops, functio
 
 Verification: 65 automated tests passed; type checking and production build passed; lint has only the two existing avatar-image warnings. Content checks validated 20 HTML examples/documents and 53 Python examples. The local JavaScript integration suite passed auth/ownership, shared progress, real video matching, rebuild/resume, quiz autosave/scoring/retakes, final review, transcript gating, seed idempotence, and Python regression. Browser checks covered course discovery, the beginner/30-minute wizard, revision layout at 320px, and planner keyboard input, safe text rendering, completion/filtering, reload persistence, deletion, and JSON idea loading. Run integration with `INIT_QA_COURSE=javascript` and the explicit localhost settings above.
 
+## Phase 4: TypeScript and React (branch only)
+
+TypeScript follows JavaScript; React follows JavaScript and TypeScript. Both are standalone courses and steps in the Full Stack collection, using the same canonical course progress and quiz history. No schema migration is added.
+
+- TypeScript: build/check loop, inference and everyday types, objects/interfaces/readonly, functions/callbacks, unions/narrowing, generics/type tools, typed DOM/forms, unknown data/runtime validation, modules/project checks, and the typed planner.
+- React: components/JSX, typed props/composition, lists/keys/conditional UI, state/events/update queues, controlled accessible forms, shared/derived state, effects/cleanup, async request states, refs/custom hooks, and the component planner.
+- Each course has ten original notebook chapters with tables, examples, explanations, mistakes, exercises, source links, and ten editable Excalidraw diagrams. Each question bank has 100 authored MCQs, ten per topic, with namespaced IDs. The existing engine supplies topic checks, mixed practice, resumable 69-question finals, unseen-first selection, and shuffled review when necessary.
+- Both starter ZIPs include source, package-lock.json, setup/self-review instructions, model tests, and a built dist folder. They pin TypeScript 5.9.3 and Vite 8.3.4; React also pins React/React DOM 19.2.8. Node compatibility is declared in each package. Source and locks are versioned alongside the ZIPs; node_modules and unpacked dist outputs are ignored. Rebuild and repackage after edits.
+- The TypeScript starter uses strict checked DOM access and typed runtime validators. The React starter uses typed components, parent-owned task state, controlled forms, derived views, focus restoration, an abortable ideas request hook, and a cleaned-up title effect. Explicit task actions persist changes; mounting does not overwrite unreadable storage.
+- Both implement add, complete/undo, delete, filters, reload persistence, bundled JSON ideas, and visible failure/retry states. Invalid saved data remains untouched while the learner opts into temporary mode. They support one tab and up to 1,000 tasks; they are browser-only learning exercises, without accounts, device sync, or automatic project grading.
+- Real API results matched all twenty topics during local QA. Two overly specific TypeScript queries were shortened after returning unrelated or empty results; the topic relevance rules remained strict. Title checks reject later frameworks/backends for TypeScript, and React Native, Next, Redux/Zustand, and explicit class-component prerequisites for React. Matching remains metadata-based and can return mixed languages; language consistency and editorial review remain pre-release content work.
+- Reviewed, permitted transcript packs remain required for video-specific quizzes. Notebook tests are clearly labelled separately and can cover more than the selected video.
+
+Verification: 71 repository tests, six starter model tests, both starter type-check/builds, and the main production build passed. Twenty TypeScript/React notebook examples compiled, and nine pure TypeScript examples produced their documented output. HTML checks covered 22 examples/documents; the existing 53 Python examples passed. Lint retained only the two existing avatar-image warnings. Separate TypeScript and React local integration runs passed real video matches, shared progress, auth/ownership, seed idempotence, quiz concurrency/autosave/scoring/retakes/final-review, transcript gating, and Python regression. Browser checks covered the seven-course library, both starter task flows and reload persistence, 320px layout, safe text, React error/retry and delete focus, and corrupt-storage temporary recovery in both starters. Temporary QA controls were removed and the test data restored before packaging.
+
+Run `node scripts/check-phase4-content.mjs`, each starter's `npm ci && npm run build`, and the existing local integration command with `INIT_QA_COURSE=typescript` then `INIT_QA_COURSE=react`. Run integration suites sequentially with the isolated PGlite preview. Preview checks are not production load tests.
+
 ## Subsequent phases
 
-- Phase 4: TypeScript and React.
 - Phase 5: Node.js/Express and SQL/PostgreSQL.
 - Phase 6: Authentication, authorization, security, and integration testing.
 - Phase 7: Complete-project testing, hosting, CI/CD, and Docker fundamentals.

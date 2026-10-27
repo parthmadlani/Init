@@ -1,0 +1,504 @@
+[
+  {
+    "slug": "typescript-setup",
+    "title": "TypeScript & the build loop",
+    "summary": "Catch mistakes before your browser runs the code.",
+    "points": [
+      "TypeScript checks JavaScript with type information. It does not replace JavaScript’s runtime behavior.",
+      "A .ts source file normally needs a build step for browsers. Type annotations disappear from emitted JavaScript.",
+      "Use a project tsconfig.json with strict checking. Run tsc --noEmit for a check without generating files.",
+      "The starter uses Vite to serve and bundle code, and a separate type-check command. A successful bundle alone is not proof that types passed.",
+      "Read the first diagnostic, fix its cause, and rerun the check. Avoid turning checks off just to make errors disappear."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          ".ts",
+          "Typed source"
+        ],
+        [
+          "tsconfig.json",
+          "Project compiler settings"
+        ],
+        [
+          "tsc --noEmit",
+          "Check without emitting"
+        ],
+        [
+          "Vite",
+          "Development server and bundle"
+        ]
+      ]
+    },
+    "code": "const course: string = \"TypeScript\";\nconst minutes: number = 20;\nconsole.log(`${course}: ${minutes} minutes`);",
+    "output": "TypeScript: 20 minutes",
+    "mistake": "A type annotation does not add a runtime validation check.",
+    "challenge": "Change minutes to a string and inspect the compiler error. Restore it and run the starter build.",
+    "diagram": {
+      "title": "TypeScript & the build loop",
+      "steps": [
+        "Write .ts",
+        "Type-check",
+        "Run JavaScript"
+      ],
+      "caption": "Catch mistakes before your browser runs the code."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html"
+  },
+  {
+    "slug": "typescript-values",
+    "title": "Inference & everyday types",
+    "summary": "Let values suggest types; describe boundaries explicitly.",
+    "points": [
+      "Inference gives let count = 0 the type number. An annotation is useful at an API or ambiguous empty value.",
+      "Use lowercase string, number, and boolean for ordinary values. An array of titles can be string[].",
+      "A literal union such as \"all\" ",
+      " \"active\" limits the allowed strings. It is more specific than string.",
+      "any disables many checks and spreads through code. unknown requires narrowing before use.",
+      "strictNullChecks keeps null and undefined distinct. Check a possibly missing value before using it."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Inference",
+          "Derive a type from a value"
+        ],
+        [
+          "number[]",
+          "A list of numbers"
+        ],
+        [
+          "Literal union",
+          "A small set of allowed values"
+        ],
+        [
+          "unknown",
+          "Untrusted value to inspect"
+        ]
+      ]
+    },
+    "code": "let minutes = 15;\nconst labels: string[] = [\"Read\", \"Build\"];\ntype View = \"all\" | \"active\";\nconst view: View = \"active\";\nconsole.log(minutes + 5, labels.length, view);",
+    "output": "20 2 active",
+    "mistake": "An assertion such as value as number does not convert a string to a number.",
+    "challenge": "Type a view selector with all, active, and completed. Try an invalid spelling and inspect the diagnostic.",
+    "diagram": {
+      "title": "Inference & everyday types",
+      "steps": [
+        "Value",
+        "Inferred type",
+        "Allowed operations"
+      ],
+      "caption": "Let values suggest types; describe boundaries explicitly."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html"
+  },
+  {
+    "slug": "typescript-objects",
+    "title": "Objects, interfaces & readonly",
+    "summary": "Describe the shape of a task without freezing it by accident.",
+    "points": [
+      "An interface or type alias describes object properties. Structural compatibility depends on the shape, not the name of the interface.",
+      "A property with ? may be absent; reading it can produce undefined. Handle the missing case.",
+      "readonly prevents assignment through that type during checking. It is not runtime Object.freeze.",
+      "An intersection A & B requires both sets of properties. A union A ",
+      " B allows alternatives.",
+      "Copy an object with spread before updating it. A shallow copy does not recursively clone nested objects."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "interface",
+          "Name an object contract"
+        ],
+        [
+          "title?: string",
+          "Property may be missing"
+        ],
+        [
+          "readonly",
+          "Restrict typed writes"
+        ],
+        [
+          "A & B",
+          "Require both shapes"
+        ]
+      ]
+    },
+    "code": "interface Task { readonly id: string; title: string; done: boolean; due?: string }\nconst task: Task = { id: \"a\", title: \"Read\", done: false };\nconst updated = { ...task, done: true };\nconsole.log(task.done, updated.done, task.due ?? \"No date\");",
+    "output": "false true No date",
+    "mistake": "readonly is a compile-time restriction, not a storage or security boundary.",
+    "challenge": "Add an optional due date to Task and render a fallback when it is missing.",
+    "diagram": {
+      "title": "Objects, interfaces & readonly",
+      "steps": [
+        "Task shape",
+        "Valid object",
+        "Safe copy"
+      ],
+      "caption": "Describe the shape of a task without freezing it by accident."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/objects.html"
+  },
+  {
+    "slug": "typescript-functions",
+    "title": "Typed functions & callbacks",
+    "summary": "Make inputs, outputs, and side effects easy to understand.",
+    "points": [
+      "Annotate parameters at function boundaries. Return types can be inferred, or written explicitly to document a contract.",
+      "A callback type describes the function passed into another function, for example (id: string) => void.",
+      "An optional parameter can be undefined. A default parameter supplies a value when the argument is missing or undefined.",
+      "void means callers should not rely on a return value. Promise<T> describes the eventual value of an asynchronous operation.",
+      "Do not mark a callback parameter optional unless the caller may actually omit it. Keep types aligned with the calling code."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Parameter type",
+          "Allowed input"
+        ],
+        [
+          "Return type",
+          "Produced result"
+        ],
+        [
+          "Callback",
+          "Function supplied by a caller"
+        ],
+        [
+          "Promise<T>",
+          "Future result of type T"
+        ]
+      ]
+    },
+    "code": "function remaining(total: number, done = 0): number {\n  return Math.max(0, total - done);\n}\nconst format: (n: number) => string = n => `${n} left`;\nconsole.log(format(remaining(5, 2)));",
+    "output": "3 left",
+    "mistake": "A return annotation describes a contract; it does not convert an incorrect returned value.",
+    "challenge": "Type a rename function and an onRemove callback. Check wrong argument types and missing required arguments.",
+    "diagram": {
+      "title": "Typed functions & callbacks",
+      "steps": [
+        "Typed inputs",
+        "Function body",
+        "Typed result"
+      ],
+      "caption": "Make inputs, outputs, and side effects easy to understand."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/functions.html"
+  },
+  {
+    "slug": "typescript-narrowing",
+    "title": "Unions & narrowing",
+    "summary": "Check which case you have before using it.",
+    "points": [
+      "A union permits several shapes; only operations valid for the current narrowed case are safe.",
+      "typeof checks narrow primitives. typeof null is object, so object checks must also exclude null.",
+      "A shared literal status can discriminate object variants such as loading, success, and error.",
+      "Optional chaining returns undefined for a nullish receiver. It does not prove that arbitrary data has the expected shape.",
+      "An exhaustive switch can assign the remaining value to never. Adding a new variant then reveals forgotten cases."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Union",
+          "Several possible types"
+        ],
+        [
+          "typeof",
+          "Inspect primitive kind"
+        ],
+        [
+          "Discriminant",
+          "Literal field selecting a variant"
+        ],
+        [
+          "never",
+          "No remaining valid case"
+        ]
+      ]
+    },
+    "code": "type Result = { status: \"ok\"; count: number } | { status: \"error\"; message: string };\nfunction label(result: Result): string {\n  return result.status === \"ok\" ? `${result.count} tasks` : result.message;\n}\nconsole.log(label({ status: \"ok\", count: 3 }));",
+    "output": "3 tasks",
+    "mistake": "A truthiness check can accidentally exclude valid values such as 0 or an empty string.",
+    "challenge": "Model idle, loading, success, and error as a union. Render a message for each case without non-null assertions.",
+    "diagram": {
+      "title": "Unions & narrowing",
+      "steps": [
+        "Union",
+        "Check a tag",
+        "Use that case"
+      ],
+      "caption": "Check which case you have before using it."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+  },
+  {
+    "slug": "typescript-generics",
+    "title": "Generics & useful type tools",
+    "summary": "Preserve relationships instead of erasing types.",
+    "points": [
+      "A generic parameter relates input and output types. It is useful when the same operation works for several types.",
+      "A constraint such as T extends { id: string } states the minimum shape an operation needs.",
+      "keyof T describes the property keys of T. Indexed access T[K] describes a property’s value type.",
+      "Pick selects properties, Omit removes them, Partial makes them optional, and Readonly restricts typed writes.",
+      "Utility types change static descriptions only. They do not validate a request, remove runtime fields, or deep-freeze data."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "T",
+          "A caller-specific type"
+        ],
+        [
+          "extends",
+          "Minimum required shape"
+        ],
+        [
+          "Pick<T, K>",
+          "Select properties"
+        ],
+        [
+          "Partial<T>",
+          "Make properties optional"
+        ]
+      ]
+    },
+    "code": "function first<T>(items: readonly T[]): T | undefined {\n  return items[0];\n}\nconst count = first([3, 5]);\nconsole.log(count ?? 0, first<string>([]) ?? \"empty\");",
+    "output": "3 empty",
+    "mistake": "An array can be empty. A generic return type should not promise an element that may not exist.",
+    "challenge": "Write byId<T extends { id: string }> returning T | undefined. Test an existing and a missing ID.",
+    "diagram": {
+      "title": "Generics & useful type tools",
+      "steps": [
+        "Generic input",
+        "Shared operation",
+        "Related output"
+      ],
+      "caption": "Preserve relationships instead of erasing types."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/generics.html"
+  },
+  {
+    "slug": "typescript-dom",
+    "title": "Typed DOM & form events",
+    "summary": "Connect types to real elements and real user input.",
+    "points": [
+      "DOM queries may return null. Check the result before reading element-specific properties.",
+      "An instanceof HTMLInputElement check verifies the runtime element kind and narrows its TypeScript type.",
+      "Input .value is a string; .checked is a boolean for checkboxes. Convert numeric text deliberately and validate it.",
+      "Listen to form submit to support Enter as well as button clicks. preventDefault stops the browser’s normal submission.",
+      "A type assertion or non-null assertion can silence a diagnostic without ensuring that an element exists. Prefer a runtime guard at this boundary."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "querySelector",
+          "Element or null"
+        ],
+        [
+          "instanceof",
+          "Check actual element class"
+        ],
+        [
+          "value",
+          "Text from a control"
+        ],
+        [
+          "submit",
+          "Keyboard-friendly form action"
+        ]
+      ]
+    },
+    "code": "const input = document.querySelector(\"#title\");\nif (input instanceof HTMLInputElement) {\n  const title = input.value.trim();\n  console.log(title || \"Enter a title\");\n}",
+    "output": "With a #title input containing Read, logs Read. Without that input, the block is skipped.",
+    "mistake": "querySelector<HTMLInputElement> supplies a static expectation; it does not verify the element kind at runtime.",
+    "challenge": "Guard a title input and checkbox, then submit a form using only the keyboard.",
+    "diagram": {
+      "title": "Typed DOM & form events",
+      "steps": [
+        "Find element",
+        "Guard its kind",
+        "Read input"
+      ],
+      "caption": "Connect types to real elements and real user input."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/dom-manipulation.html"
+  },
+  {
+    "slug": "typescript-boundaries",
+    "title": "Unknown data & validation",
+    "summary": "Validate at the boundary before trusting a typed value.",
+    "points": [
+      "JSON.parse and network responses can contain unexpected shapes. Assign external data to unknown and check it.",
+      "Check arrays, non-null objects, required property types, bounds, and duplicate IDs before accepting task data.",
+      "A type predicate promises the compiler that its check is correct. An incomplete predicate creates false confidence.",
+      "Check response.ok for HTTP errors, then parse and validate JSON. Network success does not imply valid application data.",
+      "Catch failures explicitly and preserve unreadable saved data. A validation error should not silently replace it with an empty saved list."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "unknown",
+          "Unverified boundary value"
+        ],
+        [
+          "Runtime guard",
+          "Check actual data"
+        ],
+        [
+          "response.ok",
+          "Check HTTP success"
+        ],
+        [
+          "Validation error",
+          "Reject an unusable shape"
+        ]
+      ]
+    },
+    "code": "function isTitle(value: unknown): value is string {\n  return typeof value === \"string\" && value.trim().length > 0;\n}\nconst data: unknown = JSON.parse(\"42\");\nconsole.log(isTitle(data));",
+    "output": "false",
+    "mistake": "Writing JSON.parse(raw) as Task[] does not validate even one task.",
+    "challenge": "Write a task validator. Reject null, duplicate IDs, a string done flag, and a blank title while preserving the original stored text.",
+    "diagram": {
+      "title": "Unknown data & validation",
+      "steps": [
+        "Unknown JSON",
+        "Validate shape",
+        "Trusted value"
+      ],
+      "caption": "Validate at the boundary before trusting a typed value."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+  },
+  {
+    "slug": "typescript-modules",
+    "title": "Modules & project checks",
+    "summary": "Keep a small project understandable and reproducible.",
+    "points": [
+      "Use export and import to split responsibilities into modules. Type-only imports describe contracts without importing runtime values.",
+      "Keep model logic separate from DOM wiring so it can be checked without a browser.",
+      "A browser needs JavaScript output. Vite can transform TypeScript while tsc --noEmit checks the whole project separately.",
+      "A package lock records dependency resolution. npm ci installs the locked project dependencies and fails when the manifest disagrees.",
+      "Run type checks, meaningful tests, and a production build. A green type check does not prove keyboard behavior, network availability, or business correctness."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "import type",
+          "Import a static contract"
+        ],
+        [
+          "model.ts",
+          "Pure domain operations"
+        ],
+        [
+          "npm ci",
+          "Use locked dependencies"
+        ],
+        [
+          "Production build",
+          "Create deployable assets"
+        ]
+      ]
+    },
+    "code": "// model.ts\nexport type Task = { id: string; title: string; done: boolean };\nexport const activeCount = (tasks: readonly Task[]) => tasks.filter(t => !t.done).length;\n// In another module: import { activeCount } from \"./model\";\nconsole.log(activeCount([{ id: \"a\", title: \"Read\", done: false }]));",
+    "output": "1",
+    "mistake": "A bundler successfully removing types is not the same as checking them.",
+    "challenge": "Extract Task and pure transformations to model.ts. Import the type separately and run the locked build.",
+    "diagram": {
+      "title": "Modules & project checks",
+      "steps": [
+        "Modules",
+        "Check + test",
+        "Bundle"
+      ],
+      "caption": "Keep a small project understandable and reproducible."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/modules.html"
+  },
+  {
+    "slug": "typescript-project",
+    "title": "Build a typed planner",
+    "summary": "Use types to clarify a working browser project.",
+    "points": [
+      "The starter ports the JavaScript planner to strict TypeScript, with a Task contract and a finite view union.",
+      "Validate stored and fetched data at runtime; keep compile-time contracts and runtime checks together.",
+      "Use stable task IDs, immutable transformations, safe text rendering, and a full saved array independent of the current filter.",
+      "Storage is local to a browser and origin. Read failures offer temporary mode without overwriting existing data; failed writes show feedback.",
+      "Extend the project with optional due dates and editing. Update validation and old-data handling before changing the persisted shape."
+    ],
+    "table": {
+      "headings": [
+        "Idea",
+        "Use it for"
+      ],
+      "rows": [
+        [
+          "Task",
+          "Domain shape"
+        ],
+        [
+          "View",
+          "Allowed filter values"
+        ],
+        [
+          "Validator",
+          "Boundary protection"
+        ],
+        [
+          "Self-review",
+          "Behavior beyond types"
+        ]
+      ]
+    },
+    "code": "interface Task { id: string; title: string; done: boolean }\nfunction complete(tasks: readonly Task[], id: string): Task[] {\n  return tasks.map(t => t.id === id ? { ...t, done: true } : t);\n}\nconst before: Task[] = [{ id: \"a\", title: \"Read\", done: false }];\nconsole.log(before[0]?.done, complete(before, \"a\")[0]?.done);",
+    "output": "false true",
+    "mistake": "Types cannot stop another tab or a user from changing browser storage; validate every load.",
+    "challenge": "Extend the downloadable starter, keep its checks passing, then test reload, corrupt storage, filters, and keyboard focus.",
+    "diagram": {
+      "title": "Build a typed planner",
+      "steps": [
+        "Typed state",
+        "User action",
+        "Validate + save"
+      ],
+      "caption": "Use types to clarify a working browser project."
+    },
+    "source": "https://www.typescriptlang.org/docs/handbook/2/objects.html"
+  }
+]

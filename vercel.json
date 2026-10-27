@@ -4,7 +4,8 @@
   "git": {
     "deploymentEnabled": {
       "codex/full-stack-foundations": false,
-      "codex/javascript-foundations": false
+      "codex/javascript-foundations": false,
+      "codex/typescript-react": false
     }
   }
 }

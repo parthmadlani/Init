@@ -46,3 +46,7 @@ next-env.d.ts
 # agent-tooling files (regenerated locally by next dev; not part of the product)
 CLAUDE.md
 AGENTS.md
+
+# Course starters are checked and built separately
+/public/course-projects/*/node_modules/
+/public/course-projects/*/dist/

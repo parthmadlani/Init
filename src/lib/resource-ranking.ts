@@ -69,10 +69,45 @@ const JAVASCRIPT_TOPIC_PATTERNS: Record<string, RegExp> = {
   "Build an interactive planner": /to ?do|task (?:list|manager)|planner/,
 };
 
+const TYPESCRIPT_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "TypeScript & the build loop": /setup|compiler|tsconfig|getting started|introduction|basics/,
+  "Inference & everyday types": /inference|primitive|basic types|everyday types|union|unknown/,
+  "Objects, interfaces & readonly": /interfaces?|object types|readonly|optional propert/,
+  "Typed functions & callbacks": /functions?|callbacks?|parameters?|return types/,
+  "Unions & narrowing": /unions?|narrowing|type guards?|discriminated/,
+  "Generics & useful type tools": /generics?|utility types|keyof/,
+  "Typed DOM & form events": /\bdom\b|queryselector|form|events?/,
+  "Unknown data & validation": /unknown|validation|type guards?|type predicates?|runtime/,
+  "Modules & project checks": /modules?|import|export|tsconfig|project setup/,
+  "Build a typed planner": /to ?do|task (?:list|manager)|planner/,
+};
+const REACT_TOPIC_PATTERNS: Record<string, RegExp> = {
+  "Components & JSX": /components?|jsx/,
+  "Props, composition & types": /props|composition|children/,
+  "Lists, keys & conditional UI": /lists?|keys|conditional rendering/,
+  "State, events & update queues": /usestate|state updates?|events?/,
+  "Controlled forms & accessibility": /forms?|controlled inputs?|accessibility/,
+  "Shared state & derived views": /lifting state|shared state|derived state|sharing state|state management/,
+  "Effects, cleanup & browser sync": /useeffect|effects?|cleanup/,
+  "Async data & request states": /fetch|async|loading|requests?/,
+  "Refs, focus & custom hooks": /useref|custom hooks?|focus/,
+  "Build a component planner": /to ?do|task (?:list|manager)|planner/,
+};
+
 /** Conservative title matching, not a claim to have verified a video's contents. */
 export function matchesTopic(title: string, topicName: string, subjectName = ""): boolean {
   const normalized = title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const subject = subjectName.toLowerCase();
+  if (subject === "typescript") {
+    if (!/\btypescript\b/.test(normalized)) return false;
+    if (/\b(?:react|next|angular|vue|svelte|node|express|nestjs)\b/.test(normalized)) return false;
+    return !!TYPESCRIPT_TOPIC_PATTERNS[topicName]?.test(normalized);
+  }
+  if (subject === "react") {
+    if (!/\breact(?:js)?\b/.test(normalized)) return false;
+    if (/\b(?:native|next(?:js)?|redux|zustand|class components?|componentdidmount)\b/.test(normalized)) return false;
+    return !!REACT_TOPIC_PATTERNS[topicName]?.test(normalized);
+  }
   if (subject === "javascript") {
     // This track teaches browser JavaScript before frameworks or backend runtimes.
     if (!/\bjavascript\b|\bjs\b/.test(normalized)) return false;
