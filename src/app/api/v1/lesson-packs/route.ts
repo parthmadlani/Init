@@ -1,3 +1,4 @@
+import { ownerUser } from "@/lib/insights/access";
 import { createHash } from "node:crypto";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
@@ -7,8 +8,8 @@ import { lessonPackSchema } from "@/lib/learning/lesson-pack";
 export async function POST(request: Request) {
   const session = await auth();
   if (!session?.user) return Response.json({ error: "Not signed in" }, { status: 401 });
-  const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { role: true, name: true } });
-  if (user?.role !== "ADMIN") return Response.json({ error: "Only an administrator can publish reviewed lesson material." }, { status: 403 });
+  const user = await ownerUser();
+  if (!user) return Response.json({ error: "Only an administrator can publish reviewed lesson material." }, { status: 403 });
   if (Number(request.headers.get("content-length")) > 2_000_000) return Response.json({ error: "Pack is too large." }, { status: 413 });
   const text = await request.text();
   if (text.length > 2_000_000) return Response.json({ error: "Pack is too large." }, { status: 413 });

@@ -1,3 +1,4 @@
+import { isOwnerAdmin, OWNER_ADMIN_EMAIL } from "../src/lib/admin-policy";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -49,4 +50,10 @@ test('negative signals remain visible when many videos have positive ratings',()
   const videos=Array.from({length:25},(_,i)=>({scopeKey:String(i),videoId:'abcdefghijk',topicName:'Topic',subjectName:'Python',level:'BEGINNER',dailyMinutes:30,helpful:10,negative:0,recommendation:'Promising'}));
   const bad={...videos[0],scopeKey:'review',helpful:0,negative:7};
   const selected=priorityVideos([...videos,bad]);assert.equal(selected.length,20);assert.equal(selected[0].scopeKey,'review');assert.equal(new Set(selected.map(v=>v.scopeKey)).size,20);
+});
+
+test('only the exact designated account with a current admin role is eligible',()=>{
+  assert.equal(OWNER_ADMIN_EMAIL,'parthmadlani@gmail.com');
+  assert.equal(isOwnerAdmin({email:OWNER_ADMIN_EMAIL,role:'ADMIN'}),true);
+  for(const user of [null,undefined,{email:OWNER_ADMIN_EMAIL,role:'STUDENT'},{email:'owner-preview@example.test',role:'ADMIN'},{email:'parthmadlani0201@gmail.com',role:'ADMIN'},{email:'parthmadlani+other@gmail.com',role:'ADMIN'},{email:'Parthmadlani@gmail.com',role:'ADMIN'}])assert.equal(isOwnerAdmin(user),false);
 });

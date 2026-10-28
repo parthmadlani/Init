@@ -4,7 +4,7 @@ Implemented on `codex/owner-insights`, based on the unmerged TypeScript/React br
 
 ## Included
 
-- `/admin`: fresh database ADMIN authorization on every request and server action, rather than trusting an old JWT role. A revoked administrator loses access immediately. The navigation link uses the fresh role too.
+- All admin pages, APIs, and actions require the exact account `parthmadlani@gmail.com` plus its current database ADMIN role. Other ADMIN accounts, email aliases, and the report-recipient email have no admin access. `/admin`: fresh database ADMIN authorization on every request and server action, rather than trusting an old JWT role. A revoked administrator loses access immediately. The navigation link uses the fresh role too.
 - Recent visible-tab presence, sign-ins, page/lesson opens, observed video starts/errors, path creation/failures, existing quiz start/finish history, and a feedback inbox. Activity uses fixed categories, not arbitrary URLs, raw errors, typed text or screen recordings.
 - Daily and seven-day summaries use complete calendar days in Asia/Kolkata. Owner activity is excluded from learner metrics. Returning means earlier recorded activity in the retained history, not necessarily lifetime retention. Video starts and page/lesson opens are deduplicated per learner/entity/five-minute bucket.
 - Stable video feedback snapshots include the exact video, topic, level and time budget. A stale page cannot rate a replacement video; ownership is required. Changing a reaction appends history. Repeating it does not inflate weekly votes. Latest vote per learner/cohort in the period counts once. Existing ratings without a historical video ID stay in the legacy table and are excluded rather than guessed.
@@ -15,7 +15,7 @@ Implemented on `codex/owner-insights`, based on the unmerged TypeScript/React br
 ## Production activation (not performed)
 
 1. Review/merge the desired branches and additive migration, then deploy through the existing Vercel build. No old tables or learning records are deleted by the migration.
-2. Verify the owner's actual account ID/email in the database and set that single account's role to ADMIN. Do not grant admin from an email supplied during registration; this code has no such shortcut.
+2. The single-owner migration grants ADMIN only to the existing `parthmadlani@gmail.com` account and demotes other admins. It creates no account and changes no password. Confirm this account exists before deployment; if absent, register it normally and explicitly provision its role after verifying the account. Registration never grants ADMIN automatically. The policy also rejects other accounts even if someone later assigns them an ADMIN role. The local preview admin is therefore blocked. The report recipient remains `parthmadlani0201@gmail.com`.
 3. Configure a verified Resend sender/domain, `RESEND_API_KEY`, `OWNER_EMAIL_FROM`, `OWNER_REPORT_EMAIL=parthmadlani0201@gmail.com`, and independently generated random `CRON_SECRET` and `MONITOR_SECRET` values of at least 32 characters. Store secrets in Vercel, never in Git or chat.
 4. Set `INSIGHTS_ENABLED=true` and, only when live sending is approved, `OWNER_EMAIL_ENABLED=true` in Production. Sending also requires `NODE_ENV=production` and `VERCEL_ENV=production`. Preview/local never sends. Deploy environment changes as required by Vercel.
 5. Vercel cron invokes `/api/cron/owner-reports` at `30 4 * * *` UTC (10:00 AM India time), authorized with `Bearer CRON_SECRET`. Monday includes the previous week's video report. Vercel Hobby scheduling is imprecise (hourly precision); use a plan/scheduler with minute precision if a strict 10 AM trigger is required. Do not promise exact inbox arrival.
@@ -34,10 +34,10 @@ Activity, rating change history, old presence and issue groups expire after 90 d
 
 `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
 
-Local integration checks require an explicit localhost app and database and refuse remote targets:
+Authorization integration checks require a dedicated localhost app and migrated test database and refuse remote targets. They also refuse to run if the designated owner already exists, protecting that account from test modifications:
 
 ```sh
-INIT_LOCAL_QA=1 TEST_BASE_URL=http://localhost:3007 DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:55314/postgres?sslmode=disable node scripts/check-owner-insights-local.mjs
+INIT_LOCAL_QA=1 TEST_BASE_URL=http://localhost:3008 DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:55315/postgres?sslmode=disable node scripts/check-owner-insights-local.mjs
 INIT_LOCAL_QA=1 DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:55314/postgres?sslmode=disable node --conditions=react-server --import tsx scripts/check-owner-delivery-local.mjs
 ```
 

@@ -8,13 +8,15 @@ const local=v=>['localhost','127.0.0.1'].includes(new URL(v).hostname);
 if(process.env.INIT_LOCAL_QA!=='1'||!base||!database||!local(base)||!local(database))throw new Error('Explicit localhost QA environment required.');
 const db=new pg.Client({connectionString:database});await db.connect();
 const run=randomUUID(),student='insight-student-'+run,other='insight-other-'+run,admin='insight-admin-'+run,subject='insight-subject-'+run,topic='insight-topic-'+run,resource='insight-resource-'+run,path='insight-path-'+run,goal='insight-goal-'+run,password=randomUUID();
+const emailFor=id=>id===admin?'parthmadlani@gmail.com':id+'@example.test';
 const secret='local-owner-cron-test-secret-2026-only',monitor='local-owner-monitor-test-secret-2026-only';
 function client(){const jar=new Map();return async(p,o={})=>{const r=await fetch(base+p,{...o,redirect:'manual',headers:{...o.headers,cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}});for(const c of r.headers.getSetCookie()){const pair=c.split(';')[0],i=pair.indexOf('=');jar.set(pair.slice(0,i),pair.slice(i+1));}return r;};}
 const json=body=>({method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
-async function signin(req,id){const csrf=await(await req('/api/auth/csrf')).json();await req('/api/auth/callback/credentials',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({csrfToken:csrf.csrfToken,email:id+'@example.test',password})});assert.equal((await(await req('/api/auth/session')).json()).user.id,id);}
+async function signin(req,id){const csrf=await(await req('/api/auth/csrf')).json();await req('/api/auth/callback/credentials',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({csrfToken:csrf.csrfToken,email:emailFor(id),password})});assert.equal((await(await req('/api/auth/session')).json()).user.id,id);}
 try{
+ if ((await db.query('SELECT id FROM users WHERE email=$1',[emailFor(admin)])).rowCount) throw new Error('Owner account already exists locally; use a separate QA database. Existing owner data will not be modified.');
  const hash=await bcrypt.hash(password,10);
- for(const id of [student,other,admin])await db.query('INSERT INTO users (id,email,"passwordHash",name,role,"createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,now(),now())',[id,id+'@example.test',hash,'Insights QA',id===admin?'ADMIN':'STUDENT']);
+ for(const id of [student,other,admin])await db.query('INSERT INTO users (id,email,"passwordHash",name,role,"createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,now(),now())',[id,emailFor(id),hash,'Insights QA',id===admin?'ADMIN':'STUDENT']);
  await db.query('INSERT INTO subjects (id,slug,name) VALUES ($1,$2,\'Python\')',[subject,subject]);
  await db.query('INSERT INTO topics (id,"subjectId",slug,name,"order","prerequisiteTopicIds") VALUES ($1,$2,\'variables\',\'Variables and Data Types\',1,\'{}\')',[topic,subject]);
  await db.query('INSERT INTO resources (id,"topicId","youtubeVideoId",title,"channelName","durationSeconds",level,"dailyMinutes","cachedAt") VALUES ($1,$2,\'abcdefghijk\',\'Python Variables and Data Types\',\'QA fixture\',300,\'BEGINNER\',30,now())',[resource,topic]);
@@ -22,8 +24,16 @@ try{
  await db.query('INSERT INTO paths (id,"userId","goalId","orderedTopicIds","createdAt") VALUES ($1,$2,$3,$4,now())',[path,student,goal,[topic]]);
  const learner=client(),stranger=client(),owner=client(),anon=client();await signin(learner,student);await signin(stranger,other);await signin(owner,admin);
  assert.equal((await anon('/api/admin/insights/report')).status,403);assert.equal((await learner('/api/admin/insights/report')).status,403);assert.equal((await learner('/admin')).status,404);
+ await db.query('UPDATE users SET role=\'ADMIN\' WHERE id=$1',[other]);
+ for(const route of ['/admin','/admin/lesson-materials']) assert.equal((await stranger(route)).status,404);
+ assert.equal((await stranger('/api/admin/insights/report')).status,403);
+ assert.equal((await stranger('/api/v1/lesson-packs',json({}))).status,403);
+ assert.ok(!(await(await stranger('/dashboard')).text()).includes('Owner insights'));
+ assert.equal((await owner('/admin/lesson-materials')).status,200);
+ assert.equal((await owner('/api/v1/lesson-packs',json({}))).status,400);
+ await db.query('UPDATE users SET role=\'STUDENT\' WHERE id=$1',[other]);
  assert.equal((await owner('/admin')).status,200);assert.equal((await owner('/api/admin/insights/report?days=42')).status,400);
- await db.query('UPDATE users SET role=\'STUDENT\' WHERE id=$1',[admin]);assert.equal((await owner('/api/admin/insights/report')).status,403);assert.equal((await owner('/admin')).status,404);await db.query('UPDATE users SET role=\'ADMIN\' WHERE id=$1',[admin]);
+ await db.query('UPDATE users SET role=\'STUDENT\' WHERE id=$1',[admin]);assert.equal((await owner('/api/admin/insights/report')).status,403);assert.equal((await owner('/admin')).status,404);assert.equal((await owner('/admin/lesson-materials')).status,404);assert.equal((await owner('/api/v1/lesson-packs',json({}))).status,403);await db.query('UPDATE users SET role=\'ADMIN\' WHERE id=$1',[admin]);
  const vote={resourceId:resource,videoId:'abcdefghijk',reaction:'HELPFUL'};
  assert.equal((await anon('/api/v1/resource-feedback',json(vote))).status,401);assert.equal((await stranger('/api/v1/resource-feedback',json(vote))).status,403);
  assert.equal((await learner('/api/v1/resource-feedback',json({...vote,videoId:'bad'}))).status,400);

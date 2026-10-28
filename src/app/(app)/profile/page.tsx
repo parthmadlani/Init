@@ -1,3 +1,4 @@
+import { isOwnerAdmin } from "@/lib/admin-policy";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
@@ -68,7 +69,7 @@ export default async function ProfilePage() {
       <h1 className="page-title">My Profile</h1>
       <p className="mt-1 text-sm text-black/65">Your account, your progress, all in one place.</p>
 
-      {user.role === "ADMIN" && <Link href="/admin/lesson-materials" className="mt-5 inline-block text-sm font-semibold text-brand-pink underline">Open lesson content studio →</Link>}
+      {isOwnerAdmin(user) && <Link href="/admin/lesson-materials" className="mt-5 inline-block text-sm font-semibold text-brand-pink underline">Open lesson content studio →</Link>}
       <div className="mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
         <div className="flex flex-col gap-6">
           <section className="rounded-card border border-black/10 bg-white p-6 text-center">
