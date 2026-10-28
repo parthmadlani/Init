@@ -1,4 +1,5 @@
 "use client";
+import { FeedbackDetails } from "@/components/feedback-details";
 
 import { useState, useTransition } from "react";
 import { requestJson } from "@/lib/client-request";
@@ -180,11 +181,12 @@ export function TopicDetailClient({
           </div>
           <div className="flex shrink-0 items-center gap-1">
             <BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} />
-            <ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} />
+            <ResourceFeedback key={`${resource.youtubeVideoId}:${resource.userReaction}`} videoId={resource.youtubeVideoId} resourceId={resource.id} initialReaction={resource.userReaction} />
           </div>
         </div>
       )}
 
+      {resource && <FeedbackDetails initialReaction={resource.userReaction} key={resource.youtubeVideoId} resourceId={resource.id} videoId={resource.youtubeVideoId} />}
       {resource && activeWindow && <LessonStudyTools material={material} pathId={pathId} topicId={topicId} videoId={resource.youtubeVideoId} startSeconds={activeWindow.startSeconds} endSeconds={activeWindow.endSeconds} practiceMinutes={practiceMinutes} onSeek={seconds => setSeekRequest(previous => ({ seconds, nonce: (previous?.nonce ?? 0)+1 }))} />}
       </div><aside className="min-w-0 xl:sticky xl:top-8">
       {activeWindow && resource && <section aria-label="Your study time" className="surface p-6">

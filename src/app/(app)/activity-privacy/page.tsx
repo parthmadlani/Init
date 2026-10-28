@@ -1,0 +1,9 @@
+import Link from 'next/link';
+export default function ActivityPrivacy() {
+  return <main className="mx-auto max-w-2xl px-6 py-12"><p className="eyebrow text-brand-pink">Learning, with trust</p><h1 className="mt-4 font-serif text-4xl">Your learning activity</h1><div className="mt-8 space-y-5 text-sm leading-7 text-black/70">
+    <p>When activity tracking is enabled, Init records successful sign-ins, pages and lessons opened, video starts and playback problems, and paths built. Visible tabs send a presence update once a minute while you have interacted within the last five minutes. Your quiz attempts and lesson feedback are also saved.</p>
+    <p>The owner can see your account name, recent activity, and feedback to improve lessons and investigate problems. This is approximate activity: it does not mean the owner can see your screen, know whether you are concentrating, or see everything you do. We do not record keystroke content, screen recordings, or browsing outside Init.</p>
+    <p>Detailed activity, feedback change history, and feedback comments are removed after 90 days by the scheduled cleanup. The latest video rating remains attached to your account to prevent duplicate votes and improve recommendations. Quiz history follows your existing learning account history. Aggregate owner emails contain no learner names or feedback comments.</p>
+    <p>Closing a tab stops its presence updates; signing out ends authenticated tracking. For questions or a request to remove your activity, contact <a className="underline" href="mailto:parthmadlani0201@gmail.com">parthmadlani0201@gmail.com</a>.</p>
+  </div><Link href="/dashboard" className="mt-8 inline-block text-sm font-semibold underline">Back to learning</Link></main>;
+}

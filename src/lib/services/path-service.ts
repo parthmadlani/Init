@@ -1,3 +1,4 @@
+import { videoScope } from "@/lib/insights/core";
 import { getCourse } from "@/lib/courses/catalog";
 import { hasNegativeConsensus, matchesTopic } from "@/lib/resource-ranking";
 import { prisma } from "@/lib/prisma";
@@ -147,20 +148,22 @@ export async function getPathDetail(pathId: string, userId: string) {
   const topicsById = new Map(topics.map((t) => [t.id, t]));
   const progressByTopicId = new Map(progressRows.map((p) => [p.topicId, p]));
 
+  const scopeOf = (r: { topicId: string; level: string; dailyMinutes: number; youtubeVideoId: string }) => videoScope(r.topicId, r.level, r.dailyMinutes, r.youtubeVideoId);
+  const scopeKeys = topics.flatMap(t => t.resources.map(scopeOf));
   const resourceIds = topics.flatMap((t) => t.resources.map((r) => r.id));
   const [feedbackRows, bookmarkRows, feedbackCounts] = await Promise.all([
     resourceIds.length
-      ? prisma.resourceFeedback.findMany({ where: { userId, resourceId: { in: resourceIds } } })
+      ? prisma.videoRating.findMany({ where: { userId, scopeKey: { in: scopeKeys } } })
       : Promise.resolve([]),
     resourceIds.length
       ? prisma.bookmark.findMany({ where: { userId, targetType: "RESOURCE", resourceId: { in: resourceIds } } })
       : Promise.resolve([]),
     resourceIds.length
-      ? prisma.resourceFeedback.groupBy({ by: ["resourceId", "reaction"], where: { resourceId: { in: resourceIds } }, _count: { _all: true } })
+      ? prisma.videoRating.groupBy({ by: ["scopeKey", "reaction"], where: { scopeKey: { in: scopeKeys }, user: { role: "STUDENT" } }, _count: { _all: true } })
       : Promise.resolve([]),
   ]);
-  const reactionCounts = new Map(feedbackCounts.map((row) => [`${row.resourceId}:${row.reaction}`, row._count._all]));
-  const feedbackByResourceId = new Map(feedbackRows.map((f) => [f.resourceId, f.reaction]));
+  const reactionCounts = new Map(feedbackCounts.map((row) => [`${row.scopeKey}:${row.reaction}`, row._count._all]));
+  const feedbackByResourceId = new Map(feedbackRows.map((f) => [f.scopeKey, f.reaction]));
   const bookmarkIdByResourceId = new Map(bookmarkRows.map((b) => [b.resourceId!, b.id]));
 
   const orderedTopics = path.orderedTopicIds
@@ -172,7 +175,7 @@ export async function getPathDetail(pathId: string, userId: string) {
         && matchesTopic(candidate.title, topic.name, path.goal.subject.name)
         && candidate.durationSeconds >= 90
         && candidate.durationSeconds <= path.goal.dailyMinutes * 60 * 6
-        && !hasNegativeConsensus(reactionCounts.get(`${candidate.id}:HELPFUL`) ?? 0, reactionCounts.get(`${candidate.id}:NOT_HELPFUL`) ?? 0)
+        && !hasNegativeConsensus(reactionCounts.get(`${scopeOf(candidate)}:HELPFUL`) ?? 0, reactionCounts.get(`${scopeOf(candidate)}:NOT_HELPFUL`) ?? 0)
         ? candidate : null;
       return {
         id: topic.id,
@@ -182,7 +185,7 @@ export async function getPathDetail(pathId: string, userId: string) {
         resource: resource
           ? {
               ...resource,
-              userReaction: feedbackByResourceId.get(resource.id) ?? null,
+              userReaction: feedbackByResourceId.get(scopeOf(resource)) ?? null,
               bookmarkId: bookmarkIdByResourceId.get(resource.id) ?? null,
             }
           : null,

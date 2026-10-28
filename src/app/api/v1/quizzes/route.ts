@@ -1,3 +1,4 @@
+import { recordIssue } from "@/lib/insights/events";
 import { auth } from "@/lib/auth";
 import { z } from "zod";
 import { QuizError, startQuiz } from "@/lib/services/quiz-service";
@@ -8,5 +9,5 @@ export async function POST(request: Request) {
   const input = schema.safeParse(await request.json().catch(() => null));
   if (!input.success) return Response.json({ error: "Choose a valid quiz." }, { status: 400 });
   try { return Response.json(await startQuiz(session.user.id, input.data)); }
-  catch (error) { return Response.json({ error: error instanceof QuizError ? error.message : "The quiz could not start. Please retry." }, { status: error instanceof QuizError ? error.status : 500 }); }
+  catch (error) { if (!(error instanceof QuizError)) await recordIssue("QUIZ_START_FAILED", "quiz"); return Response.json({ error: error instanceof QuizError ? error.message : "The quiz could not start. Please retry." }, { status: error instanceof QuizError ? error.status : 500 }); }
 }

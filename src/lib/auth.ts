@@ -9,6 +9,7 @@ import { authConfig } from "@/lib/auth.config";
 // top of the edge-safe authConfig. Middleware uses authConfig directly.
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  events: { async signIn({ user }) { if (user.id) { const { recordEvent } = await import("@/lib/insights/events"); await recordEvent(user.id, "LOGIN", "account"); } } },
   providers: [
     Credentials({
       credentials: {

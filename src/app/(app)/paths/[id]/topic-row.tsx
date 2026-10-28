@@ -95,7 +95,7 @@ export function TopicRow({
       </div> : <p className="mt-4 text-xs leading-relaxed text-black/60 sm:pl-[60px]">A suitable video is not available yet. This topic stays in your path so you do not miss a prerequisite.</p>}
       <div className="mt-4 flex items-center justify-between gap-3 border-t border-black/[0.06] pt-2 sm:ml-[60px]">
         <div className="flex min-w-0 flex-1 items-center gap-2"><div role="progressbar" aria-label={`${name} progress`} aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} className="h-1 w-16 overflow-hidden rounded-full bg-black/[0.07]"><div className="h-full rounded-full bg-brand-cyan" style={{ width: `${pct}%` }} /></div><span className="text-[10px] text-black/55">{pct}%</span></div>
-        {resource && <div className="flex items-center"><BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} /><ResourceFeedback resourceId={resource.id} initialReaction={resource.userReaction} /></div>}
+        {resource && <div className="flex items-center"><BookmarkToggle resourceId={resource.id} initialBookmarkId={resource.bookmarkId} /><ResourceFeedback key={`${resource.youtubeVideoId}:${resource.userReaction}`} videoId={resource.youtubeVideoId} resourceId={resource.id} initialReaction={resource.userReaction} /></div>}
       </div>
     </article>
   );

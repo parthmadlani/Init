@@ -1,4 +1,5 @@
 "use client";
+import { sendActivity } from "@/lib/insights/client";
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -140,12 +141,13 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
         playerVars: { start: startSeconds, end: endSeconds, rel: 0 },
         events: {
           onReady: () => { clearTimeout(readyTimeout); if (!destroyed) setError(false); },
-          onError: () => { clearTimeout(readyTimeout); stopTimer(); if (!destroyed) setError(true); },
+          onError: () => { sendActivity("VIDEO_ERROR", youtubeVideoId); clearTimeout(readyTimeout); stopTimer(); if (!destroyed) setError(true); },
           onStateChange: (event) => {
             if (destroyed) return;
             sample();
             stopTimer();
             if (event.data === YT.PlayerState.PLAYING) {
+              sendActivity("VIDEO_PLAY", youtubeVideoId);
               if (finished) { player?.pauseVideo(); return; }
               lastFlushAt = Date.now();
               timer = setInterval(tick, 250);

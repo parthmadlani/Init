@@ -1,0 +1,62 @@
+// Local-only HTTP/DB integration. Creates isolated fixtures and removes them in finally.
+import assert from 'node:assert/strict';
+import { randomUUID } from 'node:crypto';
+import pg from 'pg';
+import bcrypt from 'bcryptjs';
+const base=process.env.TEST_BASE_URL,database=process.env.DATABASE_URL;
+const local=v=>['localhost','127.0.0.1'].includes(new URL(v).hostname);
+if(process.env.INIT_LOCAL_QA!=='1'||!base||!database||!local(base)||!local(database))throw new Error('Explicit localhost QA environment required.');
+const db=new pg.Client({connectionString:database});await db.connect();
+const run=randomUUID(),student='insight-student-'+run,other='insight-other-'+run,admin='insight-admin-'+run,subject='insight-subject-'+run,topic='insight-topic-'+run,resource='insight-resource-'+run,path='insight-path-'+run,goal='insight-goal-'+run,password=randomUUID();
+const secret='local-owner-cron-test-secret-2026-only',monitor='local-owner-monitor-test-secret-2026-only';
+function client(){const jar=new Map();return async(p,o={})=>{const r=await fetch(base+p,{...o,redirect:'manual',headers:{...o.headers,cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}});for(const c of r.headers.getSetCookie()){const pair=c.split(';')[0],i=pair.indexOf('=');jar.set(pair.slice(0,i),pair.slice(i+1));}return r;};}
+const json=body=>({method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+async function signin(req,id){const csrf=await(await req('/api/auth/csrf')).json();await req('/api/auth/callback/credentials',{method:'POST',headers:{'content-type':'application/x-www-form-urlencoded'},body:new URLSearchParams({csrfToken:csrf.csrfToken,email:id+'@example.test',password})});assert.equal((await(await req('/api/auth/session')).json()).user.id,id);}
+try{
+ const hash=await bcrypt.hash(password,10);
+ for(const id of [student,other,admin])await db.query('INSERT INTO users (id,email,"passwordHash",name,role,"createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,now(),now())',[id,id+'@example.test',hash,'Insights QA',id===admin?'ADMIN':'STUDENT']);
+ await db.query('INSERT INTO subjects (id,slug,name) VALUES ($1,$2,\'Python\')',[subject,subject]);
+ await db.query('INSERT INTO topics (id,"subjectId",slug,name,"order","prerequisiteTopicIds") VALUES ($1,$2,\'variables\',\'Variables and Data Types\',1,\'{}\')',[topic,subject]);
+ await db.query('INSERT INTO resources (id,"topicId","youtubeVideoId",title,"channelName","durationSeconds",level,"dailyMinutes","cachedAt") VALUES ($1,$2,\'abcdefghijk\',\'Python Variables and Data Types\',\'QA fixture\',300,\'BEGINNER\',30,now())',[resource,topic]);
+ await db.query('INSERT INTO goals (id,"userId","subjectId",type,level,"dailyMinutes","createdAt") VALUES ($1,$2,$3,\'SKILL\',\'BEGINNER\',30,now())',[goal,student,subject]);
+ await db.query('INSERT INTO paths (id,"userId","goalId","orderedTopicIds","createdAt") VALUES ($1,$2,$3,$4,now())',[path,student,goal,[topic]]);
+ const learner=client(),stranger=client(),owner=client(),anon=client();await signin(learner,student);await signin(stranger,other);await signin(owner,admin);
+ assert.equal((await anon('/api/admin/insights/report')).status,403);assert.equal((await learner('/api/admin/insights/report')).status,403);assert.equal((await learner('/admin')).status,404);
+ assert.equal((await owner('/admin')).status,200);assert.equal((await owner('/api/admin/insights/report?days=42')).status,400);
+ await db.query('UPDATE users SET role=\'STUDENT\' WHERE id=$1',[admin]);assert.equal((await owner('/api/admin/insights/report')).status,403);assert.equal((await owner('/admin')).status,404);await db.query('UPDATE users SET role=\'ADMIN\' WHERE id=$1',[admin]);
+ const vote={resourceId:resource,videoId:'abcdefghijk',reaction:'HELPFUL'};
+ assert.equal((await anon('/api/v1/resource-feedback',json(vote))).status,401);assert.equal((await stranger('/api/v1/resource-feedback',json(vote))).status,403);
+ assert.equal((await learner('/api/v1/resource-feedback',json({...vote,videoId:'bad'}))).status,400);
+ const votes=await Promise.all([learner('/api/v1/resource-feedback',json(vote)),learner('/api/v1/resource-feedback',json(vote))]);assert.ok(votes.every(v=>v.status===200));
+ assert.equal((await db.query('SELECT count(*) FROM rating_changes WHERE "userId"=$1',[student])).rows[0].count,'1');
+ assert.equal((await learner('/api/v1/resource-feedback',json({...vote,reaction:'NOT_HELPFUL',reason:'too_fast',comment:'<script>not executable</script>'}))).status,200);
+ assert.equal((await db.query('SELECT count(*) FROM rating_changes WHERE "userId"=$1',[student])).rows[0].count,'2');
+ await db.query('UPDATE resources SET "youtubeVideoId"=\'lmnopqrstuv\' WHERE id=$1',[resource]);
+ assert.equal((await learner('/api/v1/resource-feedback',json(vote))).status,409);
+ assert.equal((await learner('/api/v1/resource-feedback',json({...vote,videoId:'lmnopqrstuv'}))).status,200);
+ const ratings=(await db.query('SELECT "videoId",reaction,comment FROM video_ratings WHERE "userId"=$1 ORDER BY "videoId"',[student])).rows;
+ assert.deepEqual(ratings.map(r=>[r.videoId,r.reaction]),[['abcdefghijk','NOT_HELPFUL'],['lmnopqrstuv','HELPFUL']]);
+ const detail=await(await learner('/api/v1/paths/'+path)).json();assert.equal(detail.path.topics[0].resource.userReaction,'HELPFUL');
+ const activity={kind:'VIDEO_PLAY',area:'lesson',pathId:path,topicId:topic,videoId:'lmnopqrstuv'};
+ assert.equal((await anon('/api/insights/activity',json(activity))).status,401);assert.equal((await stranger('/api/insights/activity',json(activity))).status,404);
+ assert.equal((await learner('/api/insights/activity',json({...activity,videoId:'abcdefghijk'}))).status,409);
+ assert.equal((await learner('/api/insights/activity',json({...activity,rawError:'must not accept arbitrary data'}))).status,400);
+ const events=await Promise.all([learner('/api/insights/activity',json(activity)),learner('/api/insights/activity',json(activity))]);assert.ok(events.every(e=>e.status===200));
+ assert.equal((await db.query('SELECT count(*) FROM insight_events WHERE "userId"=$1 AND kind=\'VIDEO_PLAY\'',[student])).rows[0].count,'1');
+ assert.equal((await db.query('SELECT area FROM learner_presence WHERE "userId"=$1',[student])).rows[0].area,'lesson');
+ // Shift only our fixtures to yesterday so the calendar-window report includes them.
+ await db.query('UPDATE insight_events SET "createdAt"="createdAt"-interval \'1 day\' WHERE "userId"=ANY($1::text[])',[[student,other,admin]]);
+ await db.query('UPDATE rating_changes SET "createdAt"="createdAt"-interval \'1 day\' WHERE "userId"=$1',[student]);
+ let report=await(await owner('/api/admin/insights/report?days=1')).json();
+ assert.ok(report.active>=2);assert.ok(report.plays>=1);
+ const ours=report.videos.filter(v=>v.scopeKey.startsWith(topic+':'));assert.equal(ours.length,2);assert.deepEqual(ours.find(v=>v.videoId==='abcdefghijk').negative,1);assert.deepEqual(ours.find(v=>v.videoId==='abcdefghijk').helpful,0);
+ const dashboard=await(await owner('/admin?days=1')).text();assert.ok(dashboard.includes('&lt;script&gt;not executable&lt;/script&gt;'));assert.ok(!dashboard.includes('<script>not executable</script>'));
+ assert.equal((await anon('/api/cron/owner-reports')).status,401);assert.equal((await anon('/api/insights/health')).status,401);
+ assert.equal((await anon('/api/insights/health',{headers:{authorization:'Bearer '+monitor}})).status,200);
+ const deliveriesBefore=(await db.query('SELECT count(*) FROM owner_deliveries')).rows[0].count;
+ await db.query('UPDATE video_ratings SET comment=\'expire me\',"updatedAt"=now()-interval \'91 days\' WHERE "userId"=$1',[student]);
+ assert.equal((await anon('/api/cron/owner-reports',{headers:{authorization:'Bearer '+secret}})).status,503);
+ assert.equal((await db.query('SELECT count(*) FROM owner_deliveries')).rows[0].count,deliveriesBefore);
+ assert.ok((await db.query('SELECT comment,"updatedAt" FROM video_ratings WHERE "userId"=$1',[student])).rows.every(r=>r.comment===null&&r.updatedAt.getTime()<Date.now()-90*86400_000));
+ console.log('PASS: fresh admin authorization/revocation, ownership, concurrent vote deduplication, stable video attribution, stale-page protection, activity validation/deduplication, period aggregates, escaped comments, authenticated health/cron, disabled mail and retention.');
+}finally{await db.query('DELETE FROM users WHERE id=ANY($1::text[])',[[student,other,admin]]);await db.query('DELETE FROM subjects WHERE id=$1',[subject]);await db.end();}

@@ -1,3 +1,4 @@
+import { recordIssue } from "@/lib/insights/events";
 import { auth } from "@/lib/auth";
 import { z } from "zod";
 import { QuizError, publicAttempt, saveQuiz } from "@/lib/services/quiz-service";
@@ -20,5 +21,5 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ at
   const input = schema.safeParse(await request.json().catch(() => null));
   if (!input.success) return Response.json({ error: "Invalid quiz answer." }, { status: 400 });
   try { return Response.json(await saveQuiz(session.user.id, (await params).attemptId, input.data)); }
-  catch (error) { return Response.json({ error: error instanceof QuizError ? error.message : "Your answer could not be saved. Please retry." }, { status: error instanceof QuizError ? error.status : 500 }); }
+  catch (error) { if (!(error instanceof QuizError)) await recordIssue("QUIZ_SAVE_FAILED", "quiz"); return Response.json({ error: error instanceof QuizError ? error.message : "Your answer could not be saved. Please retry." }, { status: error instanceof QuizError ? error.status : 500 }); }
 }

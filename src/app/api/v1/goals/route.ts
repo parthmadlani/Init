@@ -1,3 +1,4 @@
+import { recordEvent } from "@/lib/insights/events";
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { createGoalSchema } from "@/lib/validation/goal";
@@ -17,8 +18,10 @@ export async function POST(request: Request) {
 
   try {
     const { goal, path } = await createGoalWithPath({ userId: session.user.id, ...parsed.data });
+    await recordEvent(session.user.id, "PATH_BUILT", "wizard");
     return NextResponse.json({ goal, path }, { status: 201 });
   } catch (error) {
+    await recordEvent(session.user.id, "PATH_FAILED", "wizard");
     const message = error instanceof Error ? error.message : "Could not create goal";
     return NextResponse.json({ error: message }, { status: 400 });
   }

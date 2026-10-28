@@ -56,6 +56,10 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
+  insightEvents InsightEvent[]
+  presence LearnerPresence?
+  videoRatings VideoRating[]
+  ratingChanges RatingChange[]
   quizAttempts     QuizAttempt[]
   goals            Goal[]
   paths            Path[]
@@ -299,4 +303,89 @@ model LessonPack {
   @@unique([youtubeVideoId, version])
   @@index([youtubeVideoId, publishedAt])
   @@map("lesson_packs")
+}
+
+// Owner reporting records explicit actions, not keystrokes or inferred watch time.
+model InsightEvent {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind String
+  area String
+  topicId String?
+  videoId String?
+  dedupeKey String @unique
+  createdAt DateTime @default(now())
+  @@index([createdAt, kind])
+  @@index([userId, createdAt])
+  @@map("insight_events")
+}
+model LearnerPresence {
+  userId String @id
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  area String
+  lastSeenAt DateTime @default(now())
+  @@index([lastSeenAt])
+  @@map("learner_presence")
+}
+model VideoRating {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scopeKey String
+  videoId String
+  topicId String
+  topicName String
+  subjectName String
+  level String
+  dailyMinutes Int
+  reaction ReactionType
+  reason String?
+  comment String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@unique([userId, scopeKey])
+  @@index([videoId, topicId])
+  @@map("video_ratings")
+}
+model RatingChange {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scopeKey String
+  videoId String
+  topicId String
+  topicName String
+  subjectName String
+  level String
+  dailyMinutes Int
+  reaction ReactionType
+  createdAt DateTime @default(now())
+  @@index([createdAt])
+  @@map("rating_changes")
+}
+model OwnerIssue {
+  id String @id @default(cuid())
+  key String @unique
+  code String
+  area String
+  occurrences Int @default(1)
+  firstSeenAt DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+  resolvedAt DateTime?
+  @@index([lastSeenAt])
+  @@map("owner_issues")
+}
+model OwnerDelivery {
+  key String @id
+  kind String
+  status String @default("pending")
+  payload Json
+  createdAt DateTime @default(now())
+  lockedUntil DateTime?
+  sentAt DateTime?
+  providerId String?
+  lastError String?
+  @@index([createdAt])
+  @@map("owner_deliveries")
 }

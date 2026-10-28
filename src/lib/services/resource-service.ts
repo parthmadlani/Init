@@ -1,3 +1,5 @@
+import { videoScope } from "@/lib/insights/core";
+import { recordIssue } from "@/lib/insights/events";
 import { getCourse } from "@/lib/courses/catalog";
 import { z } from "zod";
 import { after } from "next/server";
@@ -40,7 +42,8 @@ async function ensureResourceForTopic(
   try {
     candidates = await getCachedOrFetch(queryKey, () => searchYoutubeVideos(query));
   } catch (error) {
-    console.error(`YouTube fetch failed for "${queryKey}":`, error);
+    console.error(`YouTube fetch failed for "${queryKey}":`, error instanceof Error ? error.name : "UnknownError");
+    await recordIssue("VIDEO_SEARCH_FAILED", "matching");
     return null;
   }
 
@@ -53,8 +56,8 @@ async function ensureResourceForTopic(
   let excludeVideoId: string | null = null;
   if (existing) {
     const [helpfulCount, notHelpfulCount] = await Promise.all([
-      prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "HELPFUL" } }),
-      prisma.resourceFeedback.count({ where: { resourceId: existing.id, reaction: "NOT_HELPFUL" } }),
+      prisma.videoRating.count({ where: { scopeKey: videoScope(topic.id, level, dailyMinutes, existing.youtubeVideoId), user: { role: "STUDENT" }, reaction: "HELPFUL" } }),
+      prisma.videoRating.count({ where: { scopeKey: videoScope(topic.id, level, dailyMinutes, existing.youtubeVideoId), user: { role: "STUDENT" }, reaction: "NOT_HELPFUL" } }),
     ]);
     if (hasNegativeConsensus(helpfulCount, notHelpfulCount)) {
       // Clearly disliked, not just mixed — stop re-matching it and let a

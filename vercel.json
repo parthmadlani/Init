@@ -5,7 +5,14 @@
     "deploymentEnabled": {
       "codex/full-stack-foundations": false,
       "codex/javascript-foundations": false,
-      "codex/typescript-react": false
+      "codex/typescript-react": false,
+      "codex/owner-insights": false
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/owner-reports",
+      "schedule": "30 4 * * *"
+    }
+  ]
 }

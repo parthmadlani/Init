@@ -97,7 +97,7 @@ export function BookmarkToggle({ resourceId, initialBookmarkId }: { resourceId: 
 // p-3.5 + a 16px icon clears the 44px minimum touch target (WCAG 2.5.5);
 // idle/hover colors are picked to clear 3:1 (UI component) and 4.5:1 (hover,
 // which also carries text-like affordance) contrast against the card bg.
-export function ResourceFeedback({ resourceId, initialReaction }: { resourceId: string; initialReaction: Reaction | null }) {
+export function ResourceFeedback({ resourceId, videoId, initialReaction }: { resourceId: string; videoId: string; initialReaction: Reaction | null }) {
   const [reaction, setReaction] = useState(initialReaction);
   const [isPending, startTransition] = useTransition();
 
@@ -107,7 +107,7 @@ export function ResourceFeedback({ resourceId, initialReaction }: { resourceId: 
         await requestJson("/api/v1/resource-feedback", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ resourceId, reaction: next }),
+          body: JSON.stringify({ resourceId, videoId, reaction: next }),
         });
         setReaction(next);
         toast.success("Feedback saved");
