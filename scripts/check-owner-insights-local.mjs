@@ -8,7 +8,7 @@ const local=v=>['localhost','127.0.0.1'].includes(new URL(v).hostname);
 if(process.env.INIT_LOCAL_QA!=='1'||!base||!database||!local(base)||!local(database))throw new Error('Explicit localhost QA environment required.');
 const db=new pg.Client({connectionString:database});await db.connect();
 const run=randomUUID(),student='insight-student-'+run,other='insight-other-'+run,admin='insight-admin-'+run,subject='insight-subject-'+run,topic='insight-topic-'+run,resource='insight-resource-'+run,path='insight-path-'+run,goal='insight-goal-'+run,password=randomUUID();
-const emailFor=id=>id===admin?'parthmadlani@gmail.com':id+'@example.test';
+const emailFor=id=>id===admin?'parthmadlani9825@gmail.com':id+'@example.test';
 const secret='local-owner-cron-test-secret-2026-only',monitor='local-owner-monitor-test-secret-2026-only';
 function client(){const jar=new Map();return async(p,o={})=>{const r=await fetch(base+p,{...o,redirect:'manual',headers:{...o.headers,cookie:[...jar].map(([k,v])=>`${k}=${v}`).join('; ')}});for(const c of r.headers.getSetCookie()){const pair=c.split(';')[0],i=pair.indexOf('=');jar.set(pair.slice(0,i),pair.slice(i+1));}return r;};}
 const json=body=>({method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});

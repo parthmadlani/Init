@@ -53,7 +53,7 @@ test('negative signals remain visible when many videos have positive ratings',()
 });
 
 test('only the exact designated account with a current admin role is eligible',()=>{
-  assert.equal(OWNER_ADMIN_EMAIL,'parthmadlani@gmail.com');
+  assert.equal(OWNER_ADMIN_EMAIL,'parthmadlani9825@gmail.com');
   assert.equal(isOwnerAdmin({email:OWNER_ADMIN_EMAIL,role:'ADMIN'}),true);
-  for(const user of [null,undefined,{email:OWNER_ADMIN_EMAIL,role:'STUDENT'},{email:'owner-preview@example.test',role:'ADMIN'},{email:'parthmadlani0201@gmail.com',role:'ADMIN'},{email:'parthmadlani+other@gmail.com',role:'ADMIN'},{email:'Parthmadlani@gmail.com',role:'ADMIN'}])assert.equal(isOwnerAdmin(user),false);
+  for(const user of [null,undefined,{email:OWNER_ADMIN_EMAIL,role:'STUDENT'},{email:'parthmadlani@gmail.com',role:'ADMIN'},{email:'owner-preview@example.test',role:'ADMIN'},{email:'parthmadlani0201@gmail.com',role:'ADMIN'},{email:'parthmadlani+other@gmail.com',role:'ADMIN'},{email:'Parthmadlani@gmail.com',role:'ADMIN'}])assert.equal(isOwnerAdmin(user),false);
 });
