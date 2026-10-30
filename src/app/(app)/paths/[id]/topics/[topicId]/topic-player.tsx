@@ -40,6 +40,9 @@ function loadYouTubeApi(): Promise<YTNamespace> {
   return ytApiPromise;
 }
 
+// Pausing, finishing, completion and leaving also save, so a crash loses at most this much.
+const SAVE_INTERVAL_MS = 60_000;
+
 /** Saves playback position, not a claim that every preceding second was watched. */
 export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialWatchedSeconds, onProgress, suspendRecording = false, startSeconds, endSeconds, practiceMinutes, practice, pathId, seekRequest }: {
   seekRequest?: { seconds: number; nonce: number } | null;
@@ -68,8 +71,10 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
     let furthest = initialWatchedSeconds;
     let lastSaved = initialWatchedSeconds;
     let saving = false;
+    let saveQueued = false;
     let finished = false;
     let lastFlushAt = 0;
+    let shownPct = 0;
     const rewinds = rewindDetector();
     let playing = false;
     seekWithinBlock.current = (seconds) => {
@@ -86,6 +91,14 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
       const current = player?.getCurrentTime() ?? 0;
       if (rewinds.sample(current, Date.now(), playing, !suspendedRef.current && document.visibilityState === "visible")) sendActivity("VIDEO_REWIND", youtubeVideoId);
       furthest = Math.max(furthest, Math.min(durationSeconds, endSeconds, current));
+      // The bar moves with playback; the server copy follows on SAVE_INTERVAL_MS and key moments.
+      const pct = durationSeconds > 0 ? Math.min(100, Math.round(furthest / durationSeconds * 100)) : 0;
+      if (pct > shownPct && !suspendedRef.current) {
+        const crossedCompletion = shownPct < 90 && pct >= 90;
+        shownPct = pct;
+        onProgressRef.current?.(pct);
+        if (crossedCompletion) void flush();
+      }
     }
     async function flush(beacon = false) {
       if (suspendedRef.current) return;
@@ -96,8 +109,11 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
         if (!navigator.sendBeacon?.("/api/v1/progress/watch", new Blob([body], { type: "application/json" }))) {
           void fetch("/api/v1/progress/watch", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
         }
+        // Quick tab switches would otherwise resend the same position.
+        lastSaved = watchedSeconds;
         return;
       }
+      if (saving) saveQueued = true;
       if (saving || destroyed) return;
       saving = true;
       let saved = false;
@@ -117,7 +133,9 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
         if (!destroyed) setSaveState("error");
       } finally {
         saving = false;
-        if (saved && finished && !destroyed && Math.floor(furthest) > lastSaved) void flush();
+        const again = finished || saveQueued;
+        saveQueued = false;
+        if (saved && again && !destroyed && Math.floor(furthest) > lastSaved) void flush();
       }
     }
     function stopTimer() { if (timer) clearInterval(timer); timer = null; }
@@ -133,7 +151,7 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
     function tick() {
       sample();
       if ((player?.getCurrentTime() ?? 0) >= endSeconds) { finishBlock(); return; }
-      if (Date.now() - lastFlushAt >= 15_000) { lastFlushAt = Date.now(); void flush(); }
+      if (Date.now() - lastFlushAt >= SAVE_INTERVAL_MS) { lastFlushAt = Date.now(); void flush(); }
     }
     function saveBeforeLeaving() { sample(); void flush(true); }
     function handleVisibility() { if (document.visibilityState === "hidden") saveBeforeLeaving(); }
