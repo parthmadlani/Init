@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import pg from 'pg';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 const base=process.env.TEST_BASE_URL,database=process.env.DATABASE_URL;
 const local=v=>['localhost','127.0.0.1'].includes(new URL(v).hostname);
 if(process.env.INIT_LOCAL_QA!=='1'||!base||!database||!local(base)||!local(database))throw new Error('Explicit localhost QA environment required.');

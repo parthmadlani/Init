@@ -4,7 +4,7 @@ import { randomUUID } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import pg from 'pg';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 const base = process.env.TEST_BASE_URL;
 const database = process.env.DATABASE_URL;
 const local = value => ['localhost','127.0.0.1'].includes(new URL(value).hostname);
