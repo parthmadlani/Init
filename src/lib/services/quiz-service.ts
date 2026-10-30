@@ -1,3 +1,5 @@
+import { rewindWeight } from "@/lib/learning/rewind";
+import { trackingEnabled } from "@/lib/insights/events";
 import { randomInt } from "node:crypto";
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@/generated/prisma/client";
@@ -58,7 +60,15 @@ export async function startQuiz(userId: string, input: StartQuiz) {
     if (active) return publicAttempt(active);
     const previous = await tx.quizAttempt.findMany({ where: { userId }, orderBy: [{ createdAt: "desc" }, { id: "desc" }], select: { questions: true, answers: true, completedAt: true } });
     const history = previous.map(p => ({ questions: p.questions as unknown as Question[], answers: p.answers as unknown as Record<string, Answer>, completed: Boolean(p.completedAt) }));
-    const selected = buildQuiz(bank, count, history, input.personalized, random);
+    const rewindScores = new Map<string, number>();
+    if (input.personalized && trackingEnabled()) {
+      const signals = await tx.insightEvent.groupBy({ by: ["topicId", "videoId"], where: { userId, kind: "VIDEO_REWIND", topicId: { in: path.topics.map(t => t.id) }, createdAt: { gte: new Date(Date.now() - 14 * 86400_000) } }, _count: true });
+      for (const t of path.topics) {
+        const count = signals.filter(s => s.topicId === t.id && s.videoId === t.resource?.youtubeVideoId).reduce((n, s) => n + s._count, 0);
+        rewindScores.set(t.slug, rewindWeight(count));
+      }
+    }
+    const selected = buildQuiz(bank, count, history, input.personalized, random, rewindScores);
     const attempt = await tx.quizAttempt.create({ data: { userId, pathId: path.id, scopeKey, kind: input.kind, title, questions: json(selected.questions), reviewCount: selected.reviewCount, personalized: input.personalized } });
     return publicAttempt(attempt);
   }, { timeout: 15000 });

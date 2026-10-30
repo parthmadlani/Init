@@ -29,7 +29,7 @@ export function differentPositions<T extends { id: string }>(items: T[], previou
   return slots as T[];
 }
 
-export function buildQuiz(bank: Question[], count: number, history: PastAttempt[], personalized: boolean, random = Math.random) {
+export function buildQuiz(bank: Question[], count: number, history: PastAttempt[], personalized: boolean, random = Math.random, rewindScores: ReadonlyMap<string, number> = new Map()) {
   const unique = [...new Map(bank.map(q => [q.id, q])).values()];
   const seen = new Map<string, number>();
   const weakness = new Map<string, number>();
@@ -47,6 +47,7 @@ export function buildQuiz(bank: Question[], count: number, history: PastAttempt[
       }
     }
   }
+  for (const [topic, score] of rewindScores) weakness.set(topic, (weakness.get(topic) ?? 0) + Math.min(1.5, Math.max(0, score)));
   // Unseen first across revision, lesson and final attempts. Then least-exposed review.
   const ranked = shuffle(unique, random).sort((a, b) =>
     (seen.get(a.id) ?? 0) - (seen.get(b.id) ?? 0) ||

@@ -3,7 +3,7 @@ import { auth } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 import { AREAS } from '@/lib/insights/core';
 import { recordEvent, recordIssue, trackingEnabled } from '@/lib/insights/events';
-const input=z.object({kind:z.enum(['PAGE_VIEW','HEARTBEAT','VIDEO_PLAY','VIDEO_ERROR']),area:z.enum(AREAS),pathId:z.string().max(100).optional(),topicId:z.string().max(100).optional(),videoId:z.string().regex(/^[\w-]{11}$/).optional()}).strict();
+const input=z.object({kind:z.enum(['PAGE_VIEW','HEARTBEAT','VIDEO_PLAY','VIDEO_ERROR','VIDEO_REWIND']),area:z.enum(AREAS),pathId:z.string().max(100).optional(),topicId:z.string().max(100).optional(),videoId:z.string().regex(/^[\w-]{11}$/).optional()}).strict();
 export async function POST(request:Request) {
   const session=await auth();if(!session?.user) return Response.json({error:'Unauthorized'},{status:401});
   if(!trackingEnabled()) return Response.json({enabled:false});

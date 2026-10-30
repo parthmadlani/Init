@@ -1,4 +1,5 @@
 "use client";
+import { rewindDetector } from "@/lib/learning/rewind";
 import { sendActivity } from "@/lib/insights/client";
 
 import { useEffect, useRef, useState } from "react";
@@ -69,10 +70,13 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
     let saving = false;
     let finished = false;
     let lastFlushAt = 0;
+    const rewinds = rewindDetector();
+    let playing = false;
     seekWithinBlock.current = (seconds) => {
       if (!player || destroyed) return;
       finished = false;
       setBlockFinished(false);
+      rewinds.reset();
       player.seekTo(Math.min(endSeconds - 1, Math.max(startSeconds, seconds)), true);
     };
     const mount = document.createElement("div");
@@ -80,6 +84,7 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
 
     function sample() {
       const current = player?.getCurrentTime() ?? 0;
+      if (rewinds.sample(current, Date.now(), playing && !suspendedRef.current && document.visibilityState === "visible")) sendActivity("VIDEO_REWIND", youtubeVideoId);
       furthest = Math.max(furthest, Math.min(durationSeconds, endSeconds, current));
     }
     async function flush(beacon = false) {
@@ -145,6 +150,7 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
           onStateChange: (event) => {
             if (destroyed) return;
             sample();
+            playing = event.data === YT.PlayerState.PLAYING;
             stopTimer();
             if (event.data === YT.PlayerState.PLAYING) {
               sendActivity("VIDEO_PLAY", youtubeVideoId);
