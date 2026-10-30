@@ -25,3 +25,19 @@ test('replays bias extra slots without dropping coverage; opt-out ignores them',
  assert.equal(quiz.questions.filter(q=>q.topic==='a').length,1);
  assert.deepEqual(buildQuiz(bank,6,[],false,()=>0.5,scores),buildQuiz(bank,6,[],false,()=>0.5));
 });
+
+test('a ten-second button rewind survives YouTube buffering and polling drift',()=>{
+ const d=rewindDetector(); d.sample(50,0,true);
+ assert.equal(d.sample(40.2,250,false),false);
+ assert.equal(d.sample(40.2,500,true),false);
+ for(let i=1;i<5;i++) assert.equal(d.sample(40.2+i,500+i*1000,true),false);
+ assert.equal(d.sample(45.2,5500,true),true);
+});
+test('hidden playback clears pending replay and long pauses never add watch time',()=>{
+ const d=rewindDetector(); d.sample(50,0,true); d.sample(30,250,false);
+ assert.equal(d.sample(30,500,false,false),false);
+ assert.equal(d.sample(36,6500,true),false);
+ d.sample(20,7000,false);
+ assert.equal(d.sample(20,20000,true),false);
+ assert.equal(d.sample(26,26000,true),false);
+});

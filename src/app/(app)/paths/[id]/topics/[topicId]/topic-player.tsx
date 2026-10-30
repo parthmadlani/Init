@@ -84,7 +84,7 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
 
     function sample() {
       const current = player?.getCurrentTime() ?? 0;
-      if (rewinds.sample(current, Date.now(), playing && !suspendedRef.current && document.visibilityState === "visible")) sendActivity("VIDEO_REWIND", youtubeVideoId);
+      if (rewinds.sample(current, Date.now(), playing, !suspendedRef.current && document.visibilityState === "visible")) sendActivity("VIDEO_REWIND", youtubeVideoId);
       furthest = Math.max(furthest, Math.min(durationSeconds, endSeconds, current));
     }
     async function flush(beacon = false) {
@@ -149,8 +149,8 @@ export function TopicPlayer({ topicId, youtubeVideoId, durationSeconds, initialW
           onError: () => { sendActivity("VIDEO_ERROR", youtubeVideoId); clearTimeout(readyTimeout); stopTimer(); if (!destroyed) setError(true); },
           onStateChange: (event) => {
             if (destroyed) return;
-            sample();
             playing = event.data === YT.PlayerState.PLAYING;
+            sample();
             stopTimer();
             if (event.data === YT.PlayerState.PLAYING) {
               sendActivity("VIDEO_PLAY", youtubeVideoId);
