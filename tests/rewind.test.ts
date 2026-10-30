@@ -41,3 +41,19 @@ test('hidden playback clears pending replay and long pauses never add watch time
  assert.equal(d.sample(20,20000,true),false);
  assert.equal(d.sample(26,26000,true),false);
 });
+test('rewinding while paused counts once playback resumes, even after a long pause',()=>{
+ const d=rewindDetector(); d.sample(50,0,true); d.sample(50,250,false);
+ assert.equal(d.sample(30,1000,false),false);
+ assert.equal(d.sample(30,9000,true),false);
+ for(let i=1;i<5;i++) assert.equal(d.sample(30+i,9000+i*1000,true),false);
+ assert.equal(d.sample(35,14000,true),true);
+});
+test('a replayed topic gets extra slots in a short quiz that covers every topic',()=>{
+ const bank: Question[]= Array.from({length:10},(_,t)=>'t'+t).flatMap(topic=>Array.from({length:10},(_,i)=>({id:topic+i,topic,concept:topic,prompt:'?',choices:[{id:'yes',text:'yes'},{id:'no',text:'no'}],correctId:'yes',explanation:'',source:{label:'test'}})));
+ const count=(scores: Map<string,number>)=>buildQuiz(bank,10,[],true,()=>0.5,scores).questions.filter(q=>q.topic==='t3').length;
+ assert.equal(count(new Map()),1);
+ assert.equal(count(new Map([['t3',0.5]])),2);
+ assert.equal(count(new Map([['t3',1.5]])),3);
+ assert.equal(new Set(buildQuiz(bank,10,[],true,()=>0.5,new Map([['t3',1.5]])).questions.map(q=>q.topic)).size,8);
+ assert.equal(buildQuiz(bank,10,[],false,()=>0.5,new Map([['t3',1.5]])).questions.filter(q=>q.topic==='t3').length,1);
+});

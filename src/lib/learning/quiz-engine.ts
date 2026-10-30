@@ -53,10 +53,27 @@ export function buildQuiz(bank: Question[], count: number, history: PastAttempt[
     (seen.get(a.id) ?? 0) - (seen.get(b.id) ?? 0) ||
     (personalized ? (weakness.get(b.topic) ?? 0) - (weakness.get(a.topic) ?? 0) : 0));
   const selected: Question[] = [];
+  // Weak topics may claim up to 30% of a quiz as extra slots, so short quizzes still adapt.
+  let focusLeft = personalized ? Math.floor(count * 0.3) : 0;
   // Broad coverage within each exposure tier; remaining slots prioritize weak topics.
   for (const exposure of [...new Set(ranked.map(q => seen.get(q.id) ?? 0))].sort((a,b) => a-b)) {
     const tier = ranked.filter(q => (seen.get(q.id) ?? 0) === exposure);
-    for (const topic of new Set(tier.map(q => q.topic))) {
+    const topics = [...new Set(tier.map(q => q.topic))];
+    const covered = new Set<string>();
+    for (const topic of topics) {
+      const weight = weakness.get(topic) ?? 0;
+      if (!focusLeft || weight <= 0) continue;
+      // One coverage question plus up to two extra: one per replay signal or unsure answer, two per mistake.
+      const extra = Math.min(focusLeft, 2, Math.ceil(weight));
+      for (const q of tier.filter(item => item.topic === topic).slice(0, extra + 1)) {
+        if (selected.length >= count) break;
+        if (covered.has(topic)) focusLeft--;
+        covered.add(topic);
+        selected.push(q);
+      }
+    }
+    for (const topic of topics) {
+      if (covered.has(topic)) continue;
       const candidate = tier.find(q => q.topic === topic)!;
       if (selected.length < count) selected.push(candidate);
     }
